@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="jqueryui/style.css">
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			body{
+				height:1080px;
+				width: 500px;
+				background-image: url(img/back.jpg);
+				background-repeat: no-repeat;
+			}
+			#tubiao{
+				bottom:100px;
+				left:300px;
+			}
+			#accordion
+			{
+				position:absolute;
+				right:5px;
+				top:5px;
+			}
+		</style>
+		<script>
+			$(function()
+	 		{
+				
+	 			getParams();
+	 			$("#accordion").accordion();
+    			$(".draggable").draggable();
+    			
+    			/*
+    			$('#draggable').click(function()
+    			{
+    				alert("hello");
+    			});
+    			*/
+    			$("#2048_game").dblclick(function()
+    			{
+    				var key=confirm("open app");
+    				if(key)
+    					window.location="2048/game.html";
+    			});
+    			$("#lan").dblclick(function()
+    	    			{
+    	    				var key=confirm("open app");
+    	    				if(key)
+    	    					window.location="2048/game.html";
+    	    			});
+    			$("#snow").dblclick(function()
+    	    			{
+    	    				var key=confirm("open app");
+    	    				if(key)
+    	    					window.location="2048/game.html";
+    	    			});
+    			
+    			
+    			createNode();
+    			function createNode()
+    			{
+    				var h=document.createElement("p");
+    				var text=document.createTextNode("<p>second</p>");
+    				h.appendChild(text);
+    				var pp=document.getElementById("pp");
+    				pp.appendChild(h);
+    			};
+    			
+    			
+    			function getParams()
+				{
+					var height=window.innerHeight;
+					var width=window.innerWidth;
+					var body=document.getElementById("body");
+					body.style.height=height;
+					body.style.width=width;
+				}
+    			
+  			});
+  		
+  			
+		</script>
+	</head>
+	
+	<script>
+	
+		
+		
+		
+		/*
+		body.onclick=function()
+		{
+			prompt("hello!","double click");
+		}
+		*/
+		//拖拽图标
+	 	
+	</script>
+	<body id="body"> 
+	<div>
+		<div id="tubiao">
+			<image id="2048_game" class="draggable" src="img/game.png" width="50" height="50">
+		</div>
+		<div id="tubiao">
+			<image id="lan" class="draggable" src="img/lan.png" width="50" height="50" style="top:20px">
+		</div>
+		<div id="tubiao">
+			<image id="snow" class="draggable" src="img/1.png" width="50" height="50" style="top:40px">
+		</div>
+	</div>
+	<div id="accordion">
+	<h3>baidu</h3>
+	<ul>
+	<li><a href="http://www.baidu.com" class="link" target="blank">baidu</a></li>
+	<li><a href="http://www.baidu.com" class="link">baidu</a></li>
+	<li><a href="http://www.baidu.com" class="link">baidu</a></li>
+	</ul>
+	<h3>first</h3>
+	<p>
+	aaaaaaaaaaaaaaaaaaaaaa<br>
+	aaaaaaaaaaaaaaaaaaaaaa<br>
+	aaaaaaaaaaaaaaaaaaaaaa<br>
+	
+	</p>
+	<h3>second</h3>
+	<p>
+	aaaaaaaaaaaaaaaaaaaaaa<br>
+	aaaaaaaaaaaaaaaaaaaaaa<br>
+	aaaaaaaaaaaaaaaaaaaaaa<br>
+	
+	</p>
+	</div>
+		
+		
+		
+		
+	</body>
+</html>
