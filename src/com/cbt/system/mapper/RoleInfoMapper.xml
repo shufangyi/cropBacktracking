@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.system.mapper.RoleInfoMapper">
+
+
+
+	<resultMap type="RoleInfo" id="rolemap">
+		<result property="roleId" column="roleId" />
+		<result property="roleAuthority" column="roleAuthority" />
+	</resultMap>
+	<!-- 查询用户信息 用于用户登录 -->
+	<select id="getRoleAuthority" parameterType="java.lang.Integer" resultMap="rolemap">
+		select * from roleinfo where roleId=#{roleId}
+	</select>
+</mapper>

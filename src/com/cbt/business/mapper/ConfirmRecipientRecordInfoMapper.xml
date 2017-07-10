@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.business.mapper.ConfirmRecipientRecordInfoMapper" >
+  <resultMap id="confirmrecipientrecordinfomap" type="com.cbt.business.po.ConfirmRecipientRecordInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="recipientTime" property="recipienttime" jdbcType="DATE" />
+    <result column="orderNum" property="ordernum" jdbcType="VARCHAR" />
+    <result column="logisticsNum" property="logisticsnum" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="distributor" property="distributor" jdbcType="VARCHAR" />
+  </resultMap>
+  
+</mapper>

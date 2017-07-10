@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.business.mapper.WorkerInfoMapper">
+	<resultMap type="WorkerInfo" id="workermap">
+		<result property="workerId" column="workerId"/>
+		<result property="businessId" column="businessId" />
+		<result property="workerNum" column="workerNum" />
+		<result property="workerPwd" column="workerPwd" />
+		<result property="roleId" column="roleId" />
+		<result property="workerName" column="workerName" />
+		<result property="workerPhone" column="workerPhone" />
+	</resultMap>
+	<!-- 查询用户信息 用于用户登录 -->
+	<select id="getWorkerInfo" parameterType="WorkerInfo" resultMap="workermap">
+		select * from workerinfo where workerNum=#{workerNum} and workerPwd=#{workerPwd}
+	</select>
+
+
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.business.mapper.CheckInRecordInfoMapper">
+  <resultMap id="checkinrecordinfomap" type="com.cbt.business.po.CheckInRecordInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pickSeg_btCode" jdbcType="VARCHAR" property="picksegBtcode" />
+    <result column="checkInTime" jdbcType="DATE" property="checkintime" />
+    <result column="checkInSeg_btCode" jdbcType="VARCHAR" property="checkinsegBtcode" />
+    <result column="stockLocation" jdbcType="VARCHAR" property="stocklocation" />
+    <result column="fertilizerNum" jdbcType="INTEGER" property="fertilizernum" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="checker" jdbcType="VARCHAR" property="checker" />
+  </resultMap>
+  
+  
+  
+  
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.business.mapper.DeliverRecordInfoMapper" >
+  <resultMap id="deliverrecordinfomap" type="com.cbt.business.po.DeliverRecordInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="deliverTime" property="delivertime" jdbcType="DATE" />
+    <result column="deliverAddress" property="deliveraddress" jdbcType="VARCHAR" />
+    <result column="logisticsCompany" property="logisticscompany" jdbcType="VARCHAR" />
+    <result column="orderNum" property="ordernum" jdbcType="VARCHAR" />
+    <result column="logisticsNum" property="logisticsnum" jdbcType="VARCHAR" />
+    <result column="distributor" property="distributor" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="logistics" property="logistics" jdbcType="VARCHAR" />
+  </resultMap>
+  
+</mapper>

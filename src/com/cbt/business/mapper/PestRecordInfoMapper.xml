@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.business.mapper.PestRecordInfoMapper" >
+  <resultMap id="pestrecordinfomap" type="com.cbt.business.po.PestRecordInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sowSeg_btCode" property="sowsegBtcode" jdbcType="VARCHAR" />
+    <result column="pestType" property="pesttype" jdbcType="VARCHAR" />
+    <result column="medicationName" property="medicationname" jdbcType="VARCHAR" />
+    <result column="medicationRatio" property="medicationratio" jdbcType="VARCHAR" />
+    <result column="medicationDosage" property="medicationdosage" jdbcType="INTEGER" />
+    <result column="result" property="result" jdbcType="VARCHAR" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="grower" property="grower" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  
+  
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.business.mapper.CopackRecordInfoMapper">
+  <resultMap id="copackrecordinfomap" type="com.cbt.business.po.CopackRecordInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="checkInSeg_btCode" jdbcType="VARCHAR" property="checkinsegBtcode" />
+    <result column="copackTime" jdbcType="DATE" property="copacktime" />
+    <result column="product_QRCodePicture" jdbcType="VARCHAR" property="productQrcodepicture" />
+    <result column="orderNum" jdbcType="VARCHAR" property="ordernum" />
+    <result column="product_btCode" jdbcType="VARCHAR" property="productBtcode" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="copacker" jdbcType="VARCHAR" property="copacker" />
+    <result column="copackLocation" jdbcType="VARCHAR" property="copacklocation" />
+    <result column="produceDate" jdbcType="DATE" property="producedate" />
+    <result column="produceLocation" jdbcType="VARCHAR" property="producelocation" />
+    <result column="specifications" jdbcType="VARCHAR" property="specifications" />
+    <result column="netContent" jdbcType="VARCHAR" property="netcontent" />
+    <result column="storageCondition" jdbcType="VARCHAR" property="storagecondition" />
+  </resultMap>
+  
+</mapper>

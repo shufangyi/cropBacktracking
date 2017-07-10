@@ -1,0 +1,60 @@
+body{
+    /*height: 3000px;*/
+}
+/*轮播*/
+.carousel .carousel-inner img{
+    width: 100%;
+    height: 300px;
+}
+/*内容*/
+#cool{
+    position: relative;
+    margin-top: 10px;
+}
+
+/*头部*/
+.container .biz{
+    background-color: rgba(206, 74, 75, 0.6);
+    border: rgba(206, 74, 75, 0.6) 1px solid;
+}
+.container .mode{
+    background-color: rgba(96, 203, 233, 0.6) ;
+    border: rgba(96, 203, 233, 0.6) 1px solid;
+}
+
+/*企业人员*/
+.container .ry-name{
+    font-size: 30px;
+    color:#585757;
+    margin-left: -50%;
+    font-weight: 400;
+}
+.ry-zhiwei{
+    color:#585757;
+    font-weight: 300;
+}
+
+.qyry .hellospace{
+    font-size: 40px;
+    color: rgba(206, 74, 75, 0.4);
+}
+.qyry:hover{
+    background-color: rgba(206, 74, 75, 0.1);
+}
+
+/*企业产品*/
+
+.list-group-item-heading .cpnane{
+    font-size: 25px;
+    color:#585757 ;
+}
+.list-group-item-heading .cpnane:hover{
+    color: rgba(2, 119, 152, 0.6);
+}
+.cp .hellospace img{
+    width: 100%;
+    height: 100%;
+}
+.cp:hover{
+    background-color:rgba(96, 203, 233, 0.1) ;
+}

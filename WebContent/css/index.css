@@ -1,0 +1,280 @@
+p {
+    letter-spacing: 2px;
+}
+
+.navbar {
+    height: 60px;
+}
+
+.container {
+    width: 970px;
+}
+
+.panel {
+    border-radius: 2px;
+    border: 0;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .12), 0 1px 6px 0 rgba(0, 0, 0, .12);
+    margin-bottom: 20px;
+}
+
+.navbar .navbar-brand {
+    position: relative;
+    height: 60px;
+    line-height: 30px;
+    color: inherit;
+    padding: 10px 15px;
+}
+
+.navbar .navbar-brand img {
+    display: inline-block;
+}
+
+.navbar .main-menu--item {
+    display: inline-block;
+    line-height: 60px;
+    margin: 0 10px;
+    padding: 0 8px;
+    text-decoration: none;
+}
+
+.navbar .main-menu--item:hover {
+    border-bottom: 2px solid #66f;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.body-content {
+    padding-top: 60px;
+}
+
+.hero-area {
+    min-height: 300px;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    background-image: url("../assets/background-left.png"), url("../assets/background-right.png");
+    background-repeat: no-repeat, no-repeat;
+    background-position: top left, top right;
+    background-size: auto 300px, auto 300px;
+}
+
+
+/*主体部分*/
+
+.body-content .container p {
+    text-align: center;
+}
+
+.body-content .hero-area h1 {
+    text-align: center;
+    font-size: 48px;
+    font-weight: lighter;
+}
+
+.body-content .hero-area .audience-name {
+    min-width: 250px;
+    font-weight: bold;
+}
+
+
+/*搜索框*/
+
+.bar6 {
+    padding: 30px 0;
+    background: transparent;
+}
+
+.bar6 form {
+    position: relative;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.bar6 input,
+.bar6 button {
+    border: none;
+    outline: none;
+}
+
+.bar6 input {
+    width: 100%;
+    height: 42px;
+    padding-left: 13px;
+    border: 2px solid #c5464a;
+    border-radius: 5px;
+    background: transparent;
+    top: 0;
+    right: 0;
+}
+
+.bar6 button {
+    height: 42px;
+    width: 82px;
+    cursor: pointer;
+    position: absolute;
+    background: #c5464a;
+    border-radius: 0 5px 5px 0;
+    width: 60px;
+    top: 0;
+    right: 0;
+}
+
+.bar6 button:before {
+    content: "查询";
+    font-size: 13px;
+    color: #F9F0DA;
+}
+
+
+/**
+    设置各个功能区
+*/
+
+#structure>p {
+    margin: 30px auto;
+    font-size: 24px;
+}
+
+#fengexian {
+    width: 970px;
+}
+
+.body-content .row {
+    margin-top: 60px;
+}
+
+.body-content .introduction {
+    height: 400px;
+    transition: 2s;
+    border: 2px solid white;
+}
+
+.body-content .in1 {
+    background-color: rgba(96, 203, 233, 0.6);
+}
+
+.body-content .in2 {
+    background-color: rgba(245, 232, 51, 0.6);
+}
+
+.body-content .in3 {
+    background-color: rgba(206, 74, 75, 0.6);
+}
+
+.body-content .in4 {
+    background-color: rgba(192, 82, 159, 0.6);
+}
+
+.body-content .introduction:hover {
+    transition: 2s;
+    -webkit-transform: rotateY(360deg);
+    -moz-transform: rotateY(360deg);
+    -ms-transform: rotateY(360deg);
+    -o-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+}
+
+.body-content .introduction img {
+    width: 120px;
+    display: block;
+    margin: 20px auto;
+}
+
+.body-content .introduction p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #8a8a8a;
+}
+
+.body-content .introduction .hr {
+    height: 2px;
+    background-color: #999;
+    width: 80%;
+    margin: 0 auto 30px;
+}
+
+.fetures {
+    margin-bottom: 50px;
+}
+
+.body-content .container .fetures p,
+.body-content .container .fetures h2 {
+    text-align: center;
+}
+
+.body-content .container .fetures .loginBtn {
+    display: block;
+    width: 120px;
+    padding: 10px 20px;
+    margin: 20px auto;
+    border: 1px solid #03a9f4;    
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    outline: none;
+    background-color: #03a9f4;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 18px;
+    letter-spacing: 4px;
+}
+
+.body-content .container .fetures .loginBtn:hover{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #03a9f4;
+    background-color: rgba(255, 255, 255, 0.84);
+    border: 1px solid #03a9f4;
+}
+
+
+/**
+页脚部分
+*/
+
+#footer {
+    position: relative;
+    background: transparent;
+    overflow: hidden;
+    height: 230px;
+}
+
+.footer-content {
+    background: transparent;
+    color: white;
+    padding: 0px;
+    min-height: 180px;
+    text-align: center;
+    z-index: 100;
+}
+
+footer ul.share-group {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.share-group a {
+    color: white;
+}
+
+.share-group li {
+    display: inline-block;
+    padding: 10px;
+    font-size: 24px;
+}
+
+/**
+返回顶部按钮
+*/
+
+#back_to_top{
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    border: 1px solid #888;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+#back_to_top:active{
+    background: #666;
+}

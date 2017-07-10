@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.business.mapper.BusinessInfoMapper">
+
+	<resultMap type="BusinessInfo" id="businessmap">
+		<result property="id" column="id" />
+		<result property="businessId" column="businessId" />
+		<result property="businessName" column="businessName" />
+		<result property="businessAddr" column="businessAddr" />
+		<result property="busienssMobile" column="busienssMobile" />
+		<result property="businessEmail" column="businessEmail" />
+		<result property="businessUrl" column="businessUrl" />
+		<result property="busienssLogo" column="busienssLogo" />
+		<result property="businessDesc" column="businessDesc" />		
+	</resultMap>
+	<!-- 查询用户信息 用于用户登录 -->
+	<select id="getAllBusinessInfo" resultMap="businessmap">
+		select * from businessinfo
+	</select>
+
+
+</mapper>

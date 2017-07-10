@@ -1,0 +1,80 @@
+.navbar {
+    height: 60px;
+}
+
+.container {
+    width: 970px;
+}
+
+.panel {
+    border-radius: 2px;
+    border: 0;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .12), 0 1px 6px 0 rgba(0, 0, 0, .12);
+    margin-bottom: 20px;
+}
+
+.navbar .navbar-brand {
+    position: relative;
+    height: 60px;
+    line-height: 30px;
+    color: inherit;
+    padding: 10px 15px;
+}
+
+.navbar .navbar-brand img {
+    display: inline-block;
+}
+
+.navbar .main-menu--item {
+    display: inline-block;
+    line-height: 60px;
+    margin: 0 10px;
+    padding: 0 8px;
+    text-decoration: none;
+}
+
+.navbar .main-menu--item:hover {
+    border-bottom: 2px solid #66f;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.body-content {
+    padding-top: 60px;
+}
+
+/**
+页脚部分
+*/
+
+#footer {
+    position: relative;
+    background: transparent;
+    overflow: hidden;
+    height: 230px;
+}
+
+.footer-content {
+    background: transparent;
+    color: white;
+    padding: 0px;
+    min-height: 180px;
+    text-align: center;
+    z-index: 100;
+}
+
+footer ul.share-group {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.share-group a {
+    color: white;
+}
+
+.share-group li {
+    display: inline-block;
+    padding: 10px;
+    font-size: 24px;
+}

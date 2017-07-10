@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.business.mapper.PickRecordInfoMapper">
+  <resultMap id="pickrecordinfomap" type="com.cbt.business.po.PickRecordInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sowSeg_btCode" jdbcType="VARCHAR" property="sowsegBtcode" />
+    <result column="pickTime" jdbcType="DATE" property="picktime" />
+    <result column="pickType" jdbcType="INTEGER" property="picktype" />
+    <result column="pickNum" jdbcType="INTEGER" property="picknum" />
+    <result column="pickSeg_btCode" jdbcType="VARCHAR" property="picksegBtcode" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="grower" jdbcType="VARCHAR" property="grower" />
+  </resultMap>
+  
+</mapper>
