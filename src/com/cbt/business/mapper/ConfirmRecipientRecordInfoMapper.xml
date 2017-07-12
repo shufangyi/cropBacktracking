@@ -9,5 +9,26 @@
     <result column="comment" property="comment" jdbcType="VARCHAR" />
     <result column="distributor" property="distributor" jdbcType="VARCHAR" />
   </resultMap>
+  <!-- 根据 orderNum 查找一条数据 -->
+  <select id="getConfirmRecipientRecordInfo" parameterType="com.cbt.business.po.ConfirmRecipientRecordInfo" resultMap="confirmrecipientrecordinfomap">
+  	select * from confirmrecipientrecord where orderNum=#{ordernum}
+  </select>
   
+  <!--查询所有数据  -->
+  <select id="getAllConfirmRecipientRecordInfo" resultMap="confirmrecipientrecordinfomap">
+  	select * from confirmrecipientrecord 
+  </select>
+  
+  <!--增加一条数据  -->
+  <insert id="addConfirmRecipientRecordInfo" parameterType="com.cbt.business.po.ConfirmRecipientRecordInfo">
+  	insert into confirmrecipientrecord
+  	(id,recipientTime,orderNum,logisticsNum,comment,distributor)
+  	values
+  	(#{id},#{recipienttime},#{ordernum},#{logisticsnum},#{comment},#{distributor})
+  </insert>
+  
+  <!--根据orderNum删除一条数据  -->
+  	<delete id="delConfirmRecipientRecordInfo"  parameterType="com.cbt.business.po.ConfirmRecipientRecordInfo">
+  	delete from confirmrecipientrecord where orderNum=#{ordernum}
+  	</delete>
 </mapper>

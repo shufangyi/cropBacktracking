@@ -1,4 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper  namespace="com.cbt.system.mapper.ProductPlanInfoMapper">
+	<resultMap type="com.cbt.system.po.ProductPlanInfo" id="productPlanInfoMap">
+		<id column="planId" property="planId" jdbcType="INTEGER"/>
+		<result column="planName" property="planName" jdbcType="VARCHAR"/>
+		<result column="planDesc" property="planDesc" jdbcType="VARCHAR"/>
+		<result column="planUnit" property="planUnit" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<!-- 添加新的生产计划模版 -->
+	<insert id="insertNewProductPlan" parameterType="com.cbt.system.po.ProductPlanInfo">
+	insert into cropBacktracking.product_planInfo(planName,planDesc,planUnit)
+	values(#{planName},#{planDesc},#{planUnit})
+	</insert>
+	
+	<!-- 根据planId删除生产计划 -->
+	<delete id="deleteProductPlan" parameterType="Integer">
+	delete from cropBacktracking.productPlanInfo
+	where planId=#{planId}
+	</delete>
+	
+	<!-- 通过panUnit查询出生产计划id -->
+	<select id="selectIdByPlanUnit" parameterType="String">
+	select planId from cropBacktracking.productPlanInfo
+	where planUnit=#{planUnit}
+	</select>
+	
+	<!-- 查询出所有的生产计划 -->
+	<select id="queryAllProductPlan">
+	select * from cropBacktracking.productPlanInfo
+	</select>
+	
+	<!-- 通过planId对某个生产计划进行修改 -->
+	<update id="updatePlanById" parameterType="com.cbt.system.po.ProductPlanInfo">
+	update cropBacktracking.productPlanInfo
+	<set>
+	<if test="planName!=null">
+		planName=#{planName}
+	</if>
+	<if test="planDesc!=null">
+		planDesc=#{planDesc}
+	</if>
+	<if test="planUnit!=null">
+		planUnit=#{planUnit}
+	</if>
+	</set>
+	where planId=#{planId}
+	</update>
 </mapper>

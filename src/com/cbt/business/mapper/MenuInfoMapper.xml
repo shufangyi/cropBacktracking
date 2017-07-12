@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.business.mapper.MenuInfoMapper">
+	<resultMap type="MenuInfo" id="menumap">
+		<result property="menuId" column="menuId"/>
+		<result property="menuPid" column="menuPid"/>
+		<result property="menuName" column="menuName" jdbcType="VARCHAR"/>
+		<result property="authorityId" column="authorityId"/>
+		<result property="menuUrl" column="menuUrl"/>
+	</resultMap>
+	<!-- 查询用户信息 用于用户登录 -->
+	<select id="getMenuByAuthorityId" parameterType="java.lang.Integer" resultMap="menumap">
+		select * from menuinfo where authorityid=#{value}
+	</select>
+
+
+</mapper>

@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cbt.system.mapper.ProductPlanUnitInfoMapper">
-
-
-	<!-- <resultMap type="UserInfo" id="usermap" > <result property="userId" 
-		column="user_id" /> <result property="userName" column="user_Name" /> <result 
-		property="userSex" column="user_Sex" /> </resultMap> -->
-
-
-	<resultMap type="ProductPlanUnitInfo" id="productplanunitmap">
-		<result property="ppuName" column="ppuName" />
+	<resultMap type="com.cbt.system.po.ProductPlanUnitInfo" id="ProductUnitResultMap">
+		<id column="unitId" property="unitId" jdbcType="INTEGER" />
+		<result column="unitName" property="unitName"  jdbcType="VARCHAR"/>
+		<result column="authorityName" property="authorityName" jdbcType="VARCHAR"/>
+		<result column="authorityUrl" property="authorityUrl" jdbcType="VARCHAR"/>	
 	</resultMap>
-
 	
-
-	<!-- 查询用户信息 用于用户登录 -->
-	<select id="getAllPpuInfo" parameterType="ProductPlanUnitInfo" resultMap="productplanunitmap">
-		select * from ppuinfo
+	<!-- 查询出所有的生产单元 -->
+	<select id="selectAllunit"  resultMap="ProductUnitResultMap">
+	select * from cropBacktracking.productPlanUnitInfo
 	</select>
+	
+	<!-- 插入一个新的生产单元 -->
+	<insert id="insertNewUnit" parameterType="com.cbt.system.po.ProductPlanUnitInfo">
+	insert into cropBacktracking.productPlanUnitInfo(unitName,authortyName,authorityUrl)
+	values(#{unitName},#{authorityName},#{authorityUrl})
+	</insert>
+	
+	<!-- 根据id删除生产单元 -->
+	<delete id="deleteUnitById" parameterType="com.cbt.system.po.ProductPlanUnitInfo">
+	delete from cropBacktracking.productPlanUnitInfo
+	where unitId=#{unitId}
+	</delete>
+	
+	<!-- query all units -->
+	<select id="queryAllUnit" resultMap="ProductUnitResultMap">
+	select * from cropBackteacking.productPlanUnitInfo
+	</select>
+	
+	
+	
+	
+	
 
 	
 

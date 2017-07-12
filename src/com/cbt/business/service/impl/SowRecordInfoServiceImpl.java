@@ -46,6 +46,12 @@ public class SowRecordInfoServiceImpl implements SowRecordInfoService
 		// TODO Auto-generated method stub
 		return sowRecordInfoMapper.delSowRecordInfo(info);
 	}
+
+	@Override
+	public SowRecordInfo getSowRecordInfoBySowSeg_btCode(String sowSeg_btCode) {
+		// TODO Auto-generated method stub
+		return sowRecordInfoMapper.getSowRecordInfoBySowSeg_btCode(sowSeg_btCode);
+	}
 	
 	
 	

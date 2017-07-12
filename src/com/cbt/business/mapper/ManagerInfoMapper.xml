@@ -3,4 +3,36 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cbt.business.mapper.ManagerInfoMapper">
+
+	<resultMap id="managerinfomap" type="com.cbt.system.po.ManagerInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="managerNum" property="managerNum" jdbcType="VARCHAR" />
+    <result column="managerPwd" property="managerPwd" jdbcType="VARCHAR" />
+    <result column="businessId" property="businessId" jdbcType="INTEGER" />
+    <result column="managerPhone" property="managerPhone" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  	 <!--根据managerNum查询一条数据  -->
+  <select id="getManagerInfo" parameterType="com.cbt.system.po.ManagerInfo" resultMap="managerinfomap">
+  	select * from  managerinfo where managerNum=#{managerNum}
+  </select>
+  
+  <!--查询所有数据  -->
+  <select id="getAllManagerInfo" resultMap="managerinfomap" >
+  	select * from  managerinfo
+  </select>
+   
+   <!--插入一条数据  -->
+   <insert id="addManagerInfo"  parameterType="com.cbt.system.po.ManagerInfo">
+   	insert into managerinfo
+   	(id,managerNum,managerPwd,businessId,managerPhone)
+   	values
+   	(#{id},#{managerNum},#{managerPwd},#{businessId},#{managerPhone})
+   </insert>
+  
+  <!--根据id删除一条数据 -->
+  <delete id="delManagerInfo" parameterType="com.cbt.system.po.ManagerInfo">
+  	delete from   managerinfo where managerNum=#{managerNum}
+  </delete>
+  
 </mapper>

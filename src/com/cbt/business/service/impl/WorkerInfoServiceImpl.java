@@ -1,5 +1,7 @@
 package com.cbt.business.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -18,5 +20,23 @@ public class WorkerInfoServiceImpl implements WorkerInfoService{
 		// TODO Auto-generated method stub
 		
 		return workerInfoMapper.getWorkerInfo(info);
+	}
+
+	@Override
+	public List<WorkerInfo> getAllWorkerInfo() {
+		// TODO Auto-generated method stub
+		return workerInfoMapper.getAllWorkerInfo();
+	}
+
+	@Override
+	public int addWorkerInfo(WorkerInfo info) {
+		// TODO Auto-generated method stub
+		return workerInfoMapper.addWorkerInfo(info);
+	}
+
+	@Override
+	public int delWorkerInfo(WorkerInfo info) {
+		// TODO Auto-generated method stub
+		return workerInfoMapper.delWorkerInfo(info);
 	}
 }

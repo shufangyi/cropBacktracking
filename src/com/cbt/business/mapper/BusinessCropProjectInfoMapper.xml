@@ -8,8 +8,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="workerId" column="workId"/>
 		<result property="project_btCode" column="project_btCode"/>
 	</resultMap>
-	<!-- 查询用户信息 用于用户登录 -->
+	<!-- 通过项目id查询一条数据 -->
 	<select id="getBusinessCropProjectInfo" parameterType="BusinessCropProjectInfo" resultMap="businessCropProjectInfomap">
-		select * from business_crop_projectinfo where workId=#{workerId}
+		select * from business_crop_projectinfo where id=#{id}
 	</select>
+	
+	<!-- 查询所有数据 -->
+	<select id="getAllBusinessCropProjectInfo" resultMap="businessCropProjectInfomap">
+		select * from business_crop_projectinfo 
+	</select>
+	
+	 <!-- 插入一条数据,当resultMap将数据库的字段重命名之后，在#{}取值是要使用新名字 -->
+	<insert id="addBusinessCropProjectInfo" parameterType="BusinessCropProjectInfo">
+		insert into business_crop_projectinfo
+		(
+			id,workId,project_btCode
+		)
+		values
+		(
+			#{id},#{workerId},#{project_btCode}
+		)
+	</insert>
+	
+	<!--通过项目id删除一条数据  -->
+	<delete id="delBusinessCropProjectInfo" parameterType="BusinessCropProjectInfo">
+		delete from business_crop_projectinfo  where id=#{id}
+	</delete>
+	
 </mapper>

@@ -8,6 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<resultMap type="RoleInfo" id="rolemap">
 		<result property="roleId" column="roleId" />
+		<result property="roleName" column="roleName" />
+		<result property="roleDesc" column="roleDesc" />
 		<result property="roleAuthority" column="roleAuthority" />
 	</resultMap>
 	<!-- 查询用户信息 用于用户登录 -->

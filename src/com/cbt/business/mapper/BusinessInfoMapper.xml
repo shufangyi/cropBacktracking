@@ -3,22 +3,38 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cbt.business.mapper.BusinessInfoMapper">
-
-	<resultMap type="BusinessInfo" id="businessmap">
+	<resultMap type="com.cbt.business.po.BusinessInfo" id="businessinfomap">
 		<result property="id" column="id" />
 		<result property="businessId" column="businessId" />
 		<result property="businessName" column="businessName" />
 		<result property="businessAddr" column="businessAddr" />
-		<result property="busienssMobile" column="busienssMobile" />
+		<result property="businessMobile" column="businessMobile" />
 		<result property="businessEmail" column="businessEmail" />
 		<result property="businessUrl" column="businessUrl" />
 		<result property="busienssLogo" column="busienssLogo" />
 		<result property="businessDesc" column="businessDesc" />		
 	</resultMap>
-	<!-- 查询用户信息 用于用户登录 -->
-	<select id="getAllBusinessInfo" resultMap="businessmap">
+	<!-- 查询所有的business数据-->
+	<select id="getAllBusinessInfo" resultMap="businessinfomap">
 		select * from businessinfo
 	</select>
+	
+	<!-- 根据  businessId查询一条business数据 -->
+	<select id="getBusinessInfo" parameterType="com.cbt.business.po.BusinessInfo" resultMap="businessinfomap">
+		select * from businessinfo where  businessId=#{businessId}
+	</select>
 
-
+	<!--增加一条business数据 -->
+	<!--数据库的字段为businessMoblie 和businessLog  但是pojo中是businessMobile 和BusinessLogo  -->
+	<insert id="addBusinessInfo" parameterType="com.cbt.business.po.BusinessInfo">
+	 	insert  into  businessinfo
+	 	(id,businessId,businessName,businessAddr,businessMoblie,businessEmail,businessUrl,businessLog,businessDesc)
+	 	values
+	 	(#{id},#{businessId},#{businessName},#{businessAddr},#{businessMobile},#{businessEmail},#{businessUrl},#{businessLogo},#{businessDesc})
+	</insert>
+	
+	<!--根据businessId删除一个数据  -->
+	<delete  id="delBusinessInfo" parameterType="com.cbt.business.po.BusinessInfo">
+		delete from businessinfo where businessId=#{businessId}
+	</delete>
 </mapper>

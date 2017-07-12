@@ -13,5 +13,7 @@ public interface SowRecordInfoService {
 	int addSowRecordInfo(SowRecordInfo info);
 	
 	int delSowRecordInfo(SowRecordInfo info);
+	
+	public SowRecordInfo getSowRecordInfoBySowSeg_btCode(String sowRecord_btCode);
 
 }

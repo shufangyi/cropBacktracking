@@ -21,7 +21,7 @@ $(document).ready(function () {
 	});
 	
 	//产品列表
-	for(var i=0;i<4;i++)
+	for(var i=0;i<100;i++)
 	{
 		var output="";
 		output+="<div class=\"panel panel-default cp\">"+

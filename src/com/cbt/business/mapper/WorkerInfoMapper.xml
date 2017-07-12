@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cbt.business.mapper.WorkerInfoMapper">
-	<resultMap type="WorkerInfo" id="workermap">
+	<resultMap type="com.cbt.business.po.WorkerInfo" id="workerinfomap">
 		<result property="workerId" column="workerId"/>
 		<result property="businessId" column="businessId" />
 		<result property="workerNum" column="workerNum" />
@@ -12,10 +12,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="workerName" column="workerName" />
 		<result property="workerPhone" column="workerPhone" />
 	</resultMap>
-	<!-- 查询用户信息 用于用户登录 -->
-	<select id="getWorkerInfo" parameterType="WorkerInfo" resultMap="workermap">
+	<!-- 根据workerNum查询一条数据-->
+	<select id="getWorkerInfo" parameterType="com.cbt.business.po.WorkerInfo" resultMap="workerinfomap">
 		select * from workerinfo where workerNum=#{workerNum} and workerPwd=#{workerPwd}
 	</select>
+	
+	<!-- 查询所有数据-->
+	<select id="getAllWorkerInfo" resultMap="workerinfomap">
+		select * from workerinfo 
+	</select>
+	
+	<!--插入一条数据  -->
+	<insert id="addWorkerInfo" parameterType="com.cbt.business.po.WorkerInfo">
+		insert into workerinfo
+		(
+			workerId,businessId,workerNum,workerPwd,roleId,workerName,workerPhone
+		)
+		values
+		(
+			#{workerId},#{businessId},#{workerNum},#{workerPwd},#{roleId},#{workerName},#{workerPhone}
+		)
+	</insert>
+	<!--根据workNum删除一条数据  -->
+	<delete id="delWorkerInfo" parameterType="com.cbt.business.po.WorkerInfo">
+		delete from workerinfo where workerNum=#{workerNum}
+	</delete>
 
 
 </mapper>

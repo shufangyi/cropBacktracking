@@ -30,6 +30,10 @@
 			<property name="configLocation" value="classpath:mybatis-config.xml"/>
 		</bean>
 		
+		<bean id="pathConfig" class="com.cbt.utils.PathConfig">
+		    <property name="localPath" value="Uploads/patent/"></property>
+		</bean>
+		
 		<!-- 配置事务 -->
 		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 			<property name="dataSource" ref="dataSource"/>

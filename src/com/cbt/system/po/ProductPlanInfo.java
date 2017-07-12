@@ -1,35 +1,47 @@
 package com.cbt.system.po;
 
 import java.util.ArrayList;
-//���ƻ�
+
 public class ProductPlanInfo
 {
-	private String ppName;//���ƻ����
-	private ArrayList<ProductPlanUnitInfo> ppuList;//���ƻ���Ԫ�б�
-
-	public ArrayList<ProductPlanUnitInfo> getPpuList() {
-		return ppuList;
+	private int planId;
+	private String planUnit;
+	private String planName;
+	private String planDesc;
+	public int getPlanId() {
+		return planId;
 	}
 
-	public void setPpuList(ArrayList<ProductPlanUnitInfo> ppList) {
-		this.ppuList = ppList;
-	}
-	
-	public String getPpName() {
-		return ppName;
+	public void setPlanId(int planId) {
+		this.planId = planId;
 	}
 
-	public void setPpName(String ppName) {
-		this.ppName = ppName;
+	public String getPlanUnit() {
+		return planUnit;
 	}
-	
+
+	public void setPlanUnit(String planUnit) {
+		this.planUnit = planUnit;
+	}
+
+	public String getPlanName() {
+		return planName;
+	}
+
+	public void setPlanName(String planName) {
+		this.planName = planName;
+	}
+
+	public String getPlanDesc() {
+		return planDesc;
+	}
+
+	public void setPlanDesc(String planDesc) {
+		this.planDesc = planDesc;
+	}
+
 	public String toString()
 	{
-		String res = "";
-		for(int i=0;i<ppuList.size();i++)
-		{
-			res+=ppuList.get(i).getPpuName();
-		}
-		return res;
+		return "";
 	}
 }

@@ -1,6 +1,7 @@
 package com.cbt.business.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cbt.business.po.BusinessCropProjectInfo;
+import com.cbt.business.po.MenuInfo;
 import com.cbt.business.po.UserInfo;
 import com.cbt.business.po.WorkerInfo;
 import com.cbt.business.service.BusinessCropProjectInfoService;
+import com.cbt.business.service.MenuInfoService;
 import com.cbt.business.service.WorkerInfoService;
 import com.cbt.system.po.AuthorityInfo;
 import com.cbt.system.po.RoleInfo;
@@ -28,6 +31,9 @@ public class UserInfoController
 	
 	@Resource(name="workerInfoServiceImpl")
 	private WorkerInfoService workerInfoService;
+	
+	@Resource(name="menuInfoServiceImpl")
+	private MenuInfoService menuInfoService;
 	
 	@Resource(name="roleInfoServiceImpl")
 	private RoleInfoService roleInfoService;
@@ -47,6 +53,7 @@ public class UserInfoController
 	@RequestMapping("getAuthority.do")
 	public @ResponseBody ModelMap getAuthority(WorkerInfo user)
 	{
+		/*
 		int workerId = user.getWorkerId();
 		System.out.println(user.getWorkerNum()+"roleId"+user.getRoleId());
 		
@@ -56,6 +63,12 @@ public class UserInfoController
 		String rolelist = role.getRoleAuthority();
 		String[] roles=rolelist.split("：");
 		System.out.println("共有"+roles.length+"个权限");
+		
+		int[] authorityIds = null;
+		for(int i=0;i<roles.length;i++)
+		{
+			authorityIds[i]=Integer.parseInt(roles[i]);
+		}
 		ArrayList<String> list = new ArrayList<String>();
 		for(int i=0;i<roles.length;i++)
 		{
@@ -63,6 +76,7 @@ public class UserInfoController
 			System.out.println("页面:"+authorityInfo.toString());
 			list.add(authorityInfo.toString());
 		}
+
 		ModelMap model = new ModelMap();
 		
 		
@@ -78,32 +92,11 @@ public class UserInfoController
 		
 		model.addAttribute("btcode", businessCropProjectInfo.getProject_btCode());
 	
-	
-		
-		
-		
-		
-		
-		
-		
 		//得到此用户参与的生产计划planid查询product_planinfo，得到此生产项目种植员的权限
 		
 		model.addAttribute("role", list);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		*/
+		ModelMap model = new ModelMap();
 		return model;
 	}
 	
@@ -133,8 +126,31 @@ public class UserInfoController
 			else
 			{
 				System.out.println("worker is not null");
+				
 				session.setAttribute("workerInfo", worker);
-				return "business/gerneral.jsp";
+				
+				int roleId = worker.getRoleId();
+				RoleInfo role = roleInfoService.getRoleAuthority(roleId);
+				System.out.println(role.toString());
+				String rolelist = role.getRoleAuthority();
+				String[] roles=rolelist.split("：");
+				System.out.println("共有"+roles.length+"个权限");
+				List<Integer> authorityIds = new ArrayList<Integer>();
+				for(int i=0;i<roles.length;i++)
+				{
+					authorityIds.add(Integer.parseInt(roles[i]));
+				}
+				/*
+				 * 得到菜单数量
+				 */
+				List<MenuInfo> list = menuInfoService.getMenuByAuthorityId(authorityIds);
+				System.out.println("menu num "+list.size());
+				for(int i=0;i<list.size();i++)
+				{
+					System.out.println(list.get(i).toString());
+				}
+				session.setAttribute("menus", list);		
+				return "business/leftFrame.jsp";
 			}
 		}
 		return "business/login.html";

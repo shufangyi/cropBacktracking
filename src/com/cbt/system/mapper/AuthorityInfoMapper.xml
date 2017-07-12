@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="AuthorityInfo" id="authoritymap">
 		<result property="authorityId" column="authorityId" />
 		<result property="authorityName" column="authorityName" />
-		<result property="authorityUrl" column="authorityUrl" />
+		<result property="authorityDesc" column="authorityDesc" />
 		
 	</resultMap>
 	<!-- 查询用户信息 用于用户登录 -->

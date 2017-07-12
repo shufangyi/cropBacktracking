@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.visitor.mapper.ProductStatusInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.cbt.visitor.po.ProductStatusInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="product_btCode" property="productBtcode" jdbcType="VARCHAR" />
+    <result column="publicStatus" property="publicstatus" jdbcType="INTEGER" />
+    <result column="queryTimes" property="querytimes" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!-- 插入新的数据 -->
+  <insert id="insertNewProduct"  parameterType="com.cbt.visitor.po.ProductStatusInfo">
+  insert into cropBacktracking.productStatusInfo(product_btCode,publicStatus,queryTimes) 
+  values(#{product_btCode},#{publicStatus},#{queryTimes})
+  </insert>
+  
+  <!-- 更新产品状态 -->
+  
+  <update id="updateProductStatus" parameterType="com.cbt.visitor.po.ProductStatusInfo">
+  update cropBacktracking.productStatusInfo 
+  set publicStatus=#{publicStatus}
+  where product_btCode=#{product_btCode}
+  </update>
+
+  <!-- 修改查询次数 -->
+  <update id="updateQueryTimes"  parameterType="com.cbt.visitor.po.ProductStatusInfo">
+  update cropBacktracking.productStatusInfo 
+  set queryTimes=#{queryTimes} 
+  where product_btCode=#{product_btCode}
+  </update>
+  
+  <!-- 删除一条产品信息 -->
+  <delete id="deleteProductStatusInfo" parameterType="String">
+  delete from cropBacktracking.productStatusInfo
+  where product_btCode=#{product_btCode}
+  </delete>
+  
+  
+  
+</mapper>

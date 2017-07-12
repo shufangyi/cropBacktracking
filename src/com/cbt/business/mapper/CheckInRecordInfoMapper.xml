@@ -11,8 +11,29 @@
     <result column="comment" jdbcType="VARCHAR" property="comment" />
     <result column="checker" jdbcType="VARCHAR" property="checker" />
   </resultMap>
+  <!--根据checkInSeg_btCode 查询一条入库表单的数据  -->
+  <select id="getCheckInRecordInfo" parameterType="com.cbt.business.po.CheckInRecordInfo" resultMap="checkinrecordinfomap">
+  	select  * from  checkrecord where  checkInSeg_btCode=#{checkinsegBtcode}
+  </select>
+  
+  <!--查询所有入库表单的数据  -->
+   <select id="getAllCheckInRecordInfo" resultMap="checkinrecordinfomap">
+  	select  * from  checkrecord 
+  </select>
+  
+  <!-- 插入一条入库表单的数据 -->
+  <insert id="addCheckInRecordInfo" parameterType="com.cbt.business.po.CheckInRecordInfo">
+  	insert into checkrecord
+  	(id,pickSeg_btCode,checkInTime,checkInSeg_btCode,stockLocation,fertilizerNum,comment,checker)
+  	values
+  	(#{id},#{picksegBtcode},#{checkintime},#{checkinsegBtcode},#{stocklocation},#{fertilizernum},#{comment},#{checker})
+  </insert>
   
   
+  <!--根据checkInSeg_btCode 删除一条数据  -->
+  <delete id="delCheckInRecordInfo" parameterType="com.cbt.business.po.CheckInRecordInfo" >
+   	delete form checkrecord where checkInSeg_btCode=#{checkinsegBtcode}
+  </delete>
   
   
 </mapper>

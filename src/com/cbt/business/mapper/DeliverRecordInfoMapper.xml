@@ -13,4 +13,27 @@
     <result column="logistics" property="logistics" jdbcType="VARCHAR" />
   </resultMap>
   
+   <!--根据orderNum查询一条数据  -->
+  <select id="getDeliverRecordInfo" parameterType="com.cbt.business.po.DeliverRecordInfo" resultMap="deliverrecordinfomap">
+  	select * from deliverrecord where orderNum=#{ordernum}
+  </select>
+  
+  <!--查询所有数据  -->
+  <select id="getAllDeliverRecordInfo" resultMap="deliverrecordinfomap" >
+  	select * from deliverrecord
+  </select>
+   
+   <!--插入一条数据  -->
+   <insert id="addDeliverRecordInfo"  parameterType="com.cbt.business.po.DeliverRecordInfo">
+   	insert into  deliverrecord
+   	(id,deliverTime,deliverAddress,logisticsCompany,orderNum,logisticsNum,distributor,comment,logistics)
+   	values
+   	(#{id},#{delivertime},#{deliveraddress},#{logisticscompany},#{ordernum},#{logisticsnum},#{distributor},#{comment},#{logistics})
+   </insert>
+  
+  <!--根据orderNum删除一条数据 -->
+  <delete id="delDeliverRecordInfo" parameterType="com.cbt.business.po.DeliverRecordInfo">
+  	delete from  deliverrecord where orderNum=#{ordernum}
+  </delete>
+  
 </mapper>

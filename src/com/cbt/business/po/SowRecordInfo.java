@@ -103,5 +103,9 @@ public class SowRecordInfo
     public void setSowlocation(String sowlocation) {
         this.sowlocation = sowlocation == null ? null : sowlocation.trim();
     }
-
+     
+    public String toString()
+    {
+    	return "code: "+projectBtcode+"	time: "+sowtime.toString()+" seedsource: "+seedsource+" grower: "+grower;
+    }
 }

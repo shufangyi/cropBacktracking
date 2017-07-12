@@ -8,7 +8,7 @@ import com.cbt.business.po.CopackRecordInfo;
 public interface CopackRecordInfoService {
 	public CopackRecordInfo getCopackRecordInfo(CopackRecordInfo info);
 	
-	public List<CopackRecordInfoMapper> getAllCopackRecordInfo();
+	public List<CopackRecordInfo> getAllCopackRecordInfo();
 	
 	public int addCopackRecordInfo(CopackRecordInfo info);
 	

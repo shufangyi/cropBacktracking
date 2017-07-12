@@ -2,7 +2,7 @@ package com.cbt.business.po;
 
 import java.util.Date;
 
-public class FertilizeRecordInfo {
+public class FertilizerRecordInfo {
 	private Integer id;
 
     private String sowsegBtcode;

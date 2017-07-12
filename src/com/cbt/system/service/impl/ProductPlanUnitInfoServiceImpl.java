@@ -16,10 +16,24 @@ public class ProductPlanUnitInfoServiceImpl implements ProductPlanUnitInfoServic
 	
 	@Resource(name="productPlanUnitInfoMapper")
 	private ProductPlanUnitInfoMapper productPlanUnitInfoMapper;
-	
+
+	//insert a new unit
 	@Override
-	public List<ProductPlanUnitInfo> getAllPpuInfo(ProductPlanUnitInfo ppuinfo) 
-	{	
-		return productPlanUnitInfoMapper.getAllPpuInfo(null);
+	public int insertNewUnitService(ProductPlanUnitInfo productPlanUnitInfo) throws Exception {
+		return productPlanUnitInfoMapper.insertNewUnit(productPlanUnitInfo);
 	}
+
+	//delete unit by id
+	@Override
+	public int deleteUnitByIdService(ProductPlanUnitInfo productPlanUnitInfo) throws Exception {
+		return productPlanUnitInfoMapper.deleteUnitById(productPlanUnitInfo);
+	}
+
+	//query all units
+	@Override
+	public List<ProductPlanUnitInfo> queryAllUnitService() throws Exception {
+		return productPlanUnitInfoMapper.queryAllUnit();
+	}
+	
+
 }

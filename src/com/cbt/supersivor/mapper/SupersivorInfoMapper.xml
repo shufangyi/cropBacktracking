@@ -8,10 +8,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="supersivorNum" column="supersivorNum" />
 		<result property="supersivorPwd" column="supersivorPwd" />
 	</resultMap>
-	<!-- 查询用户信息 用于用户登录 -->
+	<!-- 查询用户信息 用于用户登录 <逆向工程生成> -->
 	<select id="getSupersivorInfo" parameterType="SupersivorInfo" resultMap="supersivorInfomap">
 		select * from supersivorinfo where supersivorNum=#{supersivorNum} and supersivorPwd=#{supersivorPwd}
 	</select>
-
+	
+	<!-- 查询验证密码，用于登录 -->
+	<select id="queryPwdByNum" parameterType="com.cbt.supersivor.po.SupersivorInfo" resultMap="supersivorInfomap">
+	select supersivorPwd from cropBacktracking.supersivorInfo
+	where supersivorNum=#{supersivorNum}
+	</select>
+	
+	<!-- add supersivorNum  -->
+	<insert id="insertSupersivor" parameterType="com.cbt.supersivor.po.SupersivorInfo">
+	insert into cropBacktracking.supersivorInfo(supersivorNum,supersivorPwd)
+	values(#{supersivorNum},#{supersivorPwd})
+	</insert>
+	
+	<!-- 修改密码 -->
+	<update id="updateSupersivorPwd" parameterType="com.cbt.supersivor.po.SupersivorInfo">
+	update cropBacktracking.supersivor
+	<set>
+		<if test="supersivorPwd!=null">
+		supersivorPwd=#{supersivorPwd}
+		</if>
+	</set>
+	where supersivorNum=#{supersivorNum}
+	</update>
 
 </mapper>

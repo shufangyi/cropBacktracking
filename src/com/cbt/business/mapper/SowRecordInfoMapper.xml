@@ -15,25 +15,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    <result column="grower" jdbcType="VARCHAR" property="grower" />
 	    <result column="sowLocation" jdbcType="VARCHAR" property="sowlocation" />
  	 </resultMap>
- 	 
- 	 <select id="getAllSowRecordInfo" resultMap="sowrecordinfomap">
+ 	 <!--根据id查询一条数据  -->
+ 	 <select id="getSowRecordInfo"  parameterType="com.cbt.business.mapper.SowRecordInfoMapper" resultMap="sowrecordinfomap">
+		select * from sowrecord where id=#{id}
+	</select>
+	
+	<!--  -->
+	 <select id="getSowRecordInfoBySowSeg_btCode"  parameterType="java.lang.String" resultMap="sowrecordinfomap">
+		select * from sowrecord where sowSeg_btCode=#{value}
+	</select>
+	
+	<!-- 查询所有数据 -->
+	<select id="getAllSowRecordInfo" resultMap="sowrecordinfomap">
 		select * from sowrecord
 	</select>
- 	 
- 	 
- 	 
- 	 <insert id="addSowRecordInfo" parameterType="SowRecordInfo">
+ 	 <!--插入一条数据  -->
+ 	 <insert id="addSowRecordInfo" parameterType="com.cbt.business.po.SowRecordInfo">
 		insert into sowrecord
 		(
-			project_btCode,sowTime,sowSeg_btCode,productName,seedSource,sowNum,comment,grower,sowLocation
+			id,project_btCode,sowTime,sowSeg_btCode,productName,seedSource,sowNum,comment,grower,sowLocation
 		)
 		values
 		(
-			#{projectBtcode},#{sowtime},#{sowsegBtcode},#{productname},#{seedsource},#{sownum},#{comment},#{grower},#{sowlocation}
+			#{id},#{projectBtcode},#{sowtime},#{sowsegBtcode},#{productname},#{seedsource},#{sownum},#{comment},#{grower},#{sowlocation}
 		)
 	</insert>
-	
-	<delete id="delSowRecordInfo" parameterType="SowRecordInfo" >
+	<!--删除一条数据  -->
+	<delete id="delSowRecordInfo" parameterType="com.cbt.business.po.SowRecordInfo" >
     	delete from sowrecord
    		where id = #{id,jdbcType=INTEGER}
     </delete>

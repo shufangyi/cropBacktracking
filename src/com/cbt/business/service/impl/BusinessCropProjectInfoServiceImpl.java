@@ -1,5 +1,7 @@
 package com.cbt.business.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -19,6 +21,24 @@ public class BusinessCropProjectInfoServiceImpl implements BusinessCropProjectIn
 		// TODO Auto-generated method stub
 		System.out.println("hello impl");
 		return businessCropProjectInfoMapper.getBusinessCropProjectInfo(info);
+	}
+
+	@Override
+	public List<BusinessCropProjectInfo> getAllBusinessCropProjectInfo() {
+		// TODO Auto-generated method stub
+		return businessCropProjectInfoMapper.getAllBusinessCropProjectInfo();
+	}
+
+	@Override
+	public int addBusinessCropProjectInfo(BusinessCropProjectInfo info) {
+		// TODO Auto-generated method stub
+		return businessCropProjectInfoMapper.addBusinessCropProjectInfo(info);
+	}
+
+	@Override
+	public int delBusinessCropProjectInfo(BusinessCropProjectInfo info) {
+		// TODO Auto-generated method stub
+		return businessCropProjectInfoMapper.delBusinessCropProjectInfo(info);
 	}
 
 }

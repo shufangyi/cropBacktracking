@@ -17,5 +17,33 @@
     <result column="netContent" jdbcType="VARCHAR" property="netcontent" />
     <result column="storageCondition" jdbcType="VARCHAR" property="storagecondition" />
   </resultMap>
+  <!--根据id查询一条数据  -->
+  <select id="getCopackRecordInfo" parameterType="com.cbt.business.po.CopackRecordInfo"  resultMap="copackrecordinfomap">
+  	select * from copackrecord where id=#{id}
+  </select>
   
+  <!--查询所有数据  -->
+  <select id="getAllCopackRecordInfo" resultMap="copackrecordinfomap" >
+  	select * from copackrecord 
+  </select>
+   
+   <!--插入一条数据  -->
+   <insert id="addCopackRecordInfo"  parameterType="com.cbt.business.po.CopackRecordInfo">
+   	insert into copackrecord
+   	(
+   		id,checkInSeg_btCode,copackTime,product_QRCodePicture,orderNum,product_btCode,comment,copacker,
+   		copackLocation,produceDate,produceLocation,specifications,netContent,storageCondition
+   	)
+   	values
+   	(
+   		 #{id},#{checkinsegBtcode},#{copacktime},#{productQrcodepicture},#{ordernum},#{productBtcode},#{comment},#{copacker},
+   		 #{copacklocation},#{producedate},#{producelocation},#{specifications},#{netcontent},#{storagecondition}
+   	)
+   </insert>
+  
+  
+  <!--根据id删除一条数据 -->
+  <delete id="delCopackRecordInfo" parameterType="com.cbt.business.po.CopackRecordInfo">
+  	delete from  copackrecord where id=#{id}
+  </delete>
 </mapper>
