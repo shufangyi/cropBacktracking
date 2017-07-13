@@ -13,4 +13,8 @@ public interface FertilizerRecordInfoMapper {
 	public int addFertilizerRecordInfo(FertilizerRecordInfo info);
 	/*删除一条数据*/
 	public int delFertilizerRecordInfo(FertilizerRecordInfo info);
+	
+	//溯源信息查询，施肥记录
+	public List<FertilizerRecordInfo> queryFertilizerByBtCode(String sowSeg_btCode)throws Exception;
+	
 }

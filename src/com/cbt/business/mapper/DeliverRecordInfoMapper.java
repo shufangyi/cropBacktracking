@@ -13,4 +13,6 @@ public interface DeliverRecordInfoMapper {
 	public int addDeliverRecordInfo(DeliverRecordInfo info);
 	/*删除一条数据*/
 	public int delDeliverRecordInfo(DeliverRecordInfo info);
+	//溯源信息之，查询出物流记录
+	public DeliverRecordInfo queryDeliverByOrderNum(String orderNum)throws Exception;
 }

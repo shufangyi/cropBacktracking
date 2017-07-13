@@ -40,5 +40,10 @@ public class CopackRecordInfoServiceImpl implements CopackRecordInfoService {
 		// TODO Auto-generated method stub
 		return copackRecordInfoMapper.delCopackRecordInfo(info);
 	}
+	//queryCopackByBtCode
+	@Override
+	public CopackRecordInfo queryCopackByBtCodeService(String product_btCode) throws Exception {
+		return copackRecordInfoMapper.queryCopackByBtCode(product_btCode);
+	}
 
 }

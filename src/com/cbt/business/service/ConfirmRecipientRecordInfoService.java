@@ -18,4 +18,6 @@ public interface ConfirmRecipientRecordInfoService {
 	public int addConfirmRecipientRecordInfo(ConfirmRecipientRecordInfo info);
 	
 	public int delConfirmRecipientRecordInfo(ConfirmRecipientRecordInfo info);
+	//查询溯源信息之，确认收货信息
+	public ConfirmRecipientRecordInfo queryConfirmByOrderNumService(String product_btCode)throws Exception;
 }

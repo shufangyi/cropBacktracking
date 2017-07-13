@@ -35,6 +35,12 @@
   	delete from   fertilizerrecord where  id=#{id}
   </delete>
   
+  <!-- 溯源信息查询，施肥记录 -->
+  <select id="queryFertilizerByBtCode" parameterType="String" resultMap="fertilizerrecordinfomap">
+  select * from cropBacktracking.fertilizerRecord
+  where sowSeg_btCode=#{sowSeg_btCode}
+  </select>
+  
   
   
 </mapper>

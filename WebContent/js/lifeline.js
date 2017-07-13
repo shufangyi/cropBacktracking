@@ -65,7 +65,7 @@ $(function ()
     		 				"<div class=\"detail\">"+
     		 					"<ul>";
     										
-    		for(var key in data.Info[0])
+    		for(var key in data.Info[i])
     		{
     			//<li class="detail-item"><span class="detail-time">2014.2.5</span>
     			output+="<li class=\"detail-item\"><span class=\"detail-time\">"+key+"</span>"+
@@ -77,10 +77,6 @@ $(function ()
     	alert(output);
     	$('#box').append(output);
     }
-    
-
-    
-    
     //js正则解析获取url参数
 	function GetRequest() {
 		var url = location.search; //获取url中"?"符后的字串

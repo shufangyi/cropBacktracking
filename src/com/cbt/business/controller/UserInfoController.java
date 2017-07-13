@@ -17,9 +17,11 @@ import com.cbt.business.po.MenuInfo;
 import com.cbt.business.po.UserInfo;
 import com.cbt.business.po.WorkerInfo;
 import com.cbt.business.service.BusinessCropProjectInfoService;
+import com.cbt.business.service.ManagerInfoService;
 import com.cbt.business.service.MenuInfoService;
 import com.cbt.business.service.WorkerInfoService;
 import com.cbt.system.po.AuthorityInfo;
+import com.cbt.system.po.ManagerInfo;
 import com.cbt.system.po.RoleInfo;
 import com.cbt.system.service.AuthorityInfoService;
 import com.cbt.system.service.RoleInfoService;
@@ -32,6 +34,9 @@ public class UserInfoController
 	@Resource(name="workerInfoServiceImpl")
 	private WorkerInfoService workerInfoService;
 	
+	@Resource(name="managerInfoServiceImpl")
+	private ManagerInfoService managerInfoService;
+	
 	@Resource(name="menuInfoServiceImpl")
 	private MenuInfoService menuInfoService;
 	
@@ -43,6 +48,108 @@ public class UserInfoController
 	
 	@Resource(name="businessCropProjectInfoServiceImpl")
 	private BusinessCropProjectInfoService businessCropProjectInfoService;
+	
+	@RequestMapping("login.do")
+	public String login(UserInfo user,HttpSession session,Model model)
+	{
+		String num = user.getUserNum();
+		String pwd = user.getUserPwd();
+		String type = user.getUserType();
+		System.out.println(user.toString());
+		if(type.equals("0"))
+		{
+			ManagerInfo manager = new ManagerInfo();
+			manager.setManagerNum(num);
+			manager.setManagerPwd(pwd);
+			manager = managerInfoService.getManagerInfo(manager);
+			if(manager!=null)
+			{
+				session.setAttribute("managerInfo", manager);
+				return "business/manager.jsp";
+			}
+			else
+			{
+				return "business/login.html";
+			}	
+		}
+		//普通用户分权限
+		if(type.equals("1"))
+		{
+			WorkerInfo worker = new WorkerInfo();
+			worker.setWorkerNum(num);
+			worker.setWorkerPwd(pwd);
+			worker = workerInfoService.getWorkerInfo(worker);
+			if(worker==null)
+			{
+				System.out.println("worker is null");
+			}
+			else
+			{
+				System.out.println("worker is not null");
+				
+				session.setAttribute("workerInfo", worker);
+				
+				int roleId = worker.getRoleId();
+				RoleInfo role = roleInfoService.getRoleAuthority(roleId);
+				System.out.println(role.toString());
+				String rolelist = role.getRoleAuthority();
+				String[] roles=rolelist.split("：");
+				System.out.println("共有"+roles.length+"个权限");
+				List<Integer> authorityIds = new ArrayList<Integer>();
+				for(int i=0;i<roles.length;i++)
+				{
+					authorityIds.add(Integer.parseInt(roles[i]));
+				}
+				/*
+				 * 得到菜单数量
+				 */
+				List<MenuInfo> list = menuInfoService.getMenuByAuthorityId(authorityIds);
+				System.out.println("menu num "+list.size());
+				for(int i=0;i<list.size();i++)
+				{
+					System.out.println(list.get(i).toString());
+				}
+				session.setAttribute("menus", list);		
+				return "business/gerneral.jsp";
+			}
+		}
+		return "business/login.html";
+	}
+	
+	
+	@RequestMapping("logout.do")
+	public void logout(HttpSession session,String id)
+	{
+		System.out.println("LOGOUT");
+		ManagerInfo manager = (ManagerInfo) session.getAttribute("managerInfo");
+		
+		if(manager!=null)
+		{
+			System.out.println(manager.getManagerNum());
+			System.out.println(manager.getManagerNum());
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -98,61 +205,5 @@ public class UserInfoController
 		*/
 		ModelMap model = new ModelMap();
 		return model;
-	}
-	
-	
-	@RequestMapping("login.do")
-	public String login(UserInfo user,HttpSession session,Model model)
-	{
-		String num = user.getUserNum();
-		String pwd = user.getUserPwd();
-		String type = user.getUserType();
-		System.out.println(user.toString());
-		if(type.equals("0"))
-		{
-			return "business/manager.html";
-		}
-		//普通用户分权限
-		if(type.equals("1"))
-		{
-			WorkerInfo worker = new WorkerInfo();
-			worker.setWorkerNum(num);
-			worker.setWorkerPwd(pwd);
-			worker = workerInfoService.getWorkerInfo(worker);
-			if(worker==null)
-			{
-				System.out.println("worker is null");
-			}
-			else
-			{
-				System.out.println("worker is not null");
-				
-				session.setAttribute("workerInfo", worker);
-				
-				int roleId = worker.getRoleId();
-				RoleInfo role = roleInfoService.getRoleAuthority(roleId);
-				System.out.println(role.toString());
-				String rolelist = role.getRoleAuthority();
-				String[] roles=rolelist.split("：");
-				System.out.println("共有"+roles.length+"个权限");
-				List<Integer> authorityIds = new ArrayList<Integer>();
-				for(int i=0;i<roles.length;i++)
-				{
-					authorityIds.add(Integer.parseInt(roles[i]));
-				}
-				/*
-				 * 得到菜单数量
-				 */
-				List<MenuInfo> list = menuInfoService.getMenuByAuthorityId(authorityIds);
-				System.out.println("menu num "+list.size());
-				for(int i=0;i<list.size();i++)
-				{
-					System.out.println(list.get(i).toString());
-				}
-				session.setAttribute("menus", list);		
-				return "business/leftFrame.jsp";
-			}
-		}
-		return "business/login.html";
 	}
 }

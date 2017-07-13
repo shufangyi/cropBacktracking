@@ -36,4 +36,10 @@
   	delete from  deliverrecord where orderNum=#{ordernum}
   </delete>
   
+  <!-- 溯源信息之，通过订单号查询出物流信息 -->
+  <select id="queryDeliverByOrderNum" parameterType="String" resultMap="deliverrecordinfomap">
+  select * from cropBacktracking.deliverRecord
+  where orderNum=#{orderNum}
+  </select>
+  
 </mapper>

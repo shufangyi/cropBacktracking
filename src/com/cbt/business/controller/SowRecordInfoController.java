@@ -14,6 +14,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cbt.business.po.SowRecordInfo;
 import com.cbt.business.service.SowRecordInfoService;
 
+
+/*
+ * 
+ * 
+ * 种植纪录
+ */
 @Controller
 @RequestMapping("/business/")
 public class SowRecordInfoController

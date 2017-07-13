@@ -13,4 +13,6 @@ public interface PickRecordInfoMapper {
 	public int addPickRecordInfo(PickRecordInfo info);
 	/*删除一条数据*/
 	public int delPickRecordInfo(PickRecordInfo info);
+	//溯源信息查询之，采摘记录 
+	public PickRecordInfo queryPickByBtCode(String pickSeg_btCode)throws Exception;
 }

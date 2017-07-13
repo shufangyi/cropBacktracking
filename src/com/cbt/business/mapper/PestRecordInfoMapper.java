@@ -13,4 +13,7 @@ public interface PestRecordInfoMapper {
 	public int addPestRecordInfo(PestRecordInfo info);
 	/*删除一条数据*/
 	public int delPestRecordInfo(PestRecordInfo info);
+	
+	//溯源信息查询之，病虫害记录
+	public List<PestRecordInfo> queryPestByBtCode(String sowSeg_btCode)throws Exception;
 }

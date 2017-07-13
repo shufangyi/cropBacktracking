@@ -35,6 +35,11 @@
   	delete from   pickrecord where  id=#{id}
   </delete>
   
+  <!-- 溯源信息查询之，采摘记录 -->
+  <select id="queryPickByBtCode" parameterType="String" resultMap="pickrecordinfomap">
+  select * from cropBacktracking.pickRecord
+  where pickSeg_btCode=#{pickSeg_btCode}
+  </select>
   
   
 </mapper>

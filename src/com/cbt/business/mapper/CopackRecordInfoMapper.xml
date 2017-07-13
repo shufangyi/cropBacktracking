@@ -46,4 +46,21 @@
   <delete id="delCopackRecordInfo" parameterType="com.cbt.business.po.CopackRecordInfo">
   	delete from  copackrecord where id=#{id}
   </delete>
+  
+  <!-- 溯源信息查询之，包装信息记录 -->
+  <select id="queryCopackByBtCode" parameterType="String" resultMap="copackrecordinfomap">
+  select * from cropBacktracking.copackRecord
+  where product_btCode=#{product_btCode}
+  </select>
+  
+  <!-- 查询出订单号 -->
+  <select id="queryOrderNumByBtCode" parameterType="String" resultType="java.lang.String">
+  select orderNum from cropBacktracking.copackRecord
+  where product_btCode=#{product_btCode}
+  </select>
+  
+  
+  
+  
+  
 </mapper>

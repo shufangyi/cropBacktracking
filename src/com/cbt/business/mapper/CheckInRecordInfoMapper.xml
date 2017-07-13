@@ -35,5 +35,11 @@
    	delete form checkrecord where checkInSeg_btCode=#{checkinsegBtcode}
   </delete>
   
+  <!-- 溯源信息查询之，质检入库记录 -->
+  <select id="queryCheckInByBtCode" parameterType="String" resultMap="checkinrecordinfomap">
+  select * from cropBacktracking.CheckInRecord
+  where checkInSeg_btCode=#{checkInSeg_btCode}
+  </select>
+  
   
 </mapper>

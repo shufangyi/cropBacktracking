@@ -39,4 +39,10 @@ public class PickRecordInfoServiceImpl implements PickRecordInfoService {
 		return pickRecordInfoMapper.delPickRecordInfo(info);
 	}
 
+	//溯源信息查询之，采摘记录 
+	@Override
+	public PickRecordInfo queryPickByBtCode(String pickSeg_btCode) throws Exception {
+		return pickRecordInfoMapper.queryPickByBtCode(pickSeg_btCode);
+	}
+
 }

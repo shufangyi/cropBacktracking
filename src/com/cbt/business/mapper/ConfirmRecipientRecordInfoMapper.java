@@ -14,4 +14,6 @@ public interface ConfirmRecipientRecordInfoMapper {
 	public int addConfirmRecipientRecordInfo(ConfirmRecipientRecordInfo info);
 	/*删除一条数据*/
 	public int delConfirmRecipientRecordInfo(ConfirmRecipientRecordInfo info);
+	//溯源信息查询之，确认收货信息
+	public ConfirmRecipientRecordInfo queryConfirmByOrderNum(String orderNum)throws Exception;
 }

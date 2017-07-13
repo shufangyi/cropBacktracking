@@ -1,5 +1,7 @@
 package com.cbt.business.po;
 
+import java.sql.Date;
+
 public class PestRecordInfo {
     private Integer id;
 
@@ -18,8 +20,20 @@ public class PestRecordInfo {
     private String comment;
 
     private String grower;
+    
+    private Date sprayTime;
+    
+    
 
-    public Integer getId() {
+    public Date getSprayTime() {
+		return sprayTime;
+	}
+
+	public void setSprayTime(Date sprayTime) {
+		this.sprayTime = sprayTime;
+	}
+
+	public Integer getId() {
         return id;
     }
 

@@ -13,4 +13,6 @@ public interface CopackRecordInfoService {
 	public int addCopackRecordInfo(CopackRecordInfo info);
 	
 	public int delCopackRecordInfo(CopackRecordInfo info);
+	//溯源信息查询之，包装信息记录
+	public CopackRecordInfo queryCopackByBtCodeService(String product_btCode)throws Exception;
 }

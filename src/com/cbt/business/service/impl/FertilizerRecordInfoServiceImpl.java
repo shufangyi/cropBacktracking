@@ -39,4 +39,10 @@ public class FertilizerRecordInfoServiceImpl implements FertilizerRecordInfoServ
 		return fertilizeRecordInfoMapper.delFertilizerRecordInfo(info);
 	}
 
+	//溯源信息查询之,施肥记录
+	@Override
+	public List<FertilizerRecordInfo> queryFertilizerByBtCodeService(String sowSeg_btCode) throws Exception {
+		return fertilizeRecordInfoMapper.queryFertilizerByBtCode(sowSeg_btCode);
+	}
+
 }

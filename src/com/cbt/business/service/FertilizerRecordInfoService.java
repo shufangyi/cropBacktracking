@@ -14,4 +14,8 @@ public interface FertilizerRecordInfoService {
 	public int addFertilizeRecordInfo(FertilizerRecordInfo info);
 	
 	public int delFertilizeRecordInfo(FertilizerRecordInfo info);
+	
+	//溯源信息查询，施肥记录
+	public List<FertilizerRecordInfo> queryFertilizerByBtCodeService(String sowSeg_btCode)throws Exception;
+	
 }

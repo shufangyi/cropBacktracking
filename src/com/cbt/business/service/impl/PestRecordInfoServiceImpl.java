@@ -39,5 +39,10 @@ public class PestRecordInfoServiceImpl implements PestRecordInfoService {
 		// TODO Auto-generated method stub
 		return pestRecordInfoMapper.delPestRecordInfo(info);
 	}
+	//溯源信息查询之，病虫害记录
+	@Override
+	public List<PestRecordInfo> queryPestByBtCodeService(String sowSeg_btCode) throws Exception {
+		return pestRecordInfoMapper.queryPestByBtCode(sowSeg_btCode);
+	}
 
 }

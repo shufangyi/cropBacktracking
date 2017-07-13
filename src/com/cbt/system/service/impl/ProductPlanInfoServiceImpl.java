@@ -3,10 +3,13 @@ package com.cbt.system.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cbt.system.mapper.ProductPlanInfoMapper;
 import com.cbt.system.po.ProductPlanInfo;
 
+
+@Service
 public class ProductPlanInfoServiceImpl implements com.cbt.system.service.ProductPlanInfoService {
 
 	

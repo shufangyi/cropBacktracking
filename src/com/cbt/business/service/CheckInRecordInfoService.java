@@ -12,5 +12,7 @@ public interface CheckInRecordInfoService {
 		/*增加一条数据*/
 		public int addCheckInRecordInfo(CheckInRecordInfo info);
 		/*删除一条数据*/
-		public int delCheckInRecordInfo(CheckInRecordInfo info);		
+		public int delCheckInRecordInfo(CheckInRecordInfo info);	
+		//溯源信息查询之，质检入库记录
+		public CheckInRecordInfo queryCheckInByBtCodeService(String checkInSeg_btCode)throws Exception;
 }

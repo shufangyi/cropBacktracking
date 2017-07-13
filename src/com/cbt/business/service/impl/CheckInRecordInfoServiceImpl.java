@@ -39,5 +39,10 @@ public class CheckInRecordInfoServiceImpl implements  CheckInRecordInfoService{
 		// TODO Auto-generated method stub
 		return  checkInRecordInfoMapper.delCheckInRecordInfo(info);
 	}
+	//溯源信息查询之，质检入库记录
+	@Override
+	public CheckInRecordInfo queryCheckInByBtCodeService(String checkInSeg_btCode) throws Exception {
+		return checkInRecordInfoMapper.queryCheckInByBtCode(checkInSeg_btCode);
+	}
 
 }

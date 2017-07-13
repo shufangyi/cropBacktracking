@@ -15,4 +15,7 @@ public interface DeliverRecordInfoService {
 	public int addDeliverRecordInfo(DeliverRecordInfo info);
 	
 	public int delDeliverRecordInfo(DeliverRecordInfo info);
+	
+	//溯源信息查询之，物流信息
+	public DeliverRecordInfo queryDeliverByBtCodeService(String product_btCode)throws Exception;
 }

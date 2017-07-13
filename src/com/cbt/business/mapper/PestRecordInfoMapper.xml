@@ -4,6 +4,7 @@
   <resultMap id="pestrecordinfomap" type="com.cbt.business.po.PestRecordInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="sowSeg_btCode" property="sowsegBtcode" jdbcType="VARCHAR" />
+    <result column="sprayTime" property="sprayTime" jdbcType="DATE"/>
     <result column="pestType" property="pesttype" jdbcType="VARCHAR" />
     <result column="medicationName" property="medicationname" jdbcType="VARCHAR" />
     <result column="medicationRatio" property="medicationratio" jdbcType="VARCHAR" />
@@ -16,17 +17,17 @@
   <!--数据库中表名写错了  -->
   <!--根据id查询一条数据  -->
   <select id="getPestRecordinfo" parameterType="com.cbt.business.po.PestRecordInfo" resultMap="pestrecordinfomap">
-  	select * from pestrccord where id=#{id}
+  	select * from pestrecord where id=#{id}
   </select>
   
   <!--查询所有数据  -->
   <select id="getAllPestRecordinfo" resultMap="pestrecordinfomap" >
-  	select * from  pestrccord
+  	select * from  pestrecord
   </select>
    
    <!--插入一条数据  -->
    <insert id="addPestRecordInfo"  parameterType="com.cbt.business.po.PestRecordInfo">
-   	insert into pestrccord
+   	insert into pestrecord
    	(id,sowSeg_btCode,pestType,medicationName,medicationRatio,medicationDosage,result,comment,grower)
    	values
    	(#{id},#{sowsegBtcode},#{pesttype},#{medicationname},#{medicationratio},#{medicationdosage},#{result},#{comment},#{grower})
@@ -34,10 +35,14 @@
   
   <!--根据id删除一条数据 -->
   <delete id="delPestRecordInfo" parameterType="com.cbt.business.po.PestRecordInfo">
-  	delete from   pestrccord where  id=#{id}
+  	delete from   pestrecord where  id=#{id}
   </delete>
   
-  
+  <!-- 溯源信息查询之，病虫害记录 -->
+  <select id="queryPestByBtCode" parameterType="String" resultMap="pestrecordinfomap"> 
+  select * from cropBacktracking.pestRecord 
+  where sowSeg_btCode=#{sowSeg_btCode}
+  </select>
   
   
   

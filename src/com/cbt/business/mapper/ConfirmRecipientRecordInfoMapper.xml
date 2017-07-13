@@ -31,4 +31,10 @@
   	<delete id="delConfirmRecipientRecordInfo"  parameterType="com.cbt.business.po.ConfirmRecipientRecordInfo">
   	delete from confirmrecipientrecord where orderNum=#{ordernum}
   	</delete>
+  	
+  	<!-- 溯源信息查询之，确认收货信息 -->
+  	<select id="queryConfirmByOrderNum" parameterType="String" resultMap="confirmrecipientrecordinfomap">
+  	select * from cropBacktracking.confirmRecipientRecord
+  	where orderNum=#{orderNum}
+  	</select>
 </mapper>

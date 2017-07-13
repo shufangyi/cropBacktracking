@@ -1,7 +1,11 @@
 package com.cbt.visitor.service;
 
+import org.springframework.stereotype.Service;
+
 import com.cbt.visitor.po.ProductStatusInfo;
 
+
+@Service
 public interface ProductStatusInfoService {
 	//插入一条新的产品发布信息
 	public void insertNewProductService(ProductStatusInfo productStatusInfo)throws Exception;
