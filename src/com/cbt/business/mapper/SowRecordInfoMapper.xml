@@ -47,6 +47,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 	
 	
+ 	 <!-- 分页 -->
+ 	<select id="getPageSowRecords" parameterType="Map" resultMap="sowrecordinfomap">
+  		select * from sowrecord 
+ 		 where 1=1 limit #{startrow},#{rows}
+ 	</select>
+  
+  
+  
+  <select id="getRecordsCount" parameterType="Map" resultType="int">
+  select count(*) from sowrecord
+  </select>
+ 	 
  	 
  	 
 </mapper>

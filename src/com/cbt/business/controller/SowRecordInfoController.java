@@ -1,6 +1,10 @@
 package com.cbt.business.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -30,8 +34,7 @@ public class SowRecordInfoController
 	//一条记录,查询
 	@RequestMapping("getSowRecordInfo.do")
 	public @ResponseBody ModelMap getSowRecordInfo()
-	{
-		
+	{	
 		return null;
 	}
 	
@@ -48,14 +51,6 @@ public class SowRecordInfoController
 	@RequestMapping("addSowRecordInfo.do")
 	public ModelAndView addSowRecordInfo(SowRecordInfo info,HttpServletRequest req)
 	{
-		info.setGrower("zhou");
-		info.setProjectBtcode("111201701");
-		info.setSowtime(new Date());
-		info.setSowsegBtcode("1112017011101");
-		info.setProductname("水稻");
-		info.setSeedsource("五权");
-		info.setSownum(1000);
-		System.out.println("add res:	"+sowRecordInfoService.addSowRecordInfo(info));
 		return null;
 	}
 	
@@ -63,15 +58,24 @@ public class SowRecordInfoController
 	@RequestMapping("delSowRecordInfo.do")
 	public ModelAndView delSowRecordInfo(SowRecordInfo info,HttpServletRequest req)
 	{
-		info.setId(2);
-		info.setGrower("zhou");
-		info.setProjectBtcode("111201701");
-		info.setSowtime(new Date());
-		info.setSowsegBtcode("1112017011101");
-		info.setProductname("水稻");
-		info.setSeedsource("五权");
-		info.setSownum(1000);
-		System.out.println("add res:	"+sowRecordInfoService.delSowRecordInfo(info));
 		return null;
 	}
+	@RequestMapping("getSowRecords.do")
+	@ResponseBody
+	public ModelMap getList(HttpServletRequest req)
+	{	
+		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
+		int rows = Integer.parseInt(req.getParameter("pageSize"));
+		Map<String,Object> map = new HashMap<String,Object>();
+		//SowRecordInfo test = new SowRecordInfo();
+		
+		List<SowRecordInfo> list = new ArrayList<SowRecordInfo>();
+		list = sowRecordInfoService.getPageSowRecords(nowpage, rows);	
+		int total = sowRecordInfoService.getRecordsCount(null);	
+		ModelMap model = new ModelMap();
+		model.put("rows", list);
+		model.put("total", total);	
+		return model;
+	}
+	
 }

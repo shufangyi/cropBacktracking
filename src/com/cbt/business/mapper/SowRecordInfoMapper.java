@@ -1,6 +1,7 @@
 package com.cbt.business.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.cbt.business.po.SowRecordInfo;
 
@@ -15,6 +16,13 @@ public interface SowRecordInfoMapper
 	/*删除一条数据 */
 	public int delSowRecordInfo(SowRecordInfo info);
 	
+	
+	/*分页查询*/
+	public List<SowRecordInfo> getPageSowRecords(Map<String,Object> map);
+	/*分页记录*/
+	 public int getRecordsCount(Map<String,Object> map);	
+	 
+	 
 	/*
 	 * 根据Product_btCode查询一条数据
 	 */

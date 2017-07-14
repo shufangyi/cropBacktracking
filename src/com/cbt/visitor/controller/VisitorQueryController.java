@@ -38,6 +38,8 @@ import com.cbt.business.service.impl.DeliverRecordInfoServiceImpl;
 import com.cbt.business.service.impl.FertilizerRecordInfoServiceImpl;
 import com.cbt.business.service.impl.PestRecordInfoServiceImpl;
 import com.cbt.business.service.impl.PickRecordInfoServiceImpl;
+import com.cbt.visitor.po.ProductStatusInfo;
+import com.cbt.visitor.service.ProductStatusInfoService;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
 @Controller
@@ -61,6 +63,8 @@ public class VisitorQueryController
 	private DeliverRecordInfoService deliverRecordInfoService;
 	@Resource(name="confirmRecipientRecordInfoServiceImpl")
 	private ConfirmRecipientRecordInfoService confirmRecipientRecordInfoService;
+	@Resource(name="productStatusInfoServiceImpl")
+	private ProductStatusInfoService productStatusInfoService;
 	
 	@RequestMapping("getWholeInfo.do")
 	public @ResponseBody ModelMap getWholeInfo(String queryId) throws Exception
@@ -101,8 +105,7 @@ public class VisitorQueryController
 				fertilizerMap.put("FertilizerFrequency", fertilizerRecordInfos.get(i).getFertilizerfrequency());
 				fertilizerMap.put("grower", fertilizerRecordInfos.get(i).getGrower());
 				list.add(fertilizerMap);
-				System.out.println("=========>施肥Controller:"+fertilizerRecordInfos.get(i).toString());
-				//fertilizerMap.clear();	
+				System.out.println("=========>施肥Controller:"+fertilizerRecordInfos.get(i).getFertilizertime());
 			}
 		}
 		//根据queryId的前13位获取pestRecord病虫害记录
@@ -118,8 +121,7 @@ public class VisitorQueryController
 				pestMap.put("result", pestRecordInfos.get(i).getResult());
 				pestMap.put("grower", pestRecordInfos.get(i).getGrower());
 				list.add(pestMap);
-				System.out.println("=============>病虫害Controller"+pestRecordInfos.get(i).getSprayTime());
-				//pestMap.clear();	
+				System.out.println("==========>病虫害Controller"+pestRecordInfos.get(i).getSprayTime());
 			}
 		}
 		//根据queryId的前17位获取采摘记录
@@ -128,7 +130,6 @@ public class VisitorQueryController
 			Map<String, Object> pickMap=new HashMap<String, Object>();
 			pickMap.put("Time", new SimpleDateFormat("yyyy-mm-dd").format(pickRecordInfos.getPicktime()));
 			pickMap.put("Name", "采摘");
-			System.out.println("=========>采摘controller:"+pickRecordInfos.getPicktype());
 			pickMap.put("PickType", pickRecordInfos.getPicktype());
 			pickMap.put("PickNum", pickRecordInfos.getPicknum());
 			pickMap.put("grower", pickRecordInfos.getGrower());
@@ -183,7 +184,15 @@ public class VisitorQueryController
 			System.out.println("=========>确认Controller:"+confirmRecipientRecordInfo.getRecipienttime());
 			list.add(confirmMap);
 		}
-		
+		//更新查询次数，+1
+		ProductStatusInfo productStatusInfo=new ProductStatusInfo();
+		productStatusInfo.setProduct_btCode(queryId);
+		productStatusInfo.setQueryTimes(productStatusInfoService.queryTimesByBtCodeService(queryId)+1);
+		if(productStatusInfoService.updateQueryTimesByBtCodeService(productStatusInfo)>0){
+			System.out.println("更新查询次数成功");
+		}else{
+			System.out.println("queryTimes Fail");
+		}
 
 		model.addAttribute("Info", list);
 		return model;

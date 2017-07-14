@@ -1,5 +1,6 @@
 package com.cbt.business.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -52,11 +53,25 @@ public class SowRecordInfoServiceImpl implements SowRecordInfoService
 		// TODO Auto-generated method stub
 		return sowRecordInfoMapper.getSowRecordInfoBySowSeg_btCode(sowSeg_btCode);
 	}
-	
-	
-	
-	
-	
-	
 
+	/* 查询 分页*/
+	@Override
+	public List<SowRecordInfo> getPageSowRecords(int nowpage, int rows) {
+		// TODO Auto-generated method stub
+		int startrow=(nowpage-1)*rows;
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("startrow",startrow);
+		map.put("rows", rows);       		
+		return sowRecordInfoMapper.getPageSowRecords(map);
+	}
+
+	@Override
+	public int getRecordsCount(String name) {
+		// TODO Auto-generated method stub
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		return sowRecordInfoMapper.getRecordsCount(map);
+	}
+	
+	/*查询记录总数*/
+	
 }

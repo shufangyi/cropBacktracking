@@ -35,6 +35,17 @@
   where product_btCode=#{product_btCode}
   </delete>
   
+  <!-- 产品查询次数+1    by ZC -->
+  <update id="updateQueryTimesByBtCode" parameterType="com.cbt.visitor.po.ProductStatusInfo">
+  UPDATE cropBacktracking.productStatusInfo
+  SET queryTimes=#{queryTimes}
+  WHERE product_btCode=#{product_btCode}
+  </update>
+  <select id="queryTimesByBtCode" parameterType="String" resultType="Integer">
+  select queryTimes from cropBacktracking.productStatusInfo
+  where product_btCode=#{product_btCode}
+  </select>
+  
   
   
 </mapper>

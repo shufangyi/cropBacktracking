@@ -118,16 +118,27 @@ public class UserInfoController
 	
 	
 	@RequestMapping("logout.do")
-	public void logout(HttpSession session,String id)
+	public @ResponseBody String logout(HttpSession session,String id)
 	{
 		System.out.println("LOGOUT");
 		ManagerInfo manager = (ManagerInfo) session.getAttribute("managerInfo");
 		
 		if(manager!=null)
 		{
-			System.out.println(manager.getManagerNum());
-			System.out.println(manager.getManagerNum());
+			session.removeAttribute("managerInfo");
+			System.out.println("num:"+manager.getManagerNum());
+			System.out.println("num:"+manager.getManagerNum());
+			return "true";
 		}
+		WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
+		
+		if(worker!=null)
+		{
+			session.removeAttribute("workerInfo");
+			System.out.println("num:"+worker.getWorkerNum());	
+			return "true";
+		}
+		return "false";
 	}
 	
 	

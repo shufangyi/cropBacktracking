@@ -15,5 +15,14 @@ public interface SowRecordInfoService {
 	int delSowRecordInfo(SowRecordInfo info);
 	
 	public SowRecordInfo getSowRecordInfoBySowSeg_btCode(String sowRecord_btCode);
+	
+	/*分页查询*/
+	public List<SowRecordInfo> getPageSowRecords(int nowpage,int rows);
+	
+	/*查询记录总数*/
+	
+	public int getRecordsCount(String name);
+	
+	
 
 }
