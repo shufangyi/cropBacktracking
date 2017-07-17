@@ -50,15 +50,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	 <!-- 分页 -->
  	<select id="getPageSowRecords" parameterType="Map" resultMap="sowrecordinfomap">
   		select * from sowrecord 
- 		 where 1=1 limit #{startrow},#{rows}
+ 		 where project_btCode= #{project_btCode} limit #{startrow},#{rows}
  	</select>
-  
-  
-  
-  <select id="getRecordsCount" parameterType="Map" resultType="int">
-  select count(*) from sowrecord
-  </select>
- 	 
- 	 
- 	 
+ 	<!-- 获取记录数量 -->
+  	<select id="getRecordsCount" parameterType="Map" resultType="int">
+ 		 select count(*) from sowrecord 
+ 	</select>
+ 	
+ 	<!-- 修改数据 -->
+ 	<update id="updateSowRecord" parameterType="com.cbt.business.po.SowRecordInfo" >
+    	update sowrecord
+    	set
+      	seedSource = #{seedsource},
+      	sowNum = #{sownum},
+      	comment = #{comment},
+      	grower = #{grower},
+      	sowLocation = #{sowlocation}	
+    	where id = #{id}
+ 	</update>
 </mapper>

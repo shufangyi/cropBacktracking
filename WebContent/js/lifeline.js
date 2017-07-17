@@ -55,10 +55,10 @@ $(function ()
     		 			"</div>"+
     		 			"<div class='content'>"+
     		 				"<div class=\"date\">"+
-    		 					data.Info[i]["Time"]+
+    		 					data.Info[i]["时间"]+
     		 				"</div>"+
     		 				"<div class=\"txt\">"+
-    		 					data.Info[i]["Name"]+
+    		 					data.Info[i]["环节"]+
     		 					"<i class=\"fa fa-chevron-circle-down\"></i>"+
     		 				"</div>"+
     		 				"<div class=\"hr\"></div>"+

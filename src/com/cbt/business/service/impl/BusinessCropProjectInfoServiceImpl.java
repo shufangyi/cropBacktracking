@@ -17,7 +17,7 @@ public class BusinessCropProjectInfoServiceImpl implements BusinessCropProjectIn
 	private BusinessCropProjectInfoMapper businessCropProjectInfoMapper;
 	
 	@Override
-	public BusinessCropProjectInfo getBusinessCropProjectInfo(BusinessCropProjectInfo info) {
+	public List<BusinessCropProjectInfo> getBusinessCropProjectInfo(BusinessCropProjectInfo info) {
 		// TODO Auto-generated method stub
 		System.out.println("hello impl");
 		return businessCropProjectInfoMapper.getBusinessCropProjectInfo(info);

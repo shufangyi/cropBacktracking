@@ -32,10 +32,6 @@ public class ProductPlanUnitInfoController
 		for(int i=0;i<ppuList.size();i++)
 		{
 			System.out.println("hello");
-			System.out.println("hello");
-			System.out.println("hello");
-			System.out.println("hello");
-			System.out.println("hello");
 			System.out.println(ppuList.get(i));
 		}
 		ModelMap model=new ModelMap();

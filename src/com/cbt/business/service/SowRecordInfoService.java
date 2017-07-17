@@ -12,16 +12,20 @@ public interface SowRecordInfoService {
 	
 	int addSowRecordInfo(SowRecordInfo info);
 	
-	int delSowRecordInfo(SowRecordInfo info);
+	Boolean delSowRecordInfo(List<SowRecordInfo> list);
 	
 	public SowRecordInfo getSowRecordInfoBySowSeg_btCode(String sowRecord_btCode);
 	
+	//2017 - 7 -15
+	
 	/*分页查询*/
-	public List<SowRecordInfo> getPageSowRecords(int nowpage,int rows);
+	public List<SowRecordInfo> getPageSowRecords(int nowpage,int rows,String project_btCode);
 	
 	/*查询记录总数*/
-	
 	public int getRecordsCount(String name);
+	
+	/*修改数据 */
+	Boolean updateSowRecord(SowRecordInfo info);
 	
 	
 

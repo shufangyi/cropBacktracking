@@ -16,4 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getAuthority" parameterType="java.lang.Integer" resultMap="authoritymap">
 		select * from authorityInfo where authorityId=#{authorityId}
 	</select>
+	
+	<select id="getAllAuthority" resultMap="authoritymap">
+		select * from authorityInfo
+	</select>
 </mapper>

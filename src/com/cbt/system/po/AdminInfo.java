@@ -6,7 +6,6 @@ package com.cbt.system.po;
 public class AdminInfo{
 	private String adminNum;//ÕËºÅ
 	private String adminPwd;//ÃÜÂë
-	
 	public String getAdminNum() {
 		return adminNum;
 	}

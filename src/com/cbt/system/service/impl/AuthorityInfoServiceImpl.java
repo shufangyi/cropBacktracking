@@ -1,5 +1,7 @@
 package com.cbt.system.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -19,6 +21,12 @@ public class AuthorityInfoServiceImpl implements AuthorityInfoService
 		// TODO Auto-generated method stub
 		System.out.println("hello serv");
 		return authorityInfoMapper.getAuthority(authorityId);
+	}
+	
+	@Override
+	public List<AuthorityInfo> getAllAuthority() {
+		// TODO Auto-generated method stub
+		return authorityInfoMapper.getAllAuthority();
 	}
 
 }

@@ -85,11 +85,11 @@ public class VisitorQueryController
 			String sowTime=(new SimpleDateFormat("yyyy-MM-dd")).format(sowRecordInfo.getSowtime());
 			//时间单独处理
 			String sowName = "播种";
-			map.put("Time", sowTime);
-			map.put("Name", sowName);
-			map.put("SeedSource", sowRecordInfo.getSeedsource());
-			map.put("SowLocation", sowRecordInfo.getSowlocation());
-			map.put("Grower", sowRecordInfo.getGrower());			
+			map.put("时间", sowTime);
+			map.put("环节", sowName);
+			map.put("种子来源", sowRecordInfo.getSeedsource());
+			map.put("种植地点", sowRecordInfo.getSowlocation());
+			map.put("负责人", sowRecordInfo.getGrower());			
 			list.add(map);
 			//map.clear();
 		}
@@ -98,12 +98,12 @@ public class VisitorQueryController
 		if(fertilizerRecordInfos!=null){
 			Map<String, Object> fertilizerMap=new HashMap<String, Object>();
 			for(int i=0;i<fertilizerRecordInfos.size();i++){
-				fertilizerMap.put("Time",new SimpleDateFormat("yyyy-mm-dd").format(fertilizerRecordInfos.get(i).getFertilizertime()));
-				fertilizerMap.put("Name", "施肥");
-				fertilizerMap.put("FertilizerName", fertilizerRecordInfos.get(i).getFertilizername());
-				fertilizerMap.put("FertilizerNum", fertilizerRecordInfos.get(i).getFertilizernum());
-				fertilizerMap.put("FertilizerFrequency", fertilizerRecordInfos.get(i).getFertilizerfrequency());
-				fertilizerMap.put("grower", fertilizerRecordInfos.get(i).getGrower());
+				fertilizerMap.put("时间",new SimpleDateFormat("yyyy-MM-dd").format(fertilizerRecordInfos.get(i).getFertilizertime()));
+				fertilizerMap.put("环节", "施肥");
+				fertilizerMap.put("肥料名称", fertilizerRecordInfos.get(i).getFertilizername());
+				fertilizerMap.put("施肥用量", fertilizerRecordInfos.get(i).getFertilizernum());
+				//fertilizerMap.put("FertilizerFrequency", fertilizerRecordInfos.get(i).getFertilizerfrequency());
+				fertilizerMap.put("负责人", fertilizerRecordInfos.get(i).getGrower());
 				list.add(fertilizerMap);
 				System.out.println("=========>施肥Controller:"+fertilizerRecordInfos.get(i).getFertilizertime());
 			}
@@ -113,13 +113,14 @@ public class VisitorQueryController
 		if(pestRecordInfos!=null){
 			Map<String, Object> pestMap=new HashMap<String, Object>();
 			for(int i=0;i<pestRecordInfos.size();i++){
-				pestMap.put("Time",new SimpleDateFormat("yyyy-mm-dd").format(pestRecordInfos.get(i).getSprayTime()));
-				pestMap.put("Name", "除虫");
-				pestMap.put("MedicationName", pestRecordInfos.get(i).getMedicationname());
-				pestMap.put("MedicationRatio", pestRecordInfos.get(i).getMedicationratio());
-				pestMap.put("MedicationDosage", pestRecordInfos.get(i).getMedicationdosage());
-				pestMap.put("result", pestRecordInfos.get(i).getResult());
-				pestMap.put("grower", pestRecordInfos.get(i).getGrower());
+				pestMap.put("时间",new SimpleDateFormat("yyyy-MM-dd").format(pestRecordInfos.get(i).getSprayTime()));
+				pestMap.put("环节", "除虫");
+				pestMap.put("病害类型", pestRecordInfos.get(i).getPesttype());
+				pestMap.put("农药名称", pestRecordInfos.get(i).getMedicationname());
+				pestMap.put("配药比例", pestRecordInfos.get(i).getMedicationratio());
+				pestMap.put("药剂量", pestRecordInfos.get(i).getMedicationdosage());
+				pestMap.put("治理结果", pestRecordInfos.get(i).getResult());
+				pestMap.put("负责人", pestRecordInfos.get(i).getGrower());
 				list.add(pestMap);
 				System.out.println("==========>病虫害Controller"+pestRecordInfos.get(i).getSprayTime());
 			}
@@ -128,11 +129,11 @@ public class VisitorQueryController
 		PickRecordInfo pickRecordInfos=pickRecordInfoService.queryPickByBtCode(queryId.substring(0,17));
 		if(pickRecordInfos!=null){
 			Map<String, Object> pickMap=new HashMap<String, Object>();
-			pickMap.put("Time", new SimpleDateFormat("yyyy-mm-dd").format(pickRecordInfos.getPicktime()));
-			pickMap.put("Name", "采摘");
-			pickMap.put("PickType", pickRecordInfos.getPicktype());
-			pickMap.put("PickNum", pickRecordInfos.getPicknum());
-			pickMap.put("grower", pickRecordInfos.getGrower());
+			pickMap.put("时间", new SimpleDateFormat("yyyy-MM-dd").format(pickRecordInfos.getPicktime()));
+			pickMap.put("环节", "采摘");
+			pickMap.put("收货形式", pickRecordInfos.getPicktype());
+			pickMap.put("数量", pickRecordInfos.getPicknum());
+			pickMap.put("采摘者", pickRecordInfos.getGrower());
 			System.out.println("=========>采摘controller:"+pickRecordInfos.getPicktime());
 			list.add(pickMap);
 		}
@@ -140,10 +141,10 @@ public class VisitorQueryController
 		CheckInRecordInfo checkInRecordInfo=checkInRecordInfoService.queryCheckInByBtCodeService(queryId.substring(0,21));
 		if(checkInRecordInfo!=null){
 			Map<String, Object> checkInMap=new HashMap<String, Object>();
-			checkInMap.put("Time", new SimpleDateFormat("yyyy-mm-dd").format(checkInRecordInfo.getCheckintime()));
-			checkInMap.put("Name", "质量检查");
-			checkInMap.put("StockLocation", checkInRecordInfo.getStocklocation());
-			checkInMap.put("Checker", checkInRecordInfo.getChecker());
+			checkInMap.put("时间", new SimpleDateFormat("yyyy-MM-dd").format(checkInRecordInfo.getCheckintime()));
+			checkInMap.put("环节", "检验入库");
+			checkInMap.put("仓库地址", checkInRecordInfo.getStocklocation());
+			checkInMap.put("负责人", checkInRecordInfo.getChecker());
 			System.out.println("========>检验ontroller:"+checkInRecordInfo.getCheckintime());
 			list.add(checkInMap);
 		}
@@ -151,11 +152,11 @@ public class VisitorQueryController
 		CopackRecordInfo copackRecordInfo=copackRecordInfoService.queryCopackByBtCodeService(queryId);
 		if(copackRecordInfo!=null){
 			Map<String, Object> copackMap=new HashMap<String, Object>();
-			copackMap.put("Time", new SimpleDateFormat("yyyy-mm-dd").format(copackRecordInfo.getCopacktime()));
-			copackMap.put("Name", "包装");
-			copackMap.put("copackLocation", copackRecordInfo.getProducelocation());
-			copackMap.put("copacker", copackRecordInfo.getCopacker());
-			copackMap.put("product_btCode", copackRecordInfo.getProductBtcode());
+			copackMap.put("时间", new SimpleDateFormat("yyyy-MM-dd").format(copackRecordInfo.getCopacktime()));
+			copackMap.put("环节", "包装");
+			copackMap.put("加工地址", copackRecordInfo.getProducelocation());
+			copackMap.put("负责人", copackRecordInfo.getCopacker());
+			//copackMap.put("product_btCode", copackRecordInfo.getProductBtcode());
 			System.out.println("=========>包装Controller:"+copackRecordInfo.getCopacktime());
 			list.add(copackMap);
 		}
@@ -163,12 +164,12 @@ public class VisitorQueryController
 		DeliverRecordInfo deliverRecordInfo=deliverRecordInfoService.queryDeliverByBtCodeService(queryId);
 		if(deliverRecordInfo!=null){
 			Map<String, Object> deliverMap=new HashMap<String,Object>();
-			deliverMap.put("Time", new SimpleDateFormat("yyyy-mm-dd").format(deliverRecordInfo.getDelivertime()));
-			deliverMap.put("Name", "物流");
-			deliverMap.put("deliverAddress", deliverRecordInfo.getDeliveraddress());
-			deliverMap.put("LogisticsCompany", deliverRecordInfo.getLogisticscompany());
-			deliverMap.put("Distributor", deliverRecordInfo.getDistributor());
-			deliverMap.put("Logistics", deliverRecordInfo.getLogistics());
+			deliverMap.put("时间", new SimpleDateFormat("yyyy-MM-dd").format(deliverRecordInfo.getDelivertime()));
+			deliverMap.put("环节", "物流");
+			deliverMap.put("分发地点", deliverRecordInfo.getDeliveraddress());
+			deliverMap.put("物流公司", deliverRecordInfo.getLogisticscompany());
+			deliverMap.put("负责人", deliverRecordInfo.getDistributor());
+			//deliverMap.put("Logistics", deliverRecordInfo.getLogistics());
 			System.out.println("===========>物流controller:"+deliverRecordInfo.getDelivertime());
 			list.add(deliverMap);
 		}
@@ -177,10 +178,10 @@ public class VisitorQueryController
 		if(confirmRecipientRecordInfo!=null){
 			Map<String, Object> confirmMap=new HashMap<String,Object>();
 			
-			confirmMap.put("Time", new SimpleDateFormat("yyyy-mm-dd").format(confirmRecipientRecordInfo.getRecipienttime()));
-			confirmMap.put("Name", "分销");
-			confirmMap.put("LogisticsNum", confirmRecipientRecordInfo.getLogisticsnum());
-			confirmMap.put("distributor", confirmRecipientRecordInfo.getDistributor());
+			confirmMap.put("时间", new SimpleDateFormat("yyyy-MM-dd").format(confirmRecipientRecordInfo.getRecipienttime()));
+			confirmMap.put("环节", "分销");
+			confirmMap.put("物流单号", confirmRecipientRecordInfo.getLogisticsnum());
+			confirmMap.put("分销商", confirmRecipientRecordInfo.getDistributor());
 			System.out.println("=========>确认Controller:"+confirmRecipientRecordInfo.getRecipienttime());
 			list.add(confirmMap);
 		}

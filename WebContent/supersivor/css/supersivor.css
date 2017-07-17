@@ -1,271 +1,255 @@
-body {
-    font-family:arial;
-    margin-top:30px;
-    background-color: rgb(248, 248, 248);
 
+body{
+    background-color: #f8f8f8;
 }
-/*导航栏*/
-ul .btn-group{
-    float: right;
-    position: relative;
-    margin-top: 5.5%;
-}
-/*巨幕*/
-.jumbotron{
-    background: url("../img/jumbotronbg.jpg") no-repeat;
-    background-size: 100%;
-    /*height: 100%;*/
-    width: 100%;
-    /*height: 300px;*/
-}
+/*topFrame*/
 
-.jumbotron .container p{
-    font-size: 50px;
-    font-family: "Microsoft YaHei";
-    font-weight: 500;
-}
-.jumbotron form{
-    opacity: 0.7;
-    width:30%;
-    position: relative;
-    float: right;
-}
-
-/*侧边栏小按钮*/
-.sorted button{
-    width: 48px;
-    height: 48px;
-    z-index: 999;
-}
-.sorted #time{
-    position: fixed;
-    top: 70%;
-    right: 1%;
-
-}
-.sorted #hot{
-    position: fixed;
-    top: 76%;
-    right: 1%;
-}
-.sorted #goTop{
-    position: fixed;
-    top:82%;
-    right: 1%;
-}
-
-.sorted button>span{
-    font-size: 20px;
-}
-
-
-/*公司列表*/
-.container {
-    width: 940px;
-    padding:20px;
-    margin:50px auto 0 auto;
-}
-
-.box {
-    width:260px;
-    height:195px;
-    margin:20px;
-    float:left;
-    position: relative;
-}
-
-.box-content {
-    display:block;
-    padding:20px;
-    width: 100%;
-    height: 100%;
-    background: rgba(238, 238, 238, 0.31);
-    color:#0a0a0a;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-}
-/*公司图片*/
-.box-overlay {
-    width: 100%;
-    height: 100%;
+.btn-group {
     position: absolute;
-    top:0;
-    left:0;
-    z-index:10;
+}
+.btn-group button{
+    font-size: 16px;
+    margin: auto;
+    top: 6px;
 }
 
-.box-overlay img{
-    width: 260px;
-    height: 195px;
-}
-
-a.link {
-    display:block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top:0;
-    left:0;
-    z-index:15;
-}
-
-/* custom css styling */
-.box-content .box-wrapper {
-    width: 100%;
-    height: 100%;
-    font-size:24px;
-    display:block;
-    padding:30px 0 10px 0;
-    text-align:center;
-    margin-bottom:10px;
-    border:2px solid #fff;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-}
-.box-content span.name {
-    display:block;
-    text-align:center;
-    font-family:georgia;
-    font-style:italic;
-    font-size:24px;
-    font-weight:normal;
-    margin-top:5px;
-}
-
-.box-content .row {
-    margin-top:10px;
-    font-size:16px;
-    color: #161616;
-}
-
-#nav {
-    overflow:hidden;
-    margin:15px auto;
-    padding:0;
-    list-style:none;
-    width: 590px;
-}
-#nav li {
-    float:left;
-    padding:5px;
-    list-style:none;
-    text-align:center;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-}
-
-#nav li a {
-    text-decoration:none;
-    color:#fff;
-    display:block;
-    width: 100%;
-    padding:5px 10px;
-    background: #666;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-}
-
-#nav li a:hover,
-#nav li.current a {
-    background: #ccc;
-    color:#666;
-}
-
-
-#info {
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;
-    background:#fcf8e3;
-    border:1px solid  #fbeed5;
-    width:70%;
-    max-width:900px;
-    margin:0 auto 20px auto;
-    font-family:arial;
-    font-size:12px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-}
-
-#info .info-wrapper {
-    padding:10px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-
-}
-
-#info a {
-    color:#c09853;
-    text-decoration:none;
-}
-
-#info p {
-    margin:5px 0 0 0;
-}
-
-/**
-页脚部分
-*/
-
-#footer {
+/*logo*/
+.navbar-header a{
     position: relative;
-    background: transparent;
-    overflow: hidden;
-    height: 230px;
+    margin-top: -18px;
 }
-
-.footer-content {
-    background: transparent;
-    color: white;
-    padding: 0px;
-    min-height: 180px;
-    text-align: center;
-    z-index: 100;
+.navbar-header a img{
+    width: 45px;
 }
-
-footer ul.share-group {
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-    padding: 50px 0;
-}
-
-.share-group a {
-    color: white;
-}
-
-.share-group li {
+.navbar-header {
     display: inline-block;
-    padding: 10px;
-    font-size: 24px;
+    white-space: nowrap;
+}
+.navbar-brand-name {
+    display: inline-block;
+    font-size: 20px;
+    position:relative;
+    margin-left: 50px;
+    top: -45px;
 }
 
-/**
-返回顶部按钮
-*/
 
-#back_to_top{
+/*search*/
+
+.title{
+    height: 200px;
+    /*border: black 1px solid;*/
+
+    /*position: fixed;*/
+    width: 100%;
+    margin-top: 52px;
+    padding-top: 80px;
+}
+.search{
+    line-height: 100px;
+    text-align: center;
+    top: 210px;
+}
+.search input{
+
+    width: 36%;
+    height: 38px;
+    position: absolute;
+    left: 30%;
+
+    border: rgb(238, 238, 238) 1px solid;
+    box-shadow: inset 2px 2px rgba(51, 51, 51, 0.23);
+
+}
+.search button{
+    border: rgb(238, 238, 238) 1px solid;
+    background-color: white;
+    display: inline-block;
+    position: absolute;
+    left:67%;
+}
+
+.search span{
+    font-size: 19px;
+    color: #333333;
+}
+
+
+/*container*/
+.container{
+    /*background-color: red;*/
+    margin-top: 100px;
+}
+.container a{
+    text-decoration: none;
+    color: #333333;
+}
+.comlist{
+    background-color: white;
+    border: lightgrey 1px solid;
+    border-radius: 7px;
+
+    margin-top: 2%;
+
+    width: 100%;
+}
+
+.comlist h2{
+    font-weight: 200;
+    margin-left: 2%;
+}
+.com-card {
+    margin-left: 2%;
+    height: 100%;
+}
+.com-content{
+    height: 100%;
+}
+.com-card .com-pic{
+    display: block;
+    float: left;
+    width: 30%;
+    height: 70%;
+    border-radius: 7px;
+    overflow: hidden;
+}
+.com-card .com-pic img{
+    width: 100%;
+    height: 100%;
+}
+.com-card .com-pic img:hover{
+    -webkit-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -ms-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
+    -webkit-transform: scale(1.2,1.2);
+    -moz-transform: scale(1.2,1.2);
+    -ms-transform: scale(1.2,1.2);
+    -o-transform: scale(1.2,1.2);
+    transform: scale(1.2,1.2);
+}
+.com-card .com-p{
+    display: block;
+    float: right;
+    width: 65%;
+    margin-right: 2%;
+
+    font-weight: 300;
+    font-size: 16px;
+}
+.com-icon{
+    font-size: 14px;
+    text-decoration: none;
+    margin-right: 2%;
+    margin-top: -5%;
+    float: right;
+}
+.com-icon .com-url{
+    border: #ff8b7a 1px solid;
+    border-radius: 3px;
+    color:  #ff8b7a;
+}
+.com-icon .com-phone{
+    border: #00d990 1px solid;
+    border-radius: 3px;
+    color: #00d990;
+}
+.com-icon .com-email{
+    border: #ffba3e 1px solid;
+    border-radius: 3px;
+    color: #ffba3e;
+}
+
+.comlist:hover{
+    box-shadow:1px 1px 1px 1px rgba(106, 106, 106, 0.35);
+}
+
+.clear:after{
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+}
+
+
+/*渚ц竟鏍忓皬鎸夐挳*/
+.sorted{
     position: fixed;
     right: 20px;
     bottom: 30px;
-    border: 1px solid #888;
     background: rgba(255, 255, 255, 0.7);
 }
 
-#back_to_top:active{
-    background: #666;
+
+
+/**
+涓ょ寰�腑闂寸Щ鍔� */
+.left{
+    position: relative;
+    left: -2000px;
+}
+
+.right{
+    position: relative;
+    right: -2000px;
 }
 
 
+
+/**
+淇敼瀵嗙爜
+*/
+
+#changeInfo {
+    position: fixed;
+    top: 120px;
+    left: -100%;
+    border: 1px solid #444;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width: 400px;
+    height: 400px;
+    background: white;
+    padding: 15px 20px;
+    z-index: 999;
+}
+
+#changeInfo>form{
+    padding: 10px;
+}
+
+#changeInfo .need{
+    color: red;
+}
+#changeInfo .control-group{
+    margin: 15px;
+    padding: 5px 10px;
+    letter-spacing: 2px;
+}
+#changeInfo .control-group>label,
+#changeInfo .control-group>div{
+    display: inline-block;
+}
+
+#changeInfo .control-group div.btns{
+    width:100%;
+    text-align: center;
+}
+
+#changeInfo .control-group div.btns button:first-child{
+    margin-right: 30px;
+}
+
+#mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 100;
+}
 

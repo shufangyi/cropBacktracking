@@ -55,9 +55,6 @@ $(document).ready(function () {
 				output+="</div>";
 		}
 		container.append(output);
-		
-		
-		
 		//图片悬停动画js段
 		$('.box').hover(
 				function () {

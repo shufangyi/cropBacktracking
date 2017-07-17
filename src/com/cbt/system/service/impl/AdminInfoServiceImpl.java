@@ -18,34 +18,8 @@ public class AdminInfoServiceImpl implements AdminInfoService {
 	@Resource(name="adminInfoMapper")
 	private AdminInfoMapper adminInfoMapper;
 	@Override
-	public AdminInfo getAdminInfo(AdminInfo admin) {
-		
+	public AdminInfo getAdminInfo(AdminInfo admin) {		
 		admin = adminInfoMapper.getAdminInfo(admin);
-		
 		return admin;
-		
-		/*
-		String password=user.getWorkPwd();
-		try {
-			//password=MD5Util.md5Encode(password);
-			user.setWorkPwd(password);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} 
-		try {
-			if(user!=null && user.getWorkNum()!=null&&user.getWorkPwd()!=null){
-				System.out.println("hello user impl");
-				System.out.println("hello user impl");
-				user = userInfoMapper.getUserInfo(user);
-				System.out.println("hello user impl");
-				System.out.println("hello user impl");
-				System.out.println(user.toString());
-				return user;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		*/
 	}
 }

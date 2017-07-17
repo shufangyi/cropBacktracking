@@ -10,7 +10,8 @@ public class RoleInfo
 	private int roleId; 
 	private String roleName;
 	private String roleDesc;
-	private String roleAuthority;
+	private String roleAuthority; 
+	private String roleStatus;
 	public int getRoleId() {
 		return roleId;
 	}
@@ -38,5 +39,11 @@ public class RoleInfo
 	public String toString()
 	{
 		return "    roleid:"+roleId+" lists:"+roleAuthority;
+	}
+	public String getRoleStatus() {
+		return roleStatus;
+	}
+	public void setRoleStatus(String roleStatus) {
+		this.roleStatus = roleStatus;
 	}
 } 

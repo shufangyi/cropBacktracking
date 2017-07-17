@@ -26,7 +26,6 @@ public class CheckInRecordInfo {
 	    public void setId(Integer id) {
 	        this.id = id;
 	    }
-
 	    public String getPicksegBtcode() {
 	        return picksegBtcode;
 	    }

@@ -93,7 +93,7 @@ public class UserInfoController
 				RoleInfo role = roleInfoService.getRoleAuthority(roleId);
 				System.out.println(role.toString());
 				String rolelist = role.getRoleAuthority();
-				String[] roles=rolelist.split("：");
+				String[] roles=rolelist.split(":");
 				System.out.println("共有"+roles.length+"个权限");
 				List<Integer> authorityIds = new ArrayList<Integer>();
 				for(int i=0;i<roles.length;i++)

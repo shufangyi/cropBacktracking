@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	<!-- 通过项目id查询一条数据 -->
 	<select id="getBusinessCropProjectInfo" parameterType="BusinessCropProjectInfo" resultMap="businessCropProjectInfomap">
-		select * from business_crop_projectinfo where id=#{id}
+		select * from business_crop_projectinfo where workid=#{workerId}
 	</select>
 	
 	<!-- 查询所有数据 -->

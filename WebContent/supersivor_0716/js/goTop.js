@@ -1,6 +1,11 @@
 /**
  * Created by ting on 2017/7/4.
  */
+//产品列表的轮播
+$(document).ready(function(){
+    $('#myCarousel').carousel({interval:3000});//每隔3秒自动轮播
+});
+
 
 //返回顶部
 $(function () {

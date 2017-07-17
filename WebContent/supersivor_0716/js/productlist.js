@@ -19,6 +19,7 @@ $(document).ready(function () {
 			alert("error");
 		}
 	});
+	
 	//产品列表
 	for(var i=0;i<100;i++)
 	{

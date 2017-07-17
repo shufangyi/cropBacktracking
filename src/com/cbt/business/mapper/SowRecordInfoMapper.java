@@ -17,15 +17,14 @@ public interface SowRecordInfoMapper
 	public int delSowRecordInfo(SowRecordInfo info);
 	
 	
+	//2017 - 7 -15 
 	/*分页查询*/
 	public List<SowRecordInfo> getPageSowRecords(Map<String,Object> map);
 	/*分页记录*/
-	 public int getRecordsCount(Map<String,Object> map);	
-	 
-	 
-	/*
-	 * 根据Product_btCode查询一条数据
-	 */
+	public int getRecordsCount(Map<String,Object> map);	
+	// 根据Product_btCode查询一条数据
 	public SowRecordInfo getSowRecordInfoBySowSeg_btCode(String sowSeg_btCode);
+	//修改数据
+	public int updateSowRecord(SowRecordInfo info);
 	
 }

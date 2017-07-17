@@ -43,9 +43,17 @@ public class SowRecordInfoServiceImpl implements SowRecordInfoService
 	}
 
 	@Override
-	public int delSowRecordInfo(SowRecordInfo info) {
+	public Boolean delSowRecordInfo(List<SowRecordInfo> list) {
 		// TODO Auto-generated method stub
-		return sowRecordInfoMapper.delSowRecordInfo(info);
+		Boolean mark = true;
+		for(int i=0;i<list.size();i++)
+		{
+			int k = sowRecordInfoMapper.delSowRecordInfo(list.get(i));
+			if(i<=0){
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
@@ -56,22 +64,40 @@ public class SowRecordInfoServiceImpl implements SowRecordInfoService
 
 	/* 查询 分页*/
 	@Override
-	public List<SowRecordInfo> getPageSowRecords(int nowpage, int rows) {
+	public List<SowRecordInfo> getPageSowRecords(int nowpage, int rows,String project_btCode) {
 		// TODO Auto-generated method stub
 		int startrow=(nowpage-1)*rows;
 		HashMap<String,Object> map=new HashMap<String,Object>();
 		map.put("startrow",startrow);
-		map.put("rows", rows);       		
+		map.put("rows", rows);   
+		map.put("project_btCode", project_btCode);
 		return sowRecordInfoMapper.getPageSowRecords(map);
 	}
-
+	
+	
+	/*查询记录总数*/
 	@Override
 	public int getRecordsCount(String name) {
 		// TODO Auto-generated method stub
 		HashMap<String,Object> map=new HashMap<String,Object>();
 		return sowRecordInfoMapper.getRecordsCount(map);
 	}
+
 	
-	/*查询记录总数*/
+	//修改数据
+	@Override
+	public Boolean updateSowRecord(SowRecordInfo info) {
+		// TODO Auto-generated method stub
+		try {
+			int i = sowRecordInfoMapper.updateSowRecord(info);
+			if(i>0){
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 	
 }

@@ -8,7 +8,8 @@ public class BusinessCropProjectInfo {
 	private int Id;
 	private int workerId;
 	private String project_btCode;
-	public int getId() {
+	public int getId()
+	{
 		return Id;
 	}
 	public void setId(int id) {

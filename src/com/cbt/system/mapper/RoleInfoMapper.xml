@@ -3,17 +3,46 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cbt.system.mapper.RoleInfoMapper">
-
-
-
 	<resultMap type="RoleInfo" id="rolemap">
 		<result property="roleId" column="roleId" />
 		<result property="roleName" column="roleName" />
 		<result property="roleDesc" column="roleDesc" />
 		<result property="roleAuthority" column="roleAuthority" />
+		<result property="roleStatus" column="rolestatus"/>
 	</resultMap>
 	<!-- 查询用户信息 用于用户登录 -->
 	<select id="getRoleAuthority" parameterType="java.lang.Integer" resultMap="rolemap">
 		select * from roleinfo where roleId=#{roleId}
 	</select>
+	
+	
+	<insert id="addRole" parameterType="com.cbt.system.po.RoleInfo">
+		insert into roleinfo
+		(
+			roleName,roleDesc,roleAuthority,roleStatus
+		)
+		values
+		(
+			#{roleName},#{roleDesc},#{roleAuthority},0
+		)
+	</insert>
+	 	 <!-- 分页 -->
+ 	<select id="getPageRoles" parameterType="Map" resultMap="rolemap">
+  		select * from roleinfo limit #{startrow},#{rows}
+ 	</select>
+ 	<!-- 获取记录数量 -->
+  	<select id="getRolesCount" resultType="int">
+ 		 select count(*) from roleinfo 
+ 	</select>
+ 	
+ 	 	<!-- 修改数据 -->
+ 	<update id="updateRole" parameterType="com.cbt.system.po.RoleInfo" >
+    	update roleinfo set rolename = #{roleName},roledesc = #{roleDesc} where roleid = #{roleId}
+ 	</update>
+ 	
+ 		<!--删除一条数据  -->
+	<delete id="delRoleInfo" parameterType="com.cbt.system.po.RoleInfo" >
+    	delete from roleinfo
+   		where roleid = #{roleId}
+    </delete>
 </mapper>

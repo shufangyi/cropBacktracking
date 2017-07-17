@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cbt.system.po.AuthorityInfo;
+import com.cbt.system.po.ManagerInfo;
 import com.cbt.system.po.RoleInfo;
+import com.cbt.business.po.WorkerInfo;
 import com.cbt.system.po.AdminInfo;
 import com.cbt.system.service.AuthorityInfoService;
 import com.cbt.system.service.RoleInfoService;
@@ -45,12 +47,9 @@ public class AdminInfoController {
 	
 	@Resource(name="authorityInfoServiceImpl")
 	private AuthorityInfoService authorityInfoService;
-
+	
 	/**
-	 * 用户注册
-	 * 
-	 * @param user
-	 * @return
+	 * 用户注册n
 	 */
 	/*
 	@RequestMapping("reg.do")
@@ -61,12 +60,26 @@ public class AdminInfoController {
 		else	return "此用户名已被占用";
 	}
 	*/
+	/**
+	 * 用户注销
+	 */
+	@RequestMapping("logout.do")
+	public @ResponseBody String logout(HttpSession session)
+	{
+		System.out.println("LOGOUT");
+		AdminInfo admin = (AdminInfo) session.getAttribute("admin");
+		if(admin!=null)
+		{
+			session.removeAttribute("managerInfo");
+			System.out.println("num:"+admin.getAdminNum());
+			System.out.println("num:"+admin.getAdminNum());
+			return "true";
+		}
+		return "false";
+	}
 	
 	/**
 	 * 用户登录
-	 * @param user
-	 * @param session
-	 * @return
 	 */
 	@RequestMapping("login.do")
 	public String login(AdminInfo admin,HttpSession session,Model model)
@@ -83,13 +96,12 @@ public class AdminInfoController {
 			AdminInfo adminInfo = adminInfoService.getAdminInfo(admin);
 			if(adminInfo==null)
 			{
-				System.out.println("data.html");
-				return "system/data.html";
+				return "system/login.html";
 			}
 			else
 			{
 				session.setAttribute("admin", admin);
-				return "system/data.html";
+				return "system/admin.jsp";
 			}
 		}
 		/*
