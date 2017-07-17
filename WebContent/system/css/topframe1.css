@@ -1,0 +1,59 @@
+/*顶部导航栏*/
+
+.navbar {
+    background-color: white;
+    /*box-shadow: 0px 2px rgba(21,38,91,0.6);*/
+    /*border: rgb(249,249,249) 1px solid;*/
+}
+
+.navbar-right button {
+    position: relative;
+    margin-top: 10%;
+}
+
+
+/*logo*/
+
+.navbar-header {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.navbar-brand {
+    display: inline-block;
+    position: relative;
+    margin-top: -10px;
+}
+
+.navbar-brand img {
+    height: 45px;
+    margin: 0 auto;
+}
+
+.navbar-brand-name {
+    display: inline-block;
+    font-size: 20px;
+    position: relative;
+    margin-top: 10px;
+    /*color: #d6d8dc;*/
+    color: #444;
+    /*margin: 0 auto;*/
+}
+
+
+/*登录*/
+.btn-group {
+    position: absolute;
+    /*top: -5px;*/
+    right: 20px;
+
+}
+.btn-group button{
+    font-size: 16px;
+    margin: auto;
+    top: 6px;
+}
+
+button {
+    outline: none!important;
+}

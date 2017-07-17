@@ -1,0 +1,37 @@
+/**
+页脚部分
+*/
+
+#footer {
+    position: relative;
+    background: transparent;
+    overflow: hidden;
+    height: 230px;
+    margin-top: 20px;
+}
+
+.footer-content {
+    background: transparent;
+    color: white;
+    padding: 0px;
+    min-height: 180px;
+    text-align: center;
+    z-index: 100;
+}
+
+footer ul.share-group {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.share-group a {
+    color: white;
+}
+
+.share-group li {
+    display: inline-block;
+    padding: 10px;
+    font-size: 24px;
+}

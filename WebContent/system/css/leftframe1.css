@@ -1,0 +1,64 @@
+/*左侧导航栏*/
+.sidebar-nav{
+    /*position: fixed;*/
+    margin-left: 0;
+    width: 200px;
+    height: 100%;
+    background-color:rgb(249,249,249);
+}
+.sidebar-nav-ft{
+    position: fixed;
+    /*margin-top: 52px;*/
+}
+
+.sidebar-nav-block {
+    width: 200px;
+    /*text-shadow:0 2px rgba(47,94,165,0.6);*/
+}
+
+/*menu head*/
+.sidebar-nav-block a {
+    color: black;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 200;
+    width: 200px;
+    margin: 0 auto;
+    text-decoration: none;
+}
+
+/*子menu*/
+.sidebar-nav-block ul li {
+    text-align: center;
+}
+
+.sidebar-nav-block .glyphicon{
+    font-size: 25px;
+}
+
+/*menu head span间距*/
+.sidebar-nav-block a span{
+    margin: 10px;
+}
+
+/*选中的menu head*/
+.sidebar-nav-block a:hover{
+    background-color: rgba(244,251,255,0.6);
+}
+
+/*选中的menu 子menu*/
+.sidebar-nav-block ul li a:hover{
+    background-color: rgba(244,251,255,0.6);
+}
+
+.in{
+    background: -webkit-linear-gradient(rgba(244,251,255,0.6), rgba(80,163,230,0.6),rgba(244,251,255,0.6)); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(rgba(244,251,255,0.6), rgba(80,163,230,0.6),rgba(244,251,255,0.6)); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(rgba(244,251,255,0.6), rgba(80,163,230,0.6),rgba(244,251,255,0.6)); /* Firefox 3.6 - 15 */
+    background: linear-gradient(rgba(244,251,255,0.6), rgba(80,163,230,0.6),rgba(244,251,255,0.6)); /* 标准的语法 */
+}
+
+
+.sidebar-nav-block ul li:hover{
+    background-color: rgba(244,251,255,0.6);
+}

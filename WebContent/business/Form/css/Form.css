@@ -1,0 +1,31 @@
+#RecordTable{
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.form-horizontal{
+    position: relative;
+    width: 80%;
+    margin-top: 50px;
+    margin-left: 10%;
+}
+/*各表单项*/
+.form-horizontal .control-group{
+    position: relative;
+    margin-top: 10px;
+}
+/*各表单项输入框*/
+.control-group input{
+    position: absolute;
+    left: 150px;
+
+    display: inline-block;
+    width: 200px;
+}
+/*提示符*/
+.help-block{
+    display: inline-block;
+    position: absolute;
+    left: 380px;
+}

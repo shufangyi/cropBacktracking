@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>角色管理</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--富文本编辑器-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+
+    <link rel="stylesheet" href="../css/platformManager.css">
+	<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+	<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+</head>
+<body>
+<div class="container">
+<form class="form-horizontal" >
+    <fieldset>
+        <!-- Form Name -->
+        <legend>新添角色</legend>
+        <!-- Text input-->
+        <div class="control-group">
+            <label class="control-label" for="rolename">角色名称</label>
+            <div class="controls">
+                <input id="rolename" name="rolename" class="name input-xlarge" type="text" placeholder="角色名称" required="" style="margin-top: -24px;">
+                <p class="help-block">1</p>
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="control-group">
+            <label class="control-label">选择权限</label>
+            <div class="controls jscheckbox" id="permissions">
+                <!--js动态添加-->
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <label class="control-label" for="Comment">角色描述</label>
+                <div id="Comment"><p>Hello Summernote</p></div>
+                <script>
+                    $(document).ready(function() {
+                        $('#Comment').summernote();
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="control-group">
+            <button type="button" id="submit" name="submit" class="btn btn-info">提交</button>
+        </div>
+    </fieldset>
+</form>
+</div>
+<script>
+$(document).ready(function(){
+	//向服务器获取权限列表请求
+	$.ajax({
+		type: "post",
+		url: "../getAllAuthority.do",
+		success: function(data)
+		{
+			fillAuthorityList(data);
+		},
+		error: function(status)
+		{
+			alert(status);
+		}	
+	});
+	//动态添加权限列表
+	function fillAuthorityList(data)
+	{	
+		var len = data.list.length;
+		for(var i= 0 ; i < len ; i++)
+		{
+			var output="";
+			output+="<label class='checkbox inline' for='permissions-"+i+"'>"+
+            "<input type='checkbox' name='permissions' id='permissions' value='"+data.list[i].authorityId+"'>"+
+            data.list[i].authorityName+
+            "</label>";
+        	$("#permissions").append(output);
+		}
+	}
+	//验证表单数据，获取表单内ring没处理数据，提交后台
+	$('#submit').click(function()
+	{
+		var roleName = $('#rolename').val();
+		var roleDesc = $('#Comment').text();
+		var roleAuthority="";
+		$("#permissions:checked").each(function(index,element)
+		{
+			roleAuthority+=$(element).val()+":";
+		});
+		
+		
+		
+		/*
+			对数据进行验证
+		*/
+		
+		
+		
+		//提交哦数据
+		$.ajax({
+			type: 'post',
+			url: '../addRole.do',
+			data: {
+				"roleName":roleName,
+				"roleDesc":roleDesc,
+				"roleAuthority":roleAuthority
+			},
+			success: function(data,status)
+			{
+				alert("提交成功");
+			},
+			error: function(status)
+			{
+				alert(status);
+			}
+		});	
+	});	
+});
+</script>
+
+</body>
+</html>

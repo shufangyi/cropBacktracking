@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.topFrame {
+    position: fixed;
+    z-index: 10;
+}
+
+.leftFrame1 {
+    position: fixed;
+    margin-top: 50px;
+    z-index: 10;
+    background-color: rgb(249, 249, 249);
+    width: 200px;
+    height: 100%;
+}
+
+/*.topSecondFrame {
+    position: fixed;
+    margin-top: 50px;
+    margin-left: 200px;
+    z-index: 10;
+}*/
+
+.myframe1 {
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    height: 100%;
+}

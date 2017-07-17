@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人员管理</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--富文本编辑器-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+
+    <!--本文校验-->
+    <script src="https://cdn.bootcss.com/jquery-validate/1.15.1/additional-methods.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-validate/1.15.1/localization/messages_zh.min.js"></script>
+
+    <!--jquery-ui-->
+    <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $( ".datepicker" ).datepicker();
+        });
+    </script>
+
+    <link rel="stylesheet" href="../platformManager/css/platformManager.css">
+
+
+</head>
+<body>
+<div class="container">
+<!--新建表单-->
+<form class="form-horizontal" >
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>新增用户</legend>
+
+        <!-- Text input-->
+        <div class="control-group" >
+            <div class="controls" >
+                <label class="control-label" for="business_ID">企业编码</label>
+                <input id="business_ID" name="business_ID" type="text" placeholder="" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+
+        </div>
+
+        <!-- Text input-->
+        <div class="control-group" >
+            <div class="controls" >
+                <label class="control-label" for="ManagerName">姓名</label>
+                <input id="ManagerName" name="ManagerName" type="text" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="control-group">
+            <div class="controls">
+                <label class="control-label" for="managerNum">账号</label>
+                <input id="managerNum" name="managerNum" type="text" placeholder="" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="control-group">
+            <div class="controls">
+                <label class="control-label" for="managerPwd">密码</label>
+                <input id="managerPwd" name="managerPwd" type="password" placeholder="" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <label class="control-label" for="managerPwdAgain">确认密码</label>
+                <input id="managerPwdAgain" name="managerPwdAgain" type="password" placeholder="" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="control-group">
+            <div class="controls">
+                <label class="control-label" for="ManagerPhone">联系方式</label>
+                <input id="ManagerPhone" name="ManagerPhone" type="text" placeholder="" class="input-xlarge">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="control-group">
+            <label class="control-label">角色</label>
+            <div class="controls jscheckbox" id="role">
+                <!--js动态添加-->
+
+            </div>
+        </div>
+
+
+        <!-- Textarea -->
+        <div class="control-group">
+            <div class="controls">
+                <label class="control-label" for="Comment">备注</label>
+                <div id="Comment"><p>Hello Summernote</p></div>
+                <script>
+                    $(document).ready(function() {
+                        $('#Comment').summernote();
+                    });
+                </script>
+            </div>
+
+        </div>
+
+        <div class="control-group">
+            <button type="submit" id="submit" name="submit" class="btn btn-info">提交</button>
+        </div>
+
+
+    </fieldset>
+</form>
+</div>
+</body>
+
+<script>
+    $(function () {
+        var role_list = ["企业负责人","种植员","检验员","加工包装员","物流负责人","分销商"];
+        for(var i=0;i<role_list.length;i++){
+            var output="";
+            output+="<label class='radio inline' for='role-"+i+"'>"+
+                "<input type='radio' name='role' id='role-"+i+"' value='"+role_list[i]+"'>"+
+                role_list[i]+
+                "</label>";
+            $("#role").append(output);
+        }
+    });
+</script>
+
+</html>

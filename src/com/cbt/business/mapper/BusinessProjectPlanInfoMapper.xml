@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.business.mapper.ProjectProjectPlanInfo">
+	<resultMap type="com.cbt.business.po.BusinessProjectPlanInfoMapper" id="BusinessProjectPlanInfoMap">
+	<id column="id" property="id"/>
+	<result column="planId" property="planId"/>
+	<result column="planName" property="planName"/>
+	<result column="productPicture" property="productPicture"/>
+	<result column="cropCode" property="cropCode"/>
+	<result column="productName" property="productName"/>
+	<result column="businessId" property="businessId"/>
+	<result column="year" property="year"/>
+	<result column="project_btCode" property="project_btCode"/>
+	<result column="growerNum" property="growerNum"/>
+	<result column="checkedNum" property="checkedNum"/>
+	<result column="packingClerkNum" property="packingClerkNum"/>
+	<result column="logiticsNum" property="logiticsNum"/>
+	</resultMap>
+
+</mapper>

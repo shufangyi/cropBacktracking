@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+a,
+a:focus,
+li {
+    text-decoration: none;
+}
+
+body {
+    /*background: black;*/
+}
+
+#tabs {
+    display: block;
+    list-style: none;
+}
+
+#tabs>ul {
+    width: 100%;
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+#tabs>ul span {
+    display: inline-block;
+    background: #fff;
+    margin-right: 10px;
+    /*border-bottom: 2px solid #444;*/
+}
+
+#tabs>ul span:hover,
+#tabs>ul span.active {
+    background: #ddd;
+    /*border: 2px solid #444;    */
+    /*border-bottom: 2px solid white;    */
+}
+
+#tabs>ul span li {
+    text-decoration: none;
+    display: inline-block;
+    /*border-radius: 20%;*/
+    padding: 2px;
+}
+
+#tabs>ul span li.fa {
+    margin-right: 20px;
+}
+
+#tabs>ul span li.fa:hover {
+    background: #ec6060;
+}
+
+#tabs>ul span li a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 2px;
+    border-radius: 6px;
+    min-width: 120px;
+    text-align: center;
+    /*background: #ddd;*/
+}
+
+
+/*#tabs>ul span li a.active,
+#tabs>ul span li a:hover {
+    background: #fff;
+}*/
+
+#tabs>ul span li a:hover {
+    text-decoration: none;
+}
+
+#tabs_container {
+    margin-top: 50px;
+}
+
+#tabs_container>div {
+    display: none;
+    padding: 20px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生产流程模板</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--富文本编辑器-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+
+    <link rel="stylesheet" href="../css/platformManager.css">
+
+</head>
+<body>
+<div class="container">
+    <form class="form-horizontal" >
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>新添生产计划模板</legend>
+
+            <!-- Text input-->
+            <div class="control-group">
+                <label class="control-label" for="templateName">模板名称</label>
+                <div class="controls">
+                    <input id="templateName" name="templateName" class="name input-xlarge" type="text" placeholder="模板名称" required="" style="margin-top: -24px;">
+                    <p class="help-block">1</p>
+                </div>
+            </div>
+
+            <!-- Multiple Checkboxes (inline) -->
+            <div class="control-group">
+                <label class="control-label">选择流程</label>
+                <div class="controls jscheckbox" id="template">
+                    <!--js动态添加-->
+
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <label class="control-label" for="Comment">备注</label>
+                    <div id="Comment"><p>Hello Summernote</p></div>
+                    <script>
+                        $(document).ready(function() {
+                            $('#Comment').summernote();
+                        });
+                    </script>
+                </div>
+
+            </div>
+            <div class="control-group">
+                <button type="submit" id="submit" name="submit" class="btn btn-info">提交</button>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+
+<script>
+    $(function () {
+        var template_list = ["播种流程","施肥流程","病虫害防治流程","采摘流程","检验入库流程","加工包装流程","物流管理流程","分销管理流程"];
+        for(var i=0;i<template_list.length;i++){
+            var output="";
+            output+="<label class='checkbox inline' for='template-"+i+"'>"+
+                "<input type='checkbox' name='template' id='template-"+i+"' value='"+template_list[i]+"'>"+
+                template_list[i]+
+                "</label>";
+            $("#template").append(output);
+        }
+    });
+</script>
+
+</body>
+</html>
