@@ -1,3 +1,12 @@
+body{
+    background: url("../assets/img/backgrounds/register-bg2.jpg");
+}
+a {
+    display: inline-block;
+    color: #444;
+    text-decoration: none;
+}
+
 .navbar {
     height: 60px;
 }
@@ -11,6 +20,7 @@
     border: 0;
     box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .12), 0 1px 6px 0 rgba(0, 0, 0, .12);
     margin-bottom: 20px;
+    overflow: hidden;
 }
 
 .navbar .navbar-brand {
@@ -38,44 +48,80 @@
     background: rgba(0, 0, 0, 0.1);
 }
 
-.body-content {
-    padding-top: 60px;
+
+/*简介*/
+section{
+    padding-top: 70px;
 }
 
-
-/**
-页脚部分
-*/
-
-#footer {
-    position: relative;
-    background: transparent;
-    overflow: hidden;
-    height: 230px;
-}
-
-.footer-content {
-    background: transparent;
-    color: white;
-    padding: 0px;
-    min-height: 180px;
+.wi-container li{
+    border-radius: 7px;
+    border: 2px solid #ececec;
+    box-shadow: 2px 2px 2px rgba(236, 236, 236, 0.25);
     text-align: center;
-    z-index: 100;
+
 }
 
-footer ul.share-group {
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-    padding: 50px 0;
+.wi-container li h2{
+    font-weight: 400;
+    color: grey;
 }
 
-.share-group a {
-    color: white;
+.wi-container li img{
+    width: 360px;
+    box-shadow:0 0  4px rgba(175, 175, 175, 0.61);
 }
 
-.share-group li {
-    display: inline-block;
-    padding: 10px;
-    font-size: 24px;
+.fa-phone{
+    border: solid 1px #50cf8e;
+    border-radius: 3px;
+    color: #50cf8e;
+}
+.fa-qq{
+    border: solid 1px #febb50;
+    border-radius: 3px;
+    color: #febb50;
+}
+.fa-weibo{
+    border: solid 1px #f69581;
+    border-radius: 3px;
+    color: #f69581;
+}
+
+.trancircle{
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+
+    transform:rotate(360deg);
+    -ms-transform:rotate(360deg); 	/* IE 9 */
+    -moz-transform:rotate(360deg); 	/* Firefox */
+    -webkit-transform:rotate(360deg); /* Safari 和 Chrome */
+    -o-transform:rotate(360deg); 	/* Opera */
+
+    border-radius: 250px;
+
+}
+
+
+/*prev  next */
+.navpn{
+    position: absolute;
+    top: 300px;
+}
+#nav-prev{
+    padding-left: 175px;
+
+}
+#nav-next{
+    padding-left: 530px;
+}
+
+span i{
+    color: rgba(200, 200, 200, 0.6);
+}
+span i:hover{
+    color: rgb(100,100,100);
 }

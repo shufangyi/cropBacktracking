@@ -2,6 +2,19 @@ p {
     letter-spacing: 2px;
 }
 
+a {
+    display: inline-block;
+    color: #444;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+a:hover {
+    color: #444;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.05);
+}
+
 .navbar {
     height: 60px;
 }
@@ -53,7 +66,12 @@ p {
     background-image: url("../assets/background-left.png"), url("../assets/background-right.png");
     background-repeat: no-repeat, no-repeat;
     background-position: top left, top right;
-    background-size: auto 300px, auto 300px;
+    background-size: auto 300px, auto 300px; 
+    /* background-image: url("../assets/background.jpg");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 960px auto;
+    background-attachment: fixed; */
 }
 
 
@@ -129,16 +147,18 @@ p {
 */
 
 #structure>p {
-    margin: 30px auto;
+    margin-bottom: 25px;
     font-size: 24px;
 }
 
 #fengexian {
     width: 970px;
+    margin: 10px auto 30px;
 }
 
 .body-content .row {
-    margin-top: 60px;
+    margin-top: 20px;
+    padding-bottom: 20px;
 }
 
 .body-content .introduction {
@@ -205,7 +225,7 @@ p {
     width: 120px;
     padding: 10px 20px;
     margin: 20px auto;
-    border: 1px solid #03a9f4;    
+    border: 1px solid #03a9f4;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -216,7 +236,7 @@ p {
     letter-spacing: 4px;
 }
 
-.body-content .container .fetures .loginBtn:hover{
+.body-content .container .fetures .loginBtn:hover {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -263,18 +283,20 @@ footer ul.share-group {
     font-size: 24px;
 }
 
+
 /**
 返回顶部按钮
 */
 
-#back_to_top{
+#back_to_top {
     position: fixed;
     right: 20px;
+    width: 25px;
     bottom: 30px;
     border: 1px solid #888;
     background: rgba(255, 255, 255, 0.7);
 }
 
-#back_to_top:active{
+#back_to_top:active {
     background: #666;
 }
