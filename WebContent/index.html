@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
     <title>农产溯源</title>
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/demo.css">
     <link rel="stylesheet" href="./css/index.css">
 </head>
 
@@ -23,6 +23,7 @@
             <div class="pull-right">
                 <a class="main-menu--item" href="#"><i class="fa fa-home"></i> 主页</a>
                 <a class="main-menu--item" href="./demo.html"><i class="fa fa-cube"></i> 案例</a>
+                <a class="main-menu--item" href="./register.html"><i class="fa fa-handshake-o"></i> 加盟</a>
                 <a class="main-menu--item" href="./about.html"><i class="fa fa-info"></i> 关于</a>
             </div>
         </div>
@@ -30,57 +31,61 @@
 
     <div class="body-content">
         <div class="container">
-        
             <div class="hero-area">
                 <h1>A Traceability tools for <span class="audience-name"></span></h1>
                 <div class="search bar6">
-                    <form>
-                        <input type="text" placeholder="请输入产品上的查询码...">
+                    <form action="lifeline.html" method="post">
+                        <input type="text" name="wd" placeholder="请输入产品上的查询码...">
                         <button type="submit"></button>
                     </form>
                 </div>
                 <p>一物一码，追踪溯源</p>
             </div>
-			            <div class="row fetures">
+
+            <!-- 功能介绍，三个人员的入口 -->
+            <div class="row fetures">
                 <div class="col-xs-4">
-                    <h2>溯 源 企 业</h2>
-                    <h2>Enterprise</h2>
-                    <p>
-                        溯源公司从这里登录，录入溯源信息。
-                    </p>
-                    <p>
-                        <a id="eloginBtn" class="loginBtn btn btn-lg btn-raised btn-primary text-center" href="business/login.html">企业人员</a>
-                    </p>
+                    <a href="business/login.html">
+                        <h2>溯 源 企 业</h2>
+                        <h2>Enterprise</h2>
+                        <p>
+                            溯源公司从这里登录，录入溯源信息。
+                        </p>
+                        <p>
+                            <button id="eloginBtn" class="loginBtn btn btn-lg btn-raised btn-primary text-center">企业人员</button>
+                        </p>
+                    </a>
                 </div>
 
 
                 <div class="col-xs-4">
-                    <h2>监 管 部 门</h2>
-                    <h2>Regulators</h2>
-                    <p>
-                        监管部门从这里登录，监察溯源结果。
-                    </p>
-                    <p>
-                        <a id="rloginBtn" class="loginBtn btn btn-lg btn-raised btn-primary text-center" href="supersivor/login.html">监管部门</a>
-                    </p>
+                    <a href="supersivor/login.html">
+                        <h2>监 管 部 门</h2>
+                        <h2>Regulators</h2>
+                        <p>
+                            监管部门从这里登录，监察溯源结果。
+                        </p>
+                        <p>
+                            <button id="rloginBtn" class="loginBtn btn btn-lg btn-raised btn-primary text-center">监管部门</button>
+                        </p>
+                    </a>
                 </div>
 
                 <div class="col-xs-4">
-                    <h2>平 台 管 理 </h2>
-                    <h2>Administrator</h2>
-                    <p>
-                        管理员从这里登录，负责平台运营。
-                    </p>
-                    <p>
-                        <a id="aloginBtn" class="loginBtn btn btn-lg btn-raised btn-primary text-center" href="system/login.html">系统管理</a>
-                    </p>
+                    <a href="system/login.html">
+                        <h2>平 台 管 理 </h2>
+                        <h2>Administrator</h2>
+                        <p>
+                            管理员从这里登录，负责平台运营。
+                        </p>
+                        <p>
+                            <button id="aloginBtn" class="loginBtn btn btn-lg btn-raised btn-primary text-center">系统管理</button>
+                        </p>
+                    </a>
                 </div>
             </div>
-            <!-- 功能介绍，三个人员的入口 -->
-            
             <div class="row">
-            <img id="fengexian" src="./assets/splitline.png" alt="分割线">
-            <div style="height:48px"></div>
+                <img id="fengexian" src="./assets/splitline.png" alt="分割线">
                 <p> 一品一码实现多重功能 企业产品一品一码，结合防伪、溯源、数据、营销多重功能，让每一件农产品都有唯一的身份证;
                     <p>扫一扫溯源二维码，立即看到该农产品的出身以及各项检测指标；
                         <p>保护和提升企业的品牌形象和价值，为整体解决方案移动化提供实现可能；
@@ -93,16 +98,14 @@
                 </p>
             </div>
             <div id="structure" class="row">
-                
-                
                 <p>农产品溯源系统核心功能</p>
                 <div class="container">
                     <div class="col-xs-3 introduction in1">
-                        <img src="./assets/农产.png" alt="role-icon">
-                        <div class="hr"></div>
-                        <p>农事管理打药 </p>
-                        <p>施肥 播种</p>
-                        <p>等等</p>
+                            <img src="./assets/农产.png" alt="role-icon">
+                            <div class="hr"></div>
+                            <p>农事管理打药 </p>
+                            <p>施肥 播种</p>
+                            <p>等等</p>
                     </div>
                     <div class="col-xs-3 introduction in2">
                         <img src="./assets/企业.png" alt="role-icon">
@@ -127,9 +130,94 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+
+                <div class="sec-title text-center">
+                    <h2>跨时代的作品，真正意义的互联网+</h2>
+                    <div class="text">一个二维码就可以了解农产品从“种植开始到餐桌”的各个环节。</div>
+                </div>
+                <!-- /END Feature SECTION HEADER -->
+                <div class="jv-st-srv">
+                    <div class="row">
+                        <!-- SINGLE SERVICE -->
+                        <div class="col-md-4">
+                            <div class="featured-item-2 text-center m-bot-40">
+                                <div class="icon">
+                                    <i class="fa fa-magic"></i>
+                                </div>
+                                <div class="title text-uppercase">
+                                    <h4>非凡的性价比</h4>
+                                </div>
+                                <div class="jv-st-desc">
+                                    用户无需自建硬件（服务器），无需自建系统。简单轻松入驻防伪系统即可轻松使用农产品溯源系统的全部功能。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="featured-item-2 text-center m-bot-40">
+                                <div class="icon">
+                                    <i class="fa fa-info-circle"></i>
+                                </div>
+                                <div class="title text-uppercase">
+                                    <h4>信息可追溯</h4>
+                                </div>
+                                <div class="jv-st-desc">
+                                    追溯信息可按需配置:用户可根据自身果蔬需求及产品特点，自行维护追溯信息内容、实现图文并茂的追溯内容。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="featured-item-2 text-center">
+                                <div class="icon ">
+                                    <i class="fa fa-retweet"></i>
+                                </div>
+                                <div class="title text-uppercase">
+                                    <h4>全程可监控</h4>
+                                </div>
+                                <div class="jv-st-desc">
+                                    不仅提升了农产品安全，对食品安全也有了保障能力，也是对产品质量市场监管能力的显著提升。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
-	<div style="height:40px"></div>
+
+    <!---->
+    <section class="featured-fluid-section">
+
+
+        <div class="outer clearfix">
+
+            <!--Image Column-->
+            <div class="image-column" style="background-image:url(./assets/img/been.jpg);"></div>
+
+            <!--Text Column-->
+            <article class="column text-column dark-column" data-wow-delay="0ms" data-wow-duration="1500ms">
+
+                <div class="content-box pull-left">
+                    <h2>让所有的付出都有回报，让所有人都能吃上放心菜</h2>
+                    <div class="title-text">帮助品牌农产品更值得信赖</div>
+                    <div class="text">农产品溯源系统是从产品的源头开始规范管理，由事后检测转变成事前预案、过程管控，包括产地检测、种苗处理、施肥、用药、采摘、运输、加工等环节，以提高产品质量。通过企业将生产全过程数据报备至云数据中心，并打印二维追溯码贴在对应的产品上，做到“一物一码”，为产品提供身份证明。产品所有生产信息将跟随产品从产地到销售终端，消费者可以通过手机、终端机、计算机等查询工具，对产品二维追溯码进行查询，就能了解该产品的所有生产过程与质量安全信息。</div>
+                    <a href="./register.html" class="theme-btn btn-style-one">申请入驻</a>
+                    <a href="./demo.html" class="theme-btn btn-style-two">了解更多</a>
+                </div>
+
+                <div class="clearfix"></div>
+            </article>
+
+        </div>
+
+    </section>
+    <!---->
+
+
+
+
+
     <footer id="footer">
         <!-- 页脚 -->
         <div class="footer-content">
@@ -144,7 +232,7 @@
                 &copy SuperTeam&nbsp;&nbsp; - &nbsp;&nbsp;2099&nbsp;&nbsp;苏ICP备17028767号
             </div>
         </div>
-        <button id="back_to_top">返回顶部 <i class="fa fa-angle-up"></i></button>
+        <button id="back_to_top"> <i class="fa fa-angle-up"> </i> </button>
     </footer>
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
