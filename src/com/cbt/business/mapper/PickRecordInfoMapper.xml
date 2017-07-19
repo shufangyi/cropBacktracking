@@ -41,5 +41,47 @@
   where pickSeg_btCode=#{pickSeg_btCode}
   </select>
   
+  <!-- 修改数据 -->
+  <update id="updatePickRecord" parameterType="com.cbt.business.po.PickRecordInfo">
+  UPDATE cropBacktracking.pickRecordInfo
+  <set>
+  <if test="pickTime!=null">
+  pickTime=#{picktime}
+  </if>
+  <if test="pickType!=null">
+  pickType=#{picktype}
+  </if>
+  <if test="pickNum!=null">
+  pick=#{picknum}
+  </if>
+  <if test="pickSeg_btCode!=null">
+  pickSeg_btCode=#{picksegBtcode}
+  </if>
+  <if test="comment!=null">
+  comment=#{comment}
+  </if>
+  <if test="grower!=null">
+  grower=#{grower}
+  </if>
+  <if test="sowsegBtcode!=null">
+  sowSeg_btCode=#{sowsegBtcode}
+  </if>
+  </set>
+    where  id=#{id}
+  </update>
+  
+  <!-- 分页查询 -->
+  <select id="queryPickRecords" parameterType="Map" resultMap="pickrecordinfomap">
+  select * from cropBacktracking.pickRecord
+  where pickSeg_btCode like '%${projectBtcode}%' 
+  order by id limit #{startpage},#{rows}
+  </select>
+  
+  <!-- get total count -->
+  <select id="getPickRecordCount" parameterType="Map" resultType="Integer">
+  select count(*) from cropBacktracking.pickRecord
+   where pickSeg_btCode like '%${projectBtcode}%' 
+  order by id limit #{startpage},#{rows}
+  </select>
   
 </mapper>

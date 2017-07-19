@@ -27,75 +27,29 @@
     <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
     <script>
-        $(function() {
-            $( ".datepicker" ).datepicker();
+    $(function() {
+        $( ".datepicker" ).datepicker({
+            dateFormat: 'yy-mm-dd'//日期格式
         });
+    });
     </script>
 
-    <link rel="stylesheet" href="css/Form.css">
+    <link rel="stylesheet" href="business/Form/css/Form.css">
 </head>
 <body>
 
-<!--æ¥è¯¢åè¡¨-->
-<table id="RecordTable" class="display uk-table uk-table-hover uk-table-striped" cellspacing="0" width="100â¢%">
-    <thead>
-    <tr>
-        <th>é¡¹ç®åºå·</th>
-        <th>ä½ç©åç§°</th>
-        <th>éæç¯èæº¯æºç </th>
-        <th>å¥åºæ¶é´</th>
-        <th>åºå­å°ç¹</th>
-        <th>æ£éªå¥åºå</th>
-    </tr>
-    </thead>
-    <tfoot>
-    <tr>
-        <th>é¡¹ç®åºå·</th>
-        <th>ä½ç©åç§°</th>
-        <th>éæç¯èæº¯æºç </th>
-        <th>å¥åºæ¶é´</th>
-        <th>åºå­å°ç¹</th>
-        <th>æ£éªå¥åºåå</th>
-    </tr>
-    </tfoot>
-    <tbody>
-    <script>
-        $(document).ready(function () {
-            var output = "";
-            for(var i=0;i<20;i++){
-                output+="<tr>"+
-                    "<th>"+i+
-                    "</th>"+
-                    "<th>æ°´ç¨»</th>"+
-                    "<th>124354354</th>"+
-                    "<th>2019/09/13</th>"+
-                    "<th>åå</th>"+
-                    "<th>èµµäº</th>"+
-                    "</tr>";
-            }
-            $("#RecordTable").append(output);
-        })
-    </script>
-    </tbody>
-</table>
-
-<script>
-    $(document).ready(function() {
-        $('#RecordTable').DataTable();
-    } );
-</script>
 
 
 <form class="form-horizontal" >
     <fieldset>
 
         <!-- Form Name -->
-        <legend>åè£åå å·¥åè£è®°å½è¡¨å</legend>
+        <legend>包装记录表单</legend>
 
         <!-- Text input-->
         <div class="control-group" >
             <div class="controls" >
-                <label class="control-label" for="checkInSeg_btCode">å¥åºç¯èæº¯æºç :</label>
+                <label class="control-label" for="checkInSeg_btCode">质检溯源码:</label>
                 <input id="checkInSeg_btCode" name="checkInSeg_btCode" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -104,7 +58,7 @@
         <!-- Text input-->
         <div class="control-group" >
             <div class="controls" >
-                <label class="control-label" for="copackTime">åè£æ¶é´:</label>
+                <label class="control-label" for="copackTime">包装时间:</label>
                 <input id="copackTime" name="copackTime" type="date" placeholder="" class="datepicker input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -113,7 +67,7 @@
         <!-- Text input-->
         <div class="control-group" >
             <div class="controls" >
-                <label class="control-label" for="OrderNum">è®¢åå·:</label>
+                <label class="control-label" for="OrderNum">订单号:</label>
                 <input id="OrderNum" name="OrderNum" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -122,7 +76,7 @@
         <!-- Text input-->
         <div class="control-group" >
             <div class="controls" >
-                <label class="control-label" for="copackLocation">åè£å°ç¹:</label>
+                <label class="control-label" for="copackLocation">包装地点:</label>
                 <input id="copackLocation" name="copackLocation" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -131,15 +85,16 @@
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="product_btCode">äº§åæº¯æºç :</label>
+                <label class="control-label" for="product_btCode">产品溯源码:</label>
                 <input id="product_btCode" name="product_btCode" type="text" placeholder="" class="input-xlarge" required="" readonly="readonly">
+            	<span class="help-block">1</span>
             </div>
         </div>
 
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="copacker">åè£å å·¥å:</label>
+                <label class="control-label" for="copacker">包装员:</label>
                 <input id="copacker" name="copacker" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -148,7 +103,7 @@
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="produceDate">çäº§æ¥æ:</label>
+                <label class="control-label" for="produceDate">生产日期:</label>
                 <input id="produceDate" name="produceDate" type="date" placeholder="" class="datepicker input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -157,7 +112,7 @@
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="ProduceLocation">çäº§å°:</label>
+                <label class="control-label" for="ProduceLocation">生产地:</label>
                 <input id="ProduceLocation" name="ProduceLocation" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -166,7 +121,7 @@
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="Specifications">è§æ ¼:</label>
+                <label class="control-label" for="Specifications">规格:</label>
                 <input id="Specifications" name="Specifications" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -175,7 +130,7 @@
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="NetContent">åå«é:</label>
+                <label class="control-label" for="NetContent">净含量:</label>
                 <input id="NetContent" name="NetContent" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -184,7 +139,7 @@
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="StorageCondition">è´®èæ¡ä»¶:</label>
+                <label class="control-label" for="StorageCondition">贮藏条件:</label>
                 <input id="StorageCondition" name="StorageCondition" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -193,7 +148,7 @@
         <!-- Textarea -->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="Comment">å¤æ³¨</label>
+                <label class="control-label" for="Comment">备注:</label>
                 <div id="Comment"><p>Hello Summernote</p></div>
                 <script>
                     $(document).ready(function() {
@@ -204,10 +159,10 @@
         </div>
 
         <div>
-            <button type="submit" id="submit" name="submit" class="btn btn-info">æäº¤</button>
+            <button type="button" id="submit" name="submit" class="btn btn-info">提交</button>
         </div>
     </fieldset>
 </form>
-
+<script src="business/Form/js/copackRecord_input.js"></script>
 </body>
 </html>

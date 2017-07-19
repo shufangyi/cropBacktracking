@@ -59,6 +59,66 @@
   where product_btCode=#{product_btCode}
   </select>
   
+  <!-- 分页查询 -->
+  <select id="getCopackRecords" parameterType="Map" resultMap="copackrecordinfomap">
+  select * from cropBacktracking.copackRecord
+  where checkInSeg_btCode like '%${projectBtcode}%' order by id
+  limit #{startpage},#{rows}
+  </select>
+  
+   <!-- 分页查询数据数量 -->
+     <select id="getCopackRecordsCount" parameterType="Map" resultType="Integer">
+  select count(*) from cropBacktracking.copackRecord
+  where checkInSeg_btCode like '%${projectBtcode}%' order by id
+  limit #{startpage},#{rows}
+  </select>
+  
+  <!-- 更新数据 -->
+  <update id="updateCopackRecord" parameterType="com.cbt.business.po.CopackRecordInfo">
+  update cropBacktracking.copackRecord
+  <set>
+  <if test="checkinsegBtcode!=null">
+  checkInSeg_btCode=#{checkinsegBtcode}
+  </if>
+  <if test="copacktime!=null">
+  copacktime=#{copacktime}
+  </if>
+  <if test="ordernum!=null">
+  ordernum=#{ordernum}
+  </if>
+  <if test="copacklocation!=null">
+  copacklocation=#{copacklocation}
+  </if>
+  <if test="productBtcode!=null">
+  productBtcode=#{productBtcode}
+  </if>
+  <if test="copacker!=null">
+  copacker=#{copacker}
+  </if>
+  <if test="producedate!=null">
+  producedate=#{producedate}
+  </if>
+  <if test="producelocation!=null">
+  producelocation=#{producelocation}
+  </if>
+  <if test="specifications!=null">
+  specifications=#{specifications}
+  </if>
+  <if test="netcontent!=null">
+  netcontent=#{netcontent}
+  </if>
+  <if test="storagecondition!=null">
+  storagecondition=#{storagecondition}
+  </if>
+  <if test="comment!=null">
+  comment=#{comment}
+  </if>
+  </set>
+  where id=#{id}
+ 
+  </update>
+ 
+  
   
   
   

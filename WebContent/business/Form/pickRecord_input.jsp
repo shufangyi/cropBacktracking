@@ -27,75 +27,28 @@
     <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
     <script>
-        $(function() {
-            $( ".datepicker" ).datepicker();
+    $(function() {
+        $( ".datepicker" ).datepicker({
+            dateFormat: 'yy-mm-dd'//日期格式
         });
+    });
     </script>
 
 
-    <link rel="stylesheet" href="css/Form.css">
+    <link rel="stylesheet" href="business/Form/css/Form.css">
 </head>
 <body>
-<!--æ¥è¯¢åè¡¨-->
-<table id="RecordTable" class="display uk-table uk-table-hover uk-table-striped" cellspacing="0" width="100â¢%">
-    <thead>
-    <tr>
-        <th>é¡¹ç®åºå·</th>
-        <th>ä½ç©åç§°</th>
-        <th>æ­ç§ç¯èæº¯æºç </th>
-        <th>å·è¯æ¶é´</th>
-        <th>é²æ²»ææ</th>
-        <th>ç§æ¤å</th>
-    </tr>
-    </thead>
-    <tfoot>
-    <tr>
-        <th>é¡¹ç®åºå·</th>
-        <th>ä½ç©åç§°</th>
-        <th>æ­ç§ç¯èæº¯æºç </th>
-        <th>å·è¯æ¶é´</th>
-        <th>é²æ²»ææ</th>
-        <th>ç§æ¤å</th>
-    </tr>
-    </tfoot>
-    <tbody>
-    <script>
-        $(document).ready(function () {
-            var output = "";
-            for(var i=0;i<20;i++){
-                output+="<tr>"+
-                    "<th>"+i+
-                    "</th>"+
-                    "<th>æ°´ç¨»</th>"+
-                    "<th>124354354</th>"+
-                    "<th>2019/09/13</th>"+
-                    "<th>å¥½</th>"+
-                    "<th>èµµäº</th>"+
-                    "</tr>";
-            }
-            $("#RecordTable").append(output);
-        })
-    </script>
-    </tbody>
-</table>
-
-<script>
-    $(document).ready(function() {
-        $('#RecordTable').DataTable();
-    } );
-</script>
 
 
 <form class="form-horizontal" >
     <fieldset>
 
         <!-- Form Name -->
-        <legend>éæè®°å½è¡¨å</legend>
-
+        <legend>采摘记录表单</legend>
         <!-- Text input-->
         <div class="control-group" >
             <div class="controls" >
-                <label class="control-label" for="sowSeg_btCode">æ­ç§ç¯èæº¯æºç :</label>
+                <label class="control-label" for="sowSeg_btCode">播种溯源码:</label>
                 <input id="sowSeg_btCode" name="sowSeg_btCode" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -104,16 +57,24 @@
         <!-- Text input-->
         <div class="control-group" >
             <div class="controls" >
-                <label class="control-label" for="PickTime">éææ¶é´:</label>
+                <label class="control-label" for="PickTime">采摘时间:</label>
                 <input id="PickTime" name="PickTime" type="date" placeholder="" class="datepicker input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
         </div>
 
+		        <!-- Text input-->
+        <div class="control-group" >
+            <div class="controls" >
+                <label class="control-label" for="pickSeg_btCode">采摘溯源码:</label>
+                <input id="pickSeg_btCode" name="pickSeg_btCode" type="text" placeholder="" class="input-xlarge" required="">
+                <span class="help-block">1</span>
+            </div>
+        </div>
         <!-- Text input-->
         <div class="control-group" >
             <div class="controls" >
-                <label class="control-label" for="PickType">éææ¹å¼:</label>
+                <label class="control-label" for="PickType">采摘方式:</label>
                 <input id="PickType" name="PickType" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -122,24 +83,17 @@
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="PickNum">éææ°é:</label>
+                <label class="control-label" for="PickNum">采摘数量:</label>
                 <input id="PickNum" name="PickNum" type="number" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
         </div>
 
-        <!-- Text input-->
-        <div class="control-group">
-            <div class="controls">
-                <label class="control-label" for="pickSeg_btCode">éæç¯èæº¯æºç :</label>
-                <input id="pickSeg_btCode" name="pickSeg_btCode" type="text" placeholder="" class="input-xlarge" required="" readonly="readonly">
-            </div>
-        </div>
 
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="grower">ç§æ¤å:</label>
+                <label class="control-label" for="grower">采摘员:</label>
                 <input id="grower" name="grower" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -148,22 +102,22 @@
         <!-- Textarea -->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="Comment">å¤æ³¨</label>
-                <div id="Comment"><p>Hello Summernote</p></div>
+                <label class="control-label" for="comment">备注:</label>
+                <div id="comment"><p>Hello Summernote</p></div>
                 <script>
                     $(document).ready(function() {
-                        $('#Comment').summernote();
+                        $('#comment').summernote();
                     });
                 </script>
             </div>
         </div>
 
         <div>
-            <button type="submit" id="submit" name="submit" class="btn btn-info">æäº¤</button>
+            <button type="button" id="submit" name="submit" class="btn btn-info">提交:</button>
         </div>
 
     </fieldset>
 </form>
-
+<script src="business/Form/js/pickRecord_input.js"></script>
 </body>
 </html>

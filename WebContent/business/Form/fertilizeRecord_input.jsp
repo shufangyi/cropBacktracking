@@ -1,6 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
+<base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>fertilizeRecord</title>
 
@@ -10,70 +20,25 @@
     <!--dateTables-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.css"/>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.js"></script>
-    <!--富文本编辑器-->
+    <!--å¯ææ¬ç¼è¾å¨-->
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
     <!--jquery-ui-->
     <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
     <script>
-        $(function() {
-            $( ".datepicker" ).datepicker();
+    $(function() {
+        $( ".datepicker" ).datepicker({
+            dateFormat: 'yy-mm-dd'//日期格式
         });
+    });
     </script>
 
 
-    <link rel="stylesheet" href="css/Form.css">
+    <link rel="stylesheet" href="business/Form/css/Form.css">
 </head>
 <body>
-<!--查询列表-->
-<table id="RecordTable" class="display uk-table uk-table-hover uk-table-striped" cellspacing="0" width="100™%">
-    <thead>
-    <tr>
-        <th>项目序号</th>
-        <th>作物名称</th>
-        <th>播种环节溯源码</th>
-        <th>播种时间</th>
-        <th>播种量(KG)</th>
-        <th>种植员</th>
-    </tr>
-    </thead>
-    <tfoot>
-    <tr>
-        <th>项目序号</th>
-        <th>作物名称</th>
-        <th>播种环节溯源码</th>
-        <th>播种时间</th>
-        <th>播种量(KG)</th>
-        <th>种植员</th>
-    </tr>
-    </tfoot>
-    <tbody>
-    <script>
-        $(document).ready(function () {
-            var output = "";
-            for(var i=0;i<20;i++){
-                output+="<tr>"+
-                    "<th>"+i+
-                    "</th>"+
-                    "<th>水稻</th>"+
-                    "<th>124354354</th>"+
-                    "<th>2017/09/01</th>"+
-                    "<th>4.5</th>"+
-                    "<th>赵二</th>"+
-                    "</tr>";
-            }
-            $("#RecordTable").append(output);
-        })
-    </script>
-    </tbody>
-</table>
 
-<script>
-    $(document).ready(function() {
-        $('#RecordTable').DataTable();
-    } );
-</script>
 
 <form class="form-horizontal" >
     <fieldset>
@@ -84,7 +49,7 @@
         <!-- Text input-->
         <div class="control-group" >
             <div class="controls" >
-                <label class="control-label" for="sowSeg_btCode">播种环节溯源码:</label>
+                <label class="control-label" for="sowSeg_btCode">种植溯源码:</label>
                 <input id="sowSeg_btCode" name="sowSeg_btCode" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -94,7 +59,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="FertilizerName">肥料名称:</label>
-                <input id="FertilizerName" name="FertilizerName" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="fertilizerName" name="FertilizerName" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -111,7 +76,7 @@
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="FertilizerNum">肥料数量:</label>
+                <label class="control-label" for="FertilizerNum">施肥数量:</label>
                 <input id="FertilizerNum" name="FertilizerNum" type="number" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -129,7 +94,7 @@
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="grower">种植员:</label>
+                <label class="control-label" for="grower">施肥人员:</label>
                 <input id="grower" name="grower" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -138,7 +103,7 @@
         <!-- Textarea -->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="Comment">备注</label>
+                <label class="control-label" for="Comment">备注:</label>
                 <div id="Comment"><p>Hello Summernote</p></div>
                 <script>
                     $(document).ready(function() {
@@ -149,11 +114,11 @@
         </div>
 
         <div>
-            <button type="submit" id="submit" name="submit" class="btn btn-info">提交</button>
+            <button type="button" id="submit" name="submit" class="btn btn-info">提交</button>
         </div>
 
     </fieldset>
 </form>
-
+<script src="business/Form/js/fertilizeRecord_input.js"></script>
 </body>
 </html>

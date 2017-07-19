@@ -18,7 +18,7 @@
 			showExport: true,
 			showColumns: true,
 			exportTypes: ['csv','txt','xml'],
-			//search: true,
+			search: true,
 			clickToSelect: true,
 			//【查询设置】
 			/* queryParamsType的默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
@@ -79,10 +79,6 @@
            
        });
 	  //查询数据
-		 
-		 
-		 
-	 //删除数据
 	  $('#delete').click(function(){
 		 var rows = $('table').bootstrapTable('getSelections');
 		 var rowsNum = rows.length;
@@ -115,7 +111,9 @@
 	            });
 		  }
 	  });
-
+	  //删除数据
+		 
+	  //删除数据
 		 
 	  //修改数据  
 	  function update(row)

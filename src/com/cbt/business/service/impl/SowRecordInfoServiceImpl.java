@@ -49,7 +49,7 @@ public class SowRecordInfoServiceImpl implements SowRecordInfoService
 		for(int i=0;i<list.size();i++)
 		{
 			int k = sowRecordInfoMapper.delSowRecordInfo(list.get(i));
-			if(i<=0){
+			if(k<=0){
 				return false;
 			}
 		}
@@ -77,9 +77,12 @@ public class SowRecordInfoServiceImpl implements SowRecordInfoService
 	
 	/*查询记录总数*/
 	@Override
-	public int getRecordsCount(String name) {
-		// TODO Auto-generated method stub
+	public int getRecordsCount(int nowpage,int rows,String project_btCode) {
+		int startrow=(nowpage-1)*rows;
 		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("startrow",startrow);
+		map.put("rows", rows);   
+		map.put("project_btCode", project_btCode);
 		return sowRecordInfoMapper.getRecordsCount(map);
 	}
 
@@ -97,6 +100,12 @@ public class SowRecordInfoServiceImpl implements SowRecordInfoService
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	//通过项目码查询
+	@Override
+	public SowRecordInfo queryByProjectBtCodeService(String projectBtcode) throws Exception {
+		return sowRecordInfoMapper.queryByProjectBtCode(projectBtcode);
 	}
 
 	

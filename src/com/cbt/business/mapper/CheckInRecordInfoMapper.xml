@@ -13,17 +13,17 @@
   </resultMap>
   <!--根据checkInSeg_btCode 查询一条入库表单的数据  -->
   <select id="getCheckInRecordInfo" parameterType="com.cbt.business.po.CheckInRecordInfo" resultMap="checkinrecordinfomap">
-  	select  * from  checkrecord where  checkInSeg_btCode=#{checkinsegBtcode}
+  	select  * from  checkInrecord where  checkInSeg_btCode=#{checkinsegBtcode}
   </select>
   
   <!--查询所有入库表单的数据  -->
    <select id="getAllCheckInRecordInfo" resultMap="checkinrecordinfomap">
-  	select  * from  checkrecord 
+  	select  * from  checkInrecord 
   </select>
   
   <!-- 插入一条入库表单的数据 -->
   <insert id="addCheckInRecordInfo" parameterType="com.cbt.business.po.CheckInRecordInfo">
-  	insert into checkrecord
+  	insert into checkInrecord
   	(id,pickSeg_btCode,checkInTime,checkInSeg_btCode,stockLocation,fertilizerNum,comment,checker)
   	values
   	(#{id},#{picksegBtcode},#{checkintime},#{checkinsegBtcode},#{stocklocation},#{fertilizernum},#{comment},#{checker})
@@ -32,13 +32,53 @@
   
   <!--根据checkInSeg_btCode 删除一条数据  -->
   <delete id="delCheckInRecordInfo" parameterType="com.cbt.business.po.CheckInRecordInfo" >
-   	delete form checkrecord where checkInSeg_btCode=#{checkinsegBtcode}
+   	delete from checkInrecord where checkInSeg_btCode=#{checkinsegBtcode}
   </delete>
   
   <!-- 溯源信息查询之，质检入库记录 -->
   <select id="queryCheckInByBtCode" parameterType="String" resultMap="checkinrecordinfomap">
   select * from cropBacktracking.CheckInRecord
   where checkInSeg_btCode=#{checkInSeg_btCode}
+  </select>
+  
+  <!-- 分页查询 -->
+  <select id="getCheckInRecordByPagination" parameterType="Map" resultMap="checkinrecordinfomap">
+  select * from cropBacktracking.checkinRecord
+  where pickSeg_btCode like '%${projectBtcode}%' order by id
+  limit #{startpage},#{rows}
+  </select>
+  
+  <!-- 更新数据 -->
+  <update id="updateCheckInRecord" parameterType="com.cbt.business.po.CheckInRecordInfo">
+  update cropBacktracking.checkinRecord
+  <set>
+  <if test="picksegBtcode!=null">
+  pickSeg_btCode=#{picksegBtcode}
+  </if>
+  <if test="chechintime!=null">
+  checkInTime=#{checkintime}
+  </if>
+  <if test="checkInSegBtcode!=null">
+  checkInSeg_btCode=#{checkinsegBtcode}
+  </if>
+  <if test="stocklocation!=null">
+  stockLocation=#{stocklocation}
+  </if>
+  <if test="comment!=null">
+  comment=#{comment}
+  </if>
+  <if test="checker!=null">
+  checker=#{checker}
+  </if>
+  </set>
+  where id=#{id}
+  </update>
+  
+  <!-- get total count -->
+  <select id="getPaginationCount" parameterType="Map" resultType="Integer">
+  select count(*) from cropBacktracking.checkinRecord
+  where pickSeg_btCode like '%${projectBtcode}%' order by id
+  limit #{startpage},#{rows}
   </select>
   
   

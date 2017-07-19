@@ -1,6 +1,7 @@
 package com.cbt.business.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -43,6 +44,33 @@ public class CheckInRecordInfoServiceImpl implements  CheckInRecordInfoService{
 	@Override
 	public CheckInRecordInfo queryCheckInByBtCodeService(String checkInSeg_btCode) throws Exception {
 		return checkInRecordInfoMapper.queryCheckInByBtCode(checkInSeg_btCode);
+	}
+	//分页查询
+	@Override
+	public List<CheckInRecordInfo> getCheckInRecordByPaginationService(Map<String, Object> map) throws Exception {
+		return checkInRecordInfoMapper.getCheckInRecordByPagination(map);
+	}
+	//更新数据
+	@Override
+	public int updateCheckInRecordService(CheckInRecordInfo checkInRecordInfo) throws Exception {
+		return checkInRecordInfoMapper.updateCheckInRecord(checkInRecordInfo);
+	}
+	//获取分页数据总数
+	@Override
+	public int getPaginationCountService(Map<String, Object> map) throws Exception {
+		return checkInRecordInfoMapper.getPaginationCount(map);
+	}
+	//
+	public String delCheckInRecords(List<CheckInRecordInfo> list)throws Exception{
+		String mark="true";
+		for(int i=0;i<list.size();i++){
+			if(checkInRecordInfoMapper.delCheckInRecordInfo(list.get(i))<=0){
+				mark="false";
+				return mark;
+			}
+			
+		}
+		return mark;
 	}
 
 }

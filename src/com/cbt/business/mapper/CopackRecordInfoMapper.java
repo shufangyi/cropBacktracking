@@ -1,6 +1,7 @@
 package com.cbt.business.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.cbt.business.po.CopackRecordInfo;
 
@@ -17,4 +18,11 @@ public interface CopackRecordInfoMapper {
 	public CopackRecordInfo queryCopackByBtCode(String product_btCode)throws Exception;
 	//查询出订单号orderNum
 	public String queryOrderNumByBtCode(String product_btCode)throws Exception;
+	//分页查询
+	public List<CopackRecordInfo> getCopackRecords(Map<String ,Object> map)throws Exception;
+	//get  pagination count
+	public int getCopackRecordsCount(Map<String, Object> map)throws Exception;
+	//更新数据
+	public int updateCopackRecord(CopackRecordInfo copackRecordInfo)throws Exception;
+	
 }

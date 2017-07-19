@@ -32,13 +32,50 @@
   
   <!--根据id删除一条数据 -->
   <delete id="delFertilizerRecordInfo" parameterType="com.cbt.business.po.FertilizerRecordInfo">
-  	delete from   fertilizerrecord where  id=#{id}
+  	delete from   cropBacktracking.fertilizerRecord where  id=#{id}
   </delete>
   
   <!-- 溯源信息查询，施肥记录 -->
   <select id="queryFertilizerByBtCode" parameterType="String" resultMap="fertilizerrecordinfomap">
   select * from cropBacktracking.fertilizerRecord
   where sowSeg_btCode=#{sowSeg_btCode}
+  </select>
+  <!-- 分页查询 -->
+  <select id="getFertilizerRecord" parameterType="Map" resultMap="fertilizerrecordinfomap">
+  select * from cropBacktracking.fertilizerRecord
+  where sowSeg_btCode like '%${projectBtcode}%' order by id limit #{startpage},#{rows}
+  </select>
+  
+  <!-- update a fertilizer -->
+  <update id="updateFertilizerBySowBtCode" parameterType="com.cbt.business.po.FertilizerRecordInfo">
+  update cropBacktracking.fertilizerRecord
+	  <set>
+		  <if test="fertilizername!=null">
+		  fertilizerName=#{fertilizername}
+		  </if>
+		  <if test="fertilizertime!=null">
+		  fertilizertime=#{fertilizertime}
+		  </if>
+		  <if test="fertilizernum!=null">
+		  fertilizernum=#{fertilizernum}
+		  </if>
+		  <if test="comment!=null">
+		  comment=#{comment}
+		  </if>
+		  <if test="grower!=null">
+		  grower=#{grower}
+		  </if>
+		  <if test="sowsegBtcode!=null">
+		  sowSeg_btCode=#{sowsegBtcode}
+		  </if>
+	  </set>
+  where id=#{id}
+  </update>
+  
+  <!-- get total count -->
+  <select id="getFertilizerRecordCount" parameterType="Map" resultType="int">
+  select count(*) from cropBacktracking.fertilizerRecord
+  where sowSeg_btCode like '%${projectBtcode}%' order by id limit #{startpage},#{rows}
   </select>
   
   

@@ -1,6 +1,7 @@
 package com.cbt.business.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.cbt.business.po.PestRecordInfo;
 
@@ -16,4 +17,12 @@ public interface PestRecordInfoMapper {
 	
 	//溯源信息查询之，病虫害记录
 	public List<PestRecordInfo> queryPestByBtCode(String sowSeg_btCode)throws Exception;
+	//分页查询
+	public List<PestRecordInfo> getPestRecords(Map<String, Object> map)throws Exception;
+	//update a record
+	public int updatePestRecordInfo(PestRecordInfo pestRecordInfo)throws Exception;
+	//
+	public int getCount(Map<String, Object> map)throws Exception;
+	
+	
 }

@@ -26,4 +26,7 @@ public interface WorkerInfoMapper
 	
 	public int getWorkersCount(Integer BusinessId);
 	
+	//query by workerId
+	public WorkerInfo queryByWorkerId(WorkerInfo workerInfo)throws Exception;
+	
 }

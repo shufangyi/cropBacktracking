@@ -20,6 +20,8 @@ public interface WorkerInfoService
 	
 	public List<WorkerInfo> getPageWorkers(int nowpage, int rows,int businessId);
 	
-	
 	public int getWorkersCount(int businessId);
+	
+	//query by workerId
+	public WorkerInfo queryByWorkerIdService(WorkerInfo workerInfo)throws Exception;
 }

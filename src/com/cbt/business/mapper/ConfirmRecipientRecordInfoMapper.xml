@@ -37,4 +37,48 @@
   	select * from cropBacktracking.confirmRecipientRecord
   	where orderNum=#{orderNum}
   	</select>
+  	
+  	<!-- 分页查询 -->
+  	<select id="getConfirmRecipientRecords" parameterType="Map" resultMap="confirmrecipientrecordinfomap">
+  	select * from cropBacktracking.confirmRecipientRecord
+  	where distributor=#{distributor} order by id
+  	limit #{startpage},#{rows}
+  	</select>
+  	<!-- 分页查询的条数 -->
+  	<select id="getConfirmRecipientRecordsCount" parameterType="Map" resultType="Integer">
+  	select count(*) from cropBacktracking.confirmRecipientRecord
+  	where distributor=#{distributor} order by id
+  	limit #{startpage},#{rows}
+  	</select>
+  	
+  	<!-- 更新数据 -->
+  	<update id="updateConfirmRecipientRecord" parameterType="com.cbt.business.po.ConfirmRecipientRecordInfo">
+  	update cropBacktracking.confirmRecipientRecord
+  	<set>
+  	<if test="ordernum!=null">
+  	ordernum=#{ordernum}
+  	</if>
+  	<if test="receipienttime!=null">
+  	receipienttime=#{receipienttime}
+  	</if>
+  	<if test="logisticsNum!=null">
+  	logisticsNum=#{logisticsNum}
+  	</if>
+  	<if test="distributor!=null">
+  	distributor=#{distributor}
+  	</if>
+  	<if test="comment!=null">
+  	comment=#{comment}
+  	</if>
+  	</set>
+  	where id=#{id}
+  	</update>
+  	
+  	<!-- 通过distributor查找出orderNum -->
+  	<select id="queryByDistributor" parameterType="String" resultMap="confirmrecipientrecordinfomap">
+  	select * from cropBacktracking.confirmRecipientRecord
+  	where distributor=#{distributor}
+  	</select>
+  	
+  	
 </mapper>

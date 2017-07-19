@@ -54,5 +54,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	<select id="getWorkersCount" parameterType="java.lang.Integer" resultType="int" >
  		 select count(*) from workerinfo where businessId = #{value}
  	</select>
+ 	
+ 	
+ 	<!-- 根据workerId 查询数据 -->
+	<select id="queryByWorkerId" parameterType="com.cbt.business.po.WorkerInfo" resultType="com.cbt.business.po.WorkerInfo">
+	select * from cropBacktracking.workerInfo
+	where workerId=#{workerId}
+	</select>
 
 </mapper>

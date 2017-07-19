@@ -27,74 +27,30 @@
     <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
     <script>
-        $(function() {
-            $( ".datepicker" ).datepicker();
+    $(function() {
+        $( ".datepicker" ).datepicker({
+            dateFormat: 'yy-mm-dd'//日期格式
         });
+    });
     </script>
 
-    <link rel="stylesheet" href="css/Form.css">
+    <link rel="stylesheet" href="business/Form/css/Form.css">
 </head>
 <body>
-<!--æ¥è¯¢åè¡¨-->
-<table id="RecordTable" class="display uk-table uk-table-hover uk-table-striped" cellspacing="0" width="100â¢%">
-    <thead>
-    <tr>
-        <th>é¡¹ç®åºå·</th>
-        <th>ä½ç©åç§°</th>
-        <th>æ­ç§ç¯èæº¯æºç </th>
-        <th>éææ¶é´</th>
-        <th>éææ°é</th>
-        <th>ç§æ¤å</th>
-    </tr>
-    </thead>
-    <tfoot>
-    <tr>
-        <th>é¡¹ç®åºå·</th>
-        <th>ä½ç©åç§°</th>
-        <th>æ­ç§ç¯èæº¯æºç </th>
-        <th>éææ¶é´</th>
-        <th>éææ°é</th>
-        <th>ç§æ¤å</th>
-    </tr>
-    </tfoot>
-    <tbody>
-    <script>
-        $(document).ready(function () {
-            var output = "";
-            for(var i=0;i<20;i++){
-                output+="<tr>"+
-                    "<th>"+i+
-                    "</th>"+
-                    "<th>æ°´ç¨»</th>"+
-                    "<th>124354354</th>"+
-                    "<th>2019/09/13</th>"+
-                    "<th>143253</th>"+
-                    "<th>èµµäº</th>"+
-                    "</tr>";
-            }
-            $("#RecordTable").append(output);
-        })
-    </script>
-    </tbody>
-</table>
 
-<script>
-    $(document).ready(function() {
-        $('#RecordTable').DataTable();
-    } );
-</script>
+
 
 
 <form class="form-horizontal" action="addCheckInRecordInfo.do" method="post">
     <fieldset>
         <!-- Form Name -->
-        <legend>æ£éªåæ£éªå¥åºè¡¨å</legend>
+        <legend>质检记录表单</legend>
 
         <!-- Text input-->
         <div class="control-group" >
             <div class="controls" >
-                <label class="control-label" for="pluckSeg_btCode">éæç¯èæº¯æºç :</label>
-                <input id="pluckSeg_btCode" name="pluckSeg_btCode" type="text" placeholder="" class="input-xlarge" required="">
+                <label class="control-label" for="pickSeg_btCode">采摘溯源码:</label>
+                <input id="pickSeg_btCode" name="pickSeg_btCode" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -102,7 +58,7 @@
         <!-- Text input-->
         <div class="control-group" >
             <div class="controls" >
-                <label class="control-label" for="checkInTime">æ£éªå¥åºæ¶é´:</label>
+                <label class="control-label" for="checkInTime">质检时间:</label>
                 <input id="checkInTime" name="checkInTime" type="date" placeholder="" class="datepicker input-xlarge" required="">
                 <span class="help-block">1</span>
 
@@ -112,15 +68,16 @@
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="checkInSeg_btCode">æ£éªå¥åºç¯èæº¯æºç :</label>
-                <input id="checkInSeg_btCode" name="checkInSeg_btCode" type="text" placeholder="" class="input-xlarge" required="" readonly="readonly">
+                <label class="control-label" for="checkInSeg_btCode">质量检查溯源码:</label>
+                <input id="checkInSeg_btCode" name="checkInSeg_btCode" type="text" placeholder="" class="input-xlarge" required="" >
+            	<span class="help-block">1</span>
             </div>
         </div>
 
         <!-- Text input-->
         <div class="control-group" >
             <div class="controls" >
-                <label class="control-label" for="StockLocation">åºå­å°ç¹:</label>
+                <label class="control-label" for="StockLocation">存储地点:</label>
                 <input id="StockLocation" name="StockLocation" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -130,7 +87,7 @@
         <!-- Text input-->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="Checker">æ£éªå¥åºå:</label>
+                <label class="control-label" for="Checker">质检员:</label>
                 <input id="Checker" name="Checker" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
@@ -139,7 +96,7 @@
         <!-- Textarea -->
         <div class="control-group">
             <div class="controls">
-                <label class="control-label" for="Comment">å¤æ³¨</label>
+                <label class="control-label" for="Comment">备注:</label>
                 <div id="Comment"><p>Hello Summernote</p></div>
                 <script>
                     $(document).ready(function() {
@@ -150,11 +107,11 @@
         </div>
 
         <div>
-            <button type="submit" id="submit" name="submit" class="btn btn-info">æäº¤</button>
+            <button type="button" id="submit" name="submit" class="btn btn-info">提交</button>
         </div>
 
     </fieldset>
 </form>
-
+<script src="business/Form/js/checkInRecord_input.js"></script>
 </body>
 </html>

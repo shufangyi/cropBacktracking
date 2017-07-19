@@ -66,13 +66,15 @@ public class SowRecordInfoController
 	@RequestMapping("addSowRecordInfo.do")
 	public @ResponseBody String addSowRecordInfo(SowRecordInfo info,HttpServletRequest req)
 	{
-		Boolean mark = false;
+		Boolean mark = true;
 		System.out.println(info.getProductname());
 		System.out.println(info.getSowtime());
-		int i = sowRecordInfoService.addSowRecordInfo(info);
-		if(i>0)
-			mark = true;	
-		return mark.toString();			
+		if(sowRecordInfoService.addSowRecordInfo(info)>0){
+			return mark.toString();			
+		}else {
+			mark=false;
+			return mark.toString();
+		}
 	}
 	
 	//删除
@@ -107,6 +109,7 @@ public class SowRecordInfoController
 		//可能一个员工id对应多个项目
 		List<BusinessCropProjectInfo> businessCropProjectInfolist=businessCropProjectInfoService.getBusinessCropProjectInfo(businessCropProjectInfo);
 		ModelMap model = new ModelMap();
+		int total=0;
 		List<SowRecordInfo> lists = new ArrayList<SowRecordInfo>();
 		for(int i=0;i<businessCropProjectInfolist.size();i++)
 		{
@@ -115,6 +118,7 @@ public class SowRecordInfoController
 			String project_btCode=businessCropProjectInfolist.get(i).getProject_btCode();
 			//得到参与的项目溯源码，模糊查询
 			list = sowRecordInfoService.getPageSowRecords(nowpage, rows,project_btCode);
+			total =total+ sowRecordInfoService.getRecordsCount(nowpage, rows,project_btCode);
 			for(int j=0;j<list.size();j++)
 			{
 					//new SimpleDateFormat("yyyy-mm-dd").format(list.get(j).getSowtime())
@@ -124,7 +128,6 @@ public class SowRecordInfoController
 			}
 		}
 		model.put("rows", lists);	
-		int total = sowRecordInfoService.getRecordsCount(null);	
 		model.put("total", total);	
 		return model;
 	}

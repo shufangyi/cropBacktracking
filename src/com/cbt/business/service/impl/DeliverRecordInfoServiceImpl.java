@@ -1,6 +1,7 @@
 package com.cbt.business.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -46,6 +47,40 @@ public class DeliverRecordInfoServiceImpl implements DeliverRecordInfoService {
 	public DeliverRecordInfo queryDeliverByBtCodeService(String product_btCode) throws Exception {	
 		return deliverRecordInfoMapper.queryDeliverByOrderNum(copackRecordInfoMapper.queryOrderNumByBtCode(product_btCode));
 	
+	}
+	//分页查询
+	@Override
+	public List<DeliverRecordInfo> getDeliverRecordsService(Map<String, Object> map) throws Exception {
+		return deliverRecordInfoMapper.getDeliverRecords(map);
+	}
+	//分页查询数据count
+	@Override
+	public int getDeliverRecordsCountService(Map<String, Object> map) throws Exception {
+		return deliverRecordInfoMapper.getDeliverRecordsCount(map);
+	}
+	//更新数据
+	@Override
+	public int updateDeliverRecordService(DeliverRecordInfo deliverRecordInfo) throws Exception {
+		return deliverRecordInfoMapper.updateDeliverRecord(deliverRecordInfo);
+	}
+	//循环删除
+	@Override
+	public String deleteDeliverRecords(List<DeliverRecordInfo> list) throws Exception {
+		String mark="true";
+		for(int i=0;i<list.size();i++){
+			if(deliverRecordInfoMapper.delDeliverRecordInfo(list.get(i))<=0){
+				mark="false";
+				return mark;
+				
+			}
+			
+		}
+		return mark;
+	}
+	//通过负责人账号查找
+	@Override
+	public List<DeliverRecordInfo> queryByLogisticsService(String logistics) throws Exception {
+		return deliverRecordInfoMapper.queryByLogistics(logistics);
 	}
 
 }

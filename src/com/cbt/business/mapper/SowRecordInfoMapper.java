@@ -27,4 +27,6 @@ public interface SowRecordInfoMapper
 	//修改数据
 	public int updateSowRecord(SowRecordInfo info);
 	
+	public SowRecordInfo queryByProjectBtCode(String projectBtcode)throws Exception;
+	
 }

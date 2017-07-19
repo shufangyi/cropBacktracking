@@ -32,9 +32,11 @@
     <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
     <script>
-        $(function() {
-            $( ".datepicker" ).datepicker();
-        });
+	    $(function() {
+	        $( ".datepicker" ).datepicker({
+	            dateFormat: 'yy-mm-dd'//日期格式
+	        });
+	    });
     </script>
 
     <link rel="stylesheet" href="business/Form/css/Form.css">
@@ -65,7 +67,7 @@
 </div>
 */
 </script>
-<form class="form-horizontal">
+<form class="form-horizontal" >
     <fieldset>
         <!-- Form Name -->
         <legend>播种记录表单</legend>
@@ -83,6 +85,15 @@
             <div class="controls" >
                 <label class="control-label" for="sowTime">播种时间:</label>
                 <input id="sowtime" name="sowtime" type="date" class="datepicker input-xlarge" required="">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+        
+            <!-- Text input-->
+        <div class="control-group" >
+            <div class="controls" >
+                <label class="control-label" for="sowSeg_btCode">项目溯源码:</label>
+                <input id="sowSeg_btCode" name="sowSeg_btCode" type="text" placeholder="" class="input-xlarge" required="">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -137,16 +148,16 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="Comment">备注</label>
-                <div id="Comment" name="comment"><p>Hello Summernote</p></div>
+                <div id="comment" name="comment"><p>Hello Summernote</p></div>
                 <script>
                     $(document).ready(function() {
-                        $('#Comment').summernote();
+                        $('#comment').summernote();
                     });
                 </script>
             </div>
         </div>
         <div>
-            <button type="submit" id="submit" name="submit" class="btn btn-info">提交</button>
+            <button type="button" id="submit" name="submit" class="btn btn-info">提交</button>
         </div>
     </fieldset>
 </form>

@@ -1,6 +1,7 @@
 package com.cbt.business.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.cbt.business.po.ConfirmRecipientRecordInfo;
 
@@ -16,4 +17,14 @@ public interface ConfirmRecipientRecordInfoMapper {
 	public int delConfirmRecipientRecordInfo(ConfirmRecipientRecordInfo info);
 	//溯源信息查询之，确认收货信息
 	public ConfirmRecipientRecordInfo queryConfirmByOrderNum(String orderNum)throws Exception;
+	//分页查询
+	public List<ConfirmRecipientRecordInfo> getConfirmRecipientRecords(Map<String, Object> map)throws Exception;
+	//分页查询条数
+	public int getConfirmRecipientRecordsCount(Map<String, Object> map)throws Exception;
+	//更新数据
+	public int updateConfirmRecipientRecord(ConfirmRecipientRecordInfo confirmRecipientRecordInfo)throws Exception;
+	//通过distributor查找
+	public List<ConfirmRecipientRecordInfo> queryByDistributor(String distributor)throws Exception;
+	
+	
 }

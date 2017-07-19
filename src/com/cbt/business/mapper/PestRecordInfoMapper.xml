@@ -28,9 +28,9 @@
    <!--插入一条数据  -->
    <insert id="addPestRecordInfo"  parameterType="com.cbt.business.po.PestRecordInfo">
    	insert into pestrecord
-   	(id,sowSeg_btCode,pestType,medicationName,medicationRatio,medicationDosage,result,comment,grower)
+   	(sowSeg_btCode,pestType,medicationName,medicationRatio,medicationDosage,result,comment,grower)
    	values
-   	(#{id},#{sowsegBtcode},#{pesttype},#{medicationname},#{medicationratio},#{medicationdosage},#{result},#{comment},#{grower})
+   	(#{sowsegBtcode},#{pesttype},#{medicationname},#{medicationratio},#{medicationdosage},#{result},#{comment},#{grower})
    </insert>
   
   <!--根据id删除一条数据 -->
@@ -43,7 +43,51 @@
   select * from cropBacktracking.pestRecord 
   where sowSeg_btCode=#{sowSeg_btCode}
   </select>
+  <!-- 分页查询 -->
+  <select id="getPestRecords" parameterType="Map" resultMap="pestrecordinfomap">
+  select * from cropBacktracking.pestRecord
+  where sowSeg_btCode like '%${projectBtcode}%'
+  order by id limit #{startpage},#{rows}
+  </select>
   
+  <!-- update a pestRecord -->
+  <update id="updatePestRecordInfo" parameterType="com.cbt.business.po.PestRecordInfo">
+  update cropBacktracking.pestRecord
+  <set>
+	  <if test="sowsegBtcode!=null">
+	  sowSeg_btCode=#{sowsegBtcode}
+	  </if>
+	  <if test="pestType!=null">
+	  pestType=#{pesttype}
+	  </if>
+	  <if test="medicationname!=null">
+	  MedicationName=#{medicationname}
+	  </if>
+	  <if test="medicationratio!=null">
+	  medicationratio=#{medicationratio}
+	  </if>
+	  <if test="medicationdosage!=null">
+	  medicationdosage=#{medicationdosage}
+	  </if>
+	  <if test="result!=null">
+	  retsult=#{result}
+	  </if>
+	  <if test="grower!=null">
+	  grower=#{grower}
+	  </if>
+	  <if test="comment">
+	  comment=#{comment}
+	  </if>
+  </set>
+  where id=#{id}
+  </update>
+  
+  <!-- total count -->
+  <select id="getCount" parameterType="Map" resultType="Integer">
+  select count(*) from cropBacktracking.pestRecord
+    where sowSeg_btCode like '%${projectBtcode}%'
+  order by id limit #{startpage},#{rows}
+  </select>
   
   
 </mapper>

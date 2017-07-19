@@ -42,4 +42,58 @@
   where orderNum=#{orderNum}
   </select>
   
+  <!-- 分页查询记录 -->
+  <select id="getDeliverRecords" parameterType="Map" resultMap="deliverrecordinfomap">
+  select * from cropBacktracking.deliverRecord
+  where logistics=#{logistics} order by id
+  limit #{startpage},#{rows}
+  </select>
+  
+  <select id="getDeliverRecordsCount" parameterType="Map"  resultType="Integer">
+   select count(*) from cropBacktracking.deliverRecord
+  where logistics=#{logistics} order by id
+  limit #{startpage},#{rows}
+  </select>
+  
+  <!-- 修改数据 -->
+  <update id="updateDeliverRecord" parameterType="com.cbt.business.po.DeliverRecordInfo">
+  update cropBacktracking.deliverRecord
+  <set>
+  <if test="oedernum!=null">
+  orderNum=#{ordernum}
+  </if>
+  <if test="delivertime!=null">
+  delivertime=#{delivertime}
+  </if>
+  <if test="deliveraddress!=null">
+  deliveraddress=#{deliveraddress}
+  </if>
+  <if test="logisticscompany!=null">
+  logisticscompany=#{logisticscompany}
+  </if>
+  <if test="logisticsnum!=null">
+  logisticsnum=#{logisticsnum}
+  </if>
+  <if test="distributor!=null">
+  distributor=#{distributor}
+  </if>
+  <if test="comment!=null">
+  comment=#{comment}
+  </if>
+  <if test="logistics!=null">
+  logistics=#{logistics}
+  </if>
+  </set>
+  where id=#{id}
+  </update>
+  
+  <!-- 通过物流负责人账号查找 -->
+  <select id="queryByLogistics" parameterType="String" resultMap="deliverrecordinfomap">
+  select * from cropBacktracking.deliverRecord
+  where logistics=#{logistics}
+  </select>
+  
+  
+  
+  
 </mapper>

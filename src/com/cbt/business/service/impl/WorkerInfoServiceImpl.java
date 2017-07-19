@@ -74,4 +74,10 @@ public class WorkerInfoServiceImpl implements WorkerInfoService{
 		// TODO Auto-generated method stub
 		return workerInfoMapper.getWorkersCount(businessId);
 	}
+	
+	//query by workerId
+	@Override
+	public WorkerInfo queryByWorkerIdService(WorkerInfo workerInfo) throws Exception {
+		return workerInfoMapper.queryByWorkerId(workerInfo);
+	}
 }

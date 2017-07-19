@@ -22,10 +22,12 @@ public interface SowRecordInfoService {
 	public List<SowRecordInfo> getPageSowRecords(int nowpage,int rows,String project_btCode);
 	
 	/*查询记录总数*/
-	public int getRecordsCount(String name);
+	public int getRecordsCount(int nowpage,int rows,String project_btCode);
 	
 	/*修改数据 */
 	Boolean updateSowRecord(SowRecordInfo info);
+	
+	public SowRecordInfo queryByProjectBtCodeService(String projectBtcode)throws Exception;
 	
 	
 

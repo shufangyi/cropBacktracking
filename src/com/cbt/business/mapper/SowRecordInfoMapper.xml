@@ -50,22 +50,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	 <!-- 分页 -->
  	<select id="getPageSowRecords" parameterType="Map" resultMap="sowrecordinfomap">
   		select * from sowrecord 
- 		 where project_btCode= #{project_btCode} limit #{startrow},#{rows}
+ 		 where project_btCode= #{project_btCode} order by id limit #{startrow},#{rows}
  	</select>
  	<!-- 获取记录数量 -->
   	<select id="getRecordsCount" parameterType="Map" resultType="int">
- 		 select count(*) from sowrecord 
+ 		 select count(*) from sowrecord where project_btCode= #{project_btCode} order by id limit #{startrow},#{rows}
  	</select>
  	
  	<!-- 修改数据 -->
  	<update id="updateSowRecord" parameterType="com.cbt.business.po.SowRecordInfo" >
-    	update sowrecord
-    	set
+    	update sowRecord
+    	<set>
+    	<if test="seedSource!=null">
       	seedSource = #{seedsource},
+      	</if>
+      	<if test="sowNum!=null">
       	sowNum = #{sownum},
+      	</if>
+      	<if test="comment!=null">
       	comment = #{comment},
+      	</if>
+      	<if test="grower!=null">
       	grower = #{grower},
-      	sowLocation = #{sowlocation}	
-    	where id = #{id}
+      	</if>
+      	<if test="sowLocation!=null">
+      	sowLocation = #{sowlocation}
+      	</if>
+      	</set>	
+    	where project_btCode=#{projectBtcode}
  	</update>
+ 	<!-- 通过项目码查找出种植码 -->
+ 	<select id="queryByProjectBtCode" parameterType="String" resultMap="sowrecordinfomap">
+ 	select * from cropBacktracking.sowRecord
+ 	where project_btCode=#{projectBtcode}
+ 	limit 1
+ 	</select>
 </mapper>
