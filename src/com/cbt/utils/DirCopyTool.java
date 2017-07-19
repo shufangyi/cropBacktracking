@@ -116,7 +116,7 @@ public class DirCopyTool
 			}catch(Exception e){
 				e.getMessage();
 			}
-			return "Uploads/patent"+ymd+newsLogoPath;
+			return "Uploads/business"+ymd+newsLogoPath;
 		}
 	  
 	//根据时间产生随机文件

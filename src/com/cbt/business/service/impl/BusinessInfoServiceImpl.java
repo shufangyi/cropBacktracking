@@ -1,5 +1,6 @@
 package com.cbt.business.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -34,17 +35,64 @@ public class BusinessInfoServiceImpl implements BusinessInfoService{
 
 
 	@Override
-	public int addBusinessInfo(BusinessInfo info) {
+	public Boolean addBusiness(BusinessInfo info) {
 		// TODO Auto-generated method stub
-		return businessInfoMapper.addBusinessInfo(info);
+		int i = businessInfoMapper.addBusinessInfo(info);
+		if(i > 0 )
+			return true;
+		return false;
 	}
 
 
 
 	@Override
-	public int delBusinessInfo(BusinessInfo info) {
+	public Boolean delBusiness(List<BusinessInfo> list) {
 		// TODO Auto-generated method stub
-		return businessInfoMapper.delBusinessInfo(info);
+		Boolean mark = true;
+		for(int i=0;i<list.size();i++)
+		{
+			int k = businessInfoMapper.delBusinessInfo(list.get(i));
+			if(i<=0){
+				return false;
+			}
+		}
+		return true;
+	}
+
+
+
+	@Override
+	public List<BusinessInfo> getPageBusinesss(int nowpage, int rows) {
+		// TODO Auto-generated method stub
+		int startrow=(nowpage-1)*rows;
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("startrow",startrow);
+		map.put("rows", rows);   
+		return businessInfoMapper.getPageBusinesss(map);
+	}
+
+
+
+	@Override
+	public int getBusinesssCount() {
+		// TODO Auto-generated method stub
+		return businessInfoMapper.getBusinesssCount();
+	}
+
+
+
+	@Override
+	public Boolean updateBusiness(BusinessInfo info) {
+		// TODO Auto-generated method stub
+		try {
+			int i = businessInfoMapper.updateBusiness(info);
+			if(i>0){
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

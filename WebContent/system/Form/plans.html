@@ -1,10 +1,147 @@
-<!DOCTYPE html>
+ <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>roles</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- boostrap table  -->
+   	<script type="text/javascript" src="../../plugs/jquery-3.1.1.min.js"></script>
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../plugs/bootstrap/css/bootstrap.min.css">
+	<script type="text/javascript" src="../../plugs/bootstrap/js/bootstrap.min.js"></script>
+	<!-- 分页插件 -->
+	<link rel="stylesheet" href="../../plugs/bootstrap-table/bootstrap-table.min.css">
+	<script type="text/javascript" src="../../plugs/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../../plugs/bootstrap-table/bootstrap-table-locale-all.min.js"></script>
+	<!-- 行内编辑 -->
+	<script type="text/javascript" src="../../plugs/editable/bootstrap-editable.js"></script>
+	<script type="text/javascript" src="../../plugs/editable/bootstrap-table-editable.js"></script>
 </head>
 <body>
-
+<!--没有查询列表，只有显示作物编码-->
+<div class="container" style="margin-top:20px">	
+	<div class="row">
+		<div id="toolbar">
+        	<button value="删除" id="delete">删除</button>
+		</div>
+		<div class="col-xs-12">
+			<table class="table table-striped table-bordered table-hover" ></table>
+		</div>
+		<p>test</p>
+	</div>
+</div>
+<script>
+$(document).ready(function() 
+		{
+		    	 //---先销毁表格 ---
+		        $('table').bootstrapTable('destroy');  
+		        //---初始化表格,动态从服务器加载数据--- 
+		       //	alert("hello");
+				 $('table').bootstrapTable
+				 ({
+					//发送数据请求
+			    	url: '../getPageProductPlanInfo.do',
+					method: 'post',
+					contentType: "application/x-www-form-urlencoded",
+					toolbar: '#toolbar',//自定义工具栏
+					cache: false,
+					height: 600,
+					striped: true,
+					search: true,
+					showExport: true,
+					showColumns: true,
+					exportTypes: ['csv','txt','xml'],
+					search: true,
+					clickToSelect: true,
+					//【查询设置】
+					/* queryParamsType的默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
+		                             设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber */
+					queryParamsType:'', 
+		           	queryParams: function queryParams(params) {
+		             var param = {  
+		                 pageNumber: params.pageNumber,    
+		                 pageSize: params.pageSize
+		             }; 
+		             return param;                   
+		           }, 
+					//【其它设置】
+		           locale:'zh-CN',//中文支持
+		           pagination: true,//是否开启分页（*）
+		           pageNumber:1,//初始化加载第一页，默认第一页
+		           pageSize: 10,//每页的记录行数（*）
+		           pageList: [10,15,20],//可供选择的每页的行数（*）
+		           sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
+		           showRefresh:true,//刷新按钮
+		           //【设置列属性】
+					columns:
+					 [
+					 {field:"check",checkbox: true },
+					 {field: 'planId',title: '计划序号'},
+					 {field: 'planUnit',title:'计划内容',editable: true},
+					 {field: 'planName',title: '计划名',editable: true},	 
+					 {field: 'planDesc',title: '计划描述',editable: true}, 
+					],
+					onEditableSave: function (field, row, oldValue, $el)
+					{
+							update(row);
+					}
+		       });
+				 /* 删除多个生产计划 */
+				  $('#delete').click(function(){
+						 var rows = $('table').bootstrapTable('getSelections');
+						 var rowsNum = rows.length;
+						 if(rowsNum == 0)
+						 {
+							 alert("未选择数据")
+						 }
+						 else
+						 {
+							 //alert(rows[0].check);
+							 //删除第一个check对象，后台不需要，必须处理
+							 for(var i =0 ;i< rowsNum ;i++)
+								delete rows[i]['check'];
+							 $.ajax({
+								  type: "post",
+								  url: "../delProductPlan.do",
+								  data:{data:JSON.stringify(rows)},
+								  //data:	rows,
+								  success: function (data, status) {
+									  if (status == "success") {
+					                        alert("删除成功");
+					                        //成功之后页面数据删除
+					                        $('table').bootstrapTable('refresh');  	
+					                    }
+					                },
+					                error: function () {
+					                    alert("删除失败");
+					                }
+					            });
+						  }
+					  });
+				  //更新数据 
+				  function update(row)
+				  {
+					  //删除check
+					 // delete row
+					  //向服务器提交数据
+					  $.ajax({
+						  type: "post",
+						  url: "../updateProductPlan.do",
+						  //data:{data:JSON.stringify(rows)},
+						  data:	row,
+						  success: function (data, status) {
+							  if (status == "success") {
+			                        alert("修改成功");
+			                    }
+			                },
+			                error: function () {
+			                    alert("修改失败");
+			                }
+			            });      
+					  //end
+				  } 		
+		  	});
+</script>
 </body>
 </html>

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cbt.business.mapper.ProjectProjectPlanInfo">
-	<resultMap type="com.cbt.business.po.BusinessProjectPlanInfoMapper" id="BusinessProjectPlanInfoMap">
+<mapper namespace="com.cbt.business.mapper.BusinessProjectPlanInfoMapper">
+	<resultMap type="com.cbt.business.po.BusinessProjectPlanInfo" id="BusinessProjectPlanInfoMap">
 	<id column="id" property="id"/>
 	<result column="planId" property="planId"/>
 	<result column="planName" property="planName"/>
@@ -17,6 +17,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result column="checkedNum" property="checkedNum"/>
 	<result column="packingClerkNum" property="packingClerkNum"/>
 	<result column="logiticsNum" property="logiticsNum"/>
+	<result column="projectDesc" property="projectDesc"/>
 	</resultMap>
+	
+	
+	
+	<insert id="addBusinessProjectPlan" parameterType="com.cbt.business.po.BusinessProjectPlanInfo">
+		insert into business_project_planinfo
+		(
+			planId,planName,productPicture,cropCode,productName,businessId,year,project_btCode,
+			growerNum,checkedNum,packingClerkNum,logiticsNum,projectDesc
+		)
+		values
+		(
+			#{planId},#{planName},#{productPicture},#{cropCode},#{productName},#{businessId},#{year},
+			#{project_btCode},#{growerNum},#{checkedNum},#{packingClerkNum},#{logiticsNum},#{projectDesc}
+		)
+	</insert>
+	 	 <!-- 分页 -->
+ 	<select id="getPageBusinessProjectPlans" parameterType="Map" resultMap="BusinessProjectPlanInfoMap">
+  		select * from business_project_planinfo where businessId = #{businessId} limit #{startrow},#{rows}
+ 	</select>
+ 	<!-- 获取记录数量 -->
+  	<select id="getBusinessProjectPlansCount" parameterType="java.lang.Integer" resultType="int">
+ 		 select count(*) from business_project_planinfo where businessId = #{value}
+ 	</select>
+ 	
+ 	<!-- 修改数据 -->
+ 	<update id="updateBusinessProjectPlan" parameterType="com.cbt.business.po.BusinessProjectPlanInfo" >
+    	update business_project_planinfo set planName = #{planName} where planId = #{planId}
+ 	</update>
+ 	
+ 		<!--删除一条数据  -->
+	<delete id="delBusinessProjectPlan" parameterType="com.cbt.business.po.BusinessProjectPlanInfo" >
+    	delete from business_project_planinfo
+   		where planId = #{planId}
+    </delete>
 
 </mapper>

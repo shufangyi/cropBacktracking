@@ -35,6 +35,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		 select count(*) from roleinfo 
  	</select>
  	
+ 	<select id="getRoles" resultMap="rolemap">
+ 		 select * from roleinfo 
+ 	</select>
+ 	
  	 	<!-- 修改数据 -->
  	<update id="updateRole" parameterType="com.cbt.system.po.RoleInfo" >
     	update roleinfo set rolename = #{roleName},roledesc = #{roleDesc} where roleid = #{roleId}

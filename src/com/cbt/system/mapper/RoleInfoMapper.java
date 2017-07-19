@@ -24,4 +24,6 @@ public interface RoleInfoMapper
 	//删除数据
 	public int delRoleInfo(RoleInfo info);
 	
+	public List<RoleInfo> getRoles();
+	
 }

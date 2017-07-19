@@ -10,8 +10,19 @@ public interface ManagerInfoService {
 	/*查询所有数据*/
 	public List<ManagerInfo> getAllManagerInfo();
 	/*增加一条数据*/
-	public int addManagerInfo(ManagerInfo info);
+	public boolean addManager(ManagerInfo info);
 	/*删除一条数据*/
-	public int delManagerInfo(ManagerInfo info);
+	public Boolean delManager(List<ManagerInfo> list);
+	
+	
+
+	
+	
+	
+	public List<ManagerInfo> getPageManagers(int nowpage, int rows);
+	
+	public int getManagersCount();
+		
+	public Boolean updateManager(ManagerInfo info);
 
 }

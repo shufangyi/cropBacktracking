@@ -6,6 +6,20 @@ public class ManagerInfo {
 	private String managerPwd;
 	private int businessId;
 	private String managerPhone;
+	private String managerName;
+	public String getManagerName() {
+		return managerName;
+	}
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+	public String getBusinessName() {
+		return businessName;
+	}
+	public void setBusinessName(String businessName) {
+		this.businessName = businessName;
+	}
+	private String businessName;
 	public int getId() {
 		return id;
 	}

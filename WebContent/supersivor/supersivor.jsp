@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="supersivor/css/supersivor.css">
     <link rel="stylesheet" href="supersivor/css/footer.css">
     <script src="supersivor/js/goTop.js"></script>
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
 </head>
 <body>
     <!--顶部导航栏-->
@@ -77,7 +78,8 @@
     top: 50px;z-index :-1;"></iframe>
     <!--内容-->
     <div class="container">
-        <div id= "company" class="company">
+          <div id="company" class="company">
+
             <!--js动态加载-->
         </div>
 
@@ -224,9 +226,10 @@
         			var desc = data.list[i].businessDesc;
         			
                     if (i % 2 === 0) {
-                        output += "<div class='row'><div class='col-md-6 left'>";
+                    	  output += "<div class='row'><div class='col-md-6 left animated fadeInLeft'>";
                     } else {
-                        output += "<div class='col-md-6 right'>";
+                        output += "<div class='col-md-6 right animated fadeInRight'>";
+
                     }
                     output +=
                         "<a href='"+url+businessId+"' class='cominfo'>" +
@@ -250,6 +253,7 @@
                         "</div>";
                     if (i % 2 === 1) {
                         output += "</div>";
+                       
                     }                 
                 }  
                 $("#company").append(output);
@@ -261,13 +265,7 @@
         	};
         });
             
-        $(function () {
-            $(window).load(".compamy", null, function () {
-                $('.col-md-6').css('transition', '0.4s');
-                $('.left').css('left', 0);
-                $('.right').css('right', 0);
-            });
-        });
+       
     </script>
 </body>
 

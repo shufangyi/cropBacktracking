@@ -31,7 +31,7 @@
 		</bean>
 		
 		<bean id="pathConfig" class="com.cbt.utils.PathConfig">
-		    <property name="localPath" value="Uploads/patent/"></property>
+		    <property name="localPath" value="Uploads/business/"></property>
 		</bean>
 		
 		<!-- 配置事务 -->
@@ -63,6 +63,7 @@
 			<aop:pointcut expression="execution(* com.cbt.*.service..*.*(..))" id="pointcut"/>
 			<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
 		</aop:config>
+
 
 		<bean id="multipartResolver" 
 			class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

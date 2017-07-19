@@ -37,4 +37,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete  id="delBusinessInfo" parameterType="com.cbt.business.po.BusinessInfo">
 		delete from businessinfo where businessId=#{businessId}
 	</delete>
+	
+	
+	 <!-- 分页 -->
+ 	<select id="getPageBusinesss" parameterType="Map" resultMap="businessinfomap">
+  		select * from businessinfo limit #{startrow},#{rows}
+ 	</select>
+ 	<!-- 获取记录数量 -->
+  	<select id="getBusinesssCount" resultType="int">
+ 		 select count(*) from businessinfo 
+ 	</select>
+ 	
+ 	 	<!-- 修改数据 -->
+ 	<update id="updateBusiness" parameterType="com.cbt.business.po.BusinessInfo" >
+    	update businessinfo set businessUrl = #{businessUrl} where businessId = #{businessId}
+ 	</update>
+	
 </mapper>

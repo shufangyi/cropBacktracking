@@ -10,31 +10,24 @@
 	
 	<!-- 查询出所有的生产单元 -->
 	<select id="selectAllunit"  resultMap="ProductUnitResultMap">
-	select * from cropBacktracking.productPlanUnitInfo
+	select * from cropbacktracking.product_plan_unitinfo
 	</select>
 	
 	<!-- 插入一个新的生产单元 -->
 	<insert id="insertNewUnit" parameterType="com.cbt.system.po.ProductPlanUnitInfo">
-	insert into cropBacktracking.productPlanUnitInfo(unitName,authortyName,authorityUrl)
+	insert into cropbacktracking.product_plan_unitinfo(unitName,authortyName,authorityUrl)
 	values(#{unitName},#{authorityName},#{authorityUrl})
 	</insert>
 	
 	<!-- 根据id删除生产单元 -->
 	<delete id="deleteUnitById" parameterType="com.cbt.system.po.ProductPlanUnitInfo">
-	delete from cropBacktracking.productPlanUnitInfo
+	delete from cropbacktracking.product_plan_unitinfo
 	where unitId=#{unitId}
 	</delete>
 	
 	<!-- query all units -->
 	<select id="queryAllUnit" resultMap="ProductUnitResultMap">
-	select * from cropBackteacking.productPlanUnitInfo
+	select * from cropbacktracking.product_plan_unitinfo
 	</select>
-	
-	
-	
-	
-	
-
-	
 
 </mapper>

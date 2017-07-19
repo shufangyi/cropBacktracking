@@ -183,17 +183,7 @@ body{
 
 
 
-/**
-涓ょ寰�腑闂寸Щ鍔� */
-.left{
-    position: relative;
-    left: -2000px;
-}
 
-.right{
-    position: relative;
-    right: -2000px;
-}
 
 
 

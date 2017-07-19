@@ -36,15 +36,17 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 运营管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./manager/products.html">商品管理</a></li>
-                        <li><a class="useful" href="./manager/planManager.html">计划管理</a></li>
+                        <li><a class="useful" href="./manager/plans.html">计划列表</a></li>
+                        <li><a class="useful" href="./manager/newplan.html">新建计划</a></li>
+                        <li><a class="useful" href="./manager/pic.html">溯源</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 系统管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./manager/personManage.html">人员管理</a></li>
+                        <li><a class="useful" href="./manager/persons.html">人员管理</a></li>
+                        <li><a class="useful" href="./manager/newperson.html">新增人员</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">

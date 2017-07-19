@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计划管理</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--富文本编辑器-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+    <!--jquery-ui-->
+    <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../css/platformManager.css">
+</head>
+<body>
+<div class="container">
+    <form class="form-horizontal">
+        <fieldset>
+            <legend>新建计划</legend>
+            <div class="control-group" >
+                <div class="controls" >
+                    <label class="control-label" for="planName">计划名称</label>
+                    <input id="planName" name="planName" type="text" placeholder="" class="input-xlarge" required="required">
+                    <span class="help-block">1</span>
+                </div>
+            </div>
+
+			 <div class="control-group" >
+                <div class="controls" >
+                    <label class="control-label" for="cropCode">作物编码</label>
+                    <input id="cropCode" name="cropCode" type="text" placeholder="" class="input-xlarge" required="required">
+                    <span class="help-block">2位数字</span>
+                </div>
+            </div>
+
+
+            <div class="control-group" >
+                <div class="controls" >
+                    <label class="control-label" for="productName">商品名称</label>
+                    <input id="productName" name="productName" type="text" placeholder="" class="input-xlarge" required="required">
+                    <span class="help-block">1</span>
+                </div>
+            </div>
+
+            <div class="control-group" >
+                <div class="controls" >
+                    <label class="control-label" for="businessID">年度信息</label>
+                    <input id="year" name="year" type="number" placeholder="" class="input-xlarge" required="required">
+                    <span class="help-block">1</span>
+                </div>
+            </div>
+
+            <div class="control-group plan" >
+                <div class="controls" >
+                    <label class="control-label" for="planTemplate">选择计划模板</label>
+                     <div class="controls jscheckbox" id="planId">
+                		<!--js动态添加-->
+          			 </div>
+                </div>
+            </div>
+            
+            <div class="control-group plan" >
+            	<div class='controls' >
+             	<label class='control-label' for='sow'>种植员</label>
+               		 <div class="controls jscheckbox" id="sow">
+                		<!--js动态添加-->
+          			 </div>
+          		</div>
+          	</div>
+          	<div class="control-group plan" >
+          	 	<div class='controls' >
+             	<label class='control-label' for='check'>质检入库员</label>
+                	 <div class="controls jscheckbox" id="check">
+                		<!--js动态添加-->
+          			 </div>
+          		</div>
+          	</div>
+          	<div class="control-group plan" >
+          	 	<div class='controls' >
+             	<label class='control-label' for='copack'>加工员</label>
+                	<div class="controls jscheckbox" id="copack">
+                		<!--js动态添加-->
+          			 </div>
+          		</div>
+          	</div>
+          	<div class="control-group plan" >
+          	 	<div class='controls' >
+             	<label class='control-label' for='sow'>物流员</label>
+                	<div class="controls jscheckbox" id="deliver">
+                		<!--js动态添加-->
+          			 </div>
+          		</div>
+          	</div>
+
+      		<!-- Textarea -->
+            <div class="control-group">
+                <div class="controls">
+                    <label class="control-label" for="Comment">备注</label>
+                    <div id="Comment"><p>Hello Summernote</p></div>
+                    <script>
+                        $(document).ready(function() {
+                            $('#Comment').summernote();
+                        });
+                    </script>
+                </div>
+
+            </div>
+
+            <div class="control-group">
+                <button type="button" id="submit" name="submit" class="btn btn-info">提交</button>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<script>
+$(document).ready(function(){
+	var businessId = $(window.parent.parent.frames["topFrame"].document).find('#businessId').text();
+	//获取平台的生产模板信息
+	$.ajax({
+		type: "post",
+		url: "../../system/getProductPlans.do",
+		success: function(data)
+		{
+			fillPlan(data);
+		},
+		error: function(status)
+		{
+			alert(status);
+		}	
+	});
+	//获取企业下员工信息
+	$.ajax({
+		type: "post",
+		url: "../getWorkers.do",
+		data:{"businessId":businessId},
+		success: function(data)
+		{
+			fillWorkers(data);
+		},
+		error: function(status)
+		{
+			alert(status);
+		}	
+	});
+	//动态添加列表
+	function fillPlan(data)
+	{	
+		var len = data.list.length;
+		//alert(len);
+		for(var i= 0 ; i < len ; i++)
+		{
+		 	var output="";
+			output+="<label class='checkbox inline' for='permissions-"+i+"'>"+
+            "<input type='radio' name='permissions' id='permissions' value='"+data.list[i].planId+"'>"+
+            data.list[i].planName+
+            //" 备注:"+data.list[i].planDesc+
+            "</label>";
+        	$("#planId").append(output);
+		}
+	}
+
+	//动态添加列表
+	function fillWorkers(data)
+	{	
+		var len = data.list.length;
+		//alert(len);
+		for(var i= 0 ; i < len ; i++)
+		{
+            switch(data.list[i].roleId)
+            {
+	            case 1:
+	            	var output="";
+	    			output+="<label class='checkbox inline' for='sow-"+i+"'>"+
+	                "<input type='radio' name='sow' id='sow' value='"+data.list[i].workerName+"'>"+
+	                data.list[i].workerName+
+	                "</label>";
+	          	 	 $("#sow").append(output); 
+	          	 	 break;
+	            case 2:
+	            	var output="";
+	    			output+="<label class='checkbox inline' for='check-"+i+"'>"+
+	                "<input type='radio' name='check' id='check' value='"+data.list[i].workerName+"'>"+
+	                data.list[i].workerName+
+	                "</label>";
+		          	 $("#check").append(output); 
+		            	break;
+	            case 3:
+	            	var output="";
+	    			output+="<label class='checkbox inline' for='copack-"+i+"'>"+
+	                "<input type='radio' name='copack' id='copack' value='"+data.list[i].workerName+"'>"+
+	                data.list[i].workerName+
+	                "</label>";
+			   		 $("#copack").append(output); 
+			         break;
+	            case 4:
+	            	var output="";
+	    			output+="<label class='checkbox inline' for='deliver-"+i+"'>"+
+	                "<input type='radio' name='deliver' id='deliver' value='"+data.list[i].workerName+"'>"+
+	                data.list[i].workerName+
+	                "</label>";
+			   		 $("#deliver").append(output); 
+			         break;
+            }
+		}
+	}
+	//验证表单数据，获取表单内ring没处理数据，提交后台
+	$('#submit').click(function()
+	{
+		var businessId = $(window.parent.parent.frames["topFrame"].document).find('#businessId').text();
+		var planName = $('#planName').val();
+		var cropCode = $('#cropCode').val();
+		var productName = $('#productName').val();
+		var year = $('#year').val();
+		//var roleDesc = $('#Comment').text();
+		var planId = $('#planId').find('#permissions:checked').val();
+		
+		var sow = $('#sow').find('#sow:checked').val();
+		var check = $('#check').find('#check:checked').val();
+		var copack = $('#copack').find('#copack:checked').val();
+		var deliver = $('#deliver').find('#deliver:checked').val();
+		var comment = $('#Comment').text();
+		/*
+			对数据进行验证
+		*/
+		//提交哦数据
+		$.ajax({
+			type: 'post',
+			url: '../addBusinessProjectPlan.do',
+			data: {
+				"planName":planName,
+				"cropCode":cropCode,
+				"productName":productName,
+				"planId":planId,
+				"year":year,				
+				"growerNum":sow,
+				"checkedNum":check,
+				"packingClerkNum":copack,
+				"logiticsNum":deliver,
+				"projectDesc": comment,
+				"business":businessId
+			},
+			success: function(data,status)
+			{
+				alert("提交成功");
+			},
+			error: function(status)
+			{
+				alert(status);
+			}
+		});	
+	});	
+});
+</script>
+</body>
+</html>

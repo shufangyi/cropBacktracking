@@ -1,5 +1,6 @@
 package com.cbt.business.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -28,15 +29,56 @@ public class ManagerInfoServiceImpl implements ManagerInfoService{
 	}
 
 	@Override
-	public int addManagerInfo(ManagerInfo info) {
+	public boolean addManager(ManagerInfo info) {
 		// TODO Auto-generated method stub
-		return managerInfoMapper.addManagerInfo(info);
+		int i = managerInfoMapper.addManagerInfo(info);
+		if(i > 0 )
+			return true;
+		return false;
 	}
 
 	@Override
-	public int delManagerInfo(ManagerInfo info) {
+	public Boolean delManager(List<ManagerInfo> list) {
 		// TODO Auto-generated method stub
-		return managerInfoMapper.delManagerInfo(info);
+		Boolean mark = true;
+		for(int i=0;i<list.size();i++)
+		{
+			int k = managerInfoMapper.delManagerInfo(list.get(i));
+			if(i<=0){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	@Override
+	public List<ManagerInfo> getPageManagers(int nowpage, int rows) {
+		// TODO Auto-generated method stub
+		int startrow=(nowpage-1)*rows;
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("startrow",startrow);
+		map.put("rows", rows);   
+		return managerInfoMapper.getPageManagers(map);
+	}
+
+	@Override
+	public int getManagersCount() {
+		// TODO Auto-generated method stub
+		return managerInfoMapper.getManagersCount();
+	}
+
+	@Override
+	public Boolean updateManager(ManagerInfo info) {
+		// TODO Auto-generated method stub
+		try {
+			int i = managerInfoMapper.updateManager(info);
+			if(i>0){
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

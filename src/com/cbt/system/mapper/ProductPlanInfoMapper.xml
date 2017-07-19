@@ -7,6 +7,19 @@
 		<result column="planDesc" property="planDesc" jdbcType="VARCHAR"/>
 		<result column="planUnit" property="planUnit" jdbcType="VARCHAR"/>
 	</resultMap>
+	
+	<!--分页查询所有生产计划  -->
+	<select id="getPageProductPlanInfo" parameterType="Map" resultMap="productPlanInfoMap">
+		select  * from product_planinfo limit #{startrow},#{rows}
+	</select>
+	<!--获取计划数量  -->
+	<select id="getProductPlanInfoCount" resultType="int">
+		select count(*) from product_planinfo
+	</select>
+	
+	<select id="getProductPlans" resultMap="productPlanInfoMap">
+		select  * from product_planinfo
+	</select>
 
 	<!-- 添加新的生产计划模版 -->
 	<insert id="insertNewProductPlan" parameterType="com.cbt.system.po.ProductPlanInfo">
@@ -14,9 +27,9 @@
 	values(#{planName},#{planDesc},#{planUnit})
 	</insert>
 	
-	<!-- 根据planId删除生产计划 -->
-	<delete id="deleteProductPlan" parameterType="Integer">
-	delete from cropBacktracking.productPlanInfo
+	<!-- 删除生产计划 -->
+	<delete id="deleteProductPlan" parameterType="com.cbt.system.po.ProductPlanInfo">
+	delete from cropBacktracking.product_planInfo
 	where planId=#{planId}
 	</delete>
 	
@@ -33,18 +46,6 @@
 	
 	<!-- 通过planId对某个生产计划进行修改 -->
 	<update id="updatePlanById" parameterType="com.cbt.system.po.ProductPlanInfo">
-	update cropBacktracking.productPlanInfo
-	<set>
-	<if test="planName!=null">
-		planName=#{planName}
-	</if>
-	<if test="planDesc!=null">
-		planDesc=#{planDesc}
-	</if>
-	<if test="planUnit!=null">
-		planUnit=#{planUnit}
-	</if>
-	</set>
-	where planId=#{planId}
+		update cropbacktracking.product_planinfo  set planUnit=#{planUnit},planName=#{planName},planDesc=#{planDesc} where  planId=#{planId};
 	</update>
 </mapper>

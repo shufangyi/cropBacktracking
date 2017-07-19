@@ -53,12 +53,16 @@ public class RoleInfoController
 	
 	
 	
-
-	
-	
-	
-	
-	
+	@RequestMapping("getRoles.do")
+	@ResponseBody
+	public ModelMap getRoles()
+	{
+		ModelMap model = new ModelMap();		
+		List<RoleInfo> list = roleInfoService.getRoles();
+		model.addAttribute("list", list);
+		return model;
+		
+	}
 	
 	
 	//分页获取种植员自己的种植纪录

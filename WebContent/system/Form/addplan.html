@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>生产流程模板</title>
-
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -36,13 +35,12 @@
                 <label class="control-label">选择流程</label>
                 <div class="controls jscheckbox" id="template">
                     <!--js动态添加-->
-
                 </div>
             </div>
 
             <div class="control-group">
                 <div class="controls">
-                    <label class="control-label" for="Comment">备注</label>
+                    <label class="control-label" for="Comment">模板描述</label>
                     <div id="Comment"><p>Hello Summernote</p></div>
                     <script>
                         $(document).ready(function() {
@@ -61,17 +59,67 @@
 </div>
 
 <script>
-    $(function () {
-        var template_list = ["播种流程","施肥流程","病虫害防治流程","采摘流程","检验入库流程","加工包装流程","物流管理流程","分销管理流程"];
-        for(var i=0;i<template_list.length;i++){
-            var output="";
-            output+="<label class='checkbox inline' for='template-"+i+"'>"+
-                "<input type='checkbox' name='template' id='template-"+i+"' value='"+template_list[i]+"'>"+
-                template_list[i]+
-                "</label>";
-            $("#template").append(output);
-        }
-    });
+$(document).ready(function(){
+	//向服务器获取权限列表请求	
+	$.ajax({
+		type: "post",
+		url: "../getAllProductUnitInfo.do",
+		success: function(data)
+		{
+			fillAuthorityList(data);
+		},
+		error: function(status)
+		{
+			alert(status);
+		}	
+	});
+	//动态添加权限列表
+	function fillAuthorityList(data)
+	{	
+		var len = data.list.length;
+		for(var i= 0 ; i < len ; i++)
+		{
+			var output="";
+			output+="<label class='checkbox inline' for='permissions-"+i+"'>"+
+       		"<input type='checkbox' name='permissions' id='permissions' value='"+data.list[i].unitId+"'>"+
+        	data.list[i].authorityName+
+        	"</label>";
+    		$("#template").append(output);
+		}
+	}
+	//验证表单数据，获取表单内ring没处理数据，提交后台
+	$('#submit').click(function(event){
+		event.preventDefault();
+		var planName = $('#templateName').val();
+		var planDesc = $('#Comment').text();
+		//alert(planName);
+		//alert(planDesc);
+		var planUnit="";
+		$("#permissions:checked").each(function(index,element)
+		{
+			planUnit+=$(element).val()+":";
+		});
+		//alert(planUnit)
+		//提交数据
+		$.ajax({
+			type: 'post',
+			url: '../addProductPlanInfo.do',
+			data: {
+				"planName":planName,
+				"planDesc":planDesc,
+				"planUnit":planUnit
+			},
+			success: function(data,status)
+			{
+				alert("提交成功");
+			},
+			error: function(status)
+			{
+				alert(status);
+			}
+		});
+	});
+});
 </script>
 
 </body>

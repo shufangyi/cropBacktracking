@@ -2,6 +2,7 @@ $(document).ready(function(){
 	//projectBtcode需要到后台进行验证
 	$('#projectBtcode').blur(function(){
 		var projectBtcode = $(this).val();
+		alert("he");
 		/*先验证是不是9位数字*/
 		//code
 		$.ajax({
@@ -40,7 +41,7 @@ $(document).ready(function(){
 		$.ajax({
 			type: "post",
 			url: "business/addSowRecordInfo.do",
-			data: 
+			data: "",
 			success:function(data,status)
 			{
 				alert("可能成功");

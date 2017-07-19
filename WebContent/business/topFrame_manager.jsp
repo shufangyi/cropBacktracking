@@ -34,7 +34,8 @@
                 <!--<span class='icon-bar'></span>-->
                 <!--</button>-->
                 <span class="navbar-brand"><img src="business/img/logo.png"/></span>&nbsp;
-                <span class="navbar-brand-name">${managerInfo.businessId }</span>
+                <span class="navbar-brand-name" id="businessName">${managerInfo.businessName }</span>
+                <span class="navbar-brand-name" id="businessId" style="display:none">${managerInfo.businessId }</span>
             </div>
 
             <ul class="nav navbar-nav navbar-right">
@@ -42,13 +43,33 @@
                     <button type="button" id="login-name" class="btn btn-info">${managerInfo.managerNum }&nbsp;<span class="glyphicon glyphicon-user"></span></button>
                     <button type="button" id="logout" class="btn btn-danger">退出&nbsp;<span class="glyphicon glyphicon-log-out"></span> </button>
                 </li>
-
             </ul>
         </div>
         <!-- /.container-fluid -->
     </nav>
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+     <script>
+        $(function () {
+
+            var $changeInfo = $(window.parent.document).find('#changeInfo');
+            var $mask = $(window.parent.document).find('#mask');
+
+            $('#login-name').bind('click', function () {
+                var clientWidth = $(window).width();
+                var baifenbi = ((clientWidth - 400) / 2) / clientWidth * 100;
+                $changeInfo.css('left', baifenbi + '%');
+                $changeInfo.css('transition', 'left 0.8s');
+                $mask.css('display', 'block');
+            });
+
+            $mask.bind('click', function () {
+                $changeInfo.css('left', '-100%');
+                $changeInfo.css('transition', 'left 1.2s');
+                $mask.css('display', 'none');
+            });
+        });
+    </script>
     <script>
     	//退出登录js代码
     	$(document).ready(function()

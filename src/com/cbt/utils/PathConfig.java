@@ -5,14 +5,11 @@ package com.cbt.utils;
  * 
  * 
  */
-public class PathConfig {
-	
+public class PathConfig {	
 	private String  localPath;
-
 	public String getLocalPath() {
 		return localPath;
 	}
-
 	public void setLocalPath(String localPath) {
 		this.localPath = localPath;
 	}

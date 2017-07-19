@@ -17,6 +17,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from workerinfo where workerNum=#{workerNum} and workerPwd=#{workerPwd}
 	</select>
 	
+	
+	
+	<!-- 根据workerNum查询一条数据-->
+	<select id="getWorkers" parameterType="java.lang.Integer" resultMap="workerinfomap">
+		select * from workerinfo where businessId=#{value}
+	</select>
+	
 	<!-- 查询所有数据-->
 	<select id="getAllWorkerInfo" resultMap="workerinfomap">
 		select * from workerinfo 
@@ -38,5 +45,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from workerinfo where workerNum=#{workerNum}
 	</delete>
 
+
+	 <!-- 分页 -->
+ 	<select id="getPageWorkers" parameterType="Map" resultMap="workerinfomap">
+  		select * from workerinfo where businessId = #{businessId} limit #{startrow},#{rows}
+ 	</select>
+ 	<!-- 获取记录数量 -->
+  	<select id="getWorkersCount" parameterType="java.lang.Integer" resultType="int" >
+ 		 select count(*) from workerinfo where businessId = #{value}
+ 	</select>
 
 </mapper>

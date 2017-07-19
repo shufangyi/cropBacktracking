@@ -93,4 +93,10 @@ public class RoleInfoServiceImpl implements RoleInfoService{
 		return true;
 	}
 
+	@Override
+	public List<RoleInfo> getRoles() {
+		// TODO Auto-generated method stub
+		return roleInfoMapper.getRoles();
+	}
+
 }

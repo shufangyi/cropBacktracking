@@ -1,6 +1,7 @@
 package com.cbt.business.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.cbt.business.po.WorkerInfo;
 
@@ -14,4 +15,15 @@ public interface WorkerInfoMapper
 	public int addWorkerInfo(WorkerInfo info);
 	/*删除一条数据*/
 	public int delWorkerInfo(WorkerInfo info);
+	
+	
+	//2017-07-18
+	/*根据businessId查询所有的数据*/
+	public List<WorkerInfo> getWorkers(Integer businessId);
+	
+	
+	public List<WorkerInfo> getPageWorkers(Map<String,Object> map);
+	
+	public int getWorkersCount(Integer BusinessId);
+	
 }

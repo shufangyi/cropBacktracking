@@ -27,4 +27,7 @@ public interface RoleInfoService
 	
 	//删除数据
 	Boolean delRoleInfo(List<RoleInfo> list);
+	
+	//2017-07-18
+	public List<RoleInfo> getRoles();
 }

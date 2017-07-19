@@ -10,6 +10,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <result column="managerPwd" property="managerPwd" jdbcType="VARCHAR" />
     <result column="businessId" property="businessId" jdbcType="INTEGER" />
     <result column="managerPhone" property="managerPhone" jdbcType="VARCHAR" />
+    <result column="managerName" property="managerName" jdbcType="VARCHAR" />
+     <result column="businessName" property="businessName" jdbcType="VARCHAR" />
+    
   </resultMap>
   
   	 <!--根据managerNum查询一条数据  -->
@@ -25,14 +28,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!--插入一条数据  -->
    <insert id="addManagerInfo"  parameterType="com.cbt.system.po.ManagerInfo">
    	insert into managerinfo
-   	(id,managerNum,managerPwd,businessId,managerPhone)
+   	(id,managerNum,managerPwd,businessId,managerName,businessName,managerPhone)
    	values
-   	(#{id},#{managerNum},#{managerPwd},#{businessId},#{managerPhone})
+   	(#{id},#{managerNum},#{managerPwd},#{businessId},#{managerName},#{businessName},#{managerPhone})
    </insert>
   
   <!--根据id删除一条数据 -->
   <delete id="delManagerInfo" parameterType="com.cbt.system.po.ManagerInfo">
   	delete from   managerinfo where managerNum=#{managerNum}
   </delete>
+	
+	
   
+	 <!-- 分页 -->
+ 	<select id="getPageManagers" parameterType="Map" resultMap="managerinfomap">
+  		select * from managerinfo limit #{startrow},#{rows}
+ 	</select>
+ 	<!-- 获取记录数量 -->
+  	<select id="getManagersCount" resultType="int">
+ 		 select count(*) from managerinfo 
+ 	</select>
+ 	
+ 	 	<!-- 修改数据 -->
+ 	<update id="updateRole" parameterType="com.cbt.system.po.ManagerInfo" >
+    	update managerinfo set managerPhone = #{managerPhone},managerName = #{managerName} where id = #{id}
+ 	</update>
+ 
+	
 </mapper>

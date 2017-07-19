@@ -3,7 +3,8 @@ package com.cbt.system.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,30 +14,21 @@ import com.cbt.system.po.ProductPlanUnitInfo;
 import com.cbt.system.service.ProductPlanUnitInfoService;
 
 @Controller
-@RequestMapping("/system/ppuinfo/")
+@RequestMapping("/system/")
 public class ProductPlanUnitInfoController
 {
 	@Resource(name="productPlanUnitInfoServiceImpl")
 	private ProductPlanUnitInfoService productPlanUnitInfoService;
 	
-	
-	@RequestMapping("getPpuInfo.do")
-	public @ResponseBody ModelMap getPpuInfo(HttpServletRequest req) throws Exception
+	//获取所有的生产计划权限
+	@RequestMapping(value="/getAllProductUnitInfo.do")
+	@ResponseBody
+	public ModelMap getAllProductUnitInfo() throws Exception
 	{
-		String name = req.getParameter("name");
-		String value = req.getParameter("value");
-		System.out.println(name);
-		System.out.println(value);
-		List<ProductPlanUnitInfo> ppuList = productPlanUnitInfoService.queryAllUnitService();
-		System.out.println("hello");
-		for(int i=0;i<ppuList.size();i++)
-		{
-			System.out.println("hello");
-			System.out.println(ppuList.get(i));
-		}
-		ModelMap model=new ModelMap();
-		model.addAttribute("list", ppuList);
-		model.addAttribute("tag", "hello");
+		List<ProductPlanUnitInfo> list = productPlanUnitInfoService.queryAllUnitService();
+		ModelMap model = new ModelMap();
+		model.addAttribute("list", list);
+		System.out.println(list);
 		return model;
-	}
+	}	
 }

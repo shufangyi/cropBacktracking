@@ -3,7 +3,7 @@ package com.cbt.business.po;
 public class BusinessProjectPlanInfo {
 	private int id;
 	private int planId;
-	private String palnName;
+	private String planName;
 	private String productPicture;
 	private String cropCode;
 	private String productName;
@@ -14,16 +14,17 @@ public class BusinessProjectPlanInfo {
 	private String checkedNum;
 	private String packingClerkNum;
 	private String logiticsNum;
+	private String projectDesc;
 	public int getId() {
 		return id;
 	}
 	
-	public String getPalnName() {
-		return palnName;
+	public String getPlanName() {
+		return planName;
 	}
 
-	public void setPalnName(String palnName) {
-		this.palnName = palnName;
+	public void setPlanName(String planName) {
+		this.planName = planName;
 	}
 
 	public void setId(int id) {
@@ -94,6 +95,14 @@ public class BusinessProjectPlanInfo {
 	}
 	public void setLogiticsNum(String logiticsNum) {
 		this.logiticsNum = logiticsNum;
+	}
+
+	public String getProjectDesc() {
+		return projectDesc;
+	}
+
+	public void setProjectDesc(String projectDesc) {
+		this.projectDesc = projectDesc;
 	}
 	
 	

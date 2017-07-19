@@ -128,8 +128,8 @@ $(document).ready(function()
 						  success: function (data, status) {
 							  if (status == "success") {
 			                        alert("删除成功");
-			                        //成功之后页面数据删除
-			                        //$('table').bootstrapTable('remove');
+			                        //刷新页面
+			                        $('table').bootstrapTable('refresh');  	
 			                    }
 			                },
 			                error: function () {

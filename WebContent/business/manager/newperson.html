@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人员管理</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--富文本编辑器-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+
+    <!--本文校验-->
+    <script src="https://cdn.bootcss.com/jquery-validate/1.15.1/additional-methods.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-validate/1.15.1/localization/messages_zh.min.js"></script>
+
+    <!--jquery-ui-->
+    <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $( ".datepicker" ).datepicker();
+        });
+    </script>
+
+    <link rel="stylesheet" href="../css/platformManager.css">
+
+
+</head>
+<body>
+<div class="container">
+<!--新建表单-->
+<form class="form-horizontal" >
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>新增用户</legend>
+
+        <!-- Text input-->
+       
+        <!-- Text input-->
+        <div class="control-group" >
+            <div class="controls" >
+                <label class="control-label" for="workerName">姓名</label>
+                <input id="workerName" name="workerName" type="text" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="control-group">
+            <div class="controls">
+                <label class="control-label" for="workerNum">账号</label>
+                <input id="workerNum" name="workerNum" type="text" placeholder="" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="control-group">
+            <div class="controls">
+                <label class="control-label" for="workerPwd">密码</label>
+                <input id="workerPwd" name="workerPwd" type="password" placeholder="" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <div class="controls">
+                <label class="control-label" for="workerPwdAgain">确认密码</label>
+                <input id="workerPwdAgain" name="workerPwdAgain" type="password" placeholder="" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="control-group">
+            <div class="controls">
+                <label class="control-label" for="workerPhone">联系方式</label>
+                <input id="workerPhone" name="workerPhone" type="text" placeholder="" class="input-xlarge">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="control-group">
+            <label class="control-label">角色</label>
+            <div class="controls jscheckbox" id="role">
+                <!--js动态添加-->
+
+            </div>
+        </div>
+
+
+        <!-- Textarea -->
+        
+
+        <div class="control-group">
+            <button type="button" id="submit" name="submit" class="btn btn-info">提交</button>
+        </div>
+    </fieldset>
+</form>
+</div>
+</body>
+
+<script>
+$(document).ready(function(){
+	//获取平台的生产模板信息
+	$.ajax({
+		type: "post",
+		url: "../../system/getRoles.do",
+		success: function(data)
+		{
+			fillrole(data);
+		},
+		error: function(status)
+		{
+			alert(status);
+		}	
+	});
+	
+	
+	function fillrole(data)
+	{
+		var len = data.list.length;
+		alert(len);
+		for(var i=0;i<data.list.length;i++){
+	    	var output="";
+	        output+="<label class='radio inline' for='role-"+i+"'>"+
+	        "<input type='radio' name='role' id='role' value='"+data.list[i].roleId+"'>"+
+	        data.list[i].roleName+
+	        "</label>";
+	    	 $("#role").append(output);
+    	}
+	}
+	//验证表单数据，获取表单内ring没处理数据，提交后台
+	$('#submit').click(function()
+	{
+		var businessId = $(window.parent.parent.frames["topFrame"].document).find('#businessId').text();
+		//var businessId = $('#businessId').val();
+		var workerName = $('#workerName').val();
+		var workerNum = $('#workerNum').val();
+		var workerPwd = $('#workerPwd').val();
+		alert(workerPwd);
+		var workerPhone = $('#workerPhone').val();
+		//var roleDesc = $('#Comment').text();
+		var roleId = $('#role').find('#role:checked').val();
+		alert(roleId);
+		/*
+			对数据进行验证
+		*/
+		//提交哦数据
+		$.ajax({
+			type: 'post',
+			url: '../addWorker.do',
+			data: {
+				//"businessId":businessId,
+				"workerName":workerName,
+				"workerNum":workerNum,
+				"workerPwd":workerPwd,
+				"workerPhone":workerPhone,				
+				"roleId":roleId,
+				"businessId":businessId,
+			},
+			success: function(data,status)
+			{
+				alert("提交成功");
+			},
+			error: function(status)
+			{
+				alert(status);
+			}
+		});	
+	});	
+
+	
+	
+});
+</script>
+
+</html>

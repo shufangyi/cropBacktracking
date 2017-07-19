@@ -49,6 +49,8 @@
             // //手动触发第一个标签页的点击事件
             // $("#tabs>ul>span:eq(0) a").trigger('click');
 
+
+            var currentTab;
             //添加标签函数
             var addTab = function (tabName, $form) {
 
@@ -69,6 +71,9 @@
                     $(this).parent().parent().addClass('active');
                     // $(this).parent().addClass('active');
                     $(($(this).attr('href'))).fadeIn();
+
+                    currentTab = 'formContent-'+($(this).attr('href')).substring(1);
+                    // alert(currentTab);
                 });
 
                 //关闭事件。
@@ -88,6 +93,7 @@
                 //手动触发新添加的标签的点击事件
                 $("[href='#" + tabName + "']").trigger('click');
             };
+
             //访问兄弟frame框架中的 a 标签，并并绑定点击事件，触发添加标签函数
             var as = $(window.parent.frames["leftFrame1"].document).find('a.useful');
             as.bind('click', function (e) {
@@ -101,7 +107,7 @@
                 } else {
                     var $form = $("<div id=" + tabName + ">" +
                         //tabName
-                        "<iframe src='"+src+"' scrolling='no' class='formContent'  frameborder='0'></iframe>"
+                        "<iframe src='"+src+"' scrolling='no' class='formContent' id='formContent-"+tabName+"' frameborder='0'></iframe>"
 
                         +
                         "</div>")
@@ -111,22 +117,19 @@
 
             $(as[0]).trigger('click');
 
+            
 
             window.setInterval(function () {
                 var clientWidth = $(window).width();
                 // var clientHeight = $(window).height();
-                var clientWidth1 = $(".formContent").contents().find("body").width();
-                var clientHeight = $(".formContent").contents().find("body").height();
+                var clientWidth1 = $('#'+currentTab).contents().find("body").width();
+                var clientHeight = $('#'+currentTab).contents().find("body").height();
                 // alert(clientWidth +" | "+clientWidth1);
-				
+
                 // alert(clientHeight+" | "+clientWidth);
-                if(clientHeight < 40 )
-                {
-                	clientHeight = 1200;
-                }
-                $('.formContent').css('height', clientHeight + 40 + 'px');
-                
-                $('.formContent').css('width', '100%');
+                // if(clientHeight<40){clientHeight = 1200;}
+                $('#'+currentTab).css('height', clientHeight + 40 + 'px');
+                $('#'+currentTab).css('width', '100%');
                 // $('.formContent').css('width', clientWidth + 'px');
             }, 50);
 

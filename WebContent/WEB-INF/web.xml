@@ -24,6 +24,9 @@
       <param-value>UTF-8</param-value>
     </init-param>
   </filter>
+  <session-config>   
+  	<session-timeout>30</session-timeout>   
+  </session-config>   
   <filter-mapping>
     <filter-name>characterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>

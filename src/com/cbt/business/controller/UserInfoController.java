@@ -1,7 +1,9 @@
 package com.cbt.business.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -65,6 +67,7 @@ public class UserInfoController
 			if(manager!=null)
 			{
 				session.setAttribute("managerInfo", manager);
+				//session.setAttribute(num, manager);
 				return "business/manager.jsp";
 			}
 			else
@@ -86,9 +89,10 @@ public class UserInfoController
 			else
 			{
 				System.out.println("worker is not null");
+				//Map<String,Object> map = new HashMap<String,Object>();
 				
+				//session.setAttribute(worker.getWorkerName(), worker);
 				session.setAttribute("workerInfo", worker);
-				
 				int roleId = worker.getRoleId();
 				RoleInfo role = roleInfoService.getRoleAuthority(roleId);
 				System.out.println(role.toString());
@@ -122,7 +126,6 @@ public class UserInfoController
 	{
 		System.out.println("LOGOUT");
 		ManagerInfo manager = (ManagerInfo) session.getAttribute("managerInfo");
-		
 		if(manager!=null)
 		{
 			session.removeAttribute("managerInfo");

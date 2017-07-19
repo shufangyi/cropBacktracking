@@ -48,8 +48,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 企业管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./Form/businessinfo.html">企业信息管理</a></li>
-                        <li><a class="useful" href="./Form/businessnum.html">企业账户管理</a></li>
+                        <li><a class="useful" href="./Form/businessinfo.html">企业信息列表</a></li>
+                        <li><a class="useful" href="./Form/managers.html">企业账户列表</a></li>
+                        <li><a class="useful" href="./Form/addmanager.html">注册企业账户</a></li>
                     </ul>
                 </li>
                 
