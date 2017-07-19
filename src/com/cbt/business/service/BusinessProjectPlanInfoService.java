@@ -10,9 +10,9 @@ public interface BusinessProjectPlanInfoService {
 	public Boolean addBusinessProjectPlan(BusinessProjectPlanInfo info);	
 	
 	
-	public List<BusinessProjectPlanInfo> getPageBusinessProjectPlans(int nowpage, int rows , int businessId);
+	public List<BusinessProjectPlanInfo> getPageBusinessProjectPlans(int nowpage, int rows , int businessId,String searchKey);
 	
-	public int getBusinessProjectPlansCount(int businessId);
+	public int getBusinessProjectPlansCount(int businessId,String searchKey);
 	
 	
 	public Boolean updateBusinessProjectPlan(BusinessProjectPlanInfo info);

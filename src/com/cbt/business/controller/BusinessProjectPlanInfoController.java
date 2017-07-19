@@ -38,18 +38,18 @@ public class BusinessProjectPlanInfoController
 		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
 		int rows = Integer.parseInt(req.getParameter("pageSize"));	
 		String business = req.getParameter("business");	
+		String searchKey = req.getParameter("searchKey");	
 		System.out.println("business:	"+business);
 		ModelMap model = new ModelMap();
 		List<BusinessProjectPlanInfo> lists = new ArrayList<BusinessProjectPlanInfo>();
 		if(business!=null)
 		{
 			int businessId = Integer.parseInt(business);
-			lists = businessProjectPlanInfoService.getPageBusinessProjectPlans(nowpage, rows, businessId);
+			lists = businessProjectPlanInfoService.getPageBusinessProjectPlans(nowpage, rows, businessId ,searchKey);
 			model.put("rows", lists);	
-			int total = businessProjectPlanInfoService.getBusinessProjectPlansCount(businessId);
+			int total = businessProjectPlanInfoService.getBusinessProjectPlansCount(businessId,searchKey);
 			model.put("total", total);	
-		}
-		
+		}	
 		return model;
 	}
 	

@@ -12,7 +12,7 @@ public interface BusinessProjectPlanInfoMapper
 	/*分页查询*/
 	public List<BusinessProjectPlanInfo> getPageBusinessProjectPlans(Map<String,Object> map);
 	/*分页记录*/
-	public int getBusinessProjectPlansCount(Integer businessId);	
+	public int getBusinessProjectPlansCount(Map<String,Object> map);	
 	//修改数据
 	public int updateBusinessProjectPlan(BusinessProjectPlanInfo info);
 	//删除数据

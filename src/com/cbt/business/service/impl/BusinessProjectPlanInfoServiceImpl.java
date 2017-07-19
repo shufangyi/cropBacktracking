@@ -27,20 +27,26 @@ public class BusinessProjectPlanInfoServiceImpl implements BusinessProjectPlanIn
 	}
 
 	@Override
-	public List<BusinessProjectPlanInfo> getPageBusinessProjectPlans(int nowpage, int rows , int businessId) {
+	public List<BusinessProjectPlanInfo> getPageBusinessProjectPlans(int nowpage, int rows , int businessId,String searchKey) {
 		// TODO Auto-generated method stub
 		int startrow=(nowpage-1)*rows;
 		HashMap<String,Object> map=new HashMap<String,Object>();
 		map.put("startrow",startrow);
 		map.put("rows", rows);   
 		map.put("businessId", businessId);
+		map.put("searchKey", searchKey);
+		
 		return businessProjectPlanInfoMapper.getPageBusinessProjectPlans(map);
 	}
 
 	@Override
-	public int getBusinessProjectPlansCount(int businessId) {
+	public int getBusinessProjectPlansCount(int businessId,String searchKey)
+	{
 		// TODO Auto-generated method stub
-		return businessProjectPlanInfoMapper.getBusinessProjectPlansCount(businessId);
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("businessId",businessId);
+		map.put("searchKey", searchKey);
+		return businessProjectPlanInfoMapper.getBusinessProjectPlansCount(map);
 	}
 
 	@Override

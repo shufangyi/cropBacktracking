@@ -36,11 +36,58 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	 	 <!-- 分页 -->
  	<select id="getPageBusinessProjectPlans" parameterType="Map" resultMap="BusinessProjectPlanInfoMap">
-  		select * from business_project_planinfo where businessId = #{businessId} limit #{startrow},#{rows}
+  		select * from business_project_planinfo
+  		<where>
+  			 businessId = #{businessId} 
+  			 <if test="searchKey != '' and searchKey != null ">
+  			 and ( 
+  				 planName like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	 productPicture like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	 productName like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	  cropCode like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	  year like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	  project_btCode like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	  growerNum like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	 projectDesc like CONCAT('%', #{searchKey},'%')
+  			 )
+  			 </if> 
+  		</where>
+  		<!-- ,`businessId`,`year`,`project_btCode`
+  			  ,`growerNum`,`checkedNum`,`packingClerkNum`,`logiticsNum`,`projectDesc` -->
+  		limit #{startrow},#{rows}	
  	</select>
  	<!-- 获取记录数量 -->
-  	<select id="getBusinessProjectPlansCount" parameterType="java.lang.Integer" resultType="int">
- 		 select count(*) from business_project_planinfo where businessId = #{value}
+  	<select id="getBusinessProjectPlansCount" parameterType="Map" resultType="int">
+ 		 select count(*) from business_project_planinfo 
+ 		 <where>
+  			 businessId = #{businessId}
+  			 <if test="searchKey != '' and searchKey != null ">
+  			  and ( 
+  				  planName like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	 productPicture like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	 productName like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	  cropCode like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	  year like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	  project_btCode like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	  growerNum like CONCAT('%', #{searchKey},'%')
+  			 	 or 
+  			 	 projectDesc like CONCAT('%', #{searchKey},'%')
+  			 )
+  			 </if> 
+  		</where>
  	</select>
  	
  	<!-- 修改数据 -->
