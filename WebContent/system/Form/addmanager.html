@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>企业管理</title>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--富文本编辑器-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.4/summernote.js"></script>
+
+    <!--本文校验-->
+    <script src="https://cdn.bootcss.com/jquery-validate/1.15.1/additional-methods.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-validate/1.15.1/localization/messages_zh.min.js"></script>
+
+    <!--jquery-ui-->
+    <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
+
+
+    <link rel="stylesheet" href="../css/platformManager.css">
+
+</head>
+<body>
+<div class="container">
+<!--新建表单-->
+<form class="form-horizontal" >
+    <fieldset>
+        <!-- Form Name -->
+        <legend>新增企业</legend>
+        <!-- Text input-->
+        <div class="control-group" >
+            <div class="controls" >
+                <label class="control-label" for="managerNum">账号</label>
+                <input id="managerNum" name="managerNum" type="text" placeholder="" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+        <div class="control-group" >
+            <div class="controls" >
+                <label class="control-label" for="managerPwd">密码</label>
+                <input id="managerPwd" name="managerPwd" type="text" placeholder="" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+        <div class="control-group" >
+            <div class="controls" >
+                <label class="control-label" for="businessId">企业编号</label>
+                <input id="businessId" name="businessId" type="text" placeholder="" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+		
+		
+		  <div class="control-group" >
+            <div class="controls" >
+                <label class="control-label" for="managerName">姓名</label>
+                <input id="managerName" name="managerName" type="text" placeholder="" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+        
+        <div class="control-group" >
+            <div class="controls" >
+                <label class="control-label" for="managerPhone">电话</label>
+                <input id="managerPhone" name="managerPhone" type="text" placeholder="" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>
+
+        <div class="control-group" >
+            <div class="controls" >
+                <label class="control-label" for="businessName">公司名称</label>
+
+                <input id="businessName" name="businessName" type="text" placeholder="example@exa.com" class="input-xlarge" required="required">
+                <span class="help-block">1</span>
+            </div>
+        </div>   
+
+        <!-- Textarea -->
+        <div class="control-group">
+            <div class="controls">
+                <label class="control-label" for="Comment">备注</label>
+                <div id="Comment"><p>Hello Summernote</p></div>
+                <script>
+                    $(document).ready(function() {
+                        $('#Comment').summernote();
+                    });
+                </script>
+            </div>
+
+        </div>
+
+        <div class="control-group">
+            <button type="button" id="submit" name="submit" class="btn btn-info">提交</button>
+        </div>
+
+
+    </fieldset>
+</form>
+</div>
+<script>
+$(document).ready(function()
+{
+	/* //获取平台的生产模板信息
+	$.ajax({
+		type: "post",
+		url: "../../system/getRoles.do",
+		success: function(data)
+		{
+			fillrole(data);
+		},
+		error: function(status)
+		{
+			alert(status);
+		}	
+	}); */
+	
+	/* 
+	function fillrole(data)
+	{
+		var len = data.list.length;
+		alert(len);
+		for(var i=0;i<data.list.length;i++){
+	    	var output="";
+	        output+="<label class='radio inline' for='role-"+i+"'>"+
+	        "<input type='radio' name='role' id='role' value='"+data.list[i].roleId+"'>"+
+	        data.list[i].roleName+
+	        "</label>";
+	    	 $("#role").append(output);
+    	}
+	} */
+	//验证表单数据，获取表单内ring没处理数据，提交后台
+	$('#submit').click(function()
+	{
+		var managerNum = $('#managerNum').val();
+		var managerPwd = $('#managerPwd').val();
+		alert(managerPwd);
+		var businessId = $('#businessId').val();
+		var managerPhone = $('#managerPhone').val();
+		var businessName = $('#businessName').val();
+		var managerName = $('#managerName').val();
+		
+		/*
+			对数据进行验证
+		*/
+		
+		
+		//提交哦数据
+		$.ajax({
+			type: 'post',
+			url: '../../business/addManager.do',
+			data: {
+				//"businessId":businessId,
+				"managerNum":managerNum,
+				"managerPwd":managerPwd,
+				"businessId":businessId,
+				"managerPhone":managerPhone,	
+				"managerName":managerName,
+				"businessName":businessName
+			},
+			success: function(data,status)
+			{
+				alert("提交成功");
+			},
+			error: function(status)
+			{
+				alert(status);
+			}
+		});	
+	});	
+
+	
+	
+});
+</script>
+
+</body>
+</html>

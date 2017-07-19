@@ -1,0 +1,44 @@
+/*整体*/
+.form-horizontal{
+    position: relative;
+    padding-top: 50px;
+}
+.form-horizontal .control-group{
+    margin-top: 20px;
+
+}
+/*角色名称*/
+.control-group .input-xlarge{
+    position: absolute;
+    left: 120px;
+    width: 200px;
+
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.help-block{
+    position: absolute;
+    left: 340px;
+    margin-top: -18px;
+}
+
+/*多选框*/
+.jscheckbox{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkbox,.radio{
+    /*margin-left: 30px;*/
+    padding-left: 150px;
+    width: 320px;
+}
+.checkbox,.radio .inline{
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+    margin-top: 0;
+    padding-top: 7px;
+}
+

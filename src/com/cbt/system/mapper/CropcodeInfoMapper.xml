@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cbt.system.mapper.CropcodeInfoMapper" >
+  <resultMap id="CropcodeInfoMap" type="com.cbt.system.po.CropcodeInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="cropCode" property="cropCode" jdbcType="INTEGER" />
+    <result column="cropName" property="cropName" jdbcType="VARCHAR" />
+  </resultMap>
+  <!--分页查询  -->
+  <select id="getPageCropcodeInfo" parameterType="Map" resultMap="CropcodeInfoMap">
+  		select * from cropcodeinfo limit #{startrow},#{rows}
+ 	</select>
+ 	<!--获取数据个数  -->
+ 	<select id="getCropcodeInfoCount" resultType="int">
+ 		select count(*) from cropcodeinfo
+ 	</select>
+ 
+</mapper>

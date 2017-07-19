@@ -1,0 +1,66 @@
+#pic {
+    position: fixed;
+    top: 0px;
+    left: -100%;
+    border: 1px solid #444;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    /*width: 400px;
+    height: 400px;*/
+    width: 100%;
+    height: 100%;
+    background: white;
+    padding: 15px 20px;
+    z-index: 999;
+    overflow:hidden;
+}
+
+#pic>form{
+    padding: 10px;
+    float:left;
+    width: 50%;
+    
+}
+#pic>.picbox{
+	float: right;
+	width:45%;
+}
+
+#pic>.picbox img{
+	display:block;
+}
+
+
+#pic .need{
+    color: red;
+}
+#pic .control-group{
+    margin: 15px;
+    padding: 5px 10px;
+    letter-spacing: 2px;
+}
+#pic .control-group>label,
+#pic .control-group>div{
+    display: inline-block;
+}
+
+#pic .control-group div.btns{
+    width:100%;
+    text-align: center;
+}
+
+#pic .control-group div.btns button:first-child{
+    margin-right: 30px;
+}
+
+#mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 100;
+}
