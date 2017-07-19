@@ -174,7 +174,9 @@ $(document).ready(function()
 					/* queryParamsType的默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
 		                             设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber */
 					queryParamsType:'', 
-		           	queryParams: function queryParams(params) {
+		           	queryParams: function queryParams(params)
+			    	{
+		           		alert("hello");
 		             var param = {  
 		                 pageNumber: params.pageNumber,    
 		                 pageSize: params.pageSize,
@@ -185,6 +187,7 @@ $(document).ready(function()
 		           	  param[key]=searchArgs[key]
 		             }  
 		             */
+		             console.log("hello");
 		             return param;                   
 		           }, 
 					//【其它设置】
