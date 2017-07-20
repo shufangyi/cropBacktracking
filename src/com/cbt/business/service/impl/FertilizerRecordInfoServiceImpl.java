@@ -50,14 +50,14 @@ public class FertilizerRecordInfoServiceImpl implements FertilizerRecordInfoServ
 
 	//分页查询
 	@Override
-	public List<FertilizerRecordInfo> getFertilizerRecordService(String projectBtcode, int nowpage, int rows)
+	public List<FertilizerRecordInfo> getFertilizerRecordService(String projectBtcode, int nowpage, int rows,String searchKey)
 			throws Exception {
 		int startpage=(nowpage-1)*rows;
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("startpage", startpage);
 		map.put("rows", rows);
 		map.put("projectBtcode", projectBtcode);
-		
+		map.put("searchKey", searchKey);
 		return fertilizeRecordInfoMapper.getFertilizerRecord(map);
 	}
 	//更新数据
@@ -77,12 +77,13 @@ public class FertilizerRecordInfoServiceImpl implements FertilizerRecordInfoServ
 	}
 	//get total count
 	@Override
-	public int getFertilizerRecordCountService(String projectBtcode, int nowpage, int rows) throws Exception {
+	public int getFertilizerRecordCountService(String projectBtcode, int nowpage, int rows,String searchKey) throws Exception {
 		int startpage=(nowpage-1)*rows;
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("startpage", startpage);
 		map.put("rows", rows);
 		map.put("projectBtcode", projectBtcode);
+		map.put("searchKey", searchKey);
 		return fertilizeRecordInfoMapper.getFertilizerRecordCount(map);
 	}
 

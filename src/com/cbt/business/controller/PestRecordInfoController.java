@@ -63,13 +63,16 @@ public class PestRecordInfoController {
 	public ModelMap getPestRecords(HttpServletRequest req,HttpSession session)throws Exception
 	{	
 		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
-		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		int rows = Integer.parseInt(req.getParameter("pageSize"));
+		int workerId=Integer.parseInt(req.getParameter("workerId"));
+		String searchKey=req.getParameter("searchKey");
+		System.out.println("searchKey==============>>"+searchKey);
 		/*
 		 * 要获取此时登录员工账号
 		 */
-		WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
+		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
 		//String workerNum = worker.getWorkerNum();
-		int workerId = worker.getWorkerId();
+		//int workerId = worker.getWorkerId();
 		//根据workerId到项目员工表里查看此员工参与了哪些项目
 		BusinessCropProjectInfo businessCropProjectInfo = new BusinessCropProjectInfo();
 		businessCropProjectInfo.setWorkerId(workerId);
@@ -85,8 +88,8 @@ public class PestRecordInfoController {
 			String project_btCode=businessCropProjectInfolist.get(i).getProject_btCode();
 			//得到参与的溯源码，模糊查询
 			System.out.println("=======7-17========"+project_btCode+nowpage+rows);
-			list = pestRecordInfoService.getPestRecordsService(project_btCode, nowpage, rows);
-			total = total+pestRecordInfoService.getCountService(project_btCode, nowpage, rows);	
+			list = pestRecordInfoService.getPestRecordsService(project_btCode, nowpage, rows,searchKey);
+			total = total+pestRecordInfoService.getCountService(project_btCode, nowpage, rows,searchKey);	
 			for(int j=0;j<list.size();j++)
 			{
 					//new SimpleDateFormat("yyyy-mm-dd").format(list.get(j).getSowtime())

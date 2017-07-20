@@ -1,83 +1,93 @@
  $(document).ready(function() 
 {
+	 
+	 
+	 	var workerId = $(window.parent.parent.frames["topFrame"].document).find('#workerId').text();
+ 		//alert(workerId);
+ 	
+ 		init();
+ 		function init(){
     	 //---先销毁表格 ---
-        $('table').bootstrapTable('destroy');  
-        //---初始化表格,动态从服务器加载数据--- 
-       // alert("hello");
-		 $('table').bootstrapTable
-		 ({
-			//发送数据请求
-	    	url: 'business/getSowRecords.do',
-			method: 'post',
-			contentType: "application/x-www-form-urlencoded",
-			toolbar: '#toolbar',//自定义工具栏
-			cache: false,
-			height: 600,
-			striped: true,
-			search: true,
-			showExport: true,
-			showColumns: true,
-			exportTypes: ['csv','txt','xml'],
-			search: true,
-			clickToSelect: true,
-			//【查询设置】
-			/* queryParamsType的默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
-                             设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber */
-			queryParamsType:'', 
-           	queryParams: function queryParams(params) {
-             var param = {  
-                 pageNumber: params.pageNumber,    
-                 pageSize: params.pageSize
-             }; 
-             /*
-             for(var key in searchArgs){
-           	  param[key]=searchArgs[key]
-             }  
-             */
-             return param;                   
-           }, 
-           
-			//【其它设置】
-           locale:'zh-CN',//中文支持
-           pagination: true,//是否开启分页（*）
-           pageNumber:1,//初始化加载第一页，默认第一页
-           pageSize: 10,//每页的记录行数（*）
-           pageList: [10,15,20],//可供选择的每页的行数（*）
-           sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
-           showRefresh:true,//刷新按钮
-           //【设置列属性】
-			columns: [
-			 {field: 'check',checkbox: true},
-			 {field: 'id',title: 'id'}, 	
-			 {field: 'projectBtcode',title: '项目溯源码'},	 
-			 {field: 'sowtime',title: '种植时间'}, 
-			 {field: 'sowsegBtcode',title: '种植溯源码'},
-			 {field: 'productname',title: '项目名称',editable: true},
-			 {field: 'seedsource',title: '种子来源',editable: true},
-			 {field: 'sownum',title: '种植数量',editable: true},
-			 {field: 'comment',title: '备注',editable: true},
-			 {field: 'grower',title: 'grower',editable: true},
-			 {field: 'sowlocation',title: '种植地点',editable: true}
-
-			 /*
-			 {field: 'seedsource',title: '地点', align: 'center',
-				formatter:function(value,row,index){
-				    var element = 
-				    "<a class='edit' data-id='"+row.id +"'>编辑</a> "+ 
-				    "<a class='delet' data-id='"+row.id +"'>删除</a> ";
-				    return element;  
-				} 
-			  }
-			  */
-			],
-			//行内编辑保存事件
-			onEditableSave: function (field, row, oldValue, $el)
-			{
-					update(row);
-			}	
-           
-           
-       });
+	        $('table').bootstrapTable('destroy');  
+	        //---初始化表格,动态从服务器加载数据--- 
+	       // alert("hello");
+			 $('table').bootstrapTable
+			 ({
+				//发送数据请求
+		    	url: 'business/getSowRecords.do',
+				method: 'post',
+				contentType: "application/x-www-form-urlencoded",
+				toolbar: '#toolbar',//自定义工具栏
+				cache: false,
+				height: 600,
+				striped: true,
+				search: true,
+				showExport: true,
+				showColumns: true,
+				exportTypes: ['csv','txt','xml'],
+				search: true,
+				clickToSelect: true,
+				//【查询设置】
+				/* queryParamsType的默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
+	                             设置为 ''  在这种情况下传给服务器的参数为：pageSize,pageNumber */
+				queryParamsType:'', 
+	           	queryParams: function queryParams(params) {
+	             var param = {  
+	                 pageNumber: params.pageNumber,    
+	                 pageSize: params.pageSize,
+	                 workerId:workerId,
+	                 searchKey:$('#searchKey').val()
+	             }; 
+	             /*
+	             for(var key in searchArgs){
+	           	  param[key]=searchArgs[key]
+	             }  
+	             */
+	             return param;                   
+	           }, 
+	           
+				//【其它设置】
+	           locale:'zh-CN',//中文支持
+	           pagination: true,//是否开启分页（*）
+	           pageNumber:1,//初始化加载第一页，默认第一页
+	           pageSize: 10,//每页的记录行数（*）
+	           pageList: [10,15,20],//可供选择的每页的行数（*）
+	           sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
+	           showRefresh:true,//刷新按钮
+	           //【设置列属性】
+				columns: [
+				 {field: 'check',checkbox: true},
+				 {field: 'id',title: 'id'}, 	
+				 {field: 'projectBtcode',title: '项目溯源码'},	 
+				 {field: 'sowtime',title: '种植时间'}, 
+				 {field: 'sowsegBtcode',title: '种植溯源码'},
+				 {field: 'productname',title: '项目名称',editable: true},
+				 {field: 'seedsource',title: '种子来源',editable: true},
+				 {field: 'sownum',title: '种植数量',editable: true},
+				 {field: 'comment',title: '备注',editable: true},
+				 {field: 'grower',title: 'grower',editable: true},
+				 {field: 'sowlocation',title: '种植地点',editable: true}
+	
+				 /*
+				 {field: 'seedsource',title: '地点', align: 'center',
+					formatter:function(value,row,index){
+					    var element = 
+					    "<a class='edit' data-id='"+row.id +"'>编辑</a> "+ 
+					    "<a class='delet' data-id='"+row.id +"'>删除</a> ";
+					    return element;  
+					} 
+				  }
+				  */
+				],
+				//行内编辑保存事件
+				onEditableSave: function (field, row, oldValue, $el)
+				{
+						update(row);
+				}	
+	           
+	           
+	       });
+ 		}
 	  //查询数据
 	  $('#delete').click(function(){
 		 var rows = $('table').bootstrapTable('getSelections');
@@ -111,7 +121,10 @@
 	            });
 		  }
 	  });
-	  //删除数据
+	  //搜索按钮
+	  $('#search').click(function(){
+		  init();
+	  });
 		 
 	  //删除数据
 		 

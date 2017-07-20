@@ -29,15 +29,15 @@ $(document).ready(function(){
 	/*
 	 * 与后台交互数据
 	 */
-	var sowSeg_btCode=$('#sowSeg_btCode').text;
-	var PestsType=$('#PestsType').text;
-	var SprayTime=$('#SprayTime').text;
-	var MedicationName=$('#MedicationName').text;
-	var MedicationRatio=$('#MedicationRatio').text;
-	var MedicationDosage=$('#MedicationDosage').text;
-	var result=$('#result').text;
-	var grower=$('#grower').text;
-	var comment=$('#Comment').val;
+	var sowSeg_btCode=$('#sowSeg_btCode').text();
+	var PestsType=$('#PestsType').text();
+	var SprayTime=$('#SprayTime').text();
+	var MedicationName=$('#MedicationName').text();
+	var MedicationRatio=$('#MedicationRatio').text();
+	var MedicationDosage=$('#MedicationDosage').text();
+	var result=$('#result').text();
+	var grower=$('#grower').text();
+	var comment=$('#Comment').val();
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"

@@ -29,15 +29,15 @@ $(document).ready(function(){
 	/*
 	 * 与后台交互数据
 	 */
-	var project_btCode=$('#projectBtcode').text;
-	var sowTime=$('#projectBtcode').text;
-	var sowSeg_btCode=$('#sowSeg_btCode').text;
-	var sowLocation=$('#sowLocation').text;
-	var productName=$('#productName').text;
-	var seedSource=$('#seedSource').text;
-	var sowNum=$('#sowNum').text;
-	var grower=$('#grower').text;
-	var comment=$('#comment').val;
+	var project_btCode=$('#projectBtcode').text();
+	var sowTime=$('#projectBtcode').text();
+	var sowSeg_btCode=$('#sowSeg_btCode').text();
+	var sowLocation=$('#sowLocation').text();
+	var productName=$('#productName').text();
+	var seedSource=$('#seedSource').text();
+	var sowNum=$('#sowNum').text();
+	var grower=$('#grower').text();
+	var comment=$('#comment').val();
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"

@@ -49,12 +49,13 @@ public class PestRecordInfoServiceImpl implements PestRecordInfoService {
 
 	//分页查询
 	@Override
-	public List<PestRecordInfo> getPestRecordsService(String projectBtcode, int nowpage, int rows) throws Exception {
+	public List<PestRecordInfo> getPestRecordsService(String projectBtcode, int nowpage, int rows,String searchKey) throws Exception {
 		int startpage=(nowpage-1)*rows;
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("startpage", startpage);
 		map.put("rows", rows);
 		map.put("projectBtcode", projectBtcode);
+		map.put("searchKey", searchKey);
 		return pestRecordInfoMapper.getPestRecords(map);
 	}
 
@@ -77,12 +78,13 @@ public class PestRecordInfoServiceImpl implements PestRecordInfoService {
 	}
 	//get total count
 	@Override
-	public int getCountService(String projectBtcode, int nowpage, int rows) throws Exception {
+	public int getCountService(String projectBtcode, int nowpage, int rows,String searchKey) throws Exception {
 		int startpage=(nowpage-1)*rows;
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("startpage", startpage);
 		map.put("rows", rows);
 		map.put("projectBtcode", projectBtcode);
+		map.put("searchKey", searchKey);
 		return pestRecordInfoMapper.getCount(map);
 	}
 

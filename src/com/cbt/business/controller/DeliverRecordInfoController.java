@@ -52,19 +52,23 @@ public class DeliverRecordInfoController {
 	{	
 		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
 		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		int workerId = Integer.parseInt(req.getParameter("workerId"));
+		String searchKey=req.getParameter("searchKey");
+		System.out.println("searchKey==============>>"+searchKey);
 		/*
 		 * 要获取此时登录员工账号
 		 */
-		WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
-	    System.out.println("+++++++++++++++++workerId:"+worker.getWorkerId());
+		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
+	    System.out.println("+++++++++++++++++workerId:"+workerId);
 		//根据workerNum查找deliverRecord中记录
 	    WorkerInfo workerInfo=new WorkerInfo();
-	    workerInfo.setWorkerId(worker.getWorkerId());
+	    workerInfo.setWorkerId(workerId);
 		String workerNum=workerInfoservice.queryByWorkerIdService(workerInfo).getWorkerNum();
 		Map<String, Object> deliverMap=new HashMap<>();
 		deliverMap.put("startpage", (nowpage-1)*rows);
 		deliverMap.put("rows", rows);
 		deliverMap.put("logistics", workerNum);
+		deliverMap.put("searchKey", searchKey);
 		//分别查询出数据，以及数据的数量
 		List<DeliverRecordInfo> list=deliverRecordInfoService.getDeliverRecordsService(deliverMap);
 		int total=deliverRecordInfoService.getDeliverRecordsCountService(deliverMap);
@@ -115,11 +119,11 @@ public class DeliverRecordInfoController {
 	
 	@RequestMapping("checkOrderNum.do")
 	@ResponseBody
-	public String checkOrderNum(String ordernum,HttpSession session)throws Exception{
+	public String checkOrderNum(String ordernum,HttpSession session,HttpServletRequest req)throws Exception{
 		String mark="false";
-		WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
+		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
 		//根据workerNum查找deliverRecord中记录
-		String workerNum=worker.getWorkerNum();
+		String workerNum=req.getParameter("workerNum");
 		List<DeliverRecordInfo> list=deliverRecordInfoService.queryByLogisticsService(workerNum);
 		for(int i=0;i<list.size();i++){
 			if(ordernum.equals(list.get(i).getOrdernum())){

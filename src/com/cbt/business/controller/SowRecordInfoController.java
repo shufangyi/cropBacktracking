@@ -96,12 +96,15 @@ public class SowRecordInfoController
 	{	
 		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
 		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		int workerId=Integer.parseInt(req.getParameter("workerId"));
+		String searchKey=req.getParameter("searchKey");
+		System.out.println("searchKey==============>>"+searchKey);
 		/*
 		 * 要获取此时登录员工账号
 		 */
-		WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
+		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
 		//String workerNum = worker.getWorkerNum();
-		int workerId = worker.getWorkerId();
+		//int workerId = worker.getWorkerId();
 		//根据workerId到项目员工表里查看此员工参与了哪些项目
 		BusinessCropProjectInfo businessCropProjectInfo = new BusinessCropProjectInfo();
 		businessCropProjectInfo.setWorkerId(workerId);
@@ -117,8 +120,8 @@ public class SowRecordInfoController
 			System.out.println("项目编码"+businessCropProjectInfolist.get(i).getProject_btCode());
 			String project_btCode=businessCropProjectInfolist.get(i).getProject_btCode();
 			//得到参与的项目溯源码，模糊查询
-			list = sowRecordInfoService.getPageSowRecords(nowpage, rows,project_btCode);
-			total =total+ sowRecordInfoService.getRecordsCount(nowpage, rows,project_btCode);
+			list = sowRecordInfoService.getPageSowRecords(nowpage, rows,project_btCode,searchKey);
+			total =total+ sowRecordInfoService.getRecordsCount(nowpage, rows,project_btCode,searchKey);
 			for(int j=0;j<list.size();j++)
 			{
 					//new SimpleDateFormat("yyyy-mm-dd").format(list.get(j).getSowtime())
@@ -132,13 +135,14 @@ public class SowRecordInfoController
 		return model;
 	}
 	
+	
 	//
 	@RequestMapping("checkProjectBtcode.do")
-	public @ResponseBody String CheckProjectBtcode(String projectBtcode,HttpSession session)
+	public @ResponseBody String CheckProjectBtcode(String projectBtcode,HttpSession session,HttpServletRequest req)
 	{
 		Boolean mark = false;
-		WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
-		int workerId = worker.getWorkerId();
+		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
+		int workerId=Integer.parseInt(req.getParameter("workerId"));
 		//根据workerId到项目员工表里查看此员工参与了哪些项目
 		BusinessCropProjectInfo businessCropProjectInfo = new BusinessCropProjectInfo();
 		businessCropProjectInfo.setWorkerId(workerId);

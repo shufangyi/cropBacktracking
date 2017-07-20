@@ -52,7 +52,7 @@
   pickType=#{picktype}
   </if>
   <if test="pickNum!=null">
-  pick=#{picknum}
+  pickNum=#{picknum}
   </if>
   <if test="pickSeg_btCode!=null">
   pickSeg_btCode=#{picksegBtcode}
@@ -74,14 +74,36 @@
   <select id="queryPickRecords" parameterType="Map" resultMap="pickrecordinfomap">
   select * from cropBacktracking.pickRecord
   where pickSeg_btCode like '%${projectBtcode}%' 
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  	pickTime like '%${searchKey}%' or
+  	pickType like '%${searchKey}%' or
+  	pickNum	like '%${searchKey}%' or
+  	pickSeg_btCode like '%${searchKey}%' or
+  	comment like '%${searchKey}%' or
+  	grower like '%${searchKey}%' or
+  	sowSeg_btCode like '%${searchKey}%'
+  )
+  </if>
   order by id limit #{startpage},#{rows}
   </select>
   
   <!-- get total count -->
   <select id="getPickRecordCount" parameterType="Map" resultType="Integer">
   select count(*) from cropBacktracking.pickRecord
-   where pickSeg_btCode like '%${projectBtcode}%' 
-  order by id limit #{startpage},#{rows}
+  where pickSeg_btCode like '%${projectBtcode}%' 
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  	pickTime like '%${searchKey}%' or
+  	pickType like '%${searchKey}%' or
+  	pickNum	like '%${searchKey}%' or
+  	pickSeg_btCode like '%${searchKey}%' or
+  	comment like '%${searchKey}%' or
+  	grower like '%${searchKey}%' or
+  	sowSeg_btCode like '%${searchKey}%'
+  )
+  </if>
+  order by id 
   </select>
   
 </mapper>

@@ -41,6 +41,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="btn-group" role="group" aria-label="...">
+                	<span class="navbar-brand-name" id="workerId" style="display:none">${workerInfo.workerId }</span>
                     <button type="button" id="login-name" class="btn btn-info">${workerInfo.workerNum }&nbsp;<span class="glyphicon glyphicon-user"></span></button>
                     <button type="button" id="logout" class="btn btn-danger">退出&nbsp;<span class="glyphicon glyphicon-log-out"></span> </button>
                 </li>

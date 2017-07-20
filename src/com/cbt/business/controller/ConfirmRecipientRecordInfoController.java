@@ -54,18 +54,22 @@ public class ConfirmRecipientRecordInfoController {
 	{	
 		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
 		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		int workerId = Integer.parseInt(req.getParameter("workerId"));
+		String searchKey=req.getParameter("searchKey");
+		System.out.println("searchKey==============>>"+searchKey);
 		/*
 		 * 要获取此时登录员工账号
 		 */
-		WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
+		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
 		//根据workerNum查找deliverRecord中记录
 		WorkerInfo workerInfo=new WorkerInfo();
-		workerInfo.setWorkerId(worker.getWorkerId());
+		workerInfo.setWorkerId(workerId);
 		String workerNum=workerInfoservice.queryByWorkerIdService(workerInfo).getWorkerNum();
 		Map<String, Object> map=new HashMap<>();
 		map.put("startpage", (nowpage-1)*rows);
 		map.put("rows", rows);
 		map.put("distributor", workerNum);
+		map.put("searchKey", searchKey);
 		//分别查询出数据，以及数据的数量
 		List<ConfirmRecipientRecordInfo> list=confirmRecipientRecordInfoService.getConfirmRecipientRecordsService(map);
 		int total=confirmRecipientRecordInfoService.getConfirmRecipientRecordsCountService(map);
@@ -115,11 +119,11 @@ public class ConfirmRecipientRecordInfoController {
 	
 	@RequestMapping("checkConfirmRecipientOrderNum.do")
 	@ResponseBody
-	public String checkOrderNum(String ordernum,HttpSession session)throws Exception{
+	public String checkOrderNum(String ordernum,HttpSession session,HttpServletRequest req)throws Exception{
 		String mark="false";
-		WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
+		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
 		//根据workerNum查找deliverRecord中记录
-		String workerNum=worker.getWorkerNum();
+		String workerNum=req.getParameter("workerNum");
 		List<ConfirmRecipientRecordInfo> list=confirmRecipientRecordInfoService.queryByDistributorService(workerNum);
 		for(int i=0;i<list.size();i++){
 			if(ordernum.equals(list.get(i).getOrdernum())){

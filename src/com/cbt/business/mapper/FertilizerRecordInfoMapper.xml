@@ -43,7 +43,18 @@
   <!-- 分页查询 -->
   <select id="getFertilizerRecord" parameterType="Map" resultMap="fertilizerrecordinfomap">
   select * from cropBacktracking.fertilizerRecord
-  where sowSeg_btCode like '%${projectBtcode}%' order by id limit #{startpage},#{rows}
+  where sowSeg_btCode like '%${projectBtcode}%'
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  fertilizerName like '%${searchKey}%' or
+  fertilizertime like '%${searchKey}%' or
+  fertilizernum like '%${searchKey}%' or
+  comment like '%${searchKey}%' or
+  grower like '%${searchKey}%' or
+  sowSeg_btCode like '%${searchKey}%'
+  )
+  </if>
+   order by id limit #{startpage},#{rows}
   </select>
   
   <!-- update a fertilizer -->
@@ -74,8 +85,19 @@
   
   <!-- get total count -->
   <select id="getFertilizerRecordCount" parameterType="Map" resultType="int">
-  select count(*) from cropBacktracking.fertilizerRecord
-  where sowSeg_btCode like '%${projectBtcode}%' order by id limit #{startpage},#{rows}
+   select count(*) from cropBacktracking.fertilizerRecord
+  where sowSeg_btCode like '%${projectBtcode}%'
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  fertilizerName like '%${searchKey}%' or
+  fertilizertime like '%${searchKey}%' or
+  fertilizernum like '%${searchKey}%' or
+  comment like '%${searchKey}%' or
+  grower like '%${searchKey}%' or
+  sowSeg_btCode like '%${searchKey}%'
+  )
+  </if>
+   order by id
   </select>
   
   

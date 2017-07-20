@@ -64,25 +64,27 @@ public class SowRecordInfoServiceImpl implements SowRecordInfoService
 
 	/* 查询 分页*/
 	@Override
-	public List<SowRecordInfo> getPageSowRecords(int nowpage, int rows,String project_btCode) {
+	public List<SowRecordInfo> getPageSowRecords(int nowpage, int rows,String project_btCode,String searchKey) {
 		// TODO Auto-generated method stub
 		int startrow=(nowpage-1)*rows;
 		HashMap<String,Object> map=new HashMap<String,Object>();
 		map.put("startrow",startrow);
 		map.put("rows", rows);   
 		map.put("project_btCode", project_btCode);
+		map.put("searchKey", searchKey);
 		return sowRecordInfoMapper.getPageSowRecords(map);
 	}
 	
 	
 	/*查询记录总数*/
 	@Override
-	public int getRecordsCount(int nowpage,int rows,String project_btCode) {
+	public int getRecordsCount(int nowpage,int rows,String project_btCode,String searchKey) {
 		int startrow=(nowpage-1)*rows;
 		HashMap<String,Object> map=new HashMap<String,Object>();
 		map.put("startrow",startrow);
 		map.put("rows", rows);   
 		map.put("project_btCode", project_btCode);
+		map.put("searchKey", searchKey);
 		return sowRecordInfoMapper.getRecordsCount(map);
 	}
 

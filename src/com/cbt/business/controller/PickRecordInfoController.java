@@ -56,12 +56,15 @@ public class PickRecordInfoController {
 	{	
 		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
 		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		int workerId=Integer.parseInt(req.getParameter("workerId"));
+		String searchKey=req.getParameter("searchKey");
+		System.out.println("searchKey==============>>"+searchKey);
 		/*
 		 * 要获取此时登录员工账号
 		 */
-		WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
+		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
 		//String workerNum = worker.getWorkerNum();
-		int workerId = worker.getWorkerId();
+		//int workerId = worker.getWorkerId();
 		//根据workerId到项目员工表里查看此员工参与了哪些项目
 		BusinessCropProjectInfo businessCropProjectInfo = new BusinessCropProjectInfo();
 		businessCropProjectInfo.setWorkerId(workerId);
@@ -77,8 +80,8 @@ public class PickRecordInfoController {
 			String project_btCode=businessCropProjectInfolist.get(i).getProject_btCode();
 			//得到参与的播种溯源码，模糊查询
 			System.out.println("=======7-17========"+project_btCode+nowpage+rows);
-			list = pickRecordInfoService.queryPickRecordsService(project_btCode,nowpage, rows);
-			total = total+pickRecordInfoService.getPickRecordCountService(project_btCode,nowpage, rows);
+			list = pickRecordInfoService.queryPickRecordsService(project_btCode,nowpage, rows,searchKey);
+			total = total+pickRecordInfoService.getPickRecordCountService(project_btCode,nowpage, rows,searchKey);
 			for(int j=0;j<list.size();j++)
 			{
 					//new SimpleDateFormat("yyyy-mm-dd").format(list.get(j).getSowtime())
@@ -91,6 +94,8 @@ public class PickRecordInfoController {
 		model.put("total", total);	
 		return model;
 	}
+	
+	
 	
 	@RequestMapping(value="addPickRecordInfo.do")
 	@ResponseBody
@@ -107,16 +112,17 @@ public class PickRecordInfoController {
 	
 	@RequestMapping(value="checkSowSegBtCode.do")
 	@ResponseBody
-	public String checkSowSegBtCode(String sowsegBtcode,HttpSession session)throws Exception{
+	public String checkSowSegBtCode(String sowsegBtcode,HttpSession session,HttpServletRequest req)throws Exception{
 		String mark="false";
 		System.out.println("==================sowSeg_btCode:"+sowsegBtcode+"length:"+sowsegBtcode.length());
 		if(sowsegBtcode.length()!=13){
 			return mark;
 		}
-		WorkerInfo workInfo=(WorkerInfo) session.getAttribute("wordInfo");
-		System.out.println("workerId:"+workInfo.getWorkerId());
+		//WorkerInfo workInfo=(WorkerInfo) session.getAttribute("wordInfo");
+		int workerId=Integer.parseInt(req.getParameter("workerId"));
+		System.out.println("workerId:"+workerId);
 		BusinessCropProjectInfo businessCropProjectInfo=new BusinessCropProjectInfo();
-		businessCropProjectInfo.setWorkerId(workInfo.getWorkerId());
+		businessCropProjectInfo.setWorkerId(workerId);
 		List<BusinessCropProjectInfo> businessCropProjectInfoList=businessCropProjectInfoService.getBusinessCropProjectInfo(businessCropProjectInfo);
 		for(int i=0;i<businessCropProjectInfoList.size();i++){
 			if(businessCropProjectInfoList.get(i).getProject_btCode().equals(sowsegBtcode.substring(0,9))){

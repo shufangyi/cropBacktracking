@@ -29,18 +29,18 @@ $(document).ready(function(){
 	/*
 	 * 与后台交互数据
 	 */
-	var checkInSeg_btCode=$('#checkInSeg_btCode').text;
-	var copackTime=$('#copackTime').text;
-	var OrderNum=$('#OrderNum').text;
-	var copackLocation=$('#copackLocation').text;
-	var product_btCode=$('#product_btCode').text;
-	var copacker=$('#copacker').text;
-	var produceDate=$('#produceDate').text;
-	var ProduceLocation=$('#ProduceLocation').test;
-	var Specifications=$('#Specifications').test;
-	var NetContent=$('#NetContent').test;
-	var StorageCondition=$('#StorageCondition').test;
-	var comment=$('#Comment').val;
+	var checkInSeg_btCode=$('#checkInSeg_btCode').text();
+	var copackTime=$('#copackTime').text();
+	var OrderNum=$('#OrderNum').text();
+	var copackLocation=$('#copackLocation').text();
+	var product_btCode=$('#product_btCode').text();
+	var copacker=$('#copacker').text();
+	var produceDate=$('#produceDate').text();
+	var ProduceLocation=$('#ProduceLocation').test();
+	var Specifications=$('#Specifications').test();
+	var NetContent=$('#NetContent').test();
+	var StorageCondition=$('#StorageCondition').test();
+	var comment=$('#Comment').val();
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
 		alert("表单");

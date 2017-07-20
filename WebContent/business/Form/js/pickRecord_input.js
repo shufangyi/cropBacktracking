@@ -29,13 +29,13 @@ $(document).ready(function(){
 	/*
 	 * 与后台交互数据
 	 */
-	var sowsegBtcode=$('#sowSeg_btCode').text;
-	var picktime=$('#PickTime').text;
-	var picktype=$('#PickType').text;
-	var picknum=$('#PickNum').text;
-	var grower=$('#grower').text;
-	var pickSeg_btCode=$('#pickSeg_btCode').text;
-	var comment=$('#comment').val;
+	var sowsegBtcode=$('#sowSeg_btCode').text();
+	var picktime=$('#PickTime').text();
+	var picktype=$('#PickType').text();
+	var picknum=$('#PickNum').text();
+	var grower=$('#grower').text();
+	var pickSeg_btCode=$('#pickSeg_btCode').text();
+	var comment=$('#comment').val();
 	
 
 	$('#submit').click(function(){

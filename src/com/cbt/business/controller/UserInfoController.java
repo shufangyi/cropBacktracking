@@ -134,7 +134,6 @@ public class UserInfoController
 			return "true";
 		}
 		WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
-		
 		if(worker!=null)
 		{
 			session.removeAttribute("workerInfo");
@@ -142,8 +141,7 @@ public class UserInfoController
 			return "true";
 		}
 		return "false";
-	}
-	
+	}	
 	
 	
 	

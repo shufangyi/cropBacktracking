@@ -56,11 +56,12 @@ public class PickRecordInfoServiceImpl implements PickRecordInfoService {
 
 	//分页查询
 	@Override
-	public List<PickRecordInfo> queryPickRecordsService(String projectBtcode,int nowpage,int rows) throws Exception {
+	public List<PickRecordInfo> queryPickRecordsService(String projectBtcode,int nowpage,int rows,String searchKey) throws Exception {
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("startpage", (nowpage-1)*rows);
 		map.put("projectBtcode", projectBtcode);
 		map.put("rows", rows);
+		map.put("searchKey", searchKey);
 		return pickRecordInfoMapper.queryPickRecords(map);
 	}
 
@@ -76,11 +77,12 @@ public class PickRecordInfoServiceImpl implements PickRecordInfoService {
 	}
 	//get total count
 	@Override
-	public int getPickRecordCountService(String projectBtcode,int nowpage,int rows) throws Exception {
+	public int getPickRecordCountService(String projectBtcode,int nowpage,int rows,String searchKey) throws Exception {
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("startpage", (nowpage-1)*rows);
 		map.put("projectBtcode", projectBtcode);
 		map.put("rows", rows);
+		map.put("searchKey", searchKey);
 		return pickRecordInfoMapper.getPickRecordCount(map);
 	}
 

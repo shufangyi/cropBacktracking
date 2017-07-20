@@ -18,11 +18,11 @@ public interface FertilizerRecordInfoService {
 	//溯源信息查询，施肥记录
 	public List<FertilizerRecordInfo> queryFertilizerByBtCodeService(String sowSeg_btCode)throws Exception;
 	//分页查询
-	public List<FertilizerRecordInfo> getFertilizerRecordService(String projectBtcode,int nowrow,int rows)throws Exception;
+	public List<FertilizerRecordInfo> getFertilizerRecordService(String projectBtcode,int nowrow,int rows,String searchKey)throws Exception;
 	//更新数据
 	public int updateFertilizerBySowBtCodeService(FertilizerRecordInfo fertilizerRecordInfo)throws Exception;
 	//循环删除
 	public String delFertilizerRecordService(List<FertilizerRecordInfo> list)throws Exception;
 	//get total count
-	public int getFertilizerRecordCountService(String projectBtcode,int nowrow,int rows)throws Exception;
+	public int getFertilizerRecordCountService(String projectBtcode,int nowrow,int rows,String searchKey)throws Exception;
 }

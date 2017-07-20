@@ -51,7 +51,9 @@
 			<div class="row">
 				<!-- 表格 -->
 				 <div id="toolbar">
-        			<button value="删除" id="delete">删除</button>
+        				<input type="button" id="delete" value="删除">
+        			<input type="button" id="search" value="搜索">
+        			<input type="text" id="searchKey" placeholder="请输入搜索内容">	
 				</div>
 				
 				<div class="col-xs-12">

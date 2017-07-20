@@ -29,11 +29,11 @@ $(document).ready(function(){
 	/*
 	 * 与后台交互数据
 	 */
-	var OrderNum=$('#OrderNum').text;
-	var receipientTime=$('#receipientTime').text;
-	var LogisticsNum=$('#LogisticsNum').text;
-	var distributor=$('#distributor').text;
-	var Comment=$('#Comment').val;
+	var OrderNum=$('#OrderNum').text();
+	var receipientTime=$('#receipientTime').text();
+	var LogisticsNum=$('#LogisticsNum').text();
+	var distributor=$('#distributor').text();
+	var Comment=$('#Comment').val();
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"

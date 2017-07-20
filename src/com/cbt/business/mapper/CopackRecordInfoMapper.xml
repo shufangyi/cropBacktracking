@@ -62,15 +62,48 @@
   <!-- 分页查询 -->
   <select id="getCopackRecords" parameterType="Map" resultMap="copackrecordinfomap">
   select * from cropBacktracking.copackRecord
-  where checkInSeg_btCode like '%${projectBtcode}%' order by id
+  where checkInSeg_btCode like '%${projectBtcode}%' 
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  checkInSeg_btCode like '%${searchKey}%' or
+  copacktime like '%${searchKey}%' or
+  ordernum like '%${searchKey}%' or
+  copacklocation like '%${searchKey}%' or
+  product_btCode like '%${searchKey}%' or
+  copacker like '%${searchKey}%' or
+  producedate like '%${searchKey}%' or
+  producelocation like '%${searchKey}%' or
+  specifications like '%${searchKey}%' or
+  netcontent like '%${searchKey}%' or
+  storagecondition like '%${searchKey}%' or
+  comment like '%${searchKey}%' 
+  )
+  </if>
+  order by id
   limit #{startpage},#{rows}
   </select>
   
    <!-- 分页查询数据数量 -->
      <select id="getCopackRecordsCount" parameterType="Map" resultType="Integer">
   select count(*) from cropBacktracking.copackRecord
-  where checkInSeg_btCode like '%${projectBtcode}%' order by id
-  limit #{startpage},#{rows}
+   where checkInSeg_btCode like '%${projectBtcode}%' 
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  checkInSeg_btCode like '%${searchKey}%' or
+  copacktime like '%${searchKey}%' or
+  ordernum like '%${searchKey}%' or
+  copacklocation like '%${searchKey}%' or
+  product_btCode like '%${searchKey}%' or
+  copacker like '%${searchKey}%' or
+  producedate like '%${searchKey}%' or
+  producelocation like '%${searchKey}%' or
+  specifications like '%${searchKey}%' or
+  netcontent like '%${searchKey}%' or
+  storagecondition like '%${searchKey}%' or
+  comment like '%${searchKey}%' 
+  )
+  </if>
+  order by id
   </select>
   
   <!-- 更新数据 -->
@@ -90,7 +123,7 @@
   copacklocation=#{copacklocation}
   </if>
   <if test="productBtcode!=null">
-  productBtcode=#{productBtcode}
+  product_btCode=#{productBtcode}
   </if>
   <if test="copacker!=null">
   copacker=#{copacker}

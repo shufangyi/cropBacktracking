@@ -46,12 +46,15 @@ public class CheckInRecordInfoController {
 	{	
 		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
 		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		int workerId = Integer.parseInt(req.getParameter("workerId"));
+		String searchKey =req.getParameter("searchKey");
+		System.out.println("searchKey==============>>"+searchKey);
 		/*
 		 * 要获取此时登录员工账号
 		 */
-		WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
+		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
 		//String workerNum = worker.getWorkerNum();
-		int workerId = worker.getWorkerId();
+		//int workerId = worker.getWorkerId();
 		//根据workerId到项目员工表里查看此员工参与了哪些项目
 		BusinessCropProjectInfo businessCropProjectInfo = new BusinessCropProjectInfo();
 		businessCropProjectInfo.setWorkerId(workerId);
@@ -70,6 +73,7 @@ public class CheckInRecordInfoController {
 			map.put("startpage", (nowpage-1)*rows);
 			map.put("rows", rows);
 			map.put("projectBtcode",project_btCode);
+			map.put("searchKey", searchKey);
 			//得到参与的项目溯源码，模糊查询
 			list = checkInRecordInfoService.getCheckInRecordByPaginationService(map);
 			total = total+checkInRecordInfoService.getPaginationCountService(map);
@@ -89,14 +93,15 @@ public class CheckInRecordInfoController {
 	
 	@RequestMapping("checkPickSegBtCode.do")
 	@ResponseBody
-	public String checkPickSegBtCode(String picksegBtcode,HttpSession session)throws Exception{
+	public String checkPickSegBtCode(String picksegBtcode,HttpSession session,HttpServletRequest req)throws Exception{
 		String mark="false";
 		if(picksegBtcode.length()!=17){
 			return mark;
 		}
 		System.out.println(picksegBtcode.substring(0, 9));
-		WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
-		int workerId = worker.getWorkerId();
+		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
+		//int workerId = worker.getWorkerId();
+		int workerId = Integer.parseInt(req.getParameter("workerId"));
 		//根据workerId到项目员工表里查看此员工参与了哪些项目
 		BusinessCropProjectInfo businessCropProjectInfo = new BusinessCropProjectInfo();
 		businessCropProjectInfo.setWorkerId(workerId);

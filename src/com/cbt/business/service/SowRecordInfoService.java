@@ -19,10 +19,10 @@ public interface SowRecordInfoService {
 	//2017 - 7 -15
 	
 	/*分页查询*/
-	public List<SowRecordInfo> getPageSowRecords(int nowpage,int rows,String project_btCode);
+	public List<SowRecordInfo> getPageSowRecords(int nowpage,int rows,String project_btCode,String searchKey);
 	
 	/*查询记录总数*/
-	public int getRecordsCount(int nowpage,int rows,String project_btCode);
+	public int getRecordsCount(int nowpage,int rows,String project_btCode,String searchKey);
 	
 	/*修改数据 */
 	Boolean updateSowRecord(SowRecordInfo info);

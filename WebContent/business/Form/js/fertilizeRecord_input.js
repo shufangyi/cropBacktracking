@@ -29,13 +29,13 @@ $(document).ready(function(){
 	/*
 	 * 与后台交互数据
 	 */
-	var sowsegBtcode=$('#sowSeg_btCode').text;
-	var fertilizername=$('#fertilizerName').text;
-	var fertilizetime=$('#FertilizeTime').text;
-	var fertilizernum=$('#FertilizerNum').text;
-	var fertilizerfrequency=$('#FertilizerFrequency').text;
-	var grower=$('#grower').text;
-	var comment=$('#Comment').val;
+	var sowsegBtcode=$('#sowSeg_btCode').text();
+	var fertilizername=$('#fertilizerName').text();
+	var fertilizetime=$('#FertilizeTime').text();
+	var fertilizernum=$('#FertilizerNum').text();
+	var fertilizerfrequency=$('#FertilizerFrequency').text();
+	var grower=$('#grower').text();
+	var comment=$('#Comment').val();
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"

@@ -41,14 +41,33 @@
   	<!-- 分页查询 -->
   	<select id="getConfirmRecipientRecords" parameterType="Map" resultMap="confirmrecipientrecordinfomap">
   	select * from cropBacktracking.confirmRecipientRecord
-  	where distributor=#{distributor} order by id
+  	where distributor=#{distributor}
+  	<if test="searchKey!=null and searchKey!=''">
+  	and(
+  	ordernum like '%${searchKey}%' or
+  	recipienttime like '%${searchKey}%' or
+  	logisticsNum like '%${searchKey}%' or
+  	distributor like '%${searchKey}%' or
+  	comment	like '%${searchKey}%' 
+  	)
+  	</if>
+  	 order by id
   	limit #{startpage},#{rows}
   	</select>
   	<!-- 分页查询的条数 -->
   	<select id="getConfirmRecipientRecordsCount" parameterType="Map" resultType="Integer">
-  	select count(*) from cropBacktracking.confirmRecipientRecord
-  	where distributor=#{distributor} order by id
-  	limit #{startpage},#{rows}
+    	select count(*) from cropBacktracking.confirmRecipientRecord
+  	where distributor=#{distributor}
+  	<if test="searchKey!=null and searchKey!=''">
+   	and(
+  	ordernum like '%${searchKey}%' or
+  	recipienttime like '%${searchKey}%' or
+  	logisticsNum like '%${searchKey}%' or
+  	distributor like '%${searchKey}%' or
+  	comment	like '%${searchKey}%' 
+  	)
+  	</if>
+  	 order by id
   	</select>
   	
   	<!-- 更新数据 -->
@@ -59,7 +78,7 @@
   	ordernum=#{ordernum}
   	</if>
   	<if test="receipienttime!=null">
-  	receipienttime=#{receipienttime}
+  	recipienttime=#{receipienttime}
   	</if>
   	<if test="logisticsNum!=null">
   	logisticsNum=#{logisticsNum}
