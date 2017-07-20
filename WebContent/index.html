@@ -9,6 +9,8 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/demo.css">
     <link rel="stylesheet" href="./css/index.css">
+     <link rel='stylesheet' href='./css/animate.min.css'>
+    <link rel="stylesheet" href="./css/notification.css">
 </head>
 
 <body>
@@ -34,9 +36,9 @@
             <div class="hero-area">
                 <h1>A Traceability tools for <span class="audience-name"></span></h1>
                 <div class="search bar6">
-                    <form action="lifeline.html" method="post">
-                        <input type="text" name="wd" placeholder="请输入产品上的查询码...">
-                        <button type="submit"></button>
+                    <form action="" method="post">
+                        <input type="number" name="searchNum" id="searchNum" placeholder="请输入产品上的25位查询码...">
+                        <button id="searchBtn"type="submit"></button>
                     </form>
                 </div>
                 <p>一物一码，追踪溯源</p>
@@ -101,28 +103,28 @@
                 <p>农产品溯源系统核心功能</p>
                 <div class="container">
                     <div class="col-xs-3 introduction in1">
-                            <img src="./assets/nongchan.png" alt="role-icon">
+                            <img src="./assets/农产.png" alt="role-icon">
                             <div class="hr"></div>
                             <p>农事管理打药 </p>
                             <p>施肥 播种</p>
                             <p>等等</p>
                     </div>
                     <div class="col-xs-3 introduction in2">
-                        <img src="./assets/qiye.png" alt="role-icon">
+                        <img src="./assets/企业.png" alt="role-icon">
                         <div class="hr"></div>
                         <p>营销互动产品评价 </p>
                         <p>网络传播</p>
                         <p>品牌故事</p>
                     </div>
                     <div class="col-xs-3 introduction in3">
-                        <img src="./assets/jianguan.png" alt="role-icon">
+                        <img src="./assets/监管.png" alt="role-icon">
                         <div class="hr"></div>
                         <p>政府监管视频监控 </p>
                         <p>三方监测 </p>
                         <p>保险理赔</p>
                     </div>
                     <div class="col-xs-3 introduction in4">
-                        <img src="./assets/pinzhi.png" alt="role-icon">
+                        <img src="./assets/品质.png" alt="role-icon">
                         <div class="hr"></div>
                         <p>品质监控防伪保真 </p>
                         <p>合格分析</p>
@@ -239,6 +241,7 @@
     <script src="https://cdn.bootcss.com/typed.js/1.1.7/typed.min.js"></script>
     <script src="./js/back-to-top.js"></script>
     <script src="./js/footer.js"></script>
+    <script src="./js/notification.js"></script>
     <script type="text/javascript">
         $(function () {
             $(".audience-name").typed({
@@ -249,6 +252,75 @@
                 backDelay: 3000,
                 showCursor: false
             });
+
+            
+            var position = 2;
+            $("#searchBtn").bind('click', function (event) {
+                event.preventDefault();
+                var r = /^\+?[0-9]*$/;　　 //正整数 
+
+                if ($('#searchNum').val().length != 25 || !r.test($('#searchNum').val())) {
+                    Notification.create(
+                        // Title
+                        "Notification",
+                        // Text
+                        "请输入正确的25位数字溯源码！;) ！",
+                        // Illustration
+                        "./assets/cat.jpg",
+                        // Effect
+                        "fadeIn",
+                        // Position
+                        position
+                    );
+                } else {
+                    $.ajax({
+                        type: 'POST',
+                        url: "visitor/checkProductBtcode.do",
+                        data: {
+                            "productBtcode": $('#searchNum').val()
+                        },
+                        success: function (data) {
+                            if (data == "true") {
+                                window.location.replace("./lifeline.html?id=" + $('#searchNum').val());
+                            } else {
+                                Notification.create(
+                                    // Title
+                                    "Notification",
+                                    // Text
+                                    "溯源码错误！无相关信息;) ！",
+                                    // Illustration
+                                    "./assets/cat.jpg",
+                                    // Effect
+                                    "fadeIn",
+                                    // Position
+                                    position
+                                );
+                            }
+                        },
+                        error: function (status) {
+                            Notification.create(
+                                // Title
+                                "Notification",
+                                // Text
+                                "不好意思，发生了未知错误！;) ！",
+                                // Illustration
+                                "./assets/cat.jpg",
+                                // Effect
+                                "fadeIn",
+                                // Position
+                                position
+                            );
+                            F
+                        }
+                    });
+                }
+            });
+            $("#searchNum").keydown(function () {
+                if (event.keyCode == "13") { //keyCode=13是回车键
+                    $('#searchBtn').trigger('click');
+                }
+            });
+
         });
     </script>
 </body>

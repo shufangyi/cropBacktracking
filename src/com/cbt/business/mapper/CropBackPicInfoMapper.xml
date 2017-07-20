@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.business.mapper.CropBackPicInfoMapper">
+  <resultMap id="cropbackPicinfomap" type="com.cbt.business.po.CropBackPicInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+	<result column="projectCode" jdbcType="VARCHAR" property="projectCode" />
+	<result column="picUrl" jdbcType="VARCHAR" property="picUrl" />
+	<result column="loc" jdbcType="VARCHAR" property="loc" />
+  </resultMap>
+  	<!-- private int id;
+	private String projectCode;
+	private String picUrl;
+	private String loc; -->
+	
+	
+  <insert id="saveCropBackPicInfo" parameterType="com.cbt.business.po.CropBackPicInfo">
+  	insert into CropBackPic
+   	(
+   		projectCode,picUrl,loc
+   	)
+   	values
+   	(
+   		#{projectCode},#{picUrl},#{loc}
+   	)
+  </insert>
+  
+</mapper>

@@ -30,7 +30,8 @@
     	<property name="converters">  
        	 <list>  
             <!-- 进行日期的转换 -->  
-            	<bean class="com.cbt.converter.DateConverter"/>  
+            	<bean class="com.cbt.converter.DateConverter"/>
+            	<bean class="com.cbt.converter.SpringMVCFileConverter"></bean>  
         </list>  
   		</property>  
 	</bean> 
@@ -40,6 +41,7 @@
 		<property name="conversionService" ref="conversionService">
 		</property>
 	</bean>
+
 	
 	
 	<!-- 用于将对象转化为JSON -->

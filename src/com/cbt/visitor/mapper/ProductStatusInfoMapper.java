@@ -12,5 +12,9 @@ public interface ProductStatusInfoMapper {
 	public int updateQueryTimesByBtCode(ProductStatusInfo productStatusInfo)throws Exception;
 	//通过btCode查询出现在的次数
 	public int queryTimesByBtCode(String product_btCode)throws Exception;
+	
+	
+	
+	public int getProductStatusInfo(String product_btCode);
 
 }

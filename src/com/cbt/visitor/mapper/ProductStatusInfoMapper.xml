@@ -46,6 +46,10 @@
   where product_btCode=#{product_btCode}
   </select>
   
+   <select id="getProductStatusInfo" parameterType="String" resultType="Integer">
+  select count(*) from cropBacktracking.productStatusInfo
+  where product_btCode=#{product_btCode}
+  </select>
   
   
 </mapper>

@@ -200,4 +200,14 @@ public class VisitorQueryController
 	}
 	
 	
+	/*
+	 *首页搜索
+	 */
+	@RequestMapping("checkProductBtcode.do")
+	public @ResponseBody String checkProductBtcode(String productBtcode)
+	{
+		ProductStatusInfo productStatusInfo=new ProductStatusInfo();		
+		return productStatusInfoService.checkProductBtcode(productBtcode).toString();
+	}
+	
 }

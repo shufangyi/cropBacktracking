@@ -4,7 +4,8 @@ public class CropBackPicInfo
 {
 	private int id;
 	private String projectCode;
-	private String pic1;
+	private String picUrl;
+	private String loc;
 	public int getId() {
 		return id;
 	}
@@ -17,10 +18,16 @@ public class CropBackPicInfo
 	public void setProjectCode(String projectCode) {
 		this.projectCode = projectCode;
 	}
-	public String getPic1() {
-		return pic1;
+	public String getPicUrl() {
+		return picUrl;
 	}
-	public void setPic1(String pic1) {
-		this.pic1 = pic1;
+	public void setPicUrl(String picUrl) {
+		this.picUrl = picUrl;
+	}
+	public String getLoc() {
+		return loc;
+	}
+	public void setLoc(String loc) {
+		this.loc = loc;
 	}
 }

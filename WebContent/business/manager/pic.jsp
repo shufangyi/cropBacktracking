@@ -1,24 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<base href="<%=basePath%>">
     <meta charset="UTF-8">
     <title>roles</title>
-    <script type="text/javascript" src="../../plugs/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="plugs/jquery-3.1.1.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- boostrap table  -->
    	
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="../../plugs/bootstrap/css/bootstrap.min.css">
-	<script type="text/javascript" src="../../plugs/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="plugs/bootstrap/css/bootstrap.min.css">
+	<script type="text/javascript" src="plugs/bootstrap/js/bootstrap.min.js"></script>
 	<!-- 分页插件 -->
-	<link rel="stylesheet" href="../../plugs/bootstrap-table/bootstrap-table.min.css">
-	<script type="text/javascript" src="../../plugs/bootstrap-table/bootstrap-table.min.js"></script>
-	<script type="text/javascript" src="../../plugs/bootstrap-table/bootstrap-table-locale-all.min.js"></script>
+	<link rel="stylesheet" href="plugs/bootstrap-table/bootstrap-table.min.css">
+	<script type="text/javascript" src="plugs/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="plugs/bootstrap-table/bootstrap-table-locale-all.min.js"></script>
 	<!-- 行内编辑 -->
-	<script type="text/javascript" src="../../plugs/editable/bootstrap-editable.js"></script>
-	<script type="text/javascript" src="../../plugs/editable/bootstrap-table-editable.js"></script>
-	<script src="../js/uploadPreview.js" type="text/javascript"></script>
-	<script src="https://cdn.bootcss.com/jquery.form/4.2.1/jquery.form.js"></script>
+	<script type="text/javascript" src="plugs/editable/bootstrap-editable.js"></script>
+	<script type="text/javascript" src="plugs/editable/bootstrap-table-editable.js"></script>
+	<script src="business/js/uploadPreview.js" type="text/javascript"></script>
 </head>
 <body>
 <!--查询列表-->
@@ -39,18 +48,10 @@
 		<div class="closepic">
 		<button id="close">关闭</button>
 		</div>
-        <form class="form-horizontal" id="pic_form" method="post" enctype="multipart/form-data" >
+        <form class="form-horizontal" id="pic_form" method="post" enctype="multipart/form-data" action="../picUpload.do">
             <fieldset>
                 <!-- Form Name -->
                 <legend>产品溯源页面图片上传</legend>
-                
-                 <div class="control-group" style="display:none">
-                    <label class="control-label" for="projectCodeinput-0"><span class="need">*</span> 上传第一张图片</label>
-                    <div class="controls inline">
-                        <input id="projectCode"  type="text" name="projectCode">
-                    </div>
-                </div>
-                
                 <!-- upload pic one-->
                 <div class="control-group">
                     <label class="control-label" for="passwordinput-0"><span class="need">*</span> 上传第一张图片</label>
@@ -101,7 +102,7 @@
                     <!--<label class="control-label" for="doublebutton-0">Double Button</label>-->
                     <div class="controls btns">
                         <button type="reset" id="doublebutton-0" name="doublebutton-0" class="btn  btn-success"> 重 置 </button>
-                        <button type="button" id="pic_submit" name="doublebutton2-0" class="btn btn-danger"> 提 交 </button>
+                        <button type="submit" id="pic_submit" name="doublebutton2-0" class="btn btn-danger"> 提 交 </button>
                     </div>
                 </div>
               
@@ -130,55 +131,12 @@
 </div>
 
 
-<script>
-
-$('#pic_submit').click(function(){
-	 alert($('#projectCode').val());
-	 var name = $("#up_img1").val()+$("#up_img2").val()+$("#up_img3").val()+$("#up_img4").val()+$("#up_img5").val();
-	 if ($.trim(name) == "") { 
-	  	 alert("请选择图片！"); 
-	   	return; 
-	  } 
-	// console.log($("#imgFile")[0].files[0].size);//小于100*1024，下面的请求就可以成功
-	 var option = {
-	  url : '../picUpload.do',
-	  type : 'POST',
-	//  dataType : 'json',
-	  headers : {"ClientCallMode" : "ajax"}, //添加请求头部
-	  success : function(XMLHttpRequest, textStatus, errorThrown){
-	   alert("前端输出上传成功");
-	 //  $("#imgClose").click();
-	  },
-	  error: function(XMLHttpRequest, textStatus, errorThrown) {
-	   	alert("前端输出上传失败"); 
-	  }
-	 };
-	
-	 $("#pic_form").ajaxSubmit(option);
-	 	return false; 
-	
-});
-</script>
-
 
 
 <div style="height:1000px"></div>
-<link rel="stylesheet" href="../css/pic.css">
+<link rel="stylesheet" href="business/css/pic.css">
 <!-- 动画 -->
 <script>
-		function edit(projectCode)
-		{
-			alert(projectCode);
-			$('#projectCode').val(projectCode);
-			//alert($('#projectCode').val());
-			 var clientWidth = $(window).width();
-			 var baifenbi = ((clientWidth - 400) / 2) / clientWidth * 100;
-			// $('#pic').css('left', baifenbi + '%'); 
-			 $('#pic').css('left', '0');
-			 $('#pic').css('transition', 'left 0.8s');
-			 $("#mask").css('display', 'block');	
-		};
-
 		$(document).on('click','.edit',function()
 		{
 			 var clientWidth = $(window).width();
@@ -262,8 +220,7 @@ $(document).ready(function()
 						 formatter:function(value,row,index){
 							    var element = 
 							    "<a target='_blank' href='http://localhost:8081/CropBacktracking/lifeline.html' class='view' data-id='"+row.id +"'>预览</a> "+ 
-							    "<a class='3edit' data-id='"+row.id +"' onclick='edit("+row.project_btCode+")'>编辑</a> ";
-			
+							    "<a class='edit' data-id='"+row.id +"'>编辑</a> ";
 							    return element;  
 							} 
 					 }

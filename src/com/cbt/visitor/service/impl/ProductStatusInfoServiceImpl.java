@@ -44,8 +44,16 @@ public class ProductStatusInfoServiceImpl implements ProductStatusInfoService {
 	public int queryTimesByBtCodeService(String Product_btCode) throws Exception {
 		return productStatusInfoMapper.queryTimesByBtCode(Product_btCode);
 	}
-
-
-
-
+	
+	
+	@Override
+	public Boolean checkProductBtcode(String productBtcode) {
+		// TODO Auto-generated method stub
+		Boolean mark = false;
+		System.out.println(productBtcode);
+		int c = productStatusInfoMapper.getProductStatusInfo(productBtcode);
+		if(c>=0)
+			mark=true;
+		return mark;
+	}
 }

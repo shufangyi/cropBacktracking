@@ -23,5 +23,8 @@ public interface ProductStatusInfoService {
 	public int updateQueryTimesByBtCodeService(ProductStatusInfo productStatusInfo)throws Exception;
 	//查询出现在的次数 by ZC
 	public int queryTimesByBtCodeService(String Product_btCode)throws Exception;
+	
+	
+	public Boolean checkProductBtcode(String productBtcode);
 
 }

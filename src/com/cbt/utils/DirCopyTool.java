@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.Random;
 import java.util.StringTokenizer;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.io.FileUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,6 +31,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class DirCopyTool 
 {
 	
+	@Resource(name="pathConfig")
+	private PathConfig pathConfig;
 	
 	public DirCopyTool() {}
 	public DirCopyTool(String sourceDir,String targetDir) throws IOException
@@ -106,17 +110,18 @@ public class DirCopyTool
 				}
 		}  
 	  
-	  public String saveLogoFile(String path, MultipartFile file)
+	  public String saveLogoFile(String path, MultipartFile file,String filename)
 		{
-			String ymd=new SimpleDateFormat("/yyyyMMdd/").format(Calendar.getInstance().getTime());
-			String newsLogoPath = getRandomFileName()+"."+getFileSuffix(file.getOriginalFilename());
-			String parentPath=path+ymd;
-			try{
-			  FileUtils.copyInputStreamToFile(file.getInputStream(), new File(parentPath,newsLogoPath)); 
+			//String ymd=new SimpleDateFormat("/yyyyMMdd/").format(Calendar.getInstance().getTime());
+			//String newsLogoPath = getRandomFileName()+"."+getFileSuffix(file.getOriginalFilename());
+			//String parentPath=path+ymd;
+			String imgname=filename+"."+getFileSuffix(file.getOriginalFilename());
+		  	try{
+			  FileUtils.copyInputStreamToFile(file.getInputStream(), new File(path,imgname)); 
 			}catch(Exception e){
 				e.getMessage();
 			}
-			return "Uploads/business"+ymd+newsLogoPath;
+			return imgname;
 		}
 	  
 	//根据时间产生随机文件
