@@ -68,10 +68,10 @@
             <h1>农产品溯源监管平台</h1>
         </center>
 
-        <form class="search">
-            <input type="text" class="search-input" placeholder="search">
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-        </form>
+        <!-- <form class="search">
+            <input type="text" id="searchKey" class="search-input" placeholder="search">
+            <button type="button" id="search" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+        </form> -->
     </div>
 
     <iframe id="bg" src="http://www.jq22.com/demo/jQuery-yezi-141217210850" scrolling="no" frameborder="0" width="100%" style="position: absolute;
@@ -154,6 +154,7 @@
     <div id="mask"></div>
     <script src="js/footer.js"></script>
     <script>
+    //页面功能js
         $(document).ready(function ()
         {
 
@@ -179,10 +180,7 @@
             });
 
             
-            
-            
-            //数据加载
-            
+            //数据加载         
             $.ajax({
         		type:"post",
         		url:'supersivor/getAllBusiness.do',
@@ -196,6 +194,17 @@
         			alert("error");
         		}
         	});
+            
+            //搜索功能
+            $('#search').click(function(){
+            	var searchKey = $('#searchKey').val();
+            	if(searchKey == null || searchKey == "")
+            	{
+            		return null;
+            	}
+            });
+            
+            
         	//填充企业表格
         	function fillContainer(data)
         	{
