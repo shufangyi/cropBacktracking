@@ -1,6 +1,9 @@
  $(document).ready(function() 
 {
-    	 //---先销毁表格 ---
+	 
+	 	var workerId = $(window.parent.parent.frames["topFrame"].document).find('#workerId').text();
+    	alert(workerId);
+	 	//---先销毁表格 ---
         $('table').bootstrapTable('destroy');  
         //---初始化表格,动态从服务器加载数据--- 
        // alert("hello");
