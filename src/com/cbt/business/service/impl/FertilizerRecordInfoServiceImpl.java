@@ -86,5 +86,28 @@ public class FertilizerRecordInfoServiceImpl implements FertilizerRecordInfoServ
 		map.put("searchKey", searchKey);
 		return fertilizeRecordInfoMapper.getFertilizerRecordCount(map);
 	}
+//超级用户
+	@Override
+	public List<FertilizerRecordInfo> getMFertilizerRecordService(String businessId, int nowrow, int rows,
+			String searchKey) throws Exception {
+		// TODO Auto-generated method stub
+		int startpage=(nowrow-1)*rows;
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("startpage", startpage);
+		map.put("rows", rows);
+		map.put("businessId", businessId);
+		map.put("searchKey", searchKey);
+		return fertilizeRecordInfoMapper.getMFertilizerRecord(map);
+	}
+
+	@Override
+	public int getMFertilizerRecordCountService(String businessId, String searchKey)
+			throws Exception {
+		// TODO Auto-generated method stub
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("businessId",businessId);
+		map.put("searchKey", searchKey);
+		return fertilizeRecordInfoMapper.getMFertilizerRecordCount(map);
+	}
 
 }

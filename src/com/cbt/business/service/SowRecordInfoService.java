@@ -30,5 +30,11 @@ public interface SowRecordInfoService {
 	public SowRecordInfo queryByProjectBtCodeService(String projectBtcode)throws Exception;
 	
 	
+	/*超级用户分页查询*/
+	public List<SowRecordInfo> getMPageSowRecords(int nowpage,int rows,String businessId,String searchKey);
+	
+	/*超级用户查询记录总数*/
+	public int getMRecordsCount(String businessId,String searchKey);
+	
 
 }

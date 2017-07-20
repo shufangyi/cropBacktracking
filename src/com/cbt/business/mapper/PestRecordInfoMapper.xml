@@ -112,4 +112,42 @@
   </select>
   
   
+  <!-- 超级用户分页查询 -->
+  <select id="getMPestRecords" parameterType="Map" resultMap="pestrecordinfomap">
+  select * from cropBacktracking.pestRecord
+  where sowSeg_btCode like '${businessId}%'
+  <if test="searchKey!=null and searchKey!=''">
+   and (
+   sowSeg_btCode like '%${searchKey}%' or
+   pestType like '%${searchKey}%' or
+   MedicationName like '%${searchKey}%' or
+   medicationdosage like '%${searchKey}%' or
+   result like '%${searchKey}%' or
+   grower like '%${searchKey}%' or
+   comment like '%${searchKey}%'
+   )
+  </if>
+  order by id limit #{startpage},#{rows}
+  </select>
+  
+  
+   <!-- 超级用户total count -->
+  <select id="getMCount" parameterType="Map" resultType="Integer">
+ select count(*) from cropBacktracking.pestRecord
+  where sowSeg_btCode like '%${businessId}%'
+  <if test="searchKey!=null and searchKey!=''">
+   and (
+   sowSeg_btCode like '%${searchKey}%' or
+   pestType like '%${searchKey}%' or
+   MedicationName like '%${searchKey}%' or
+   medicationdosage like '%${searchKey}%' or
+   result like '%${searchKey}%' or
+   grower like '%${searchKey}%' or
+   comment like '%${searchKey}%'
+   )
+  </if>
+  order by id
+  </select>
+  
+  
 </mapper>

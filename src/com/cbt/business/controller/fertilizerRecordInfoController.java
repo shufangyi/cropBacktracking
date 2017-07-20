@@ -131,5 +131,24 @@ public class fertilizerRecordInfoController {
 		return mark;
 		
 	}
+	
+
+	
+	@RequestMapping("getMFertilizerRecords.do ")
+	@ResponseBody
+	public ModelMap getMFertilizerRecords(HttpServletRequest req,HttpSession session)throws Exception
+	{
+		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
+		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		String businessId =req.getParameter("businessId");
+		String searchKey=req.getParameter("searchKey");
+		ModelMap model=new ModelMap();
+		List<FertilizerRecordInfo> lists=new ArrayList<FertilizerRecordInfo>();
+		lists=fertilizerRecordInfoService.getMFertilizerRecordService(businessId, nowpage, rows, searchKey);
+		int total=fertilizerRecordInfoService.getMFertilizerRecordCountService(businessId, searchKey);
+		model.put("rows", lists);
+		model.put("total",total);
+		return model;
+	}
 
 }

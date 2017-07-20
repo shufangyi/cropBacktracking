@@ -61,5 +61,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from cropBacktracking.workerInfo
 	where workerId=#{workerId}
 	</select>
+	
+	  <!-- 通过businessId查询 -->
+  <select id="queryByBusinessId" parameterType="com.cbt.business.po.WorkerInfo" resultMap="workerinfomap">
+  select * from cropBacktracking.workerInfo
+  where businessId=#{businessId}
+  </select>
 
 </mapper>

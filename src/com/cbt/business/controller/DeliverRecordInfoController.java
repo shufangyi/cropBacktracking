@@ -78,7 +78,7 @@ public class DeliverRecordInfoController {
 		model.put("rows", list);
 		model.put("total", total);
 		return model;
-
+		
 	}
 	
 	@RequestMapping("addDeliverRecordInfo.do")
@@ -135,4 +135,46 @@ public class DeliverRecordInfoController {
 		
 	}
 
+	//企业负责人查询企业记录
+	@RequestMapping("getMDeliverRecords.do")
+	@ResponseBody
+	public ModelMap getMSowRecords(HttpServletRequest req,HttpSession session)throws Exception
+	{	
+		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
+		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		int businessId = Integer.parseInt(req.getParameter("businessId"));
+		String searchKey=req.getParameter("searchKey");
+		System.out.println("searchKey==============>>"+searchKey);
+		/*
+		 * 要获取此时登录员工账号
+		 */
+		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
+		WorkerInfo workerInfo=new WorkerInfo();
+		workerInfo.setBusinessId(businessId);
+		//businessId查找出所有分销商账号
+	    List<WorkerInfo> workerList=workerInfoservice.queryByBusinessIdService(workerInfo);
+		Map<String, Object> deliverMap=new HashMap<>();
+		List<DeliverRecordInfo> deliverList=new ArrayList<>();
+		int total=0;
+		//对不同运输人员账号查找
+	    for(int i=0;i<workerList.size();i++){
+		    if(workerList.get(i).getRoleId()!=4) continue;	//如果不是运输人员，则推出
+			deliverMap.put("startpage", (nowpage-1)*rows);
+			deliverMap.put("rows", rows);
+			deliverMap.put("logistics", workerList.get(i).getWorkerNum());
+			deliverMap.put("searchKey", searchKey);
+			//分别查询出数据，以及数据的数量
+			List<DeliverRecordInfo> list=deliverRecordInfoService.getDeliverRecordsService(deliverMap);
+			total=total+deliverRecordInfoService.getDeliverRecordsCountService(deliverMap);
+			for(int j=0;j<list.size();j++){
+				deliverList.add(list.get(j));
+			}
+	    }
+		ModelMap model = new ModelMap();
+		model.put("rows", deliverList);
+		model.put("total", total);
+		return model;	
+	}
+	
+	
 }

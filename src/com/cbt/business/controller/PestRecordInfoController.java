@@ -136,4 +136,21 @@ public class PestRecordInfoController {
 		
 	}
 	
+	@RequestMapping("getMPestRecords.do")
+	@ResponseBody
+	public ModelMap getMPestRecords(HttpServletRequest req,HttpSession session)throws Exception
+	{
+		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
+		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		String businessId =req.getParameter("businessId");
+		String searchKey=req.getParameter("searchKey");
+		ModelMap model=new ModelMap();
+		List<PestRecordInfo> lists=new ArrayList<PestRecordInfo>();
+		lists=pestRecordInfoService.getMPestRecordsService(businessId, nowpage, rows, searchKey);
+		int total=pestRecordInfoService.getMCountService(businessId, searchKey);
+		model.put("rows", lists);
+		model.put("total",total);
+		return model;
+	}
+	
 }

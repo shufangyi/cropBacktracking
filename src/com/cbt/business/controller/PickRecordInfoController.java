@@ -160,4 +160,24 @@ public class PickRecordInfoController {
 	    return mark;
 	}
 	
+	/*
+	 * 超级用户分页查询
+	 */
+	@RequestMapping("getMPickRecord.do")
+	@ResponseBody
+	public ModelMap getMPickRecords(HttpServletRequest req,HttpSession session)throws Exception
+	{
+		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
+		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		String businessId =req.getParameter("businessId");
+		String searchKey=req.getParameter("searchKey");
+		ModelMap model=new ModelMap();
+		List<PickRecordInfo> lists=new ArrayList<PickRecordInfo>();
+		lists=pickRecordInfoService.queryMPickRecordsService(businessId, nowpage, rows, searchKey);
+		int total=pickRecordInfoService.getMPickRecordCountService(businessId, searchKey);
+		model.put("rows", lists);
+		model.put("total",total);
+		return model;
+	}
+	
 }

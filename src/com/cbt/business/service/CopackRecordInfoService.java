@@ -24,4 +24,8 @@ public interface CopackRecordInfoService {
 	public int updateCopackRecordService(CopackRecordInfo copackRecordInfo)throws Exception;
 	//循环删除数据
 	public String delCopackRecordsService(List<CopackRecordInfo> list)throws Exception;
+	//超级用户分页查询
+	public List<CopackRecordInfo> getMCopackRecordsService(String businessId,int nowrow,int rows,String searchKey)throws Exception;
+	//get pagination count
+	public int getMCopackRecordsCountService(String businessId,String searchKey)throws Exception;
 }

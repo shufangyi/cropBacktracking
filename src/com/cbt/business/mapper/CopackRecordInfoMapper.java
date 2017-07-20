@@ -24,5 +24,8 @@ public interface CopackRecordInfoMapper {
 	public int getCopackRecordsCount(Map<String, Object> map)throws Exception;
 	//更新数据
 	public int updateCopackRecord(CopackRecordInfo copackRecordInfo)throws Exception;
-	
+	//超级用户分页查询
+	public List<CopackRecordInfo> getMCopackRecords(Map<String, Object> map)throws Exception;
+	//get  pagination count
+	public int getMCopackRecordsCount(Map<String, Object> map)throws Exception;
 }

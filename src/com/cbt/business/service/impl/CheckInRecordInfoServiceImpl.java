@@ -1,5 +1,6 @@
 package com.cbt.business.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -71,6 +72,28 @@ public class CheckInRecordInfoServiceImpl implements  CheckInRecordInfoService{
 			
 		}
 		return mark;
+	}
+
+	@Override
+	public List<CheckInRecordInfo> getMCheckInRecordByPaginationService(String businessId, int startpage, int rows,
+			String searchKey) throws Exception {
+		// TODO Auto-generated method stub
+		int startrow=(startpage-1)*rows;
+		HashMap<String,Object> map=new HashMap<String,Object>();  
+		map.put("startrow",startrow);
+		map.put("rows", rows);
+		map.put("businessId", businessId);
+		map.put("searchKey", searchKey);
+		return checkInRecordInfoMapper.getMCheckInRecordByPagination(map);
+	}
+
+	@Override
+	public int getMPaginationCountService(String businessId, String searchKey) throws Exception {
+		// TODO Auto-generated method stub
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("businessId", businessId);
+		map.put("searchKey", searchKey);
+		return checkInRecordInfoMapper.getMPaginationCount(map);
 	}
 
 }

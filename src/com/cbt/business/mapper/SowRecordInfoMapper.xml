@@ -106,4 +106,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	where project_btCode=#{projectBtcode}
  	limit 1
  	</select>
+ 	
+ 	
+ 	
+ 	 <!-- 超级用户分页 -->
+ 	<select id="getMPageSowRecords" parameterType="Map" resultMap="sowrecordinfomap">
+  		select * from sowrecord 
+ 		where sowSeg_btCode like '${businessId}%'
+ 		<if test="searchKey!='' and searchKey!=null">
+ 		and(
+ 			seedSource like '%${searchKey}%' or
+		 	sowNum like '%${searchKey}%' or
+		 	comment like '%${searchKey}%' or
+		 	grower like '%${searchKey}%' or
+		 	sowLocation like '%${searchKey}%' or
+		 	project_btCode like '%${searchKey}%'
+ 		)
+ 		</if>
+ 		 order by id limit #{startrow},#{rows}
+ 	</select>
+ 	<!-- 获取记录数量 -->
+  	<select id="getMRecordsCount" parameterType="Map" resultType="int">
+ 		 select count(*) from sowrecord where sowSeg_btCode like '${businessId}%'
+ 		 <if test="searchKey!='' and searchKey!=null">
+	 	and(
+ 			seedSource like '%${searchKey}%' or
+		 	sowNum like '%${searchKey}%' or
+		 	comment like '%${searchKey}%' or
+		 	grower like '%${searchKey}%' or
+		 	sowLocation like '%${searchKey}%' or
+		 	project_btCode like '%${searchKey}%'
+ 		)
+	 	</if>
+ 	</select>
+ 	
+ 	
 </mapper>

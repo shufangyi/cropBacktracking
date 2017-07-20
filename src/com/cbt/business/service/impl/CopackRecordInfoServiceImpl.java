@@ -1,5 +1,6 @@
 package com.cbt.business.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -73,5 +74,31 @@ public class CopackRecordInfoServiceImpl implements CopackRecordInfoService {
 		}
 		return mark;
 	}
+//超级用户查询
+	@Override
+	public List<CopackRecordInfo> getMCopackRecordsService(String businessId, int nowrow, int rows, String searchKey)
+			throws Exception {
+		// TODO Auto-generated method stub
+		int startrow=(nowrow-1)*rows;
+		System.out.println(startrow);
+		HashMap<String,Object> map=new HashMap<String,Object>();  
+		map.put("startrow",startrow);
+		map.put("rows", rows);
+		map.put("businessId", businessId);
+		map.put("searchKey", searchKey);
+		return copackRecordInfoMapper.getMCopackRecords(map);
+	}
+
+
+	@Override
+	public int getMCopackRecordsCountService(String businessId, String searchKey) throws Exception {
+		// TODO Auto-generated method stub
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("businessId", businessId);
+		map.put("searchKey", searchKey);
+		return  copackRecordInfoMapper.getMCopackRecordsCount(map);
+	}
+
+	
 
 }

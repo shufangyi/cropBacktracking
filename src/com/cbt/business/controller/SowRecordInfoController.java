@@ -1,12 +1,8 @@
 package com.cbt.business.controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -20,11 +16,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.cbt.business.po.BusinessCropProjectInfo;
 import com.cbt.business.po.SowRecordInfo;
-import com.cbt.business.po.WorkerInfo;
 import com.cbt.business.service.BusinessCropProjectInfoService;
 import com.cbt.business.service.SowRecordInfoService;
 
@@ -162,5 +156,24 @@ public class SowRecordInfoController
 	}
 	
 
+	
+	
+	
+	@RequestMapping("getMSowRecords.do")
+	@ResponseBody
+	public ModelMap getMSowRecords(HttpServletRequest req,HttpSession session)
+	{
+		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
+		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		String businessId=req.getParameter("businessId");
+		String searchKey=req.getParameter("searchKey");
+		List<SowRecordInfo> lists=new ArrayList<SowRecordInfo>();
+		lists=sowRecordInfoService.getMPageSowRecords(nowpage, rows, businessId, searchKey);
+		int total=sowRecordInfoService.getMRecordsCount(businessId, searchKey);
+		ModelMap model=new ModelMap();
+		model.put("rows", lists);
+		model.put("total", total);
+		return model;
+	}
 	
 }

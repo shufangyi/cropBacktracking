@@ -28,5 +28,7 @@ public interface WorkerInfoMapper
 	
 	//query by workerId
 	public WorkerInfo queryByWorkerId(WorkerInfo workerInfo)throws Exception;
+	//query by businessId
+	public List<WorkerInfo> queryByBusinessId(WorkerInfo workerInfo)throws Exception;
 	
 }

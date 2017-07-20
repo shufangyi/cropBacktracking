@@ -80,4 +80,9 @@ public class WorkerInfoServiceImpl implements WorkerInfoService{
 	public WorkerInfo queryByWorkerIdService(WorkerInfo workerInfo) throws Exception {
 		return workerInfoMapper.queryByWorkerId(workerInfo);
 	}
+	//通过businessId查询
+	@Override
+	public List<WorkerInfo> queryByBusinessIdService(WorkerInfo workerInfo) throws Exception {
+		return workerInfoMapper.queryByBusinessId(workerInfo);
+	}
 }

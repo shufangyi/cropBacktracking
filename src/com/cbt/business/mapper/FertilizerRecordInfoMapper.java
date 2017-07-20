@@ -23,6 +23,8 @@ public interface FertilizerRecordInfoMapper {
 	public int updateFertilizerBySowBtCode(FertilizerRecordInfo fertilizerRecordInfo)throws Exception;
 	//get total count
 	public int getFertilizerRecordCount(Map<String, Object> map)throws Exception;
-	
+	//超级用户
+	public List<FertilizerRecordInfo> getMFertilizerRecord(Map<String, Object> map)throws Exception;
+	public int getMFertilizerRecordCount(Map<String, Object> map)throws Exception;
 	
 }

@@ -25,4 +25,10 @@ public interface FertilizerRecordInfoService {
 	public String delFertilizerRecordService(List<FertilizerRecordInfo> list)throws Exception;
 	//get total count
 	public int getFertilizerRecordCountService(String projectBtcode,int nowrow,int rows,String searchKey)throws Exception;
+	
+	//分页查询
+	public List<FertilizerRecordInfo> getMFertilizerRecordService(String businessId,int nowrow,int rows,String searchKey)throws Exception;
+	//get total count
+	public int getMFertilizerRecordCountService(String businessId,String searchKey)throws Exception;
+		
 }

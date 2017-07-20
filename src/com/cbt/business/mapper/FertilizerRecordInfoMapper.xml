@@ -100,6 +100,40 @@
    order by id
   </select>
   
+   <!-- 超级用户分页查询 -->
+  <select id="getMFertilizerRecord" parameterType="Map" resultMap="fertilizerrecordinfomap">
+  select * from cropBacktracking.fertilizerRecord
+  where sowSeg_btCode like '%${businessId}%'
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  fertilizerName like '%${searchKey}%' or
+  fertilizertime like '%${searchKey}%' or
+  fertilizernum like '%${searchKey}%' or
+  comment like '%${searchKey}%' or
+  grower like '%${searchKey}%' or
+  sowSeg_btCode like '%${searchKey}%'
+  )
+  </if>
+   order by id limit #{startpage},#{rows}
+  </select>
+  
+  <!-- get total count -->
+  <select id="getMFertilizerRecordCount" parameterType="Map" resultType="int">
+   select count(*) from cropBacktracking.fertilizerRecord
+  where sowSeg_btCode like '${businessId}%'
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  fertilizerName like '%${searchKey}%' or
+  fertilizertime like '%${searchKey}%' or
+  fertilizernum like '%${searchKey}%' or
+  comment like '%${searchKey}%' or
+  grower like '%${searchKey}%' or
+  sowSeg_btCode like '%${searchKey}%'
+  )
+  </if>
+   order by id
+  </select>
+  
   
   
 </mapper>

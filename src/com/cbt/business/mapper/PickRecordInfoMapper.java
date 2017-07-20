@@ -22,4 +22,9 @@ public interface PickRecordInfoMapper {
 	public List<PickRecordInfo> queryPickRecords(Map<String, Object> map)throws Exception;
 	//
 	public int getPickRecordCount(Map<String, Object> map)throws Exception;
+	
+	//超级用户分页查询
+	public List<PickRecordInfo> queryMPickRecords(Map<String, Object> map)throws Exception;
+	//
+	public int getMPickRecordCount(Map<String, Object> map)throws Exception;
 }

@@ -23,4 +23,9 @@ public interface CheckInRecordInfoMapper
 	public int updateCheckInRecord(CheckInRecordInfo checkInRecordInfo)throws Exception;
 	//获取分页数据总数
 	public int getPaginationCount(Map<String, Object> map)throws Exception;
+	
+	//分页查询
+	public List<CheckInRecordInfo> getMCheckInRecordByPagination(Map<String, Object> map)throws Exception;
+	//获取分页数据总数
+	public int getMPaginationCount(Map<String, Object> map)throws Exception;
 }

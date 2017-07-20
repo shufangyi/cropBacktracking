@@ -26,4 +26,8 @@ public interface PickRecordInfoService {
 	public boolean delPickRecordByListService(List<PickRecordInfo> list)throws Exception;
 	//get total count
 	public int getPickRecordCountService(String sowsegBtcode,int nowpage,int rows,String searchKey)throws Exception;
+
+	/*超级用户分页查询，获取总数*/
+	public List<PickRecordInfo> queryMPickRecordsService(String businessId,int nowpage,int rows,String searchKey)throws Exception;
+	public int getMPickRecordCountService(String businessId,String searchKey)throws Exception;
 }

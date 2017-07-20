@@ -25,6 +25,7 @@
 			<div class="row">
 				
 				<div id="toolbar">
+					<input type="button" id="delete" value="删除"/>
 					<input type="button" id="search" value="搜索"/>
 					<input type="text" id="searchKey"/>				
 				</div>
@@ -49,7 +50,7 @@ $(document).ready(function()
 		 $('table').bootstrapTable
 		 ({
 			//发送数据请求
-	    	url: '../getMPageBusinessProjectPlan.do',
+	    	url: '../getMSowRecords.do',
 			method: 'post',
 			//data: {"business":businessId},
 			contentType: "application/x-www-form-urlencoded",
@@ -71,7 +72,7 @@ $(document).ready(function()
              var param = {  
                  pageNumber: params.pageNumber,    
                  pageSize: params.pageSize,
-                 business: businessId,
+                 businessId: businessId,
                  searchKey: $('#searchKey').val()
              }; 
              /*

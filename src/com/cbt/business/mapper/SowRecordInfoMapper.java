@@ -29,4 +29,9 @@ public interface SowRecordInfoMapper
 	
 	public SowRecordInfo queryByProjectBtCode(String projectBtcode)throws Exception;
 	
+	/*超级用户分页查询*/
+	public List<SowRecordInfo> getMPageSowRecords(Map<String,Object> map);
+	/*超级用户分页记录*/
+	public int getMRecordsCount(Map<String,Object> map);	
+	
 }

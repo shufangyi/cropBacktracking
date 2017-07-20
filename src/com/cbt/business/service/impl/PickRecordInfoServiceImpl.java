@@ -86,4 +86,27 @@ public class PickRecordInfoServiceImpl implements PickRecordInfoService {
 		return pickRecordInfoMapper.getPickRecordCount(map);
 	}
 
+	//超级用户分页查询
+	@Override
+	public List<PickRecordInfo> queryMPickRecordsService(String businessId, int nowpage, int rows, String searchKey)
+			throws Exception {
+		// TODO Auto-generated method stub
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("startpage", (nowpage-1)*rows);
+		map.put("businessId", businessId);
+		map.put("rows", rows);
+		map.put("searchKey", searchKey);
+		return pickRecordInfoMapper.queryMPickRecords(map);
+		
+	}
+
+	@Override
+	public int getMPickRecordCountService(String businessId, String searchKey) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("businessId", businessId);
+		map.put("searchKey", searchKey);
+		return pickRecordInfoMapper.getMPickRecordCount(map);
+	}
+
 }

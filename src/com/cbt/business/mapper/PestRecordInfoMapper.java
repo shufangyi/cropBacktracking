@@ -24,5 +24,9 @@ public interface PestRecordInfoMapper {
 	//
 	public int getCount(Map<String, Object> map)throws Exception;
 	
+	//超级用户分页查询
+	public List<PestRecordInfo> getMPestRecords(Map<String, Object> map)throws Exception;
+	public int getMCount(Map<String, Object> map)throws Exception;
+	
 	
 }

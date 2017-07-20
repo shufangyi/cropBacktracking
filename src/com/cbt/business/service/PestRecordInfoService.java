@@ -23,5 +23,8 @@ public interface PestRecordInfoService {
 	public int updatePestRecordInfoService(PestRecordInfo pestRecordInfo)throws Exception;
 	//get total count
 	public int getCountService(String projectBtcode,int nowpage,int rows,String searchKey)throws Exception;
+	//超级用户
+	public List<PestRecordInfo> getMPestRecordsService(String businessId,int nowpage,int rows,String searchKey)throws Exception;
+	public int getMCountService(String businessId,String searchKey)throws Exception;
 
 }

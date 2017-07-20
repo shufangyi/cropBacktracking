@@ -111,4 +111,31 @@ public class SowRecordInfoServiceImpl implements SowRecordInfoService
 	}
 
 	
+	
+	
+	/* 超级用户查询 分页*/
+	@Override
+	public List<SowRecordInfo> getMPageSowRecords(int nowpage,int rows,String businessId,String searchKey) {
+		// TODO Auto-generated method stub
+		int startrow=(nowpage-1)*rows;
+		HashMap<String,Object> map=new HashMap<String,Object>();  
+		map.put("startrow",startrow);
+		map.put("rows", rows);
+		map.put("businessId", businessId);
+		map.put("searchKey", searchKey);
+		return sowRecordInfoMapper.getMPageSowRecords(map);
+	}
+	
+	
+	/*超级查询记录总数*/
+	@Override
+	public int getMRecordsCount(String businessId,String searchKey) {
+	
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("businessId", businessId);
+		map.put("searchKey", searchKey);
+		return sowRecordInfoMapper.getMRecordsCount(map);
+	}
+
+	
 }

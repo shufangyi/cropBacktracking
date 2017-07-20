@@ -106,4 +106,40 @@
   order by id 
   </select>
   
+   <!-- 超级用户分页查询 -->
+  <select id="queryMPickRecords" parameterType="Map" resultMap="pickrecordinfomap">
+  select * from cropBacktracking.pickRecord
+  where pickSeg_btCode like '${businessId}%' 
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  	pickTime like '%${searchKey}%' or
+  	pickType like '%${searchKey}%' or
+  	pickNum	like '%${searchKey}%' or
+  	pickSeg_btCode like '%${searchKey}%' or
+  	comment like '%${searchKey}%' or
+  	grower like '%${searchKey}%' or
+  	sowSeg_btCode like '%${searchKey}%'
+  )
+  </if>
+  order by id limit #{startpage},#{rows}
+  </select>
+  
+  <!-- get total count -->
+  <select id="getMPickRecordCount" parameterType="Map" resultType="Integer">
+  select count(*) from cropBacktracking.pickRecord
+  where pickSeg_btCode like '%${businessId}%' 
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  	pickTime like '%${searchKey}%' or
+  	pickType like '%${searchKey}%' or
+  	pickNum	like '%${searchKey}%' or
+  	pickSeg_btCode like '%${searchKey}%' or
+  	comment like '%${searchKey}%' or
+  	grower like '%${searchKey}%' or
+  	sowSeg_btCode like '%${searchKey}%'
+  )
+  </if>
+  order by id 
+  </select>
+  
 </mapper>

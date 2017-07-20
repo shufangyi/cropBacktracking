@@ -101,4 +101,39 @@
   </if>
   order by id
   </select>
+  
+   <!--超级用户 分页查询 -->
+  <select id="getMCheckInRecordByPagination" parameterType="Map" resultMap="checkinrecordinfomap">
+  select * from cropBacktracking.checkinRecord
+  where pickSeg_btCode like '${businessId}%' 
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  pickSeg_btCode like '%${searchKey}%' or
+  checkInTime	like '%${searchKey}%' or
+  checkInSeg_btCode like '%${searchKey}%' or
+  stockLocation	like '%${searchKey}%' or
+  comment	like '%${searchKey}%' or
+  checker	like '%${searchKey}%' 
+  )
+  </if>
+  order by id
+  limit #{startrow},#{rows}
+  </select>
+  
+   <!-- get total count -->
+  <select id="getMPaginationCount" parameterType="Map" resultType="Integer">
+   select count(*) from cropBacktracking.checkinRecord
+  where pickSeg_btCode like '${businessId}%' 
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  pickSeg_btCode like '%${searchKey}%' or
+  checkInTime	like '%${searchKey}%' or
+  checkInSeg_btCode like '%${searchKey}%' or
+  stockLocation	like '%${searchKey}%' or
+  comment	like '%${searchKey}%' or
+  checker	like '%${searchKey}%' 
+  )
+  </if>
+  order by id
+  </select>
 </mapper>

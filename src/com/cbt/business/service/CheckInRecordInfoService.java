@@ -24,4 +24,8 @@ public interface CheckInRecordInfoService {
 		public int getPaginationCountService(Map<String, Object> map)throws Exception;
 		//循环删除
 		public String delCheckInRecords(List<CheckInRecordInfo> list)throws Exception;
+		//超级用户分页查询
+		public List<CheckInRecordInfo>getMCheckInRecordByPaginationService(String businessId,int startpage,int rows,String searchKey)throws Exception;
+		//get total count
+		public int getMPaginationCountService(String businessId,String searchKey)throws Exception;
 }

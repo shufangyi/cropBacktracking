@@ -50,7 +50,7 @@ public class ConfirmRecipientRecordInfoController {
 	
 	@RequestMapping("getConfirmRecipientRecords.do")
 	@ResponseBody
-	public ModelMap getSowRecords(HttpServletRequest req,HttpSession session)throws Exception
+	public ModelMap getConfirmRecipientRecords(HttpServletRequest req,HttpSession session)throws Exception
 	{	
 		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
 		int rows = Integer.parseInt(req.getParameter("pageSize"));	
@@ -131,8 +131,45 @@ public class ConfirmRecipientRecordInfoController {
 				return mark;
 			}		
 		}
-		return mark;
+		return mark;	
+	}
+	
+	//企业负责人查看确认收货记录
+	@RequestMapping("getMConfirmRecipientRecords.do")
+	@ResponseBody
+	public ModelMap getMConfirmRecipientRecords(HttpServletRequest req,HttpSession session)throws Exception
+	{	
+		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
+		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		int businessId = Integer.parseInt(req.getParameter("businessId"));
+		String searchKey=req.getParameter("searchKey");
+		System.out.println("searchKey==============>>"+searchKey);
 		
+		WorkerInfo workerInfo=new WorkerInfo();
+		workerInfo.setBusinessId(businessId);
+		//businessId查找出所有分销商账号
+	    List<WorkerInfo> workerList=workerInfoservice.queryByBusinessIdService(workerInfo);
+	    Map<String, Object> map=new HashMap<>();
+	    List<ConfirmRecipientRecordInfo> confirmList=new ArrayList<>();
+	    int total=0;
+	    //对每个分销商账号
+	    for(int i=0;i<workerList.size();i++){
+	    	if(workerList.get(i).getRoleId()!=5) continue;
+			map.put("startpage", (nowpage-1)*rows);
+			map.put("rows", rows);
+			map.put("distributor", workerList.get(i).getWorkerNum());
+			map.put("searchKey", searchKey);
+			//分别查询出数据，以及数据的数量
+			List<ConfirmRecipientRecordInfo> list=confirmRecipientRecordInfoService.getConfirmRecipientRecordsService(map);
+			total=total+confirmRecipientRecordInfoService.getConfirmRecipientRecordsCountService(map);
+			for(int j=0;j<list.size();j++){
+				confirmList.add(list.get(j));
+			}
+	    }
+		ModelMap model = new ModelMap();
+		model.put("rows", confirmList);
+		model.put("total", total);
+		return model;
 	}
 	
 }

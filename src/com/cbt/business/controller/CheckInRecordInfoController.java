@@ -154,4 +154,21 @@ public class CheckInRecordInfoController {
 		
 		
 	}
+	
+	@RequestMapping("getMCheckInRecords.do")
+	@ResponseBody
+	public ModelMap getMCheckInRecords(HttpServletRequest req,HttpSession session)throws Exception
+	{
+		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
+		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		String businessId =req.getParameter("businessId");
+		String searchKey=req.getParameter("searchKey");
+		ModelMap model=new ModelMap();
+		List<CheckInRecordInfo> lists=new ArrayList<CheckInRecordInfo>();
+		lists=checkInRecordInfoService.getMCheckInRecordByPaginationService(businessId, nowpage, rows, searchKey);
+		int total=checkInRecordInfoService.getMPaginationCountService(businessId, searchKey);
+		model.put("rows", lists);
+		model.put("total",total);
+		return model;
+	}
 }

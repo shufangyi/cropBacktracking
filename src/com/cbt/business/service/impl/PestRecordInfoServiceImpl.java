@@ -87,5 +87,27 @@ public class PestRecordInfoServiceImpl implements PestRecordInfoService {
 		map.put("searchKey", searchKey);
 		return pestRecordInfoMapper.getCount(map);
 	}
+//超级用户查询
+	@Override
+	public List<PestRecordInfo> getMPestRecordsService(String businessId, int nowpage, int rows, String searchKey)
+			throws Exception {
+		// TODO Auto-generated method stub
+		int startpage=(nowpage-1)*rows;
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("startpage", startpage);
+		map.put("rows", rows);
+		map.put("businessId", businessId);
+		map.put("searchKey", searchKey);
+		return pestRecordInfoMapper.getPestRecords(map);
+	}
+
+	@Override
+	public int getMCountService(String businessId, String searchKey) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("businessId", businessId);
+		map.put("searchKey", searchKey);
+		return pestRecordInfoMapper.getCount(map);
+	}
 
 }
