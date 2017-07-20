@@ -19,8 +19,6 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
 
     <link rel="stylesheet" href="system/css/topframe1.css">
-
-
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -49,6 +47,27 @@
     </nav>
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+     <script>
+        $(function () {
+
+            var $changeInfo = $(window.parent.document).find('#changeInfo');
+            var $mask = $(window.parent.document).find('#mask');
+
+            $('#login-name').bind('click', function () {
+                var clientWidth = $(window).width();
+                var baifenbi = ((clientWidth - 400) / 2) / clientWidth * 100;
+                $changeInfo.css('left', baifenbi + '%');
+                $changeInfo.css('transition', 'left 0.8s');
+                $mask.css('display', 'block');
+            });
+
+            $mask.bind('click', function () {
+                $changeInfo.css('left', '-100%');
+                $changeInfo.css('transition', 'left 1.2s');
+                $mask.css('display', 'none');
+            });
+        });
+    </script>
     <script>
     	//退出登录js代码
     	$(document).ready(function()
