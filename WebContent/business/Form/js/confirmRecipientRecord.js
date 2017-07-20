@@ -1,5 +1,9 @@
  $(document).ready(function() 
 {
+	 var workerId = $(window.parent.parent.frames["topFrame"].document).find('#workerId').text();
+	 var workerNum = $(window.parent.parent.frames["topFrame"].document).find('#workerNum').text();
+	 init();
+	 function init(){
     	 //---先销毁表格 ---
         $('table').bootstrapTable('destroy');  
         //---初始化表格,动态从服务器加载数据--- 
@@ -27,7 +31,10 @@
            	queryParams: function queryParams(params) {
              var param = {  
                  pageNumber: params.pageNumber,    
-                 pageSize: params.pageSize
+                 pageSize: params.pageSize,
+                 workerId:workerId,
+                 searchKey:$('#searchKey').val(),
+                 workerNum:workerNum
              }; 
              /*
              for(var key in searchArgs){
@@ -74,6 +81,7 @@
            
            
        });
+	 }
 	  //查询数据
 	  $('#delete').click(function(){
 		 var rows = $('table').bootstrapTable('getSelections');
@@ -107,8 +115,10 @@
 	            });
 		  }
 	  });
-	  //删除数据
-		 
+	  //search数据
+	  $('#search').click(function(){
+		  init();
+	  });
 	  //删除数据
 		 
 	  //修改数据  

@@ -44,7 +44,18 @@
   <!-- 分页查询 -->
   <select id="getCheckInRecordByPagination" parameterType="Map" resultMap="checkinrecordinfomap">
   select * from cropBacktracking.checkinRecord
-  where pickSeg_btCode like '%${projectBtcode}%' order by id
+  where pickSeg_btCode like '%${projectBtcode}%' 
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  pickSeg_btCode like '%${searchKey}%' or
+  checkInTime	like '%${searchKey}%' or
+  checkInSeg_btCode like '%${searchKey}%' or
+  stockLocation	like '%${searchKey}%' or
+  comment	like '%${searchKey}%' or
+  checker	like '%${searchKey}%' 
+  )
+  </if>
+  order by id
   limit #{startpage},#{rows}
   </select>
   
@@ -76,10 +87,18 @@
   
   <!-- get total count -->
   <select id="getPaginationCount" parameterType="Map" resultType="Integer">
-  select count(*) from cropBacktracking.checkinRecord
-  where pickSeg_btCode like '%${projectBtcode}%' order by id
-  limit #{startpage},#{rows}
+   select count(*) from cropBacktracking.checkinRecord
+  where pickSeg_btCode like '%${projectBtcode}%' 
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  pickSeg_btCode like '%${searchKey}%' or
+  checkInTime	like '%${searchKey}%' or
+  checkInSeg_btCode like '%${searchKey}%' or
+  stockLocation	like '%${searchKey}%' or
+  comment	like '%${searchKey}%' or
+  checker	like '%${searchKey}%' 
+  )
+  </if>
+  order by id
   </select>
-  
-  
 </mapper>

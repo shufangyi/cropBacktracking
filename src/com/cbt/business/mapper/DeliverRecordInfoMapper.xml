@@ -45,14 +45,39 @@
   <!-- 分页查询记录 -->
   <select id="getDeliverRecords" parameterType="Map" resultMap="deliverrecordinfomap">
   select * from cropBacktracking.deliverRecord
-  where logistics=#{logistics} order by id
+  where logistics=#{logistics} 
+  <if test="searchKey!=null and searchKey!=''">
+  and (
+  orderNum like '%${searchKey}%' or
+  delivertime like '%${searchKey}%' or
+  deliveraddress like '%${searchKey}%' or
+  logisticscompany like '%${searchKey}%' or
+  logisticsnum like '%${searchKey}%' or
+  distributor  like '%${searchKey}%' or
+  comment like '%${searchKey}%' or
+  logistics like '%${searchKey}%'
+  )
+  </if>
+  order by id
   limit #{startpage},#{rows}
   </select>
   
   <select id="getDeliverRecordsCount" parameterType="Map"  resultType="Integer">
-   select count(*) from cropBacktracking.deliverRecord
-  where logistics=#{logistics} order by id
-  limit #{startpage},#{rows}
+  select count(*) from cropBacktracking.deliverRecord
+  where logistics=#{logistics} 
+  <if test="searchKey!=null and searchKey!=''">
+  and (
+  orderNum like '%${searchKey}%' or
+  delivertime like '%${searchKey}%' or
+  deliveraddress like '%${searchKey}%' or
+  logisticscompany like '%${searchKey}%' or
+  logisticsnum like '%${searchKey}%' or
+  distributor  like '%${searchKey}%' or
+  comment like '%${searchKey}%' or
+  logistics like '%${searchKey}%'
+  )
+  </if>
+  order by id
   </select>
   
   <!-- 修改数据 -->

@@ -29,12 +29,12 @@ $(document).ready(function(){
 	/*
 	 * 与后台交互数据
 	 */
-	var checkInSeg_btCode=$('#checkInSeg_btCode').text;
-	var pickSeg_btCode=$('#pickSeg_btCode').text;
-	var checkInTime=$('#checkInTime').text;
-	var StockLocation=$('#StockLocation').text;
-	var Checker=$('#Checker').text;
-	var Comment=$('#Comment').val;
+	var checkInSeg_btCode=$('#checkInSeg_btCode').text();
+	var pickSeg_btCode=$('#pickSeg_btCode').text();
+	var checkInTime=$('#checkInTime').text();
+	var StockLocation=$('#StockLocation').text();
+	var Checker=$('#Checker').text();
+	var Comment=$('#Comment').val();
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"

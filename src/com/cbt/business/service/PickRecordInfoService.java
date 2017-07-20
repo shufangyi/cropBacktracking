@@ -21,9 +21,9 @@ public interface PickRecordInfoService {
 	//更新采摘信息
 	public int updatePickRecordService(PickRecordInfo pickRecordInfo)throws Exception;
 	//分页查询
-	public List<PickRecordInfo> queryPickRecordsService(String sowsegBtcode,int nowpage,int rows)throws Exception;
+	public List<PickRecordInfo> queryPickRecordsService(String sowsegBtcode,int nowpage,int rows,String searchKey)throws Exception;
 	//list循环删除
 	public boolean delPickRecordByListService(List<PickRecordInfo> list)throws Exception;
 	//get total count
-	public int getPickRecordCountService(String sowsegBtcode,int nowpage,int rows)throws Exception;
+	public int getPickRecordCountService(String sowsegBtcode,int nowpage,int rows,String searchKey)throws Exception;
 }

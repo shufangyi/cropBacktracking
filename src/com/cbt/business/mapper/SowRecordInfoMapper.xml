@@ -50,11 +50,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	 <!-- 分页 -->
  	<select id="getPageSowRecords" parameterType="Map" resultMap="sowrecordinfomap">
   		select * from sowrecord 
- 		 where project_btCode= #{project_btCode} order by id limit #{startrow},#{rows}
+ 		 where project_btCode= #{project_btCode} 
+ 		<if test="searchKey!='' and searchKey!=null">
+ 		and(
+ 			seedSource like '%${searchKey}%' or
+		 	sowNum like '%${searchKey}%' or
+		 	comment like '%${searchKey}%' or
+		 	grower like '%${searchKey}%' or
+		 	sowLocation like '%${searchKey}%' or
+		 	project_btCode like '%${searchKey}%'
+ 		)
+ 		</if>
+ 		 order by id limit #{startrow},#{rows}
  	</select>
  	<!-- 获取记录数量 -->
   	<select id="getRecordsCount" parameterType="Map" resultType="int">
- 		 select count(*) from sowrecord where project_btCode= #{project_btCode} order by id limit #{startrow},#{rows}
+ 		 select count(*) from sowrecord where project_btCode= #{project_btCode}
+ 		 <if test="searchKey!='' and searchKey!=null">
+	 	and(
+ 			seedSource like '%${searchKey}%' or
+		 	sowNum like '%${searchKey}%' or
+		 	comment like '%${searchKey}%' or
+		 	grower like '%${searchKey}%' or
+		 	sowLocation like '%${searchKey}%' or
+		 	project_btCode like '%${searchKey}%'
+ 		)
+	 	</if>
  	</select>
  	
  	<!-- 修改数据 -->

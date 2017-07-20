@@ -29,14 +29,14 @@ $(document).ready(function(){
 	/*
 	 * 与后台交互数据
 	 */
-	var OrderNum=$('#OrderNum').text;
-	var deliverTime=$('#deliverTime').text;
-	var deliverAddress=$('#deliverAddress').text;
-	var LogisticsCompany=$('#LogisticsCompany').text;
-	var LogisticsNum=$('#LogisticsNum').text;
-	var Distributor=$('#Distributor').text;
-	var Logistics=$('#Logistics').text;
-	var Comment=$('#Comment').val;
+	var OrderNum=$('#OrderNum').text();
+	var deliverTime=$('#deliverTime').text();
+	var deliverAddress=$('#deliverAddress').text();
+	var LogisticsCompany=$('#LogisticsCompany').text();
+	var LogisticsNum=$('#LogisticsNum').text();
+	var Distributor=$('#Distributor').text();
+	var Logistics=$('#Logistics').text();
+	var Comment=$('#Comment').val();
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
