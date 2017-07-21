@@ -54,7 +54,6 @@
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
      <script>
         $(function () {
-
             var $changeInfo = $(window.parent.document).find('#changeInfo');
             var $mask = $(window.parent.document).find('#mask');
 

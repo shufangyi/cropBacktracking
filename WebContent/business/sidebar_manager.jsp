@@ -82,6 +82,14 @@
                         <li><a class="useful" href="./manager/confirmRecords.html">确认记录</a></li>
                     </ul>
                 </li>
+                
+                 <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 企业信息<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <!--<li class="dropdown-header">Dropdown heading</li>-->
+                        <li><a class="useful" href="./manager/businessInfo.html"> 企业信息维护</a></li>
+                    </ul>
+                </li>
 
 
 
