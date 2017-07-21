@@ -28,66 +28,66 @@
                 <li>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 运营管理 <span class="caret"></span></a>
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 运营管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./manager/plans.html">计划列表</a></li>
-                        <li><a class="useful" href="./manager/newplan.html">新建计划</a></li>
-                        <li><a class="useful" href="./manager/pic.html">溯源</a></li>
+                        <li><a onclick="return false" onclick="return false" class="useful" href="./manager/plans.html">计划列表</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/newplan.html">新建计划</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/pic.html">溯源</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 系统管理 <span class="caret"></span></a>
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 系统管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./manager/persons.html">人员管理</a></li>
-                        <li><a class="useful" href="./manager/newperson.html">新增人员</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/persons.html">人员管理</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/newperson.html">新增人员</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 种植管理 <span class="caret"></span></a>
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 种植管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./manager/sowRecords.html">播种记录</a></li>
-                        <li><a class="useful" href="./manager/fertilizeRecords.html">施肥记录</a></li>
-                        <li><a class="useful" href="./manager/pestRecords.html">病虫害记录</a></li>
-                        <li><a class="useful" href="./manager/pickRecords.html">采摘记录</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/sowRecords.html">播种记录</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/fertilizeRecords.html">施肥记录</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/pestRecords.html">病虫害记录</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/pickRecords.html">采摘记录</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 检验入库 <span class="caret"></span></a>
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 检验入库 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./manager/checkInRecords.html">入库记录</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/checkInRecords.html">入库记录</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 加工包装 <span class="caret"></span></a>
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 加工包装 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./manager/copackRecords.html">包装记录</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/copackRecords.html">包装记录</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 物流管理 <span class="caret"></span></a>
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 物流管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful"  href="./manager/deliverRecords.html">物流记录</a></li>
+                        <li><a onclick="return false" class="useful"  href="./manager/deliverRecords.html">物流记录</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 分销管理 <span class="caret"></span></a>
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 分销管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./manager/confirmRecords.html">确认记录</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/confirmRecords.html">确认记录</a></li>
                     </ul>
                 </li>
                 
                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 企业信息<span class="caret"></span></a>
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 企业信息<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./manager/businessInfo.html"> 企业信息维护</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/businessInfo.html"> 企业信息维护</a></li>
                     </ul>
                 </li>
 

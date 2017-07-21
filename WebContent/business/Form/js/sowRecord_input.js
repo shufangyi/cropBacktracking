@@ -37,7 +37,7 @@ $(document).ready(function(){
 	var seedSource=$('#seedSource').text();
 	var sowNum=$('#sowNum').text();
 	var grower=$('#grower').text();
-	var comment=$('#comment').val();
+	var comment= $('#Comment').summernote('code');
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"

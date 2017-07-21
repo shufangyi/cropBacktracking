@@ -88,7 +88,7 @@ $(document).ready(function(){
 	$('#submit').click(function()
 	{
 		var roleName = $('#rolename').val();
-		var roleDesc = $('#Comment').text();
+		var roleDesc = $('#Comment').summernote('code');
 		var roleAuthority="";
 		$("#permissions:checked").each(function(index,element)
 		{

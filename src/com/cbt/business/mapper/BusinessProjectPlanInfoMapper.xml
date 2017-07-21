@@ -98,7 +98,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		<!--删除一条数据  -->
 	<delete id="delBusinessProjectPlan" parameterType="com.cbt.business.po.BusinessProjectPlanInfo" >
     	delete from business_project_planinfo
-   		where planId = #{planId}
+   		where project_btCode = #{project_btCode}
     </delete>
 
 </mapper>

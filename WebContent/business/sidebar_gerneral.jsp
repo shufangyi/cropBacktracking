@@ -33,11 +33,11 @@
 				<c:forEach items="${menus }" var="pmenu">
 				<c:if test="${pmenu.menuPid==0 }">	
 				<li class="dropdown">
-				<a href="#user-menu${pmenu.menuId }" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> ${pmenu.menuName } <span class="caret"></span></a>		
+				<a onclick="return false" href="#user-menu${pmenu.menuId }" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> ${pmenu.menuName } <span class="caret"></span></a>		
                 <ul class="dropdown-menu" role="menu">
 						<c:forEach items="${menus }" var="menu">
 						<c:if test="${menu.menuPid==pmenu.menuId}">
-						<li><a class="useful" href="./Form/${menu.menuUrl }">${menu.menuName }</a></li>
+						<li><a onclick="return false" class="useful" href="./Form/${menu.menuUrl }">${menu.menuName }</a></li>
 						</c:if>
 						</c:forEach>
 					</ul>

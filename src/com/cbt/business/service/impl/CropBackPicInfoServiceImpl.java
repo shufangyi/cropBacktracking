@@ -1,5 +1,7 @@
 package com.cbt.business.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -28,6 +30,11 @@ public class CropBackPicInfoServiceImpl implements CropBackPicInfoService{
 	@Override
 	public int deleteByProjectCodeService(CropBackPicInfo info) throws Exception {
 		return cropBackPicInfoMapper.deleteByProjectCode(info);
+	}
+	@Override
+	public List<CropBackPicInfo> getCropBackPicInfoByProjectCode(String projectCode) {
+		// TODO Auto-generated method stub
+		return cropBackPicInfoMapper.getCropBackPicInfoByProjectCode(projectCode);
 	}
 
 }

@@ -92,7 +92,7 @@ public class RoleInfoController
 			JavaType javatype=mapper.getTypeFactory().constructParametricType(ArrayList.class,RoleInfo.class);	
 		    List<RoleInfo> list=mapper.readValue(data, javatype);
 		    //循环删除list数据
-		    System.out.println("shanchu");
+		    System.out.println(list.size());
 			System.out.println(list.get(0).getRoleName());
 			return roleInfoService.delRoleInfo(list).toString();
 		}

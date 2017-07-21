@@ -251,7 +251,7 @@ $(document).ready(function()
 		           pageSize: 10,//每页的记录行数（*）
 		           pageList: [10,15,20],//可供选择的每页的行数（*）
 		           sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
-		           //showRefresh:true,//刷新按钮
+		           showRefresh:true,//刷新按钮
 		           //【设置列属性】
 					columns:
 					 [
@@ -261,7 +261,7 @@ $(document).ready(function()
 					 {field: 'action',title: '操作',
 						 formatter:function(value,row,index){
 							    var element = 
-							    "<a target='_blank' href='http://localhost:8081/CropBacktracking/lifeline.html' class='view' data-id='"+row.id +"'>预览</a> "+ 
+							    "<a target='_blank' href='http://localhost:8081/CropBacktracking/lifeline.html?id="+row.project_btCode+"' class='view' data-id='"+row.id +"'>预览</a> "+ 
 							    "<a class='3edit' data-id='"+row.id +"' onclick='edit("+row.project_btCode+")'>编辑</a> ";
 			
 							    return element;  

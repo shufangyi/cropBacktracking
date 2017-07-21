@@ -8,6 +8,7 @@ public class WorkerInfo {
 	private int roleId;
 	private String workerName;
 	private String workerPhone;
+	private String roleName;
 	public int getWorkerId() {
 		return workerId;
 	}
@@ -49,5 +50,11 @@ public class WorkerInfo {
 	}
 	public void setWorkerPhone(String workerPhone) {
 		this.workerPhone = workerPhone;
+	}
+	public String getRoleName() {
+		return roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 }

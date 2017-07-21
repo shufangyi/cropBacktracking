@@ -23,6 +23,23 @@ $(function ()
 			alert("fail");
 		}
 	});
+	//获取图片
+	
+	$.ajax({
+		type: 'post',
+		url: 'business/getImgs.do',
+		data:id,
+		success:function(data)
+		{
+			fillImgs(data);
+		},
+		error:function(status)
+		{
+			
+		}	
+	});
+	
+	
     
 	//展示详情信息面板
     $(document).on('click','.content', function () {
@@ -36,6 +53,37 @@ $(function ()
             $('.txt>i').attr('class', 'fa fa-chevron-circle-down');
         }
     });
+    
+    
+    function fillImgs(data)
+    {
+    	
+    	alert(data.imglist.length);
+    	for(var i=0;i<data.imglist.length;i++)
+    	{
+    		switch (data.imglist[i].loc)
+    		{
+    			case "1":
+    				$('#img1').attr("src",data.imglist[i].picUrl);
+    				break;
+    			case "2":
+    				$('#img2').attr("src",data.imglist[i].picUrl);
+    				break;
+    			case "3":
+    				$('#img3').attr("src",data.imglist[i].picUrl);
+    				break;
+    			case "4":
+    				$('#img4').attr("src",data.imglist[i].picUrl);
+    				break
+    			case "5":
+    				$('#img5').attr("src",data.imglist[i].picUrl);
+    				break;;
+    		}
+    	}
+    	
+    };
+    
+    
     
     
 	//动态添加页面元素与数据

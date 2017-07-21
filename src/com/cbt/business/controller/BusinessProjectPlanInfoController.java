@@ -17,7 +17,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cbt.business.po.BusinessCropProjectInfo;
 import com.cbt.business.po.BusinessProjectPlanInfo;
+import com.cbt.business.service.BusinessCropProjectInfoService;
 import com.cbt.business.service.BusinessProjectPlanInfoService;
 import com.cbt.system.po.ManagerInfo;
 
@@ -29,6 +31,8 @@ public class BusinessProjectPlanInfoController
 	@Resource(name="businessProjectPlanInfoServiceImpl")
 	private BusinessProjectPlanInfoService businessProjectPlanInfoService;
 	
+	@Resource(name="businessCropProjectInfoServiceImpl")
+	private BusinessCropProjectInfoService businessCropProjectInfoService;
 
 	//分页获取计划信息
 	@RequestMapping("getPageBusinessProjectPlan.do")
@@ -56,15 +60,38 @@ public class BusinessProjectPlanInfoController
 	
 	//2017-07-18
 	@RequestMapping("addBusinessProjectPlan.do")
-	public @ResponseBody String addBusinessProjectPlan(BusinessProjectPlanInfo info,String business,HttpSession session)
+	public @ResponseBody String addBusinessProjectPlan(BusinessProjectPlanInfo info,String business,String workerIds,HttpSession session)
 	{
+		
+		
 		Boolean mark = true;
 		String cropCode = info.getCropCode();
 		int year = info.getYear();
 		System.out.println("business:"+business);
 		int businessId = Integer.parseInt(business);
-		info.setBusinessId(businessId);
-		info.setProject_btCode(businessId+""+year+""+cropCode);
+		info.setBusinessId(businessId);	
+		String project_btCode = businessId+""+year+""+cropCode;
+		info.setProject_btCode(project_btCode);
+		
+		//将人员信息存入BusinessCropProjectInfo
+		//对workerIdsk进行解析
+		String[] workerId=workerIds.split(":");
+		for(int i=0;i<workerId.length;i++)
+		{
+			System.out.println(workerId[i]);
+			if(!workerId[i].equals(""))
+			{
+				BusinessCropProjectInfo bcpinfo = new BusinessCropProjectInfo();
+				bcpinfo.setProject_btCode(project_btCode);
+				bcpinfo.setWorkerId(Integer.parseInt(workerId[i]));
+				int res = businessCropProjectInfoService.addBusinessCropProjectInfo(bcpinfo);
+				if(res<=0)
+				{
+					mark = false;
+					return mark.toString();
+				}
+			}
+		}
 		mark = businessProjectPlanInfoService.addBusinessProjectPlan(info);
 		return mark.toString();
 	}

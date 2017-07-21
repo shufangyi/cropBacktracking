@@ -91,9 +91,10 @@ $(document).ready(function(){
 	$('#submit').click(function(event){
 		event.preventDefault();
 		var planName = $('#templateName').val();
-		var planDesc = $('#Comment').text();
+		var planDesc = $('#Comment').summernote('code');
+		
 		//alert(planName);
-		//alert(planDesc);
+		alert(planDesc);
 		var planUnit="";
 		$("#permissions:checked").each(function(index,element)
 		{

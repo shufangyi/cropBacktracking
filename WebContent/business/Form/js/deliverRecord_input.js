@@ -36,7 +36,7 @@ $(document).ready(function(){
 	var LogisticsNum=$('#LogisticsNum').text();
 	var Distributor=$('#Distributor').text();
 	var Logistics=$('#Logistics').text();
-	var Comment=$('#Comment').val();
+	var Comment= $('#Comment').summernote('code');
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"

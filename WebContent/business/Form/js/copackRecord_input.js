@@ -40,7 +40,7 @@ $(document).ready(function(){
 	var Specifications=$('#Specifications').test();
 	var NetContent=$('#NetContent').test();
 	var StorageCondition=$('#StorageCondition').test();
-	var comment=$('#Comment').val();
+	var comment= $('#Comment').summernote('code');
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
 		alert("表单");

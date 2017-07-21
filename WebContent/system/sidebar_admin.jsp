@@ -29,36 +29,36 @@
                 <li>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 角色管理 <span class="caret"></span></a>
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 角色管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./Form/roles.html">系统角色</a></li>
-                        <li><a class="useful" href="./Form/addrole.html">新增角色</a></li>
+                        <li><a onclick="return false" class="useful" href="./Form/roles.html">系统角色</a></li>
+                        <li><a onclick="return false" class="useful" href="./Form/addrole.html">新增角色</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 生产计划 <span class="caret"></span></a>
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 生产模板<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./Form/plans.html">计划列表</a></li>
-                        <li><a class="useful" href="./Form/addplan.html">新增计划</a></li>
+                        <li><a onclick="return false" class="useful" href="./Form/plans.html">模板列表</a></li>
+                        <li><a onclick="return false" class="useful" href="./Form/addplan.html">新增模板</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 企业管理 <span class="caret"></span></a>
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 企业管理 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./Form/businessinfo.html">企业信息列表</a></li>
-                        <li><a class="useful" href="./Form/managers.html">企业账户列表</a></li>
-                        <li><a class="useful" href="./Form/addmanager.html">注册企业账户</a></li>
+                        <li><a onclick="return false" class="useful" href="./Form/businessinfo.html">企业信息列表</a></li>
+                        <li><a onclick="return false" class="useful" href="./Form/managers.html">企业账户列表</a></li>
+                        <li><a onclick="return false" class="useful" href="./Form/addmanager.html">注册企业账户</a></li>
                     </ul>
                 </li>
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 作物编码 <span class="caret"></span></a>
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> 作物编码 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
-                        <li><a class="useful" href="./Form/crops.html">编码列表</a></li>
+                        <li><a onclick="return false" class="useful" href="./Form/crops.html">编码列表</a></li>
                     </ul>
                 </li>
         </nav>

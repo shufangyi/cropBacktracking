@@ -35,8 +35,7 @@ $(document).ready(function(){
 	var fertilizernum=$('#FertilizerNum').text();
 	var fertilizerfrequency=$('#FertilizerFrequency').text();
 	var grower=$('#grower').text();
-	var comment=$('#Comment').val();
-
+	var comment= $('#Comment').summernote('code');
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
 		alert("表单");

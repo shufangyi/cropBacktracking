@@ -128,9 +128,9 @@ $(document).ready(function(){
 		for(var i=0;i<data.list.length;i++){
 	    	var output="";
 	        output+="<label class='radio inline' for='role-"+i+"'>"+
-	        "<input type='radio' name='role' id='role' value='"+data.list[i].roleId+"'>"+
+	        "<input type='radio' name='"+data.list[i].roleName+"' id='role' value='"+data.list[i].roleId+"'>"+
 	        data.list[i].roleName+
-	        "</label>";
+	        "</input></label>";
 	    	 $("#role").append(output);
     	}
 	}
@@ -146,7 +146,9 @@ $(document).ready(function(){
 		var workerPhone = $('#workerPhone').val();
 		//var roleDesc = $('#Comment').text();
 		var roleId = $('#role').find('#role:checked').val();
+		var roleName = $('#role').find('#role:checked').attr('name');
 		alert(roleId);
+		alert(roleName);
 		/*
 			对数据进行验证
 		*/
@@ -162,6 +164,7 @@ $(document).ready(function(){
 				"workerPhone":workerPhone,				
 				"roleId":roleId,
 				"businessId":businessId,
+				"roleName":roleName
 			},
 			success: function(data,status)
 			{

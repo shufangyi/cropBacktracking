@@ -2,11 +2,13 @@ package com.cbt.business.controller;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -59,7 +61,7 @@ public class CropBackPicInfoController
 			CropBackPicInfo info = new CropBackPicInfo();
 			info.setLoc("1");
 			//String imgPath = pathConfig.getLocalPath()+"/"+projectCode+"/"+"1";
-			info.setPicUrl(pathConfig.getLocalPath()+projectCode+"/"+savePath1);
+			info.setPicUrl(pathConfig.getLocalPath()+"/"+projectCode+"/"+savePath1);
 			info.setProjectCode(projectCode);
 			//img1不为空，将本项目之前的图片删除
 			if(cropBackPicInfoService.deleteByProjectCodeService(info)<=0){
@@ -74,7 +76,7 @@ public class CropBackPicInfoController
 			String savePath2 = dirCopyTool.saveLogoFile(parentPath+"/"+projectCode+"/", img2,"2");
 			CropBackPicInfo info = new CropBackPicInfo();
 			info.setLoc("2");
-			info.setPicUrl(pathConfig.getLocalPath()+projectCode+"/"+savePath2);
+			info.setPicUrl(pathConfig.getLocalPath()+"/"+projectCode+"/"+savePath2);
 			info.setProjectCode(projectCode);
 			//img2不为空，将本项目之前的图片删除
 			if(cropBackPicInfoService.deleteByProjectCodeService(info)<=0){
@@ -88,7 +90,7 @@ public class CropBackPicInfoController
 			String savePath3 = dirCopyTool.saveLogoFile(parentPath+"/"+projectCode+"/", img3,"3");
 			CropBackPicInfo info = new CropBackPicInfo();
 			info.setLoc("3");
-			info.setPicUrl(pathConfig.getLocalPath()+projectCode+"/"+savePath3);
+			info.setPicUrl(pathConfig.getLocalPath()+"/"+projectCode+"/"+savePath3);
 			info.setProjectCode(projectCode);
 			//img3不为空，将本项目之前的图片删除
 			if(cropBackPicInfoService.deleteByProjectCodeService(info)<=0){
@@ -102,7 +104,7 @@ public class CropBackPicInfoController
 			String savePath4 = dirCopyTool.saveLogoFile(parentPath+"/"+projectCode+"/", img4,"4");
 			CropBackPicInfo info = new CropBackPicInfo();
 			info.setLoc("4");
-			info.setPicUrl(pathConfig.getLocalPath()+projectCode+"/"+savePath4);
+			info.setPicUrl(pathConfig.getLocalPath()+"/"+projectCode+"/"+savePath4);
 			info.setProjectCode(projectCode);
 			//img4不为空，将本项目之前的图片删除
 			if(cropBackPicInfoService.deleteByProjectCodeService(info)<=0){
@@ -116,7 +118,7 @@ public class CropBackPicInfoController
 			String savePath5 = dirCopyTool.saveLogoFile(parentPath+"/"+projectCode+"/", img5,"5");
 			CropBackPicInfo info = new CropBackPicInfo();
 			info.setLoc("5");
-			info.setPicUrl(pathConfig.getLocalPath()+projectCode+"/"+savePath5);
+			info.setPicUrl(pathConfig.getLocalPath()+"/"+projectCode+"/"+savePath5);
 			info.setProjectCode(projectCode);
 			//img5不为空，将本项目之前的图片删除
 			if(cropBackPicInfoService.deleteByProjectCodeService(info)<=0){
@@ -136,5 +138,23 @@ public class CropBackPicInfoController
 		*/
 		return "";
 	}
+	
+	
+	
+	@RequestMapping("getImgs.do")
+	public @ResponseBody ModelMap getImgsById(String queryId)
+	{
+		ModelMap model = new ModelMap();
+		String projectCode = queryId.substring(0,9);
+		
+		CropBackPicInfo info = new CropBackPicInfo();
+		List<CropBackPicInfo> list = cropBackPicInfoService.getCropBackPicInfoByProjectCode(projectCode);
+		model.addAttribute("imglist",list);
+		
+		return model;
+	}
+	
+	
+	
 	
 }

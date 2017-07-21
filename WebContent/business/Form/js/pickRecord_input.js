@@ -35,7 +35,7 @@ $(document).ready(function(){
 	var picknum=$('#PickNum').text();
 	var grower=$('#grower').text();
 	var pickSeg_btCode=$('#pickSeg_btCode').text();
-	var comment=$('#comment').val();
+	var comment= $('#Comment').summernote('code');
 	
 
 	$('#submit').click(function(){

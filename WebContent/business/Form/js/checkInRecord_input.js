@@ -34,7 +34,7 @@ $(document).ready(function(){
 	var checkInTime=$('#checkInTime').text();
 	var StockLocation=$('#StockLocation').text();
 	var Checker=$('#Checker').text();
-	var Comment=$('#Comment').val();
+	var Comment= $('#Comment').summernote('code');
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"

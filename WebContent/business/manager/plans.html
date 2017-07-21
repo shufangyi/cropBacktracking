@@ -93,12 +93,11 @@ $(document).ready(function()
            //【设置列属性】
 			columns:
 			 [
-			 {field: 'check',checkbox: true},
-			 {field: 'planId',title: '计划id'}, 	
-			 {field: 'businessId',title: '公司id'}, 	
+			 {field: 'check',checkbox: true},	
+			 {field: 'project_btCode',title: '项目id'}, 	
 			 {field: 'year',title: '年度'}, 	
 			 {field: 'planName',title: '计划名称'},
-			 {field: 'productPicture',title: '产品图片路径'},
+			 //{field: 'productPicture',title: '产品图片路径'},
 			 {field: 'cropCode',title: '编码'},
 			 {field: 'productName',title: '产品名称'},
 			 {field: 'projectDesc',title: '备注'}						 	
@@ -139,7 +138,7 @@ $(document).ready(function()
 	{
 		init();
 	});
-	/*
+	
 	  //删除数据
 	 $('#delete').click(function(){
 		 var rows = $('table').bootstrapTable('getSelections');
@@ -156,14 +155,14 @@ $(document).ready(function()
 				delete rows[i]['check'];
 			 $.ajax({
 				  type: "post",
-				  url: "../delRole.do",
+				  url: "../delBusinessProjectPlan.do",
 				  data:{data:JSON.stringify(rows)},
 				  //data:	rows,
 				  success: function (data, status) {
 					  if (status == "success") {
 	                        alert("删除成功");
 	                        //成功之后页面数据删除
-	                        //$('table').bootstrapTable('remove');
+	                        $('table').bootstrapTable('refresh');
 	                    }
 	                },
 	                error: function () {
@@ -180,7 +179,7 @@ $(document).ready(function()
 		  //向服务器提交数据
 		  $.ajax({
 			  type: "post",
-			  url: "../updateRole.do",
+			  url: "../updateBusinessProjectPlan.do",
 			  //data:{data:JSON.stringify(rows)},
 			  data:	row,
 			  success: function (data, status) {
@@ -194,7 +193,7 @@ $(document).ready(function()
           });      
 		  //end
 	  }
-	 */
+	
 	});
 					
 </script>

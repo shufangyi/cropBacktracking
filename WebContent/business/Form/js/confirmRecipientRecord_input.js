@@ -33,7 +33,7 @@ $(document).ready(function(){
 	var receipientTime=$('#receipientTime').text();
 	var LogisticsNum=$('#LogisticsNum').text();
 	var distributor=$('#distributor').text();
-	var Comment=$('#Comment').val();
+	var Comment= $('#Comment').summernote('code');
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"

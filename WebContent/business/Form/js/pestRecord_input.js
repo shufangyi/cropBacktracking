@@ -37,7 +37,7 @@ $(document).ready(function(){
 	var MedicationDosage=$('#MedicationDosage').text();
 	var result=$('#result').text();
 	var grower=$('#grower').text();
-	var comment=$('#Comment').val();
+	var comment= $('#Comment').summernote('code');
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"

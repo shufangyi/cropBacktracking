@@ -61,12 +61,14 @@
           			 </div>
                 </div>
             </div>
-            
-            <div class="control-group plan" >
+            <!-- 动态 -->
+        	<div id="box">
+        	</div>
+ <!--            <div class="control-group plan" >
             	<div class='controls' >
              	<label class='control-label' for='sow'>种植员</label>
                		 <div class="controls jscheckbox" id="sow">
-                		<!--js动态添加-->
+                		js动态添加
           			 </div>
           		</div>
           	</div>
@@ -74,7 +76,7 @@
           	 	<div class='controls' >
              	<label class='control-label' for='check'>质检入库员</label>
                 	 <div class="controls jscheckbox" id="check">
-                		<!--js动态添加-->
+                		js动态添加
           			 </div>
           		</div>
           	</div>
@@ -82,7 +84,7 @@
           	 	<div class='controls' >
              	<label class='control-label' for='copack'>加工员</label>
                 	<div class="controls jscheckbox" id="copack">
-                		<!--js动态添加-->
+                		js动态添加
           			 </div>
           		</div>
           	</div>
@@ -90,10 +92,10 @@
           	 	<div class='controls' >
              	<label class='control-label' for='sow'>物流员</label>
                 	<div class="controls jscheckbox" id="deliver">
-                		<!--js动态添加-->
+                		js动态添加
           			 </div>
           		</div>
-          	</div>
+          	</div> -->
 
       		<!-- Textarea -->
             <div class="control-group">
@@ -167,44 +169,47 @@ $(document).ready(function(){
 	function fillWorkers(data)
 	{	
 		var len = data.list.length;
-		//alert(len);
+		var roleIds = new Array();
+		var roleNames = new Array();
+		for(var i = 0;i<len;i++)
+		{
+			var roleId = data.list[i].roleId;
+			var rileName = data.list[i].roleName;
+			if(roleId in roleIds)
+			{
+				alert("hello");	
+			}
+			else
+			{
+				roleIds.push(roleId);	
+				roleNames.push(rileName);
+			}
+			
+		}
+		for(var i=0;i<roleIds.length;i++)
+		{
+			var output="<div class='control-group plan' >"+
+      	 	"<div class='controls' >"+
+         	"<label class='control-label' for='"+roleIds[i]+"'>"+roleNames[i]+"</label>"+
+            "<div class='controls jscheckbox' id='p"+roleIds[i]+"'>"+
+      		"</div></div</div>";
+      		$('#box').append(output);
+		}
+		
 		for(var i= 0 ; i < len ; i++)
 		{
-            switch(data.list[i].roleId)
-            {
-	            case 1:
-	            	var output="";
-	    			output+="<label class='checkbox inline' for='sow-"+i+"'>"+
-	                "<input type='radio' name='sow' id='sow' value='"+data.list[i].workerName+"'>"+
+			for(var j=0;j<roleIds.length;j++)
+			{
+				if(roleIds[j]==data.list[i].roleId)
+				{
+					var output="";
+	    			output+="<label class='checkbox inline' for='"+roleIds[j]+"'>"+
+	                "<input type='radio' name='"+roleIds[j]+"' id='role' value='"+data.list[i].workerId+"'>"+
 	                data.list[i].workerName+
 	                "</label>";
-	          	 	 $("#sow").append(output); 
-	          	 	 break;
-	            case 2:
-	            	var output="";
-	    			output+="<label class='checkbox inline' for='check-"+i+"'>"+
-	                "<input type='radio' name='check' id='check' value='"+data.list[i].workerName+"'>"+
-	                data.list[i].workerName+
-	                "</label>";
-		          	 $("#check").append(output); 
-		            	break;
-	            case 3:
-	            	var output="";
-	    			output+="<label class='checkbox inline' for='copack-"+i+"'>"+
-	                "<input type='radio' name='copack' id='copack' value='"+data.list[i].workerName+"'>"+
-	                data.list[i].workerName+
-	                "</label>";
-			   		 $("#copack").append(output); 
-			         break;
-	            case 4:
-	            	var output="";
-	    			output+="<label class='checkbox inline' for='deliver-"+i+"'>"+
-	                "<input type='radio' name='deliver' id='deliver' value='"+data.list[i].workerName+"'>"+
-	                data.list[i].workerName+
-	                "</label>";
-			   		 $("#deliver").append(output); 
-			         break;
-            }
+	          	 	 $("#p"+roleIds[j]).append(output); 
+				}
+			}
 		}
 	}
 	//验证表单数据，获取表单内ring没处理数据，提交后台
@@ -218,11 +223,18 @@ $(document).ready(function(){
 		//var roleDesc = $('#Comment').text();
 		var planId = $('#planId').find('#permissions:checked').val();
 		
-		var sow = $('#sow').find('#sow:checked').val();
+		/* var sow = $('#sow').find('#sow:checked').val();
 		var check = $('#check').find('#check:checked').val();
 		var copack = $('#copack').find('#copack:checked').val();
-		var deliver = $('#deliver').find('#deliver:checked').val();
-		var comment = $('#Comment').text();
+		var deliver = $('#deliver').find('#deliver:checked').val(); */
+		
+		var workerIds = "";
+		$('#box').find('input:radio:checked').each(function()
+		{
+
+			workerIds+=":"+$(this).val();
+		});
+		var comment =  $('#Comment').summernote('code');
 		/*
 			对数据进行验证
 		*/
@@ -236,12 +248,13 @@ $(document).ready(function(){
 				"productName":productName,
 				"planId":planId,
 				"year":year,				
-				"growerNum":sow,
+/* 				"growerNum":sow,
 				"checkedNum":check,
 				"packingClerkNum":copack,
-				"logiticsNum":deliver,
+				"logiticsNum":deliver, */
 				"projectDesc": comment,
-				"business":businessId
+				"business":businessId,
+				"workerIds":workerIds
 			},
 			success: function(data,status)
 			{

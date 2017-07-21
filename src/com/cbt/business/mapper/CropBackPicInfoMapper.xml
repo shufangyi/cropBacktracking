@@ -29,4 +29,9 @@
   where projectCode=#{projectCode} and loc=#{loc}
   </delete>
   
+   	
+  <select id="getCropBackPicInfoByProjectCode" parameterType="java.lang.String" resultMap="cropbackPicinfomap">
+ 	select * from cropBacktracking.CropBackPic where projectCode = #{value}
+  </select>
+  
 </mapper>
