@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="businessMobile" column="businessMobile" />
 		<result property="businessEmail" column="businessEmail" />
 		<result property="businessUrl" column="businessUrl" />
-		<result property="busienssLogo" column="busienssLogo" />
+		<result property="businessLogo" column="businessLogo" />
 		<result property="businessDesc" column="businessDesc" />		
 	</resultMap>
 	<!-- 查询所有的business数据-->
@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--数据库的字段为businessMoblie 和businessLog  但是pojo中是businessMobile 和BusinessLogo  -->
 	<insert id="addBusinessInfo" parameterType="com.cbt.business.po.BusinessInfo">
 	 	insert  into  businessinfo
-	 	(id,businessId,businessName,businessAddr,businessMoblie,businessEmail,businessUrl,businessLog,businessDesc)
+	 	(id,businessId,businessName,businessAddr,businessMoblie,businessEmail,businessUrl,businessLogo,businessDesc)
 	 	values
 	 	(#{id},#{businessId},#{businessName},#{businessAddr},#{businessMobile},#{businessEmail},#{businessUrl},#{businessLogo},#{businessDesc})
 	</insert>
@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<update id="updateBusiness" parameterType="com.cbt.business.po.BusinessInfo" >
     	update businessinfo set businessUrl = #{businessUrl},businessAddr=#{businessAddr},
     	businessMobile = #{businessMobile},businessEmail = #{businessEmail},
-    	busienssLogo = #{busienssLogo},businessDesc = #{businessDesc}
+    	businessLogo = #{businessLogo},businessDesc = #{businessDesc}
     	where businessId = #{businessId}
  	</update>
 	

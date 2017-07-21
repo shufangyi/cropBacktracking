@@ -129,7 +129,7 @@ public class BusinessInfoController
 		if(logo!=null)
 		{
 			String logoname = dirCopyTool.saveLogoFile(parentPath+"/"+info.getBusinessId()+"/", logo,"logo");
-			info.setBusinessLogo(pathConfig.getLocalPath()+info.getBusinessId()+"/"+logoname);
+			info.setBusinessLogo(pathConfig.getBusinessLogoPath()+"/"+info.getBusinessId()+"/"+logoname);
 			//String imgPath = pathConfig.getLocalPath()+"/"+projectCode+"/"+"1";
 		}
 		mark=businessInfoService.updateBusiness(info);
