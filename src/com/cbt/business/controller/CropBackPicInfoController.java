@@ -61,7 +61,11 @@ public class CropBackPicInfoController
 			//String imgPath = pathConfig.getLocalPath()+"/"+projectCode+"/"+"1";
 			info.setPicUrl(pathConfig.getLocalPath()+projectCode+"/"+savePath1);
 			info.setProjectCode(projectCode);
-			//调用service
+			//img1不为空，将本项目之前的图片删除
+			if(cropBackPicInfoService.deleteByProjectCodeService(info)<=0){
+				System.out.println("图片删除失败或项目无历史图片");
+			}
+			//调用service,插入存储
 			cropBackPicInfoService.saveCropBackPicInfo(info);
 			
 		}
@@ -72,6 +76,10 @@ public class CropBackPicInfoController
 			info.setLoc("2");
 			info.setPicUrl(pathConfig.getLocalPath()+projectCode+"/"+savePath2);
 			info.setProjectCode(projectCode);
+			//img2不为空，将本项目之前的图片删除
+			if(cropBackPicInfoService.deleteByProjectCodeService(info)<=0){
+				System.out.println("图片删除失败或项目无历史图片");
+			}
 			//调用service
 			cropBackPicInfoService.saveCropBackPicInfo(info);
 		}
@@ -82,6 +90,10 @@ public class CropBackPicInfoController
 			info.setLoc("3");
 			info.setPicUrl(pathConfig.getLocalPath()+projectCode+"/"+savePath3);
 			info.setProjectCode(projectCode);
+			//img3不为空，将本项目之前的图片删除
+			if(cropBackPicInfoService.deleteByProjectCodeService(info)<=0){
+				System.out.println("图片删除失败或项目无历史图片");
+			}
 			//调用service
 			cropBackPicInfoService.saveCropBackPicInfo(info);
 		}
@@ -92,6 +104,10 @@ public class CropBackPicInfoController
 			info.setLoc("4");
 			info.setPicUrl(pathConfig.getLocalPath()+projectCode+"/"+savePath4);
 			info.setProjectCode(projectCode);
+			//img4不为空，将本项目之前的图片删除
+			if(cropBackPicInfoService.deleteByProjectCodeService(info)<=0){
+				System.out.println("图片删除失败或项目无历史图片");
+			}
 			//调用service
 			cropBackPicInfoService.saveCropBackPicInfo(info);
 		}
@@ -102,6 +118,10 @@ public class CropBackPicInfoController
 			info.setLoc("5");
 			info.setPicUrl(pathConfig.getLocalPath()+projectCode+"/"+savePath5);
 			info.setProjectCode(projectCode);
+			//img5不为空，将本项目之前的图片删除
+			if(cropBackPicInfoService.deleteByProjectCodeService(info)<=0){
+				System.out.println("图片删除失败或项目无历史图片");
+			}
 			//调用service
 			cropBackPicInfoService.saveCropBackPicInfo(info);
 		}

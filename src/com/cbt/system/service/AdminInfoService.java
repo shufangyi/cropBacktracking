@@ -25,4 +25,6 @@ public interface AdminInfoService {
 	 */
 	public AdminInfo getAdminInfo(AdminInfo admin);
 	
+	public Boolean updateAdminPwd(AdminInfo info);
+	
 }

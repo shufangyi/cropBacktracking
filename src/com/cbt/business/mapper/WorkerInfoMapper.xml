@@ -67,5 +67,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   select * from cropBacktracking.workerInfo
   where businessId=#{businessId}
   </select>
+  
+  	<update id="updateWorkerPwd" parameterType="com.cbt.business.po.WorkerInfo" >
+    	update cropBacktracking.workerInfo set workerPwd = #{workerPwd} where workerNum = #{workerNum}
+ 	</update>
 
 </mapper>

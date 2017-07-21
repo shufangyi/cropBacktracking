@@ -85,4 +85,13 @@ public class WorkerInfoServiceImpl implements WorkerInfoService{
 	public List<WorkerInfo> queryByBusinessIdService(WorkerInfo workerInfo) throws Exception {
 		return workerInfoMapper.queryByBusinessId(workerInfo);
 	}
+
+	@Override
+	public Boolean updateWorkerPwd(WorkerInfo info) {
+		// TODO Auto-generated method stub
+		int i = workerInfoMapper.updateWorkerPwd(info);
+		if(i>0)
+			return true;
+		return false;
+	}
 }

@@ -31,4 +31,7 @@ public interface WorkerInfoMapper
 	//query by businessId
 	public List<WorkerInfo> queryByBusinessId(WorkerInfo workerInfo)throws Exception;
 	
+	
+	public int updateWorkerPwd(WorkerInfo info);
+	
 }

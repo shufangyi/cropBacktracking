@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cbt.business.po.BusinessCropProjectInfo;
+import com.cbt.business.po.BusinessInfo;
 import com.cbt.business.po.MenuInfo;
 import com.cbt.business.po.UserInfo;
 import com.cbt.business.po.WorkerInfo;
 import com.cbt.business.service.BusinessCropProjectInfoService;
+import com.cbt.business.service.BusinessInfoService;
 import com.cbt.business.service.ManagerInfoService;
 import com.cbt.business.service.MenuInfoService;
 import com.cbt.business.service.WorkerInfoService;
@@ -32,6 +34,8 @@ import com.cbt.system.service.RoleInfoService;
 @RequestMapping("/business/")
 public class UserInfoController
 {
+	@Resource(name="businessInfoServiceImpl")
+	private BusinessInfoService businessInfoService;
 	
 	@Resource(name="workerInfoServiceImpl")
 	private WorkerInfoService workerInfoService;
@@ -93,6 +97,15 @@ public class UserInfoController
 				
 				//session.setAttribute(worker.getWorkerName(), worker);
 				session.setAttribute("workerInfo", worker);
+				int businessId = worker.getBusinessId();
+				
+				
+				BusinessInfo binfo = new BusinessInfo();
+				binfo.setBusinessId(""+businessId);
+				binfo = businessInfoService.getBusinessInfo(binfo);
+				
+				session.setAttribute("businessInfo", binfo);
+				
 				int roleId = worker.getRoleId();
 				RoleInfo role = roleInfoService.getRoleAuthority(roleId);
 				System.out.println(role.toString());

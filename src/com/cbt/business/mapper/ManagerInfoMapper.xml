@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   
   	 <!--根据managerNum查询一条数据  -->
   <select id="getManagerInfo" parameterType="com.cbt.system.po.ManagerInfo" resultMap="managerinfomap">
-  	select * from  managerinfo where managerNum=#{managerNum}
+  	select * from  managerinfo where managerNum=#{managerNum} and managerPwd=#{managerPwd}
   </select>
   
   <!--查询所有数据  -->
@@ -50,8 +50,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	
  	 	<!-- 修改数据 -->
- 	<update id="updateRole" parameterType="com.cbt.system.po.ManagerInfo" >
-    	update managerinfo set managerPhone = #{managerPhone},managerName = #{managerName} where id = #{id}
+ 	<update id="updateManager" parameterType="com.cbt.system.po.ManagerInfo" >
+    	update managerinfo set managerPwd = #{managerPwd}, managerPhone = #{managerPhone},managerName = #{managerName} where id = #{id}
  	</update>
  
 	

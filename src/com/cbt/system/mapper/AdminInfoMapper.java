@@ -26,6 +26,9 @@ public interface AdminInfoMapper {
 	 */
 	public AdminInfo getAdminInfo(AdminInfo user);
 	
+	
+	public int updateAdminPwd(AdminInfo info);
+	
 	/**
 	 * 修改用户信息
 	 * @param user 用户信息

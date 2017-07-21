@@ -26,4 +26,6 @@ public interface WorkerInfoService
 	public WorkerInfo queryByWorkerIdService(WorkerInfo workerInfo)throws Exception;
 	
 	public List<WorkerInfo> queryByBusinessIdService(WorkerInfo workerInfo)throws Exception;
+	
+	public Boolean updateWorkerPwd(WorkerInfo info);
 }

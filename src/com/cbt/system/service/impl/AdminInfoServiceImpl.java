@@ -22,4 +22,14 @@ public class AdminInfoServiceImpl implements AdminInfoService {
 		admin = adminInfoMapper.getAdminInfo(admin);
 		return admin;
 	}
+	@Override
+	public Boolean updateAdminPwd(AdminInfo info) {
+		// TODO Auto-generated method stub
+		int i = adminInfoMapper.updateAdminPwd(info);
+		if(i>0)
+		{
+			return true;
+		}
+		return false;
+	}
 }

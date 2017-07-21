@@ -24,5 +24,10 @@ public class CropBackPicInfoServiceImpl implements CropBackPicInfoService{
 		else
 			return false;
 	}
+	//删除图片
+	@Override
+	public int deleteByProjectCodeService(CropBackPicInfo info) throws Exception {
+		return cropBackPicInfoMapper.deleteByProjectCode(info);
+	}
 
 }

@@ -24,4 +24,9 @@
    	)
   </insert>
   
+  <delete id="deleteByProjectCode" parameterType="com.cbt.business.po.CropBackPicInfo">
+  delete from cropBacktracking.CropBackPic
+  where projectCode=#{projectCode} and loc=#{loc}
+  </delete>
+  
 </mapper>

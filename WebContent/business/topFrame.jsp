@@ -36,7 +36,7 @@
                 <!--<span class='icon-bar'></span>-->
                 <!--</button>-->
                 <span class="navbar-brand"><img src="business/img/logo.png"/></span>&nbsp;
-                <span class="navbar-brand-name">${workerInfo.businessId }</span>
+                <span class="navbar-brand-name">${businessInfo.businessName }</span>
             </div>
 
             <ul class="nav navbar-nav navbar-right">

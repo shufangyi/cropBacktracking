@@ -104,66 +104,10 @@ public class AdminInfoController {
 				return "system/admin.jsp";
 			}
 		}
-		/*
-		AdminInfo userInfo = userInfoService.getUserInfo(user);
-		System.out.println("----");
-		System.out.println(userInfo.toString());
-		System.out.println("----");
-		int roleId = userInfo.getRoleId();
-		
-		RoleInfo info = roleInfoService.getRoleAuthority(roleId);
-		String str = info.getRoleAuthority();
-		System.out.println("权限:"+str);
-		String[] lists = str.split(":");
-		System.out.println("权限长度:"+lists.length);
-		String[] urls = new String[5];
-		for(int i=0;i<lists.length;i++)
-		{
-			AuthorityInfo ainfo=authorityInfoService.getAuthority(Integer.parseInt(lists[i]));
-			urls[i]=ainfo.getAuthorityUrl();
-		}
-		
-		
-		//传输信息封装成对象，放置在session里,session会话
-		if(userInfo!=null){
-			session.setAttribute("userInfo", userInfo);
-			return "";
-		}else{
-			model.addAttribute("error", "账号或密码错误，请重新输入");
-		}
-	*/
+
 	}
 	
-	/**
-	 * 修改用户信息
-	 * @param user
-	 * @return
-	 */
-	/*
-	@RequestMapping("update.do")
-	public String update(UserInfo user,HttpSession session,Model model){
-		
-		boolean mark = userInfoService.updateUserInfo(user);
-		if(mark){
-			session.setAttribute("userInfo", user);
-			model.addAttribute("info", "用户信息修改成功");
-		}else{
-			model.addAttribute("info", "用户信息修改失败");
-		}
-		
-		
-		return "view/system/userinfo/user_update";
-	}
-	*/
-/*
-	public void setUserInfoService(UserInfoService userInfoService) {
-		this.userInfoService = userInfoService;
-	}
-
-	public void setMenuInfoService(MenuInfoService menuInfoService) {
-		this.menuInfoService = menuInfoService;
-	}
-	*/
+	
 
 	
 	@RequestMapping("test.do")
@@ -174,104 +118,27 @@ public class AdminInfoController {
 	}
 	
 	
-	/**
-	 * 返回用户列表
-	 * @param page
-	 * @param rows
-	 * @return
-	 * @throws Exception
-	 */
-	/*
-	@RequestMapping("getGerenUserList.do")
-	public @ResponseBody ModelMap getGerenUserList(String page,String rows,String status
-			) throws Exception{
-		if(status==null) status="";
-		List<UserInfoVo> userInfoVo = userInfoService.getUserInfoVo(page,rows,status);
-		ModelMap model = new ModelMap();
-		model.addAttribute("total",userInfoService.getGerenUserCount(status));
-		model.addAttribute("rows",userInfoVo);
-		
-		return model;
-	}
-	*/
-	/**
-	 * 审核通过
-	 * @param data
-	 * @return
-	 * @throws JsonParseException
-	 * @throws JsonMappingException
-	 * @throws IOException
-	 */
-	/*
-	@RequestMapping("checkUser.do")
-	public @ResponseBody String checkUser(String data) throws JsonParseException, JsonMappingException, IOException{
-		
-		try{
-			ObjectMapper mapper = new ObjectMapper();
-			JavaType type = mapper.getTypeFactory().constructParametricType(ArrayList.class, UserInfoVo.class);
-			@SuppressWarnings("unchecked")
-			List<UserInfoVo> userInfoVoList = (ArrayList<UserInfoVo>)mapper.readValue(data, type);
-			userInfoService.updateUserStatus(userInfoVoList, "通过");
-			return "success";
-		}catch(Exception e){
-			e.printStackTrace();
-			return "fail";
+	@RequestMapping("updateAdminPwd.do")
+	public @ResponseBody String updateAdminPwd(String adminNum,String adminOldPwd,String adminNewPwd)
+	{
+		Boolean mark = false;
+		AdminInfo info = new AdminInfo();
+		info.setAdminNum(adminNum);
+		info.setAdminPwd(adminOldPwd);
+		info = adminInfoService.getAdminInfo(info);
+		if(info!=null)
+		{
+			info.setAdminPwd(adminNewPwd);
+			mark = adminInfoService.updateAdminPwd(info);	
+			if(mark == true )
+				return "2";
+			else
+			{
+				return "1";
+			}
 		}
+		return "0";
 	}
-	*/
-	/**
-	 * 封杀用户
-	 * @param data
-	 * @return
-	 * @throws JsonParseException
-	 * @throws JsonMappingException
-	 * @throws IOException
-	 */
-	/*
-	@RequestMapping("forceOutUser.do")
-	public @ResponseBody String forceOutUser(String data) throws JsonParseException, JsonMappingException, IOException{
-		
-		try{
-			ObjectMapper mapper = new ObjectMapper();
-			JavaType type = mapper.getTypeFactory().constructParametricType(ArrayList.class, UserInfoVo.class);
-			@SuppressWarnings("unchecked")
-			List<UserInfoVo> userInfoVoList = (ArrayList<UserInfoVo>)mapper.readValue(data, type);
-			userInfoService.updateUserStatus(userInfoVoList, "封号");
-			return "success";
-		}catch(Exception e){
-			e.printStackTrace();
-			return "fail";
-		}
-	}
-	
-	@RequestMapping("showDetails.do")
-	public @ResponseBody Object showDetails(String userName,String userType) throws UnsupportedEncodingException{
-		
-		String userId = URLDecoder.decode(userName,"UTF-8");
-		String YHLX = URLDecoder.decode(userType,"UTF-8");
-		ModelMap model = new ModelMap();
-		
-		if(YHLX.equals("个人用户")){
-			GerenInfo gerenInfo = gerenInfoService.getGerenInfoById(userId);
-			model.addAttribute("rows",gerenInfo.getProperty());
-			return model;
-		}else if(YHLX.equals("创新团队")){
-			CxtdInfo cxtdInfo = cxtdInfoService.getCxtdInfoByUserId(userId);
-			model.addAttribute("rows",cxtdInfo.getProperty());
-			return model;
-		}else if(YHLX.equals("企业用户")){
-			QyInfo qyInfo = qyInfoService.getQyInfoByUserId(userId);
-			model.addAttribute("rows",qyInfo.getProperty());
-			return model;
-		}else if(YHLX.equals("高校用户")){
-			GxInfo gxInfo = gxInfoService.getGxInfoByUserId(userId);
-			model.addAttribute("rows",gxInfo.getProperty());
-			return model;
-		}else{
-			return "fail";
-		}
-		
-	}
-	*/
+
 	
 }

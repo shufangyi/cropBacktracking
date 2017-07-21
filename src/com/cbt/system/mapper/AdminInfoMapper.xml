@@ -6,11 +6,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<resultMap type="AdminInfo" id="adminmap">
-		<result property="adminName" column="adminName"/>
+		<result property="adminNum" column="adminName"/>
 		<result property="adminPwd" column="adminPwd" />
 	</resultMap>
 	<!-- 查询用户信息 用于用户登录 -->
 	<select id="getAdminInfo" parameterType="AdminInfo" resultMap="adminmap">
 		select * from admininfo where adminNum=#{adminNum} and adminPwd=#{adminPwd}
 	</select>
+	
+	
+	<update id="updateAdminPwd" parameterType="AdminInfo"> 
+		update admininfo set adminPwd = #{adminPwd} where adminNum = #{adminNum}
+	</update>
 </mapper>

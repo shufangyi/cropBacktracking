@@ -80,6 +80,52 @@
                 $('.myframe1').css('height', clientHeight - 50 + 'px');
                 $('.myframe1').css('width', clientWidth - 200 + 'px');
             }, 50);
+            
+            
+            $("#doublebutton2-0").bind('click', function (event) {
+                event.preventDefault();
+                var userName = $(window.frames["topFrame"].document).find('button#login-name').text().trim();
+                var oldP = $("#passwordinput-0").val();
+                var newP1 = $("#passwordinput-1").val();
+                var newP2 = $("#passwordinput-2").val();
+                alert(userName);
+                if (oldP.length == 0 || newP1.length == 0 || newP2.length == 0) {
+                    alert("不能为空！");
+                } else {
+                    if (newP1 != newP2) {
+                        alert("新密码不相同！")
+                    } else {
+                        $.ajax({
+                            type: 'POST',
+                            url: "business/updateWorkerPwd.do",
+                            data: {
+                                "workerNum": userName,
+                                "workerOldPwd": oldP,
+                                "workerNewPwd": newP1
+                            },
+                            success: function (data) {
+                                if (data == "2") {
+                                    alert("密码修改成功！");
+                                } else if (data == "0") {
+                                    alert("旧密码错误！");
+                                } else if (data == "1") {
+                                    alert("密码修改失败，稍后重试！");
+                                }
+                            },
+                            error: function (status) {
+                                alert("发生未知错误！稍后重试！");
+                            }
+                        });
+                    }
+                }
+            });
+            $("#changeInfo").keydown(function () {
+                if (event.keyCode == "13") { //keyCode=13是回车键
+                    $('#doublebutton2-0').trigger('click');
+                }
+            });
+            
+            
         });
     </script>
 </body>

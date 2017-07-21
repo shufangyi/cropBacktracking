@@ -83,7 +83,28 @@ public class WorkerInfoController
 		return mark.toString();
 	}
 	
+	
 
 	
-	
+	@RequestMapping("updateWorkerPwd.do")
+	public @ResponseBody String updateWorkerPwd(String workerNum,String workerOldPwd,String workerNewPwd)
+	{
+		Boolean mark = false;
+		WorkerInfo info = new WorkerInfo();
+		info.setWorkerNum(workerNum);
+		info.setWorkerPwd(workerOldPwd);
+		info = workerInfoService.getWorkerInfo(info);
+		if(info!=null)
+		{
+			info.setWorkerPwd(workerNewPwd);
+			mark = workerInfoService.updateWorkerPwd(info);	
+			if(mark == true )
+				return "2";
+			else
+			{
+				return "1";
+			}
+		}
+		return "0";
+	}
 }

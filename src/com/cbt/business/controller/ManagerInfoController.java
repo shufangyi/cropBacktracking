@@ -17,6 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cbt.business.po.WorkerInfo;
 import com.cbt.business.service.ManagerInfoService;
 import com.cbt.system.po.ManagerInfo;
 
@@ -42,12 +43,9 @@ public class ManagerInfoController {
 	{
 	    Boolean mark = true; 
 	    //调用service更新数据库
-	  
-	    mark = managerInfoService.updateManager(info);
-	    
+	    mark = managerInfoService.updateManager(info); 
 	    return mark.toString();
 	}
-	
 	//分页获取种植员自己的种植纪录
 	@RequestMapping("getPageManagers.do")
 	@ResponseBody
@@ -78,5 +76,26 @@ public class ManagerInfoController {
 		    
 			return managerInfoService.delManager(list).toString();
 		}
-
+	
+	
+	//管理员个人信息修改
+	@RequestMapping("updateManagerPwd.do")
+	public @ResponseBody String updateManagerPwd(String managerNum,String managerOldPwd,String managerNewPwd)
+	{
+		Boolean mark = false;
+		ManagerInfo info = new ManagerInfo();
+		info.setManagerNum(managerNum);
+		info.setManagerPwd(managerOldPwd);	
+		info = managerInfoService.getManagerInfo(info);
+		if(info!=null)
+		{
+			info.setManagerPwd(managerNewPwd);
+			mark = managerInfoService.updateManager(info);
+			if(mark == true)
+				return "2";
+			else
+				return "1";
+		}
+		return "0";
+	}
 }
