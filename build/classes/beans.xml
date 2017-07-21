@@ -31,7 +31,8 @@
 		</bean>
 		
 		<bean id="pathConfig" class="com.cbt.utils.PathConfig">
-		    <property name="localPath" value="Uploads/business/"></property>
+		    <property name="localPath" value="Uploads/business/products"></property>
+		    <property name="businessLogoPath" value="Uploads/business/logo"></property>
 		</bean>
 		
 		<!-- 配置事务 -->

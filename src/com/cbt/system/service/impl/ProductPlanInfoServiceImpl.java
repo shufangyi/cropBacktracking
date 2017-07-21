@@ -40,18 +40,23 @@ public class ProductPlanInfoServiceImpl implements com.cbt.system.service.Produc
 	
 	/*记录数据个数*/
 	@Override
-	public int getProductPlanInfoCount() throws Exception {
-		// TODO Auto-generated method stub
-		return productPlanInfoMapper.getProductPlanInfoCount();
+	public int getProductPlanInfoCount(int nowpage, int rows,String searchKey) throws Exception {
+		int startrow=(nowpage-1)*rows;
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("startrow",startrow);
+		map.put("rows", rows);   
+		map.put("searchKey", searchKey);
+		return productPlanInfoMapper.getProductPlanInfoCount(map);
 	}
 	/*分页查询数据*/
 	@Override
-	public List<ProductPlanInfo> getPageProductPlan(int nowpage, int rows) throws Exception  {
+	public List<ProductPlanInfo> getPageProductPlan(int nowpage, int rows,String searchKey) throws Exception  {
 		// TODO Auto-generated method stub
 		int startrow=(nowpage-1)*rows;
 		HashMap<String,Object> map=new HashMap<String,Object>();
 		map.put("startrow",startrow);
 		map.put("rows", rows);   
+		map.put("searchKey", searchKey);
 		return  productPlanInfoMapper.getPageProductPlanInfo(map);
 	}
 	

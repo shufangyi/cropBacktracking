@@ -18,9 +18,9 @@ public interface RoleInfoService
 	public Boolean addRole(RoleInfo info);	
 	
 	
-	public List<RoleInfo> getPageRoles(int nowpage, int rows);
+	public List<RoleInfo> getPageRoles(int nowpage, int rows,String searchKey);
 	
-	public int getRecordsCount();
+	public int getRecordsCount(int nowpage, int rows,String searchKey);
 	
 	
 	public Boolean updateRole(RoleInfo info);

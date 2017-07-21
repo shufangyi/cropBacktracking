@@ -32,12 +32,13 @@ public class ProductPlanInfoController {
 	{	
 		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
 		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		String searchKey=req.getParameter("searchKey");
 		ModelMap model = new ModelMap();
 		List<ProductPlanInfo> lists = new ArrayList<ProductPlanInfo>();
-		lists = productPlanInfoService.getPageProductPlan(nowpage,rows);//ok
+		lists = productPlanInfoService.getPageProductPlan(nowpage,rows,searchKey);//ok
 		System.out.println(lists);
 		model.put("rows", lists);	
-		int total =  productPlanInfoService.getProductPlanInfoCount();
+		int total =  productPlanInfoService.getProductPlanInfoCount(nowpage,rows,searchKey);
 		model.put("total", total);	
 		return model;
 	}

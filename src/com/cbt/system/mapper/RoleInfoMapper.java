@@ -17,7 +17,7 @@ public interface RoleInfoMapper
 	/*分页查询*/
 	public List<RoleInfo> getPageRoles(Map<String,Object> map);
 	/*分页记录*/
-	public int getRolesCount();	
+	public int getRolesCount(Map<String,Object> map);	
 	//修改数据
 	public int updateRole(RoleInfo info);
 	

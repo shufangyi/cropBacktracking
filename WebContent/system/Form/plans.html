@@ -24,16 +24,19 @@
 	<div class="row">
 		<div id="toolbar">
         	<button value="删除" id="delete">删除</button>
+        	<button value="搜索" id="search">搜索</button>
+        	<input id="searchKey" type="text" placeholder="请输入搜索内容">
 		</div>
 		<div class="col-xs-12">
 			<table class="table table-striped table-bordered table-hover" ></table>
 		</div>
-		<p>test</p>
 	</div>
 </div>
 <script>
 $(document).ready(function() 
-		{
+{
+		init();
+		function init(){
 		    	 //---先销毁表格 ---
 		        $('table').bootstrapTable('destroy');  
 		        //---初始化表格,动态从服务器加载数据--- 
@@ -61,7 +64,8 @@ $(document).ready(function()
 		           	queryParams: function queryParams(params) {
 		             var param = {  
 		                 pageNumber: params.pageNumber,    
-		                 pageSize: params.pageSize
+		                 pageSize: params.pageSize,
+		                 searchKey:$('#searchKey').val()
 		             }; 
 		             return param;                   
 		           }, 
@@ -87,6 +91,13 @@ $(document).ready(function()
 							update(row);
 					}
 		       });
+		}
+		
+		//搜索
+		$('#search').click(function(){
+			init();
+			
+		});
 				 /* 删除多个生产计划 */
 				  $('#delete').click(function(){
 						 var rows = $('table').bootstrapTable('getSelections');

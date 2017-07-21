@@ -18,9 +18,9 @@ public interface ProductPlanInfoService{
 	
 	
 	//分页查询所有生产计划
-	public List<ProductPlanInfo> getPageProductPlan(int nowpage,int rows) throws Exception;
+	public List<ProductPlanInfo> getPageProductPlan(int nowpage,int rows,String SearchKey) throws Exception;
 	//分页记录
-	public int getProductPlanInfoCount()  throws Exception;
+	public int getProductPlanInfoCount(int nowpage,int rows,String SearchKey)  throws Exception;
 	//删除多个生产计划
 	public Boolean delProductPlan(List<ProductPlanInfo> list) throws Exception;
 	//更新单个生产计划

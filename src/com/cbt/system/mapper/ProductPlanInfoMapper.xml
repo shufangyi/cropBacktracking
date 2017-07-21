@@ -10,11 +10,27 @@
 	
 	<!--分页查询所有生产计划  -->
 	<select id="getPageProductPlanInfo" parameterType="Map" resultMap="productPlanInfoMap">
-		select  * from product_planinfo limit #{startrow},#{rows}
+		select  * from product_planinfo 
+		<if test="searchKey!='' and searchKey!=null">
+		where
+			planId like '%${searchKey}%' or
+			planName like '%${searchKey}%' or
+			planDesc like '%${searchKey}%' or
+			planUnit like '%${searchKey}%' 
+		</if>
+		limit #{startrow},#{rows}
 	</select>
 	<!--获取计划数量  -->
-	<select id="getProductPlanInfoCount" resultType="int">
+	<select id="getProductPlanInfoCount" parameterType="Map" resultType="int">
 		select count(*) from product_planinfo
+		<if test="searchKey!='' and searchKey!=null">
+		where
+			planId like '%${searchKey}%' or
+			planName like '%${searchKey}%' or
+			planDesc like '%${searchKey}%' or
+			planUnit like '%${searchKey}%' 
+
+		</if>
 	</select>
 	
 	<select id="getProductPlans" resultMap="productPlanInfoMap">

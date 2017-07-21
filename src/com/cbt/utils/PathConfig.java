@@ -7,11 +7,20 @@ package com.cbt.utils;
  */
 public class PathConfig {	
 	private String  localPath;
-	public String getLocalPath() {
+	private String businessLogoPath;
+	public String getLocalPath() 
+	{
 		return localPath;
 	}
 	public void setLocalPath(String localPath) {
 		this.localPath = localPath;
 	}
+	public String getBusinessLogoPath() {
+		return businessLogoPath;
+	}
+	public void setBusinessLogoPath(String businessLogoPath) {
+		this.businessLogoPath = businessLogoPath;
+	}
+	
 
 }

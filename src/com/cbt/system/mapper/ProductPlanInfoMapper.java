@@ -20,7 +20,7 @@ public interface ProductPlanInfoMapper {
 	//分页查询所有生产计划
 	public List<ProductPlanInfo> getPageProductPlanInfo(Map<String,Object> map)  throws Exception;
 	//分页记录
-	public int getProductPlanInfoCount() throws Exception ;
+	public int getProductPlanInfoCount(Map<String,Object> map) throws Exception ;
 	//删除生产计划
 	public int deleteProductPlan(ProductPlanInfo  info) throws Exception;
 	

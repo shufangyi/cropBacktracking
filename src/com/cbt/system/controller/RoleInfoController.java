@@ -71,12 +71,13 @@ public class RoleInfoController
 	public ModelMap getRoless(HttpServletRequest req,HttpSession session)
 	{	
 		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
-		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		int rows = Integer.parseInt(req.getParameter("pageSize"));
+		String searchKey=req.getParameter("searchKey");
 		ModelMap model = new ModelMap();
 		List<RoleInfo> lists = new ArrayList<RoleInfo>();
-		lists = roleInfoService.getPageRoles(nowpage, rows);
+		lists = roleInfoService.getPageRoles(nowpage, rows,searchKey);
 		model.put("rows", lists);	
-		int total = roleInfoService.getRecordsCount();	
+		int total = roleInfoService.getRecordsCount(nowpage, rows,searchKey);	
 		model.put("total", total);	
 		return model;
 	}

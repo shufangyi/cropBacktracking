@@ -28,11 +28,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	 	 <!-- 分页 -->
  	<select id="getPageRoles" parameterType="Map" resultMap="rolemap">
-  		select * from roleinfo limit #{startrow},#{rows}
+  		select * from roleinfo 
+  		<if test="searchKey!='' and searchKey!=null">
+  		WHERE 
+  			roleName like '%${searchKey}%' or
+  			roleDesc like '%${searchKey}%' or
+  			roleAuthority like '%${searchKey}%' or
+  			roleStatus like '%${searchKey}%' 
+  		</if>
+  		limit #{startrow},#{rows}
  	</select>
  	<!-- 获取记录数量 -->
   	<select id="getRolesCount" resultType="int">
- 		 select count(*) from roleinfo 
+ 		 select count(*) from roleinfo  
+ 		 <if test="searchKey!='' and searchKey!=null">
+ 		 WHERE
+  			roleName like '%${searchKey}%' or
+  			roleDesc like '%${searchKey}%' or
+  			roleAuthority like '%${searchKey}%' or
+  			roleStatus like '%${searchKey}%' 
+  		</if>
  	</select>
  	
  	<select id="getRoles" resultMap="rolemap">

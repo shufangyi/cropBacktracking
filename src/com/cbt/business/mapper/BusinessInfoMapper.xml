@@ -47,10 +47,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	<select id="getBusinesssCount" resultType="int">
  		 select count(*) from businessinfo 
  	</select>
- 	
- 	 	<!-- 修改数据 -->
+	<!-- 修改数据 -->
  	<update id="updateBusiness" parameterType="com.cbt.business.po.BusinessInfo" >
-    	update businessinfo set businessUrl = #{businessUrl} where businessId = #{businessId}
+    	update businessinfo set businessUrl = #{businessUrl},businessAddr=#{businessAddr},
+    	businessMobile = #{businessMobile},businessEmail = #{businessEmail},
+    	busienssLogo = #{busienssLogo},businessDesc = #{businessDesc}
+    	where businessId = #{businessId}
  	</update>
 	
 </mapper>

@@ -46,19 +46,23 @@ public class RoleInfoServiceImpl implements RoleInfoService{
 	}
 
 	@Override
-	public List<RoleInfo> getPageRoles(int nowpage, int rows) {
-		// TODO Auto-generated method stub
+	public List<RoleInfo> getPageRoles(int nowpage, int rows,String searchKey) {
 		int startrow=(nowpage-1)*rows;
 		HashMap<String,Object> map=new HashMap<String,Object>();
 		map.put("startrow",startrow);
 		map.put("rows", rows);   
+		map.put("searchKey", searchKey);
 		return roleInfoMapper.getPageRoles(map);
 	}
 
 	@Override
-	public int getRecordsCount() {
-		// TODO Auto-generated method stub
-		return roleInfoMapper.getRolesCount();
+	public int getRecordsCount(int nowpage, int rows,String searchKey) {
+		int startrow=(nowpage-1)*rows;
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("startrow",startrow);
+		map.put("rows", rows);   
+		map.put("searchKey", searchKey);
+		return roleInfoMapper.getRolesCount(map);
 	}
 
 	@Override

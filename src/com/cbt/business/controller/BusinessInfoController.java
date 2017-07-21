@@ -15,15 +15,23 @@ import org.codehaus.jackson.type.JavaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cbt.business.po.BusinessInfo;
+import com.cbt.business.po.CropBackPicInfo;
 import com.cbt.business.service.BusinessInfoService;
+import com.cbt.utils.DirCopyTool;
+import com.cbt.utils.PathConfig;
 
 @Controller
 @RequestMapping("/business/")
 public class BusinessInfoController 
 {
+	
+	@Resource(name="pathConfig")
+	private PathConfig pathConfig;
 	//分页获取种植员自己的种植纪录
 	@Resource(name="businessInfoServiceImpl")
 	private BusinessInfoService businessInfoService;
@@ -86,6 +94,45 @@ public class BusinessInfoController
 
 	
 	
+	//企业修改信息时获取单个信息
+	@RequestMapping("getBusinessInfo.do")
+	public @ResponseBody ModelMap getBusinessInfo(String businessId)
+	{
+		ModelMap model = new ModelMap();
+		
+		BusinessInfo info = new BusinessInfo();
+		info.setBusinessId(businessId);
+		info = businessInfoService.getBusinessInfo(info);
+		if(info!=null)
+		{
+			model.addAttribute("businessInfo",info);
+		}
+		return model;		
+	}
 	
 	
+	@RequestMapping("updateBusinessInfo.do")
+	public @ResponseBody String updateBusinessInfo(@RequestParam(value="logo") MultipartFile logo,BusinessInfo info
+			,HttpServletRequest req)
+	{	
+		Boolean mark=false;
+		//处理logo上传
+		String parentPath= req.getSession().getServletContext().getRealPath(pathConfig.getBusinessLogoPath());
+		System.out.println(parentPath);
+		//删除服务器存储的图片，使用服务器绝对地址
+		/*File f = new File(parentPath+"/20170711/1530820170711090204.jpg");*/
+
+		//服务器绝对地址
+		//将图片地址存到数据库中CropBackPicInfo
+		//http://localhost:8081/CropBacktracking/Uploads/business/111201799/1.jpg
+		DirCopyTool dirCopyTool=new DirCopyTool();
+		if(logo!=null)
+		{
+			String logoname = dirCopyTool.saveLogoFile(parentPath+"/"+info.getBusinessId()+"/", logo,"logo");
+			info.setBusinessLogo(pathConfig.getLocalPath()+info.getBusinessId()+"/"+logoname);
+			//String imgPath = pathConfig.getLocalPath()+"/"+projectCode+"/"+"1";
+		}
+		mark=businessInfoService.updateBusiness(info);
+		return mark.toString();
+	}	
 }
