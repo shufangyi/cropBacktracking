@@ -26,34 +26,44 @@ $(document).ready(function(){
 			}
 		});
 	});
-	
+	$('#sowtime').change(function()
+	{
+		var time = $(this).val();
+		var code = time[5]+time[6]+time[8]+time[9];
+		$('#sowSeg_btCode').val($('#projectBtcode').val()+code);
+	}		
+	);
 	/*
 	 * 与后台交互数据
 	 */
-	var project_btCode=$('#projectBtcode').text();
-	var sowTime=$('#projectBtcode').text();
-	var sowSeg_btCode=$('#sowSeg_btCode').text();
-	var sowLocation=$('#sowLocation').text();
-	var productName=$('#productName').text();
-	var seedSource=$('#seedSource').text();
-	var sowNum=$('#sowNum').text();
-	var grower=$('#grower').text();
-	var comment= $('#Comment').summernote('code');
+
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
-		alert("表单");
-		$.ajax({
-			type: "post",
+		var project_btCode=$('#projectBtcode').val();
+		alert(project_btCode);
+		var sowTime=$('#sowtime').val();
+		var sowSeg_btCode=$('#sowSeg_btCode').val();
+		var sowLocation=$('#SowLocation').val();
+		alert(sowLocation);
+		var productName=$('#productName').val();
+		var seedSource=$('#seedSource').val();
+		var sowNum=$('#sowNum').val();
+		var grower=$('#grower').val();
+		var comment= $('#comment').summernote('code');
+		alert(grower);
+		$.ajax(
+		{
 			url: "business/addSowRecordInfo.do",
+			type: "post",	
 			data:{
-				"project_btCode":project_btCode,
-				"sowTime":sowTime,
+				"projectBtcode":project_btCode,
+				"sowtime":sowTime,
 				"sowsegBtcode":sowSeg_btCode,
-				"sowLocation":sowLocation,
-				"productName":productName,
-				"seedSource":seedSource,
-				"sowNum":sowNum,
+				"sowlocation":sowLocation,
+				"productname":productName,
+				"seedsource":seedSource,
+				"sownum":sowNum,
 				"grower":grower,
 				"comment":comment	
 			},

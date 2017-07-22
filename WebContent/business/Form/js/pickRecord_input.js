@@ -26,27 +26,34 @@ $(document).ready(function(){
 			}
 		});
 	});
-	
+	$('#PickTime').change(function()
+			{
+				var time = $(this).val();
+				var code = time[5]+time[6]+time[8]+time[9];
+				$('#pickSeg_btCode').val($('#sowSeg_btCode').val()+code);
+			}		
+	);
 	/*
 	 * 与后台交互数据
 	 */
-	var sowsegBtcode=$('#sowSeg_btCode').text();
-	var picktime=$('#PickTime').text();
-	var picktype=$('#PickType').text();
-	var picknum=$('#PickNum').text();
-	var grower=$('#grower').text();
-	var pickSeg_btCode=$('#pickSeg_btCode').text();
-	var comment= $('#Comment').summernote('code');
 	
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
 		alert("表单");
+		var sowsegBtcode=$('#sowSeg_btCode').val();
+		var picktime=$('#PickTime').val();
+		var picktype=$('#PickType').val();
+		var picknum=$('#PickNum').val();
+		var grower=$('#grower').val();
+		var pickSeg_btCode=$('#pickSeg_btCode').val();
+		var comment= $('#comment').summernote('code');
+		
 		$.ajax({
 			type: "post",
 			url: "business/addPickRecordInfo.do",
 			data:{
-				"sowsegBtcode":sowsegBtbode,
+				"sowsegBtcode":sowsegBtcode,
 				"picktime":picktime,
 				"picktype":picktype,
 				"picknum":picknum,

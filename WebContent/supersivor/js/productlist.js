@@ -50,10 +50,12 @@ $(document).ready(function () {
 
             output+="<a href='"+url+"'>"+
                     "<div class='product-card'>"+
-                    "<img src='"+"../"+obj.productPicture+"' alt='#'>"+
+                   // "<img src='"+"../"+obj.productPicture+"' alt='#'>"+
+                   // "<img src='img/1.png' alt='#'>"+
                     "<div class='product-info'>"+
-                    "<h2>"+obj.productName+"</h2>"+
-                    "<p>"+obj.projectDesc+"</p>"+
+                    "<h2 class='productname'>"+obj.productName+"</h2>"+
+                  //  "<p>"+obj.projectDesc+"</p>"+
+                    "<p>hhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>"+
                     "<span class='p-hot'>&nbsp;<span class='glyphicon glyphicon-eye-open'></span>&nbsp;222&nbsp;</span>&nbsp;"+
                     "<span class='p-time'>&nbsp;<span class='glyphicon glyphicon glyphicon-time'></span>&nbsp;2017-07-12&nbsp;</span>"+
                     "</div></div></a></div>";

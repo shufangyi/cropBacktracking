@@ -69,7 +69,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="checkInSeg_btCode">质量检查溯源码:</label>
-                <input id="checkInSeg_btCode" name="checkInSeg_btCode" type="text" placeholder="" class="input-xlarge" required="" >
+                <input id="checkInSeg_btCode" name="checkInSeg_btCode" type="text" placeholder="" class="input-xlarge" required="" disabled="disabled">
             	<span class="help-block">1</span>
             </div>
         </div>

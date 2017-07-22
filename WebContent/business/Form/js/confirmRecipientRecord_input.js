@@ -30,14 +30,15 @@ $(document).ready(function(){
 	/*
 	 * 与后台交互数据
 	 */
-	var OrderNum=$('#OrderNum').text();
-	var receipientTime=$('#receipientTime').text();
-	var LogisticsNum=$('#LogisticsNum').text();
-	var distributor=$('#distributor').text();
-	var Comment= $('#Comment').summernote('code');
+	
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
+		var OrderNum=$('#OrderNum').val();
+		var receipientTime=$('#receipientTime').val();
+		var LogisticsNum=$('#LogisticsNum').val();
+		var distributor=$('#distributor').val();
+		var Comment= $('#Comment').summernote('code');
 		alert("表单");
 		$.ajax({
 			type: "post",

@@ -30,17 +30,18 @@ $(document).ready(function(){
 	/*
 	 * 与后台交互数据
 	 */
-	var OrderNum=$('#OrderNum').text();
-	var deliverTime=$('#deliverTime').text();
-	var deliverAddress=$('#deliverAddress').text();
-	var LogisticsCompany=$('#LogisticsCompany').text();
-	var LogisticsNum=$('#LogisticsNum').text();
-	var Distributor=$('#Distributor').text();
-	var Logistics=$('#Logistics').text();
-	var Comment= $('#Comment').summernote('code');
+	
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
+		var OrderNum=$('#OrderNum').val();
+		var deliverTime=$('#deliverTime').val();
+		var deliverAddress=$('#deliverAddress').val();
+		var LogisticsCompany=$('#LogisticsCompany').val();
+		var LogisticsNum=$('#LogisticsNum').val();
+		var Distributor=$('#Distributor').val();
+		var Logistics=$('#Logistics').val();
+		var Comment= $('#Comment').summernote('code');
 		alert("表单");
 		$.ajax({
 			type: "post",

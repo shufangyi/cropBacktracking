@@ -26,24 +26,31 @@ $(document).ready(function(){
 			}
 		});
 	});
-	
+	$('#copackTime').change(function()
+			{
+				var time = $(this).val();
+				var code = time[5]+time[6]+time[8]+time[9];
+				$('#product_btCode').val($('#sowSeg_btCode').val()+code);
+			}		
+	);
 	/*
 	 * 与后台交互数据
 	 */
-	var checkInSeg_btCode=$('#checkInSeg_btCode').text();
-	var copackTime=$('#copackTime').text();
-	var OrderNum=$('#OrderNum').text();
-	var copackLocation=$('#copackLocation').text();
-	var product_btCode=$('#product_btCode').text();
-	var copacker=$('#copacker').text();
-	var produceDate=$('#produceDate').text();
-	var ProduceLocation=$('#ProduceLocation').test();
-	var Specifications=$('#Specifications').test();
-	var NetContent=$('#NetContent').test();
-	var StorageCondition=$('#StorageCondition').test();
-	var comment= $('#Comment').summernote('code');
+	
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
+		var checkInSeg_btCode=$('#checkInSeg_btCode').val();
+		var copackTime=$('#copackTime').val();
+		var OrderNum=$('#OrderNum').val();
+		var copackLocation=$('#copackLocation').val();
+		var product_btCode=$('#product_btCode').val();
+		var copacker=$('#copacker').val();
+		var produceDate=$('#produceDate').val();
+		var ProduceLocation=$('#ProduceLocation').val();
+		var Specifications=$('#Specifications').val();
+		var NetContent=$('#NetContent').val();
+		var StorageCondition=$('#StorageCondition').val();
+		var comment= $('#Comment').summernote('code');
 		alert("表单");
 		$.ajax({
 			type: "post",

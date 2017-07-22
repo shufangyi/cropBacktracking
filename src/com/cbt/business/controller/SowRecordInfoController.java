@@ -141,6 +141,8 @@ public class SowRecordInfoController
 		BusinessCropProjectInfo businessCropProjectInfo = new BusinessCropProjectInfo();
 		businessCropProjectInfo.setWorkerId(workerId);
 		List<BusinessCropProjectInfo> businessCropProjectInfolist=businessCropProjectInfoService.getBusinessCropProjectInfo(businessCropProjectInfo);
+		System.out.println(projectBtcode);
+		System.out.println(workerId);
 		for(int i=0;i<businessCropProjectInfolist.size();i++)
 		{
 		

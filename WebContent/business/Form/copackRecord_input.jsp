@@ -86,7 +86,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="product_btCode">产品溯源码:</label>
-                <input id="product_btCode" name="product_btCode" type="text" placeholder="" class="input-xlarge" required="" readonly="readonly">
+                <input id="product_btCode" name="product_btCode" type="text" placeholder="" class="input-xlarge" required="" readonly="readonly" disabled="disabled">
             	<span class="help-block">1</span>
             </div>
         </div>

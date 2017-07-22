@@ -67,7 +67,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="pickSeg_btCode">采摘溯源码:</label>
-                <input id="pickSeg_btCode" name="pickSeg_btCode" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="pickSeg_btCode" name="pickSeg_btCode" type="text" placeholder="" class="input-xlarge" required="" disabled="disabled">
                 <span class="help-block">1</span>
             </div>
         </div>

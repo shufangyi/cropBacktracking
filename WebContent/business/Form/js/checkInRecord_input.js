@@ -26,19 +26,24 @@ $(document).ready(function(){
 			}
 		});
 	});
-	
+	$('#checkInTime').change(function()
+			{
+				var time = $(this).val();
+				var code = time[5]+time[6]+time[8]+time[9];
+				$('#checkInSeg_btCode').val($('#pickSeg_btCode').val()+code);
+			}		
+	);
 	/*
 	 * 与后台交互数据
 	 */
-	var checkInSeg_btCode=$('#checkInSeg_btCode').text();
-	var pickSeg_btCode=$('#pickSeg_btCode').text();
-	var checkInTime=$('#checkInTime').text();
-	var StockLocation=$('#StockLocation').text();
-	var Checker=$('#Checker').text();
-	var Comment= $('#Comment').summernote('code');
-
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
+		var checkInSeg_btCode=$('#checkInSeg_btCode').val();
+		var pickSeg_btCode=$('#pickSeg_btCode').val();
+		var checkInTime=$('#checkInTime').val();
+		var StockLocation=$('#StockLocation').val();
+		var Checker=$('#Checker').val();
+		var Comment= $('#Comment').summernote('code');
 		alert("表单");
 		$.ajax({
 			type: "post",

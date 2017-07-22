@@ -2,169 +2,191 @@
 	pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<base href="<%=basePath%>">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>导航栏</title>
+<base href="<%=basePath%>">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>导航栏</title>
 
-    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+<link
+	href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css"
+	rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 
-    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css"
+	rel="stylesheet">
 
-    <link rel="stylesheet" href="supersivor/css/supersivor.css">
-    <link rel="stylesheet" href="supersivor/css/footer.css">
-    <script src="supersivor/js/goTop.js"></script>
+<link rel="stylesheet" href="supersivor/css/supersivor.css">
+<link rel="stylesheet" href="supersivor/css/footer.css">
+<script src="supersivor/js/goTop.js"></script>
 
 
 </head>
 
 <body>
-    <!--顶部导航栏-->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                    aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-                <a class="navbar-brand" href="#">
-                <img alt="cropbacktracking" src="assets/logo.png"/>
-                <span class="navbar-brand-name">cropbacktracking</span>
-            </a>&nbsp;
-            </div>
+	<!--顶部导航栏-->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"> <img alt="cropbacktracking"
+					src="assets/logo.png" /> <span class="navbar-brand-name">cropbacktracking</span>
+				</a>&nbsp;
+			</div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html">首页<span class="sr-only">(current)</span></a></li>
-                </ul>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html">首页<span
+							class="sr-only">(current)</span></a></li>
+				</ul>
+				<div class="navbar-right">
+					<form class="navbar-form" id="searchE" style="display: inline-block;">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Search"
+								id="searchCont">
+						</div>
+						<button class="btn btn-default" style="outline:none;" id="startBtn">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</form>
 
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-                </form>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="btn-group" role="group" aria-label="...">
-                        <button type="button" id="loginBtn" class="btn btn-info"><b id="user">${ user.supersivorNum}</b>&nbsp;
-                            <span class="glyphicon glyphicon-user"></span>
-                        </button>
-                        <!-- <button type="button" class="btn btn-danger">SignOut&nbsp;
+					<ul class="nav navbar-nav navbar-right"
+						style="padding-right: 40px;">
+						<li class="btn-group" role="group" aria-label="...">
+							<button type="button" id="loginBtn" class="btn btn-info">
+								<b id="user">${ user.supersivorNum}</b>&nbsp; <span
+									class="glyphicon glyphicon-user"></span>
+							</button> <!-- <button type="button" class="btn btn-danger">SignOut&nbsp;
                             <span class="glyphicon glyphicon-log-out"></span>
                         </button> -->
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
 
-    <div class="title">
-        <center>
-            <h1>农产品溯源监管平台</h1>
-            <p>督查农产品质量，保证人们放心吃到健康食品</p>
-        </center>
-        <iframe src="http://www.17sucai.com/preview/384839/2015-12-11/动态背景/index.html" height="300px" width="100%" scrolling="no" frameborder="no" style="position: absolute;top:52px"></iframe>
-        
-    </div>
+	<div class="title">
+		<center>
+			<h1>农产品溯源监管平台</h1>
+			<p>督查农产品质量，保证人们放心吃到健康食品</p>
+		</center>
+		<iframe
+			src="http://www.17sucai.com/preview/384839/2015-12-11/动态背景/index.html"
+			height="300px" width="100%" scrolling="no" frameborder="no"
+			style="position: absolute; top: 52px"></iframe>
+
+	</div>
 
 
-    <!--内容-->
-    <div class="container">
+	<!--内容-->
+	<div class="container">
 
-        <div class="company" id="company">
-            <!--js动态加载-->
+		<div class="company" id="company">
+			<!--js动态加载-->
 
-        </div>
+		</div>
 
-        <!--侧边栏小按钮-->
-        <div class="sorted">
-            <button class="btn btn-default" id="goTop">
-            <span class="glyphicon glyphicon-chevron-up"></span>
-        </button>
-        </div>
-    </div>
+		<!--侧边栏小按钮-->
+		<div class="sorted">
+			<button class="btn btn-default" id="goTop">
+				<span class="glyphicon glyphicon-chevron-up"></span>
+			</button>
+		</div>
+	</div>
 
-    <footer id="footer">
-        <!-- 页脚 -->
-        <div class="footer-content">
-            <ul class="share-group">
-                <li><a href="http://weibo.com/u/2661020885?refer_flag=1001030201_"><i class="fa fa-weibo"></i></a></li>
-                <li><a href="#"><i class="fa fa-wechat"></i></a></li>
-                <li><a href="#"><i class="fa fa-qq"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-            </ul>
-            <div class="copy">
-                &copy SuperTeam&nbsp;&nbsp; - &nbsp;&nbsp;2099&nbsp;&nbsp;苏ICP备17028767号
-            </div>
-        </div>
-    </footer>
-    <div id="changeInfo">
-        <form class="form-horizontal">
-            <fieldset>
-                <!-- Form Name -->
-                <legend>密码修改</legend>
-                <!-- Password input-->
-                <div class="control-group">
-                    <label class="control-label" for="passwordinput-0"><span class="need">*</span> 输入旧密码</label>
-                    <div class="controls inline">
-                        <input id="passwordinput-0" name="passwordinput-0" type="password" placeholder="旧密码" class="input-xlarge">
-                        <p class="help-block"></p>
-                    </div>
-                </div>
+	<footer id="footer">
+		<!-- 页脚 -->
+		<div class="footer-content">
+			<ul class="share-group">
+				<li><a
+					href="http://weibo.com/u/2661020885?refer_flag=1001030201_"><i
+						class="fa fa-weibo"></i></a></li>
+				<li><a href="#"><i class="fa fa-wechat"></i></a></li>
+				<li><a href="#"><i class="fa fa-qq"></i></a></li>
+				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+				<li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+			</ul>
+			<div class="copy">&copy SuperTeam&nbsp;&nbsp; -
+				&nbsp;&nbsp;2099&nbsp;&nbsp;苏ICP备17028767号</div>
+		</div>
+	</footer>
+	<div id="changeInfo">
+		<form class="form-horizontal">
+			<fieldset>
+				<!-- Form Name -->
+				<legend>密码修改</legend>
+				<!-- Password input-->
+				<div class="control-group">
+					<label class="control-label" for="passwordinput-0"><span
+						class="need">*</span> 输入旧密码</label>
+					<div class="controls inline">
+						<input id="passwordinput-0" name="passwordinput-0" type="password"
+							placeholder="旧密码" class="input-xlarge">
+						<p class="help-block"></p>
+					</div>
+				</div>
 
-                <!-- Password input-->
-                <div class="control-group">
-                    <label class="control-label" for="passwordinput-2"><span class="need">*</span> 输入新密码</label>
-                    <div class="controls">
-                        <input id="passwordinput-2" name="passwordinput-2" type="password" placeholder="新密码" class="input-xlarge">
-                        <p class="help-block"></p>
-                    </div>
-                </div>
+				<!-- Password input-->
+				<div class="control-group">
+					<label class="control-label" for="passwordinput-2"><span
+						class="need">*</span> 输入新密码</label>
+					<div class="controls">
+						<input id="passwordinput-2" name="passwordinput-2" type="password"
+							placeholder="新密码" class="input-xlarge">
+						<p class="help-block"></p>
+					</div>
+				</div>
 
-                <!-- Password input-->
-                <div class="control-group">
-                    <label class="control-label" for="passwordinput-1"><span class="need">*</span> 确认新密码</label>
-                    <div class="controls">
-                        <input id="passwordinput-1" name="passwordinput-1" type="password" placeholder="确认密码" class="input-xlarge">
-                        <p class="help-block"></p>
-                    </div>
-                </div>
+				<!-- Password input-->
+				<div class="control-group">
+					<label class="control-label" for="passwordinput-1"><span
+						class="need">*</span> 确认新密码</label>
+					<div class="controls">
+						<input id="passwordinput-1" name="passwordinput-1" type="password"
+							placeholder="确认密码" class="input-xlarge">
+						<p class="help-block"></p>
+					</div>
+				</div>
 
-                <!-- Button (Double) -->
-                <div class="control-group">
-                    <!--<label class="control-label" for="doublebutton-0">Double Button</label>-->
-                    <div class="controls btns">
-                        <button type="reset" id="doublebutton-0" name="doublebutton-0" class="btn  btn-success"> 重 置 </button>
-                        <button type="submit" id="doublebutton2-0" name="doublebutton2-0" class="btn btn-danger"> 确 认 </button>
-                    </div>
-                </div>      
+				<!-- Button (Double) -->
+				<div class="control-group">
+					<!--<label class="control-label" for="doublebutton-0">Double Button</label>-->
+					<div class="controls btns">
+						<button type="reset" id="doublebutton-0" name="doublebutton-0"
+							class="btn  btn-success">重 置</button>
+						<button type="submit" id="doublebutton2-0" name="doublebutton2-0"
+							class="btn btn-danger">确 认</button>
+					</div>
+				</div>
 
-            </fieldset>
-        </form>
+			</fieldset>
+		</form>
 
-    </div>
-    <div id="mask"></div>
-    <script src="supersivor/js/footer.js"></script>    <script>
+	</div>
+	<div id="mask"></div>
+	<script src="supersivor/js/footer.js"></script>
+	<script>
     //页面功能js
         $(document).ready(function ()
         {
@@ -249,12 +271,36 @@
         	});
             
             //搜索功能
-            $('#search').click(function(){
+           /* $('#search').click(function(){
             	var searchKey = $('#searchKey').val();
             	if(searchKey == null || searchKey == "")
             	{
             		return null;
             	}
+            });*/
+            $("#startBtn").bind('click', function (event) {
+            	event.preventDefault();
+                var sCont = $("#searchCont").val();
+                if (sCont.length == 0) {
+                    alert("请输入公司名称！");
+                } else {
+                	var search_flag = -1;
+                	 $(".com-name").each(function (index) {
+                         if ($(this).text().indexOf(sCont) > -1) {
+                        	 if(search_flag == -1){
+                        	 search_flag = index;
+                        	 }
+                        	$(this).parent().parent().css('box-shadow','0 1px 30px rgba(7, 76, 213, 0.87');
+                         }
+                     });
+                	 if(search_flag == -1){
+                 		 alert("没找到");
+                	 }
+                	 alert(search_flag);
+                	 $('html, body').animate({  
+                         scrollTop: $('.comlist:eq('+search_flag+')').offset().top  
+                     }, 800);
+                }
             });
             
             
