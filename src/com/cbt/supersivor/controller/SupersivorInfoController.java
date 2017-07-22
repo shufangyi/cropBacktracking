@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cbt.business.po.BusinessInfo;
+import com.cbt.business.po.BusinessProjectPlanInfo;
+import com.cbt.business.po.WorkerInfo;
 import com.cbt.business.service.BusinessInfoService;
+import com.cbt.business.service.BusinessProjectPlanInfoService;
 import com.cbt.supersivor.po.SupersivorInfo;
 import com.cbt.supersivor.service.SupersivorInfoService;
 
@@ -28,7 +31,8 @@ public class SupersivorInfoController
 	@Resource(name="businessInfoServiceImpl")
 	private BusinessInfoService businessInfoService;
 	
-	
+	@Resource(name="businessProjectPlanInfoServiceImpl")
+	private BusinessProjectPlanInfoService businessProjectPlanInfoService;
 	
 	
 	@RequestMapping("login.do")
@@ -69,18 +73,37 @@ public class SupersivorInfoController
 	{
 		System.out.println(businessId);
 		ModelMap model = new ModelMap();
-		//到哪个表下查
+		
+		//通过BusinessId查询产品信息
+		List<BusinessProjectPlanInfo> list = businessProjectPlanInfoService.getProjectInfos(businessId);
 		
 		
+		model.addAttribute("pros", list);
 		
-		
-		
-		
-		
-		
-		return null;
+		return model;
 	}
 	
+	@RequestMapping("updateSupersivorPwd.do")
+	public @ResponseBody String updateSupersivorPwd(String supersivorNum,String supersivorOldPwd,String supersivorNewPwd) throws Exception
+	{
+		Boolean mark = false;
+		SupersivorInfo info = new SupersivorInfo();
+		info.setSupersivorNum(supersivorNum);
+		info.setSupersivorPwd(supersivorOldPwd);
+		info = supersivorInfoService.getSupersivorInfo(info);
+		if(info!=null)
+		{
+			info.setSupersivorPwd(supersivorNewPwd);
+			int i = supersivorInfoService.updateSupersivorPwd(info);	
+			if(i>0)
+				return "2";
+			else
+			{
+				return "1";
+			}
+		}
+		return "0";
+	}
 	
 	
 	

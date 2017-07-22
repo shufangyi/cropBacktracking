@@ -22,6 +22,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	
+	<insert id="insertProductPictureByProject_btCode" parameterType="Map">
+		insert into business_project_planinfo
+		(
+			productPicture
+		)
+		values
+		(
+			#{productPicture}
+		)
+		where project_btCode = #{project_btCode}
+	</insert>
+	
 	<insert id="addBusinessProjectPlan" parameterType="com.cbt.business.po.BusinessProjectPlanInfo">
 		insert into business_project_planinfo
 		(
@@ -100,5 +112,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	delete from business_project_planinfo
    		where project_btCode = #{project_btCode}
     </delete>
+    
+    <select id="getProjectInfos" parameterType="java.lang.String" resultMap="BusinessProjectPlanInfoMap">
+  		select * from business_project_planinfo where businessId = #{value}
+  	</select>
 
 </mapper>

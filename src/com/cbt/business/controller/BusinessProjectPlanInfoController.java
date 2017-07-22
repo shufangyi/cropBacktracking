@@ -120,4 +120,6 @@ public class BusinessProjectPlanInfoController
 			System.out.println(list.get(0).getProductName());
 			return businessProjectPlanInfoService.delBusinessProjectPlan(list).toString();
 		}
+	
+	
 }

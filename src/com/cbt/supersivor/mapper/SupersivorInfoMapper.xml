@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 修改密码 -->
 	<update id="updateSupersivorPwd" parameterType="com.cbt.supersivor.po.SupersivorInfo">
-	update cropBacktracking.supersivor
+	update cropBacktracking.supersivorInfo
 	<set>
 		<if test="supersivorPwd!=null">
 		supersivorPwd=#{supersivorPwd}

@@ -121,6 +121,7 @@
                     }
                 }
             });
+            
             $("#changeInfo").keydown(function () {
                 if (event.keyCode == "13") { //keyCode=13是回车键
                     $('#doublebutton2-0').trigger('click');

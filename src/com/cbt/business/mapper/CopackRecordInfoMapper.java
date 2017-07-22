@@ -28,4 +28,8 @@ public interface CopackRecordInfoMapper {
 	public List<CopackRecordInfo> getMCopackRecords(Map<String, Object> map)throws Exception;
 	//get  pagination count
 	public int getMCopackRecordsCount(Map<String, Object> map)throws Exception;
+	
+	public int getCopackInfoCount(Map<String, Object> map)throws Exception;
+	
+	public List<CopackRecordInfo> getPageCopackInfo(Map<String, Object> map)throws Exception;
 }

@@ -19,4 +19,8 @@ public interface BusinessProjectPlanInfoService {
 	
 	//删除数据
 	Boolean delBusinessProjectPlan(List<BusinessProjectPlanInfo> list);
+	
+	public List<BusinessProjectPlanInfo> getProjectInfos(String businessId);
+	
+	public Boolean insertProductPictureByProject_btCode(String project_btCode,String productPicture);
 }

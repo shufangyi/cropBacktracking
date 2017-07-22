@@ -20,11 +20,15 @@
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
 
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="supersivor/css/supersivor.css">
     <link rel="stylesheet" href="supersivor/css/footer.css">
     <script src="supersivor/js/goTop.js"></script>
-    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+
+
 </head>
+
 <body>
     <!--顶部导航栏-->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -39,7 +43,7 @@
                 <span class="icon-bar"></span>
             </button>
                 <a class="navbar-brand" href="#">
-                <img alt="cropbacktracking" src="supersivor/img/logo.png"/>
+                <img alt="cropbacktracking" src="assets/logo.png"/>
                 <span class="navbar-brand-name">cropbacktracking</span>
             </a>&nbsp;
             </div>
@@ -47,15 +51,24 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">首页<span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="index.html">首页<span class="sr-only">(current)</span></a></li>
                 </ul>
+
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </form>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="btn-group" role="group" aria-label="...">
-                        <button type="button" id="loginBtn" class="btn btn-info">${ user.supersivorNum}&nbsp;<span
-                            class="glyphicon glyphicon-user"></span></button>
-                        <button type="button" class="btn btn-danger">SignOut&nbsp;<span
-                            class="glyphicon glyphicon-log-out"></span></button>
+                        <button type="button" id="loginBtn" class="btn btn-info"><b id="user">${ user.supersivorNum}</b>&nbsp;
+                            <span class="glyphicon glyphicon-user"></span>
+                        </button>
+                        <!-- <button type="button" class="btn btn-danger">SignOut&nbsp;
+                            <span class="glyphicon glyphicon-log-out"></span>
+                        </button> -->
                     </li>
                 </ul>
             </div>
@@ -63,24 +76,23 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+
     <div class="title">
         <center>
             <h1>农产品溯源监管平台</h1>
+            <p>督查农产品质量，保证人们放心吃到健康食品</p>
         </center>
-
-        <!-- <form class="search">
-            <input type="text" id="searchKey" class="search-input" placeholder="search">
-            <button type="button" id="search" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-        </form> -->
+        <iframe src="http://www.17sucai.com/preview/384839/2015-12-11/动态背景/index.html" height="300px" width="100%" scrolling="no" frameborder="no" style="position: absolute;top:52px"></iframe>
+        
     </div>
 
-    <iframe id="bg" src="http://www.jq22.com/demo/jQuery-yezi-141217210850" scrolling="no" frameborder="0" width="100%" style="position: absolute;
-    top: 50px;z-index :-1;"></iframe>
+
     <!--内容-->
     <div class="container">
-          <div id="company" class="company">
 
+        <div class="company" id="company">
             <!--js动态加载-->
+
         </div>
 
         <!--侧边栏小按钮-->
@@ -90,7 +102,7 @@
         </button>
         </div>
     </div>
-	
+
     <footer id="footer">
         <!-- 页脚 -->
         <div class="footer-content">
@@ -152,8 +164,7 @@
 
     </div>
     <div id="mask"></div>
-    <script src="js/footer.js"></script>
-    <script>
+    <script src="supersivor/js/footer.js"></script>    <script>
     //页面功能js
         $(document).ready(function ()
         {
@@ -164,6 +175,48 @@
                 $('#bg').css('height', clientHeight + 'px');
                 $('#bg').css('width', clientWidth + 'px');
             }, 50);
+            
+            
+            $("#doublebutton2-0").bind('click', function (event) {
+            	 alert("hello");
+            	event.preventDefault();
+                var userName = $('#user').text();
+                alert(userName);
+                var oldP = $("#passwordinput-0").val();
+                var newP1 = $("#passwordinput-1").val();
+                var newP2 = $("#passwordinput-2").val();
+               
+                if (oldP.length == 0 || newP1.length == 0 || newP2.length == 0) {
+                    alert("不能为空！");
+                } else {
+                    if (newP1 != newP2) {
+                        alert("新密码不相同！")
+                    } else {
+                        $.ajax({
+                            type: 'POST',
+                            url: "supersivor/updateSupersivorPwd.do",
+                            data: {
+                                "supersivorNum": userName,
+                                "supersivorOldPwd": oldP,
+                                "supersivorNewPwd": newP1
+                            },
+                            success: function (data) {
+                                if (data == "2") {
+                                    alert("密码修改成功！");
+                                } else if (data == "0") {
+                                    alert("旧密码错误！");
+                                } else if (data == "1") {
+                                    alert("密码修改失败，稍后重试！");
+                                }
+                            },
+                            error: function (status) {
+                                alert("发生未知错误！稍后重试！");
+                            }
+                        });
+                    }
+                }
+            });
+            
 
             $('#loginBtn').bind('click', function () {
                 var clientWidth = $(window).width();
@@ -215,7 +268,7 @@
         		var qiyeNum = data.list.length;
         		//var user="tom";
         		var qiyeId=new Array(1,2,3,4);
-        		var url="http://localhost:8081/CropBacktracking/supersivor/productsList.html?businessId=";
+        		var url="supersivor/productsList.html?businessId=";
         		//填充用户名
         		//$('#user').text(user);
         		
@@ -233,7 +286,8 @@
         			var phone = data.list[i].businessMobile;
         			var email = data.list[i].businessEmail;
         			var desc = data.list[i].businessDesc;
-        			
+        			var user = $('#loginBtn').text();
+       				var thisurl = url+businessId+"&"+"businessName="+name+"&businessDesc="+note+"&"+"user="+user;
                     if (i % 2 === 0) {
                     	  output += "<div class='row'><div class='col-md-6 left animated fadeInLeft'>";
                     } else {
@@ -241,7 +295,7 @@
 
                     }
                     output +=
-                        "<a href='"+url+businessId+"' class='cominfo'>" +
+                        "<a href='"+thisurl+"' class='cominfo'>" +
                         "<div class='comlist'>" +
                         "<h2 class='com-name'>"+name+"</h2>" +
                         "<div class='com-card'>" +
@@ -267,9 +321,6 @@
                 }  
                 $("#company").append(output);
                 //alert("hello");
-              
-            
-            
             //公司数据加载
         	};
         });

@@ -167,5 +167,24 @@ public class CopackRecordInfoController {
 		model.put("total",total);
 		return model;
 	}
+	
+	
+	@RequestMapping("getPageCopackInfo.do")
+	@ResponseBody
+	public ModelMap getPageCopackInfo(HttpServletRequest req,HttpSession session)throws Exception
+	{
+		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
+		int rows = Integer.parseInt(req.getParameter("pageSize"));	
+		String projectCode =req.getParameter("projectCode");
+		String searchKey=req.getParameter("searchKey");
+		System.out.println(searchKey);
+		ModelMap model=new ModelMap();
+		List<CopackRecordInfo> lists=new ArrayList<CopackRecordInfo>();
+		lists=copackRecordInfoService.getPageCopackInfo(projectCode, nowpage, rows, searchKey);
+		int total=copackRecordInfoService.getCopackInfoCount(projectCode, searchKey);
+		model.put("rows", lists);
+		model.put("total",total);
+		return model;
+	}
 
 }

@@ -200,7 +200,52 @@
  
   
   
+    <!-- 超级用户分页查询 -->
+  <select id="getPageCopackInfo" parameterType="Map" resultMap="copackrecordinfomap">
+  select * from cropBacktracking.copackRecord
+  where product_btCode like '${projectCode}%' 
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  product_btCode like '%${searchKey}%' or
+  copacktime like '%${searchKey}%' or
+  ordernum like '%${searchKey}%' or
+  copacklocation like '%${searchKey}%' or
+  product_btCode like '%${searchKey}%' or
+  copacker like '%${searchKey}%' or
+  producedate like '%${searchKey}%' or
+  producelocation like '%${searchKey}%' or
+  specifications like '%${searchKey}%' or
+  netcontent like '%${searchKey}%' or
+  storagecondition like '%${searchKey}%' or
+  comment like '%${searchKey}%' 
+  )
+  </if>
+  order by id
+  limit #{startrow},#{rows}
+  </select>
   
+   <!-- 分页查询数据数量 -->
+     <select id="getCopackInfoCount" parameterType="Map" resultType="Integer">
+  select count(*) from cropBacktracking.copackRecord
+   where product_btCode like '${projectCode}%' 
+  <if test="searchKey!='' and searchKey!=null">
+  and(
+  checkInSeg_btCode like '%${searchKey}%' or
+  copacktime like '%${searchKey}%' or
+  ordernum like '%${searchKey}%' or
+  copacklocation like '%${searchKey}%' or
+  product_btCode like '%${searchKey}%' or
+  copacker like '%${searchKey}%' or
+  producedate like '%${searchKey}%' or
+  producelocation like '%${searchKey}%' or
+  specifications like '%${searchKey}%' or
+  netcontent like '%${searchKey}%' or
+  storagecondition like '%${searchKey}%' or
+  comment like '%${searchKey}%' 
+  )
+  </if>
+  order by id
+  </select>
   
   
 </mapper>

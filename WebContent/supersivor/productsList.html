@@ -10,21 +10,12 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
 
-    <!--瀑布流-->
-    <script src="https://cdn.bootcss.com/masonry/4.2.0/masonry.pkgd.js"></script>
-
-
+    <link rel="stylesheet" href="css/productsList.css">
     <link rel="stylesheet" href="css/supersivor.css">
     <link rel="stylesheet" href="css/footer.css">
     <script src="js/goTop.js"></script>
-
-    <link rel="stylesheet" href="css/pL-animate.css">
-    <link rel="stylesheet" href="css/productsList.css">
-
-    <script src="js/json.js"></script>
-    <script src="js/ajax.js"></script>
-    <script src="js/waterfall.js"></script>
 </head>
 <body>
 <!--顶部导航栏-->
@@ -40,7 +31,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                <img alt="cropbacktracking" src="../enterprise/img/logo.png"/>
+                <img alt="cropbacktracking" src="../assets/logo.png"/>
                 <span class="navbar-brand-name">cropbacktracking</span>
             </a>&nbsp;
         </div>
@@ -48,15 +39,25 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">首页<span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="supersivor.jsp">首页<span class="sr-only">(current)</span></a></li>
             </ul>
+
+
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+            </form>
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="btn-group" role="group" aria-label="...">
-                    <button type="button" id="login-name" class="btn btn-info">didilu&nbsp;<span
-                            class="glyphicon glyphicon-user"></span></button>
-                    <button type="button" class="btn btn-danger">SignOut&nbsp;<span
-                            class="glyphicon glyphicon-log-out"></span></button>
+                    <button type="button" id="login-name" class="btn btn-info"><b id="user">&nbsp</b>
+                        <span class="glyphicon glyphicon-user"></span>
+                    </button>
+                    <!-- <button type="button" class="btn btn-danger">SignOut&nbsp;
+                        <span class="glyphicon glyphicon-log-out"></span>
+                    </button> -->
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -64,34 +65,24 @@
 </nav>
 
 <div class="title">
-    <center><h1 id="com-name"></h1></center>
+    <center>
+        <h1 id="com-name"></h1>
+        <p id="com-con"></p>
+    </center>
 
-    <form class="search">
-        <input type="text" class="search-input" placeholder="search">
-        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-    </form>
+    <iframe src="http://www.17sucai.com/preview/384839/2015-12-11/动态背景/index.html" height="300px" width="100%" scrolling="no" frameborder="no" style="position: absolute;top:52px"></iframe>
+
 </div>
 
-<iframe id="bg" src="http://www.jq22.com/demo/jQuery-yezi-141217210850" scrolling="no" frameborder="0" width="100%" style="position: absolute;
-    top: 50px;z-index :-1;"></iframe>
 
 <!--内容-->
 <div class="container">
 
-    <ul id='waterfall'>
 
-        <!--<li style="top: 0px; left: 0px; position: absolute; margin: 0px;"><a class="bounceIn animated" href="#">-->
-            <!--<img src="img/waterfall_img1.jpg" alt="#"></a>-->
-            <!--<h2>旺仔牛奶22</h2>-->
-            <!--<p>小雨良品 森女系小清新纯色棉麻连衣裙夏季五分袖宽松韩版学生裙</p>-->
-            <!--<span class="p-hot">&nbsp;<span class="glyphicon glyphicon-eye-open"></span>&nbsp;222&nbsp;</span>-->
-            <!--<span class="p-time">&nbsp;<span class="glyphicon glyphicon glyphicon-time"></span>&nbsp;2017-07-12&nbsp;</span>-->
-        <!--</li>-->
+    <div class="pl-list">
 
-
-    </ul>
-
-
+           <!--js动态加载-->
+    </div>
 
 
     <!--侧边栏小按钮-->
@@ -135,10 +126,16 @@
                 $('#bg').css('width', clientWidth + 'px');
             }, 50);
 
-            $("#com-name").append("旺旺集团产品列表");
+            $(".product-card").bind("mouseover",function () {
+                $(this).children(".product-info").addClass('shangyi');
+            });
+            $(".product-card").bind("mouseout",function () {
+                $(this).children(".product-info").removeClass('shangyi');
+            });
+
         });
     </script>
-
+	<script src="js/productlist.js"></script>
 </div>
 </body>
 </html>

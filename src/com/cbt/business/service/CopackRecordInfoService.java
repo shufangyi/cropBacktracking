@@ -28,4 +28,9 @@ public interface CopackRecordInfoService {
 	public List<CopackRecordInfo> getMCopackRecordsService(String businessId,int nowrow,int rows,String searchKey)throws Exception;
 	//get pagination count
 	public int getMCopackRecordsCountService(String businessId,String searchKey)throws Exception;
+	
+	
+	public int getCopackInfoCount(String projectCode,String searchKey)throws Exception;
+	
+	public List<CopackRecordInfo> getPageCopackInfo(String projectCode,int nowrow,int rows,String searchKey)throws Exception;
 }

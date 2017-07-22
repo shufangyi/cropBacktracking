@@ -18,4 +18,8 @@ public interface BusinessProjectPlanInfoMapper
 	//删除数据
 	public int delBusinessProjectPlan(BusinessProjectPlanInfo info);
 
+	public List<BusinessProjectPlanInfo> getProjectInfos(String businessId);
+	
+	public int insertProductPictureByProject_btCode(Map<String,Object> map);
+	
 }

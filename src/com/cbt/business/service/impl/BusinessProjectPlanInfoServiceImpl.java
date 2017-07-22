@@ -76,5 +76,24 @@ public class BusinessProjectPlanInfoServiceImpl implements BusinessProjectPlanIn
 		}
 		return true;
 	}
+	
+	@Override
+	public List<BusinessProjectPlanInfo> getProjectInfos(String businessId)
+	{
+		return businessProjectPlanInfoMapper.getProjectInfos(businessId);
+	}
+
+	@Override
+	public Boolean insertProductPictureByProject_btCode(String project_btCode, String productPicture) {
+		// TODO Auto-generated method stub	
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("project_btCode",project_btCode);
+		map.put("productPicture", productPicture);   
+		
+		int i = businessProjectPlanInfoMapper.insertProductPictureByProject_btCode(map);
+		if(i>0)
+			return true;
+		return false;
+	}
 
 }

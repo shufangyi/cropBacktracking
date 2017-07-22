@@ -1,18 +1,23 @@
 $(document).ready(function () {
-	
-	
 	var Request = new Object();
 	Request = GetRequest(); 
 	var businessId = Request['businessId'];
 	//将businessId传回后台，获取该公司对应的所有溯源商品
+	var businessName = getUrlParam("businessName");
+	var businessDesc = getUrlParam("businessDesc");
+	var user = getUrlParam("user");
+	$('#user').text(user);
+    $("#com-name").append(businessName);
+    $("#com-con").append(businessDesc);
 	$.ajax({
 		type:"post",
-		url:'supersivor/getAllProcucts.do',
+		url:'./getAllProcucts.do',
 		dataType:"json",
 		data:{businessId:businessId},
 		success:function(data)
 		{
-			alert(data);
+			//alert(data);
+			fillPro(data);
 		},
 		failure:function(data)
 		{
@@ -20,27 +25,57 @@ $(document).ready(function () {
 		}
 	});
 	//产品列表
-	for(var i=0;i<100;i++)
+	function fillPro(data)
 	{
-		var output="";
-		output+="<div class=\"panel panel-default cp\">"+
-				"<a href=\"#\">"+
-				"<div class=\"panel-body\">"+
-				"<div class=\"col-xs-3 col-sm-3 col-md-3 col-lg-2\">"+
-				"<div class=\"hellospace\">"+
-				"<img class=\"media-object img-rounded img-responsive\" src=\"supersivor/img/hongfeng.png\" alt=\"红枫\"/></div></div>" +
-	    		"<div class=\"col-xs-9 col-sm-9 col-md-9 col-lg-10\"><h4 class=\"list-group-item-heading\">" +
-	    		"<span class=\"cpnane\">红牛</span></h4>" +
-	    		" <div style=\"font-size:14px; line-height:170%;color: #161616\">" +
-	    		"<span class=\"color_gray_01\">产品编号：1111111111111111111111111</span><br/>" +
-	    		"<span class=\"glyphicon glyphicon-star\"></span>点击量：220</div>" +
-	    		"</div>" +
-	    		"</div>" +
-	    		"</a>" +
-	    		"</div>";
-	    $('#product_list').append(output);
+		 
+		var len = data.pros.length;
+		if(len==0)
+		{
+			$("#com-con").append(businessDesc+"<br>"+"此公司暂无商品");
+			return null;
+		}
+		var output = "";
+        for (var i = 0; i < len; i++)
+        {
+        	var obj = data.pros[i];
+        	var project_btCode = obj.project_btCode;
+        	var productName = obj.productName;
+        	var url="product.html?projectCode="+project_btCode+"&productName="+productName+"&projectDesc="+obj.projectDesc+"&user="+user;
+        	
+        	if (i % 3 === 0) {
+                output += "<div class='row'><div class='col-md-4 left animated fadeInLeft'>";
+            } else {
+                output += "<div class='col-md-4 right animated fadeInRight'>";
+            }
+
+            output+="<a href='"+url+"'>"+
+                    "<div class='product-card'>"+
+                    "<img src='"+"../"+obj.productPicture+"' alt='#'>"+
+                    "<div class='product-info'>"+
+                    "<h2>"+obj.productName+"</h2>"+
+                    "<p>"+obj.projectDesc+"</p>"+
+                    "<span class='p-hot'>&nbsp;<span class='glyphicon glyphicon-eye-open'></span>&nbsp;222&nbsp;</span>&nbsp;"+
+                    "<span class='p-time'>&nbsp;<span class='glyphicon glyphicon glyphicon-time'></span>&nbsp;2017-07-12&nbsp;</span>"+
+                    "</div></div></a></div>";
+
+            if (i % 3 === 2) {
+                output += "</div>";
+            }
+        }
+	    $('.pl-list').append(output);
 	}
 	//获取url参数
+	
+	function getUrlParam(key){
+	    // 获取参数
+	    var url = window.location.search;
+	    // 正则筛选地址栏
+	    var reg = new RegExp("(^|&)"+ key +"=([^&]*)(&|$)");
+	    // 匹配目标参数
+	    var result = url.substr(1).match(reg);
+	    //返回参数值
+	    return result ? decodeURIComponent(result[2]) : null;
+	}
 	
 	function GetRequest() {
 		var url = location.search; //获取url中"?"符后的字串
@@ -53,6 +88,7 @@ $(document).ready(function () {
 				theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
 			}
 		}
+		//return theRequest ? decodeURIComponent(theRequest[2]) : null;
 		return theRequest; 
 	}
 }

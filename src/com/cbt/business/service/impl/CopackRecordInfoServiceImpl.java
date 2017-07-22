@@ -99,6 +99,28 @@ public class CopackRecordInfoServiceImpl implements CopackRecordInfoService {
 		return  copackRecordInfoMapper.getMCopackRecordsCount(map);
 	}
 
+	@Override
+	public int getCopackInfoCount(String projectCode, String searchKey) throws Exception {
+		// TODO Auto-generated method stub
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("projectCode", projectCode);
+		map.put("searchKey", searchKey);
+		return  copackRecordInfoMapper.getCopackInfoCount(map);
+	}
+
+	@Override
+	public List<CopackRecordInfo> getPageCopackInfo(String projectCode, int nowrow, int rows, String searchKey)
+			throws Exception {
+		int startrow=(nowrow-1)*rows;
+		System.out.println(startrow);
+		HashMap<String,Object> map=new HashMap<String,Object>();  
+		map.put("startrow",startrow);
+		map.put("rows", rows);
+		map.put("projectCode", projectCode);
+		map.put("searchKey", searchKey);
+		return copackRecordInfoMapper.getPageCopackInfo(map);
+	}
+
 	
 
 }

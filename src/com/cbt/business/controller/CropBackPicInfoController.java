@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cbt.business.po.BusinessProjectPlanInfo;
 import com.cbt.business.po.CropBackPicInfo;
+import com.cbt.business.service.BusinessProjectPlanInfoService;
 import com.cbt.business.service.CropBackPicInfoService;
 import com.cbt.utils.DirCopyTool;
 import com.cbt.utils.PathConfig;
@@ -34,6 +36,9 @@ public class CropBackPicInfoController
 	
 	@Resource(name="pathConfig")
 	private PathConfig pathConfig;
+	
+	@Resource(name="businessProjectPlanInfoServiceImpl")
+	private BusinessProjectPlanInfoService businessProjectPlanInfoService;
 	
 	@RequestMapping("picUpload.do")
 	public String test(String projectCode,
@@ -64,6 +69,11 @@ public class CropBackPicInfoController
 			info.setPicUrl(pathConfig.getLocalPath()+"/"+projectCode+"/"+savePath1);
 			info.setProjectCode(projectCode);
 			//img1不为空，将本项目之前的图片删除
+			//BusinessProjectPlanInfo binfo =new BusinessProjectPlanInfo();
+			//binfo.setProject_btCode(projectCode);
+			//binfo.setProductPicture(pathConfig.getLocalPath()+"/"+projectCode+"/"+savePath1);
+			businessProjectPlanInfoService.insertProductPictureByProject_btCode(projectCode, pathConfig.getLocalPath()+"/"+projectCode+"/"+savePath1);
+			
 			if(cropBackPicInfoService.deleteByProjectCodeService(info)<=0){
 				System.out.println("图片删除失败或项目无历史图片");
 			}
