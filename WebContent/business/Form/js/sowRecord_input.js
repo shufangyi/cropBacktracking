@@ -2,12 +2,13 @@ $(document).ready(function(){
 	//projectBtcode需要到后台进行验证
 	$('#projectBtcode').blur(function(){
 		var projectBtcode = $(this).val();
+		var workerId = $(window.parent.parent.frames["topFrame"].document).find('#workerId').text();
 		/*先验证是不是9位数字*/
 		//code
 		$.ajax({
 			type: "post",
 			url: "business/checkProjectBtcode.do",
-			data: {"projectBtcode":projectBtcode},
+			data: {"projectBtcode":projectBtcode,"workerId":workerId},
 			success:function(data,status)
 			{
 				if(data=="true")

@@ -2,12 +2,13 @@ $(document).ready(function(){
 	//projectBtcode需要到后台进行验证
 	$('#sowSeg_btCode').blur(function(){
 		var sowSeg_btCode = $(this).val();
+		var workerId = $(window.parent.parent.frames["topFrame"].document).find('#workerId').text();
 		/*先验证是不是9位数字*/
 		//code
 		$.ajax({
 			type: "post",
 			url: "business/checkSowSegBtCode.do",
-			data: {"sowsegBtcode":sowSeg_btCode},
+			data: {"sowsegBtcode":sowSeg_btCode,"workerId":workerId},
 			success:function(data,status)
 			{
 				if(data=="true")

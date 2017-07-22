@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>产品</title>
+
+	<script type="text/javascript" src="../plugs/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- boostrap table  -->
+   	
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../plugs/bootstrap/css/bootstrap.min.css">
+	<script type="text/javascript" src="../plugs/bootstrap/js/bootstrap.min.js"></script>
+	<!-- 分页插件 -->
+	<link rel="stylesheet" href="../plugs/bootstrap-table/bootstrap-table.min.css">
+	<script type="text/javascript" src="../plugs/bootstrap-table/bootstrap-table.min.js"></script>
+	<script type="text/javascript" src="../plugs/bootstrap-table/bootstrap-table-locale-all.min.js"></script>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+    
+   
+	
+	
+    <link rel="stylesheet" href="css/supersivor.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <script src="js/goTop.js"></script>
+</head>
+
+<body>
+    <!--顶部导航栏-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+                <a class="navbar-brand" href="#">
+                <img alt="cropbacktracking" src="../assets/logo.png"/>
+                <span class="navbar-brand-name">cropbacktracking</span>
+            </a>&nbsp;
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="supersivor.jsp">首页<span class="sr-only">(current)</span></a></li>
+                </ul>
+<!-- 
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </form> -->
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="btn-group" role="group" aria-label="...">
+                        <button type="button" id="loginBtn" class="btn btn-info"><b id="user"></b>&nbsp;
+                            <span class="glyphicon glyphicon-user"></span>
+                        </button>
+                       <!--  <button type="button" class="btn btn-danger">SignOut&nbsp;
+                            <span class="glyphicon glyphicon-log-out"></span>
+                        </button> -->
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <div class="title">
+        <center>
+            <h1 class="title-name"></h1>
+            <p class="title-con"></p>
+        </center>
+        <iframe src="http://www.17sucai.com/preview/384839/2015-12-11/动态背景/index.html" height="300px" width="100%" scrolling="no" frameborder="no" style="position: absolute;top:52px"></iframe>
+
+        
+    </div>
+    <!--内容-->
+    <div class="container">
+    
+       
+         <!--js  table-->
+         <div id="toolbar">
+			<input type="button" id="search" value="搜索"/>
+			<input type="text" id="searchKey"/>				
+		</div>
+		<div class="table">
+            <table></table>     
+        </div>
+        <!--侧边栏小按钮-->
+        <div class="sorted">
+            <button class="btn btn-default" id="goTop">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+        </button>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <!-- 页脚 -->
+        <div class="footer-content">
+            <ul class="share-group">
+                <li><a href="http://weibo.com/u/2661020885?refer_flag=1001030201_"><i class="fa fa-weibo"></i></a></li>
+                <li><a href="#"><i class="fa fa-wechat"></i></a></li>
+                <li><a href="#"><i class="fa fa-qq"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+            </ul>
+            <div class="copy">
+                &copy SuperTeam&nbsp;&nbsp; - &nbsp;&nbsp;2099&nbsp;&nbsp;苏ICP备17028767号
+            </div>
+        </div>
+    </footer>
+    <script src="js/footer.js"></script>
+	<script src="js/product.js"></script>
+</body>
+
+</html>

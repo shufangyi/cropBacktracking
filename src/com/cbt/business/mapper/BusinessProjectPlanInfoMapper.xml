@@ -22,17 +22,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	
-	<insert id="insertProductPictureByProject_btCode" parameterType="Map">
-		insert into business_project_planinfo
-		(
-			productPicture
-		)
-		values
-		(
-			#{productPicture}
-		)
-		where project_btCode = #{project_btCode}
-	</insert>
+	<update id="insertProductPictureByProject_btCode" parameterType="Map">
+		update business_project_planinfo
+		set productPicture = #{productPicture}
+		<where>
+		 project_btCode = #{project_btCode}
+		</where>
+		
+	</update>
 	
 	<insert id="addBusinessProjectPlan" parameterType="com.cbt.business.po.BusinessProjectPlanInfo">
 		insert into business_project_planinfo
