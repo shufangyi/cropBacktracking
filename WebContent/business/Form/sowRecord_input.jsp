@@ -94,7 +94,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="sowSeg_btCode">播种溯源码:</label>
-                <input id="sowSeg_btCode" name="sowSeg_btCode" type="text" placeholder="" class="input-xlarge" required="" disabled="disabled">
+                <input id="sowSeg_btCode" name="sowSeg_btCode" type="text" placeholder="" class="input-xlarge" required="required" disabled="disabled">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -104,7 +104,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="SowLocation">播种地点:</label>
-                <input id="SowLocation" name="sowlocation" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="SowLocation" name="sowlocation" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -113,7 +113,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="productName">作物名称:</label>
-                <input id="productName" name="productname" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="productName" name="productname" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -122,7 +122,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="seedSource">种子来源:</label>
-                <input id="seedSource" name="seedsource" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="seedSource" name="seedsource" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -131,7 +131,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="sowNum">播种量（KG）:</label>
-                <input id="sowNum" name="sownum" type="number" placeholder="" class="input-xlarge" required="">
+                <input id="sowNum" name="sownum" type="number" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -140,7 +140,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="grower">种植员:</label>
-                <input id="grower" name="grower" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="grower" name="grower" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>

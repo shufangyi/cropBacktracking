@@ -131,7 +131,7 @@
 		</div>
 	</footer>
 	<script src="js/footer.js"></script>
-
+	<script src="js/productlist.js"></script>
 
 	<script>
 		$(document).ready(function() {
@@ -143,18 +143,21 @@
 				$('#bg').css('width', clientWidth + 'px');
 			}, 50);
 
-			$(".product-card").bind("mouseover", function() {
-				$(this).children(".product-info").addClass('shangyi');
-			});
-			$(".product-card").bind("mouseout", function() {
-				$(this).children(".product-info").removeClass('shangyi');
-			});
+            $(".pl-list").on("mouseover",".product-card",function(){ 
+            	$(this).children(".product-info").addClass('shangyi');
+            	
+            });
+            $(".pl-list").on("mouseout",".product-card",function(){ 
+            	$(this).children(".product-info").removeClass('shangyi');
+            });
 		});
+		
+		
 	</script>
-	<script src="js/productlist.js"></script>
 	<script>
 		$(function(){
 			$("#startBtn").bind('click', function (event) {
+				event.stopPropagation();
             	event.preventDefault();
                 var sCont = $("#searchCont").val();
                 if (sCont.length == 0) {
@@ -171,13 +174,16 @@
                      });
                 	 if(search_flag == -1){
                  		 alert("没找到");
+                	 }else{
+                		 $('html, body').animate({  
+                    	     scrollTop: $('.product-card:eq('+search_flag+')').offset().top-80 
+                    	 }, 800);
                 	 }
-                	 alert(search_flag);
-                	 $('html, body').animate({  
-                         scrollTop: $('.product-card:eq('+search_flag+')').offset().top  
-                     }, 800);
                 }
             });
+            $('body').bind('click',function(){
+        		$('..product-card').css('box-shadow','0 1px 30px rgba(255, 255, 255, 0');
+        	})
 		});
 	</script>
 </body>

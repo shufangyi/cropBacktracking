@@ -39,29 +39,32 @@ $(document).ready(function(){
 		var LogisticsNum=$('#LogisticsNum').val();
 		var distributor=$('#distributor').val();
 		var Comment= $('#Comment').summernote('code');
-		alert("表单");
-		$.ajax({
-			type: "post",
-			url: "business/addConfirmRecipientRecordInfo.do",
-			data:{
-				"ordernum":OrderNum,
-				"receipienttime":receipientTime,
-				"logisticsNum":LogisticsNum,
-				"distributor":distributor,
-				"comment":Comment	
-			},
-			success:function(data,status)
-			{
-				alert("添加成功");
-			},
-			error:function(data,status)
-			{
-				alert("server error!")
-			}
-		});
-		
-	});
-	
-	
+		if(OrderNum==""||receipientTime==""||LogisticsNum==""||distributor==""||Comment=="")
+		{
+			alert("表单数据不完整");
+		}
+		else
+		{
+			$.ajax({
+				type: "post",
+				url: "business/addConfirmRecipientRecordInfo.do",
+				data:{
+					"ordernum":OrderNum,
+					"receipienttime":receipientTime,
+					"logisticsNum":LogisticsNum,
+					"distributor":distributor,
+					"comment":Comment	
+				},
+				success:function(data,status)
+				{
+					alert("添加成功");
+				},
+				error:function(data,status)
+				{
+					alert("server error!");
+				}
+			});
+		}
+	});	
 	
 });

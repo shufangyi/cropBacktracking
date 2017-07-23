@@ -51,7 +51,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="OrderNum">订单号:</label>
-                <input id="OrderNum" name="OrderNum" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="OrderNum" name="OrderNum" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -60,7 +60,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="deliverTime">运输时间:</label>
-                <input id="deliverTime" name="deliverTime" type="date" placeholder="" class="datepicker input-xlarge" required="">
+                <input id="deliverTime" name="deliverTime" type="date" placeholder="" class="datepicker input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -69,7 +69,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="deliverAddress">运输起点:</label>
-                <input id="deliverAddress" name="deliverAddress" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="deliverAddress" name="deliverAddress" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -78,7 +78,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="LogisticsCompany">运输部门:</label>
-                <input id="LogisticsCompany" name="LogisticsCompany" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="LogisticsCompany" name="LogisticsCompany" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -90,7 +90,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="LogisticsNum">物流单号:</label>
-                <input id="LogisticsNum" name="LogisticsNum" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="LogisticsNum" name="LogisticsNum" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -99,7 +99,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="Distributor">分销商:</label>
-                <input id="Distributor" name="Distributor" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="Distributor" name="Distributor" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -109,7 +109,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="Logistics">运输人员:</label>
-                <input id="Logistics" name="Logistics" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="Logistics" name="Logistics" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>

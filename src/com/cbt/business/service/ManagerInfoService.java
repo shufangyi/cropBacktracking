@@ -24,5 +24,7 @@ public interface ManagerInfoService {
 	public int getManagersCount();
 		
 	public Boolean updateManager(ManagerInfo info);
+	
+	public ManagerInfo checkManagerNum(ManagerInfo info);
 
 }

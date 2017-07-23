@@ -121,6 +121,23 @@ $(document).ready(function(){
 	});
 	
 	
+	$('#workerPwdAgain').blur(function()
+	{
+		alert("hello");
+		var workerPwd = $('#workerPwd').val();
+		var workerPwdAgain = $('#workerPwdAgain').val();
+		if(workerPwdAgain!=workerPwd)
+		{
+			$('#workerPwdAgain').parent().find('.help-block').text("密码不一致");
+			$('#workerPwdAgain').parent().find('.help-block').css("color","red");
+		}
+		else
+		{
+			$('#workerPwdAgain').parent().find('.help-block').text("密码正确");
+			$('#workerPwdAgain').parent().find('.help-block').css("color","green");
+		}
+	});
+	
 	function fillrole(data)
 	{
 		var len = data.list.length;
@@ -142,42 +159,44 @@ $(document).ready(function(){
 		var workerName = $('#workerName').val();
 		var workerNum = $('#workerNum').val();
 		var workerPwd = $('#workerPwd').val();
-		alert(workerPwd);
+		//alert(workerPwd);
 		var workerPhone = $('#workerPhone').val();
 		//var roleDesc = $('#Comment').text();
 		var roleId = $('#role').find('#role:checked').val();
 		var roleName = $('#role').find('#role:checked').attr('class');
-		alert(roleId);
-		alert(roleName);
-		/*
-			对数据进行验证
-		*/
-		//提交哦数据
-		$.ajax({
-			type: 'post',
-			url: '../addWorker.do',
-			data: {
-				//"businessId":businessId,
-				"workerName":workerName,
-				"workerNum":workerNum,
-				"workerPwd":workerPwd,
-				"workerPhone":workerPhone,				
-				"roleId":roleId,
-				"businessId":businessId,
-				"roleName":roleName
-			},
-			success: function(data,status)
-			{
-				alert("提交成功");
-			},
-			error: function(status)
-			{
-				alert(status);
-			}
-		});	
+		
+		
+		if(businessId==""||workerName==""||workerNum==""||workerPwd==""||workerPhone==""||
+				roleId==""||roleName=="")
+		{
+			alert("表单信息不完整");
+		}
+		else
+		{
+			$.ajax({
+				type: 'post',
+				url: '../addWorker.do',
+				data: {
+					//"businessId":businessId,
+					"workerName":workerName,
+					"workerNum":workerNum,
+					"workerPwd":workerPwd,
+					"workerPhone":workerPhone,				
+					"roleId":roleId,
+					"businessId":businessId,
+					"roleName":roleName
+				},
+				success: function(data,status)
+				{
+					alert("提交成功");
+				},
+				error: function(status)
+				{
+					alert(status);
+				}
+			});	
+		}
 	});	
-
-	
 	
 });
 </script>

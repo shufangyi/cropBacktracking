@@ -2,134 +2,261 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>企业注册</title>
-    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/register.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>企业注册</title>
+<link
+	href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"
+	rel="stylesheet">
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="./css/register.css">
+<link rel='stylesheet' href="./css/animate.min.css">
+<link rel="stylesheet" href="./css/notification.css">
 </head>
 
 <body>
-    <div class="navbar panel navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img src="./assets/logo.png"  height="45px" class="brand-logo" alt="logo" />
-                    Crop<strong>BackTracking</strong>
-                </a>
-            </div>
-            <div class="pull-right">
-                <a class="main-menu--item" href="./index.html"><i class="fa fa-home"></i> 主页</a>
-                <a class="main-menu--item" href="./demo.html"><i class="fa fa-cube"></i> 案例</a>
-                <a class="main-menu--item" href="./register.html"><i class="fa fa-handshake-o"></i> 加盟</a>
-                <a class="main-menu--item" href="about.html"><i class="fa fa-info"></i> 关于</a>
-            </div>
-        </div>
-    </div>
-    <div id="mainbody">
-        <div class="container">
-            <div id="regist">
-                <form class="form-horizontal">
-                    <fieldset>
-                        <!-- Form Name -->
-                        <legend>企 业 加 盟</legend>
-                        <p>温馨提示：（<span class="need">*</span> 为必填项）注：企业完成注册后需进行主体身份验证才能使用本系统!</p>
-                        <!-- Password input-->
-                        <div class="control-group">
-                            <label class="control-label" for="userEnterprise"><span class="need">*</span> 企业名:  </label>
-                            <div class="controls inline">
-                                <input id="userEnterprise" name="userEnterprise" placeholder="企业名" class="input-xlarge">
-                                <p class="help-block"></p>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="userName"><span class="need">*</span> 用户名:  </label>
-                            <div class="controls inline">
-                                <input id="userName" name="userName" placeholder="用户名" class="input-xlarge">
-                                <p class="help-block"></p>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="userEmail"><span class="need">*</span> 邮箱:   </label>
-                            <div class="controls inline">
-                                <input id="userEmail" name="userEmail" type="email" placeholder="邮箱" class="input-xlarge">
-                                <p class="help-block"></p>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="userPhone"><span class="need">*</span> 手机:   </label>
-                            <div class="controls inline">
-                                <input id="userPhone" name="userPhone" type="tel" placeholder="手机" class="input-xlarge">
-                                <p class="help-block"></p>
-                            </div>
-                        </div>
+	<div class="navbar panel navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"> <img src="./assets/logo.png"
+					height="45px" class="brand-logo" alt="logo" /> Crop<strong>BackTracking</strong>
+				</a>
+			</div>
+			<div class="pull-right">
+				<a class="main-menu--item" href="./index.html"><i
+					class="fa fa-home"></i> 主页</a> <a class="main-menu--item"
+					href="./demo.html"><i class="fa fa-cube"></i> 案例</a> <a
+					class="main-menu--item" href="./register.html"><i
+					class="fa fa-handshake-o"></i> 加盟</a> <a class="main-menu--item"
+					href="./about.html"><i class="fa fa-info"></i> 关于</a>
+			</div>
+		</div>
+	</div>
+	<div id="mainbody">
+		<div class="container">
+			<div id="regist">
+				<form class="form-horizontal">
+					<fieldset>
+						<!-- Form Name -->
+						<legend>企 业 加 盟</legend>
+						<p>
+							温馨提示：（<span class="need">*</span> 为必填项）注：企业完成注册后需进行主体身份验证才能使用本系统!
+						</p>
+						<!-- Password input-->
+						<div class="control-group">
+							<label class="control-label" for="userEnterprise"><span
+								class="need">*</span> 企业名: </label>
+							<div class="controls inline">
+								<input id="userEnterprise" name="userEnterprise"
+									placeholder="企业名" class="input-xlarge">
+								<p class="help-block"></p>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="userEnterprise"><span
+								class="need">*</span> 企业名: </label>
+							<div class="controls inline">
+								<input id="managerName" name="managerName"
+									placeholder="真实姓名" class="input-xlarge">
+								<p class="help-block"></p>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="userName"><span
+								class="need">*</span> 用户名: </label>
+							<div class="controls inline">
+								<input id="userName" name="userName" placeholder="用户名"
+									class="input-xlarge">
+								<p class="help-block"></p>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="userEmail"><span
+								class="need">*</span> 邮箱: </label>
+							<div class="controls inline">
+								<input id="userEmail" name="userEmail" type="email"
+									placeholder="邮箱" class="input-xlarge">
+								<p class="help-block"></p>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="userPhone"><span
+								class="need">*</span> 手机: </label>
+							<div class="controls inline">
+								<input id="userPhone" name="userPhone" type="tel"
+									placeholder="手机" class="input-xlarge">
+								<p class="help-block"></p>
+							</div>
+						</div>
 
-                        <!-- Password input-->
-                        <div class="control-group">
-                            <label class="control-label" for="passwordinput-1"><span class="need">*</span> 密码:   </label>
-                            <div class="controls">
-                                <input id="passwordinput-1" name="passwordinput-1" type="password" placeholder="密码" class="input-xlarge">
-                                <p class="help-block"></p>
-                            </div>
-                        </div>
+						<!-- Password input-->
+						<div class="control-group">
+							<label class="control-label" for="passwordinput-1"><span
+								class="need">*</span> 密码: </label>
+							<div class="controls">
+								<input id="passwordinput-1" name="passwordinput-1"
+									type="password" placeholder="密码" class="input-xlarge">
+								<p class="help-block"></p>
+							</div>
+						</div>
 
-                        <!-- Password input-->
-                        <div class="control-group">
-                            <label class="control-label" for="passwordinput-2"><span class="need">*</span> 确认密码:</label>
-                            <div class="controls">
-                                <input id="passwordinput-2" name="passwordinput-2" type="password" placeholder="确认密码" class="input-xlarge">
-                                <p class="help-block"></p>
-                            </div>
-                        </div>
+						<!-- Password input-->
+						<div class="control-group">
+							<label class="control-label" for="passwordinput-2"><span
+								class="need">*</span> 确认密码:</label>
+							<div class="controls">
+								<input id="passwordinput-2" name="passwordinput-2"
+									type="password" placeholder="确认密码" class="input-xlarge">
+								<p class="help-block"></p>
+							</div>
+						</div>
 
-                        <div class="control-group">
-                            <label class="control-label" for="code_input"><span class="need">*</span> 验证码:  </label>
-                            <div class="controls inline">
-                                <input id="code_input" name="code_input" class="input-xlarge">
-                                <p class="help-block"></p>
-                            </div>
-                        </div>
-                        <div id="v_container"></div>
+						<div class="control-group">
+							<label class="control-label" for="code_input"><span
+								class="need">*</span> 验证码: </label>
+							<div class="controls inline">
+								<input id="code_input" name="code_input" class="input-xlarge">
+								<p class="help-block"></p>
+							</div>
+						</div>
+						<div id="v_container"></div>
 
-                        <!-- Button (Double) -->
-                        <div class="control-group">
-                            <!--<label class="control-label" for="doublebutton-0">Double Button</label>-->
-                            <div class="controls">
-                                <button id="registBtn" name="registBtn" class="btn btn-danger"> 注 册 </button>
-                            </div>
-                        </div>
+						<!-- Button (Double) -->
+						<div class="control-group">
+							<!--<label class="control-label" for="doublebutton-0">Double Button</label>-->
+							<div class="controls">
+								<button id="registBtn" name="registBtn" class="btn btn-danger">
+									注 册</button>
+							</div>
+						</div>
 
-                    </fieldset>
-                </form>
-                <p>
-                    联系管理员：<i class="fa fa-phone">1315156XXXX&nbsp;&nbsp;&nbsp;&nbsp;</i>
-                    <i class="fa fa-send">13151556XXXX@163.com</i>
-                </p>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-    <script src="./js/gVerify.js"></script>
-    <script>
-        $(function () {
-            $("#mainbody .container").css('min-height', $(window).height());
-            $("#regist").css('min-height', $(window).height());
+					</fieldset>
+				</form>
+				<p>
+					联系管理员：<i class="fa fa-phone">1315156XXXX&nbsp;&nbsp;&nbsp;&nbsp;</i>
+					<i class="fa fa-send">13151556XXXX@163.com</i>
+				</p>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+	<script src="./js/gVerify.js"></script>
+	<script src="./js/notification.js"></script>
 
-            var verifyCode = new GVerify("v_container");
-            $('#registBtn').bind('click', function (event) {
-                event.preventDefault();
-                var res = verifyCode.validate($('#code_input').val());
-                if (res) {
-                    alert("注册成功！");
-                } else {
-                    alert("验证码错误，请重新填写！");
-                }
-            });
-        });
-    </script>
+	<script>
+		$(function() {
+			$("#mainbody .container").css('min-height', $(window).height());
+			$("#regist").css('min-height', $(window).height());
+
+			var verifyCode = new GVerify("v_container");
+			$('#registBtn')
+					.bind(
+							'click',
+							function(event) {
+								event.preventDefault();
+								var res = verifyCode.validate($('#code_input')
+										.val());
+								if ($("#userEnterprise").val().length == 0
+										|| $("#managerName").val().length == 0
+										|| $("#userName").val().length == 0
+										|| $("#userEmail").val().length == 0
+										|| $("#userPhone").val().length == 0
+										|| $('#code_input').val().length == 0
+										|| $("#passwordinput-1").val().length == 0
+										|| $("#passwordinput-2").val().length == 0) {
+									Notification.create("Notification",
+											"请填写所有必填项！;( ！",
+											"./assets/cat.jpg", "flipInX", 2);
+								} else {
+									if (res) {
+										if ($("#passwordinput-1").val() !== $(
+												"#passwordinput-2").val()) {
+											Notification.create("Notification",
+													"两次填写的密码不同，请重新确认！;( ！",
+													"./assets/cat.jpg",
+													"flipInX", 2);
+										} else {
+											$
+													.ajax({
+														type : 'POST',
+														url : "system/addRegisterTmpInfo.do",
+														data : {
+															"businessName" : $(
+																	"#userEnterprise")
+																	.val(),
+															"managerName" : $(
+																	"#managerName")
+																	.val(),
+															
+															"managerNum" : $(
+																	"#userName")
+																	.val(),
+															"managerEmail" : $(
+																	"#userEmail")
+																	.val(),
+															"managerPhone" : $(
+																	"#userPhone")
+																	.val(),
+															"managerPwd" : $(
+																	"#passwordinput-1")
+																	.val()
+														},
+														success : function(data) {
+															
+															if(data == "exist")
+															{
+																Notification
+																.create(
+																		"Notification",
+																		"用户名已存在,请重新输入注册用户名 ！",
+																		"./assets/cat.jpg",
+																		"flipInX",
+																		2);
+															}
+															
+															if (data == "true") {
+																Notification
+																		.create(
+																				"Notification",
+																				"注册成功，等待认证！有问题可致电管理员！;) ！",
+																				"./assets/cat.jpg",
+																				"flipInX",
+																				2);
+															} else {
+																Notification
+																		.create(
+																				"Notification",
+																				"注册失败，请稍后重试！;( ！",
+																				"./assets/cat.jpg",
+																				"flipInX",
+																				2);
+															}
+
+														},
+														error : function(status) {
+															Notification
+																	.create(
+																			"Notification",
+																			"不好意思，发生未知错误！;(！",
+																			"./assets/cat.jpg",
+																			"flipInX",
+																			2);
+														}
+													});
+										}
+									} else {
+										Notification.create("Notification",
+												"验证码错误，请重新填写！！;( ！",
+												"./assets/cat.jpg", "flipInX",
+												2);
+									}
+								}
+							});
+		});
+	</script>
 
 </body>
 

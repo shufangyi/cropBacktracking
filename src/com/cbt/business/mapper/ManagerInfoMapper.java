@@ -28,6 +28,6 @@ public interface ManagerInfoMapper {
 	public int updateManager(ManagerInfo info);
 	
 	
-	
+	public ManagerInfo checkManagerNum(ManagerInfo info);
 
 }

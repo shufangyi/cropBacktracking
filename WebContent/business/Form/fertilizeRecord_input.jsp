@@ -50,7 +50,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="sowSeg_btCode">种植溯源码:</label>
-                <input id="sowSeg_btCode" name="sowSeg_btCode" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="sowSeg_btCode" name="sowSeg_btCode" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="FertilizerName">肥料名称:</label>
-                <input id="fertilizerName" name="FertilizerName" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="fertilizerName" name="FertilizerName" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -68,7 +68,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="FertilizeTime">施肥时间:</label>
-                <input id="FertilizeTime" name="FertilizeTime" type="date" placeholder="" class="datepicker input-xlarge" required="">
+                <input id="FertilizeTime" name="FertilizeTime" type="date" placeholder="" class="datepicker input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -77,7 +77,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="FertilizerNum">施肥数量:</label>
-                <input id="FertilizerNum" name="FertilizerNum" type="number" placeholder="" class="input-xlarge" required="">
+                <input id="FertilizerNum" name="FertilizerNum" type="number" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -86,7 +86,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="FertilizerFrequency">施肥次数:</label>
-                <input id="FertilizerFrequency" name="FertilizerFrequency" type="number" placeholder="" class="input-xlarge" required="">
+                <input id="FertilizerFrequency" name="FertilizerFrequency" type="number" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -95,7 +95,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="grower">施肥人员:</label>
-                <input id="grower" name="grower" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="grower" name="grower" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>

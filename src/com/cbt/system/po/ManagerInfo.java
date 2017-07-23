@@ -7,6 +7,7 @@ public class ManagerInfo {
 	private int businessId;
 	private String managerPhone;
 	private String managerName;
+	private String managerEmail;
 	public String getManagerName() {
 		return managerName;
 	}
@@ -54,5 +55,11 @@ public class ManagerInfo {
 	{
 		return "id:"+id+"	managerNum:"+managerNum+"	managerPwd:"+managerPwd+"	businessId:"+businessId+" "
 				+ "managerPhone:"+managerPhone;
+	}
+	public String getManagerEmail() {
+		return managerEmail;
+	}
+	public void setManagerEmail(String managerEmail) {
+		this.managerEmail = managerEmail;
 	}
 }

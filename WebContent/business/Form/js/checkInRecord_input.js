@@ -13,11 +13,11 @@ $(document).ready(function(){
 			{
 				if(data=="true")
 				{
-					$('#pickSeg_btCode').parent().find('.help-block').text("correct");
+					$('#pickSeg_btCode').parent().find('.help-block').text("allow");
 				}
 				else
 				{
-					$('#pickSeg_btCode').parent().find('.help-block').text("无权限");
+					$('#pickSeg_btCode').parent().find('.help-block').text("forbidden");
 				}
 			},
 			error:function(data,status)
@@ -44,30 +44,38 @@ $(document).ready(function(){
 		var StockLocation=$('#StockLocation').val();
 		var Checker=$('#Checker').val();
 		var Comment= $('#Comment').summernote('code');
-		alert("表单");
-		$.ajax({
-			type: "post",
-			url: "business/addCheckInRecordInfo.do",
-			data:{
-				"checkinsegBtcode":checkInSeg_btCode,
-				"picksegBtcode":pickSeg_btCode,
-				"checkintime":checkInTime,
-				"stocklocation":StockLocation,
-				"checker":Checker,
-				"comment":Comment	
-			},
-			success:function(data,status)
-			{
-				alert("添加成功");
-			},
-			error:function(data,status)
-			{
-				alert("server error!")
-			}
-		});
 		
+		if(checkInSeg_btCode==""||pickSeg_btCode==""||checkInTime==""||StockLocation==""||Checker==""||Comment=="")
+		{
+			alert("表单数据不完整");
+		}
+		else
+		{
+			if($('#pickSeg_btCode').parent().find('.help-block').text()!="allow")
+			{
+				alert("无权提交")
+				return;
+			}
+			$.ajax({
+				type: "post",
+				url: "business/addCheckInRecordInfo.do",
+				data:{
+					"checkinsegBtcode":checkInSeg_btCode,
+					"picksegBtcode":pickSeg_btCode,
+					"checkintime":checkInTime,
+					"stocklocation":StockLocation,
+					"checker":Checker,
+					"comment":Comment	
+				},
+				success:function(data,status)
+				{
+					alert("添加成功");
+				},
+				error:function(data,status)
+				{
+					alert("server error!");
+				}
+			});
+		}
 	});
-	
-	
-	
 });

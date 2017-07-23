@@ -50,7 +50,7 @@ $(document).ready(function () {
 
             output+="<a href='"+url+"'>"+
                     "<div class='product-card'>"+
-                   // "<img src='"+"../"+obj.productPicture+"' alt='#'>"+
+                    "<img src='"+"../"+obj.productPicture+"' alt='#'>"+
                    // "<img src='img/1.png' alt='#'>"+
                     "<div class='product-info'>"+
                     "<h2 class='productname'>"+obj.productName+"</h2>"+

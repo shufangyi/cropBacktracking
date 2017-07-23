@@ -50,7 +50,7 @@
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
                         <li><a onclick="return false" class="useful" href="./Form/businessinfo.html">企业信息列表</a></li>
                         <li><a onclick="return false" class="useful" href="./Form/managers.html">企业账户列表</a></li>
-                        <li><a onclick="return false" class="useful" href="./Form/addmanager.html">注册企业账户</a></li>
+                        <li><a onclick="return false" class="useful" href="./Form/addmanager.html">审核注册账户</a></li>
                     </ul>
                 </li>
                 

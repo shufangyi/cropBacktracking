@@ -33,7 +33,12 @@
 		<bean id="pathConfig" class="com.cbt.utils.PathConfig">
 		    <property name="localPath" value="Uploads/business/products"></property>
 		    <property name="businessLogoPath" value="Uploads/business/logo"></property>
+		    <property name="emailNum" value="zww12138@sina.com"></property>
+		    <property name="emailPwd" value="951029951029"></property>
+		    <property name="emailSubject" value="农产品溯源帐号注册通知"></property>
+		    <property name="emailLink" value="#"></property>	    
 		</bean>
+		
 		
 		<!-- 配置事务 -->
 		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

@@ -52,7 +52,7 @@ public class BusinessInfoServiceImpl implements BusinessInfoService{
 		for(int i=0;i<list.size();i++)
 		{
 			int k = businessInfoMapper.delBusinessInfo(list.get(i));
-			if(i<=0){
+			if(i<0){
 				return false;
 			}
 		}

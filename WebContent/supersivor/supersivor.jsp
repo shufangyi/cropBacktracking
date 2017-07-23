@@ -58,7 +58,7 @@
 							class="sr-only">(current)</span></a></li>
 				</ul>
 				<div class="navbar-right">
-					<form class="navbar-form" id="searchE" style="display: inline-block;">
+					<form class="navbar-form" id="searchE" style="display:inline-block">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Search"
 								id="searchCont">
@@ -279,6 +279,7 @@
             	}
             });*/
             $("#startBtn").bind('click', function (event) {
+                event.stopPropagation();
             	event.preventDefault();
                 var sCont = $("#searchCont").val();
                 if (sCont.length == 0) {
@@ -295,14 +296,16 @@
                      });
                 	 if(search_flag == -1){
                  		 alert("没找到");
+                	 }else{
+                		 $('html, body').animate({  
+                    	     scrollTop: $('.comlist:eq('+search_flag+')').offset().top-80
+                   	  }, 800);
                 	 }
-                	 alert(search_flag);
-                	 $('html, body').animate({  
-                         scrollTop: $('.comlist:eq('+search_flag+')').offset().top  
-                     }, 800);
                 }
             });
-            
+            $('body').bind('click',function(){
+        		$('.comlist').css('box-shadow','0 1px 30px rgba(255, 255, 255, 0');
+        	})
             
         	//填充企业表格
         	function fillContainer(data)

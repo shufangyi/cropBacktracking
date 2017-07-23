@@ -41,30 +41,35 @@ $(document).ready(function(){
 		var fertilizerfrequency=$('#FertilizerFrequency').val();
 		var grower=$('#grower').text();
 		var comment= $('#Comment').summernote('code');
-		$.ajax({
-			type: "post",
-			url: "business/addFertilizerRecordInfo.do",
-			data:{
-				"sowsegBtcode":sowsegBtcode,
-				"fertilizername":fertilizername,
-				"fertilizetime":fertilizetime,
-				"fertilizernum":fertilizernum,
-				"fertilizerfrequency":fertilizerfrequency,
-				"grower":grower,
-				"comment":comment	
-			},
-			success:function(data,status)
-			{
-				alert("添加成功");
-			},
-			error:function(data,status)
-			{
-				alert("server error!")
-			}
-		});
-		
+		if(sowsegBtcode==""||fertilizername==""||fertilizetime==""||fertilizernum==""||
+				fertilizerfrequency==""||grower==""||comment==""){
+			alert("表单信息不完整");
+		}
+		else
+		{
+			
+			$.ajax({
+				type: "post",
+				url: "business/addFertilizerRecordInfo.do",
+				data:{
+					"sowsegBtcode":sowsegBtcode,
+					"fertilizername":fertilizername,
+					"fertilizetime":fertilizetime,
+					"fertilizernum":fertilizernum,
+					"fertilizerfrequency":fertilizerfrequency,
+					"grower":grower,
+					"comment":comment	
+				},
+				success:function(data,status)
+				{
+					alert("添加成功");
+				},
+				error:function(data,status)
+				{
+					alert("server error!");
+				}
+			});
+		}
 	});
-	
-	
 	
 });

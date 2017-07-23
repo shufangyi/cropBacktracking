@@ -44,7 +44,8 @@ public class ManagerInfoServiceImpl implements ManagerInfoService{
 		for(int i=0;i<list.size();i++)
 		{
 			int k = managerInfoMapper.delManagerInfo(list.get(i));
-			if(i<=0){
+			if(i<0){
+				
 				return false;
 			}
 		}
@@ -79,6 +80,12 @@ public class ManagerInfoServiceImpl implements ManagerInfoService{
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	@Override
+	public ManagerInfo checkManagerNum(ManagerInfo info) {
+		// TODO Auto-generated method stub
+		return managerInfoMapper.checkManagerNum(info);
 	}
 
 }

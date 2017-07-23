@@ -43,30 +43,37 @@ $(document).ready(function(){
 		var result=$('#result').val();
 		var grower=$('#grower').val();
 		var comment= $('#Comment').summernote('code');
-		alert("表单");
-		$.ajax({
-			type: "post",
-			url: "business/addPestRecordInfo.do",
-			data:{
-				"sowsegBtcode":sowSeg_btCode,
-				"peststype":PestsType,
-				"spraytime":SprayTime,
-				"medicationname":MedicationName,
-				"medicationratio":MedicationRatio,
-				"medicationdosage":MedicationDosage,
-				"result":result,
-				"grower":grower,
-				"comment":comment	
-			},
-			success:function(data,status)
-			{
-				alert("添加成功");
-			},
-			error:function(data,status)
-			{
-				alert("server error!")
-			}
-		});
+		if(sowSeg_btCode==""||PestsType==""||SprayTime==""||MedicationName==""||MedicationRatio==""||
+				MedicationDosage==""||result==""||grower==""||comment==""){
+			alert("表单信息不完整");
+		}
+		else
+		{
+			$.ajax({
+				type: "post",
+				url: "business/addPestRecordInfo.do",
+				data:{
+					"sowsegBtcode":sowSeg_btCode,
+					"peststype":PestsType,
+					"spraytime":SprayTime,
+					"medicationname":MedicationName,
+					"medicationratio":MedicationRatio,
+					"medicationdosage":MedicationDosage,
+					"result":result,
+					"grower":grower,
+					"comment":comment	
+				},
+				success:function(data,status)
+				{
+					alert("添加成功");
+				},
+				error:function(data,status)
+				{
+					alert("server error!");
+				}
+			});
+		}
+		
 		
 	});
 	

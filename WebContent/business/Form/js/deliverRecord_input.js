@@ -42,30 +42,36 @@ $(document).ready(function(){
 		var Distributor=$('#Distributor').val();
 		var Logistics=$('#Logistics').val();
 		var Comment= $('#Comment').summernote('code');
-		alert("表单");
-		$.ajax({
-			type: "post",
-			url: "business/addDeliverRecordInfo.do",
-			data:{
-				"ordernum":OrderNum,
-				"delivertime":deliverTime,
-				"deliveraddress":deliverAddress,
-				"logisticscompany":LogisticsCompany,
-				"logisticsnum":LogisticsNum,
-				"distributor":Distributor,
-				"logistics":Logistics,
-				"comment":Comment	
-			},
-			success:function(data,status)
-			{
-				alert("添加成功");
-			},
-			error:function(data,status)
-			{
-				alert("server error!")
-			}
-		});
 		
+		if(OrderNum==""||deliverTime==""||deliverAddress==""||LogisticsCompany==""||Distributor==""||
+			Logistics==""||Comment==""){
+			alert("表单信息不完整！")
+		}
+		else
+		{
+			$.ajax({
+				type: "post",
+				url: "business/addDeliverRecordInfo.do",
+				data:{
+					"ordernum":OrderNum,
+					"delivertime":deliverTime,
+					"deliveraddress":deliverAddress,
+					"logisticscompany":LogisticsCompany,
+					"logisticsnum":LogisticsNum,
+					"distributor":Distributor,
+					"logistics":Logistics,
+					"comment":Comment	
+				},
+				success:function(data,status)
+				{
+					alert("添加成功");
+				},
+				error:function(data,status)
+				{
+					alert("server error!");
+				}
+			});	
+		}	
 	});
 	
 	

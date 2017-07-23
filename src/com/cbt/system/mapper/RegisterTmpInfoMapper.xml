@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cbt.system.mapper.RegisterTmpInfoMapper">
+	<resultMap type="RegisterTmpInfo" id="registermap">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="businessName" property="businessName" jdbcType="VARCHAR" />
+		<result column="managerName" property="managerName" jdbcType="VARCHAR" />
+		<result column="managerNum" property="managerNum" jdbcType="VARCHAR" />
+		<result column="managerPwd" property="managerPwd" jdbcType="VARCHAR" />
+		<result column="managerEmail" property="managerEmail" jdbcType="VARCHAR" />
+		<result column="managerPhone" property="managerPhone" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<insert id="addRegisterTmpInfo" parameterType="com.cbt.system.po.RegisterTmpInfo">
+		insert into registertmp
+		(
+			businessName,managerName,managerNum,managerPwd,managerEmail,managerPhone
+		)
+		values
+		(
+			#{businessName},#{managerName},#{managerNum},#{managerPwd},#{managerEmail},#{managerPhone}
+		)
+
+	</insert>
+	
+	<update id="allowRegister" parameterType="RegisterTmpInfo">
+		update registertmp set status='1'
+		where ID=#{id}
+	</update>
+	<update id="rejectRegister" parameterType="RegisterTmpInfo">
+		update registertmp set status='0'
+		where ID=#{id}
+	</update>
+	
+	<select id="getPageRegisterCount" parameterType="Map" resultType="int">
+		select count(*) from registertmp where 1=1
+  			<if test="status==''">
+ 			 and status IS NULL
+  			</if> 
+ 			 <if test="status!=null and status!=''">
+ 			 and status=#{status}
+  			</if>
+  	</select>
+  	
+  	<select id="getPageRegisters" parameterType="Map" resultMap="registermap">
+	  select * from registertmp 
+	  where 1=1
+	   <if test="status==''">
+	  and status IS NULL
+	  </if> 
+	  <if test="status!=null and status!=''">
+	  and status=#{status}
+	  </if> 
+	  limit #{startrow},#{rows}
+	</select>
+	
+	
+	<delete id="deleteRegisterTmpInfo" parameterType="RegisterTmpInfo">
+		delete from registertmp where id=#{id}
+	</delete>
+</mapper>

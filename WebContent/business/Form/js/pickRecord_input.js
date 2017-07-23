@@ -13,11 +13,13 @@ $(document).ready(function(){
 			{
 				if(data=="true")
 				{
-					$('#sowSeg_btCode').parent().find('.help-block').text("correct");
+					$('#sowSeg_btCode').parent().find('.help-block').text("allow");
+					$('#sowSeg_btCode').parent().find('.help-block').attr("color","green");
 				}
 				else
 				{
-					$('#sowSeg_btCode').parent().find('.help-block').text("无权限");
+					$('#sowSeg_btCode').parent().find('.help-block').text("forbidden");
+					$('#sowSeg_btCode').parent().find('.help-block').attr("color","red");
 				}
 			},
 			error:function(data,status)
@@ -40,7 +42,6 @@ $(document).ready(function(){
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
-		alert("表单");
 		var sowsegBtcode=$('#sowSeg_btCode').val();
 		var picktime=$('#PickTime').val();
 		var picktype=$('#PickType').val();
@@ -49,28 +50,40 @@ $(document).ready(function(){
 		var pickSeg_btCode=$('#pickSeg_btCode').val();
 		var comment= $('#comment').summernote('code');
 		
-		$.ajax({
-			type: "post",
-			url: "business/addPickRecordInfo.do",
-			data:{
-				"sowsegBtcode":sowsegBtcode,
-				"picktime":picktime,
-				"picktype":picktype,
-				"picknum":picknum,
-				"grower":grower,
-				"picksegBtcode":pickSeg_btCode,
-				"comment":comment
-				
-			},
-			success:function(data,status)
+		if(sowsegBtcode==""||picktime==""||picktype==""||picknum==""||grower==""||pickSeg_btCode==""||comment==""){
+			
+		}
+		else
+		{
+			if($('#sowSeg_btCode').parent().find('.help-block').text()!="allow")
 			{
-				alert("可能成功");
-			},
-			error:function(data,status)
-			{
-				alert("server error!")
+				alert("无权提交");
+				return;
 			}
-		});
+			$.ajax({
+				type: "post",
+				url: "business/addPickRecordInfo.do",
+				data:{
+					"sowsegBtcode":sowsegBtcode,
+					"picktime":picktime,
+					"picktype":picktype,
+					"picknum":picknum,
+					"grower":grower,
+					"picksegBtcode":pickSeg_btCode,
+					"comment":comment
+					
+				},
+				success:function(data,status)
+				{
+					alert("可能成功");
+				},
+				error:function(data,status)
+				{
+					alert("server error!");
+				}
+			});
+		}
+		
 		
 	});
 	

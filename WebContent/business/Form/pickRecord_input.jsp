@@ -84,7 +84,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="PickNum">采摘数量:</label>
-                <input id="PickNum" name="PickNum" type="number" placeholder="" class="input-xlarge" required="">
+                <input id="PickNum" name="PickNum" type="number" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -94,7 +94,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="grower">采摘员:</label>
-                <input id="grower" name="grower" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="grower" name="grower" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>

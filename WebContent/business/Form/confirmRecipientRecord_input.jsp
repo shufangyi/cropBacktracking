@@ -49,7 +49,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="OrderNum">订单号:</label>
-                <input id="OrderNum" name="OrderNum" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="OrderNum" name="OrderNum" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -58,7 +58,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="receipientTime">确认收货时间:</label>
-                <input id="receipientTime" name="receipientTime" type="date" placeholder="" class="datepicker input-xlarge" required="">
+                <input id="receipientTime" name="receipientTime" type="date" placeholder="" class="datepicker input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -68,7 +68,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="LogisticsNum">物流单号:</label>
-                <input id="LogisticsNum" name="LogisticsNum" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="LogisticsNum" name="LogisticsNum" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -77,7 +77,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="distributor">分销商:</label>
-                <input id="distributor" name="distributor" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="distributor" name="distributor" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>

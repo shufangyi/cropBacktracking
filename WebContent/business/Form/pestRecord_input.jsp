@@ -48,7 +48,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="sowSeg_btCode">播种溯源码:</label>
-                <input id="sowSeg_btCode" name="sowSeg_btCode" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="sowSeg_btCode" name="sowSeg_btCode" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -57,7 +57,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="PestsType">病虫害类型:</label>
-                <input id="PestsType" name="PestsType" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="PestsType" name="PestsType" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -75,7 +75,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="MedicationName">药物名称:</label>
-                <input id="MedicationName" name="MedicationName" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="MedicationName" name="MedicationName" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -84,7 +84,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="MedicationRatio">药物比例:</label>
-                <input id="MedicationRatio" name="MedicationRatio" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="MedicationRatio" name="MedicationRatio" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -93,7 +93,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="MedicationDosage">药剂用量:</label>
-                <input id="MedicationDosage" name="MedicationDosage" type="number" placeholder="" class="input-xlarge" required="">
+                <input id="MedicationDosage" name="MedicationDosage" type="number" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -102,7 +102,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="result">防治效果:</label>
-                <input id="result" name="result" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="result" name="result" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -111,7 +111,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="grower">喷药人:</label>
-                <input id="grower" name="grower" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="grower" name="grower" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>

@@ -51,34 +51,46 @@ $(document).ready(function(){
 		var NetContent=$('#NetContent').val();
 		var StorageCondition=$('#StorageCondition').val();
 		var comment= $('#Comment').summernote('code');
-		alert("表单");
-		$.ajax({
-			type: "post",
-			url: "business/addCopackRecordInfo.do",
-			data:{
-				"checkinsegBtcode":checkInSeg_btCode,
-				"copacktime":copackTime,
-				"ordernum":OrderNum,
-				"copacklocation":copackLocation,
-				"productBtcode":product_btCode,
-				"copacker":copacker,
-				"producedate":produceDate,
-				"producelocation":ProduceLocation,
-				"specifications":Specifications,
-				"netcontent":NetContent,
-				"storagecondition":StorageCondition,
-				"comment":comment
-			},
-			success:function(data,status)
-			{
-				alert("添加成功");
-			},
-			error:function(data,status)
-			{
-				alert("server error!")
-			}
-		});
 		
+		
+		if(checkInSeg_btCode==""||copackTime==""||OrderNum==""||copackLocation==""||product_btCode==""
+	||copacker==""||produceDate==""||ProduceLocation==""||Specifications==""||NetContent==""||
+	StorageCondition==""||comment=="")
+		{
+			alert("表单信息不完整");
+		}
+		else
+		{
+			$.ajax({
+				type: "post",
+				url: "business/addCopackRecordInfo.do",
+				data:{
+					"checkinsegBtcode":checkInSeg_btCode,
+					"copacktime":copackTime,
+					"ordernum":OrderNum,
+					"copacklocation":copackLocation,
+					"productBtcode":product_btCode,
+					"copacker":copacker,
+					"producedate":produceDate,
+					"producelocation":ProduceLocation,
+					"specifications":Specifications,
+					"netcontent":NetContent,
+					"storagecondition":StorageCondition,
+					"comment":comment
+				},
+				success:function(data,status)
+				{
+					alert("添加成功");
+				},
+				error:function(data,status)
+				{
+					alert("server error!");
+				}
+			});
+			
+		}
+		
+	
 	});
 	
 	

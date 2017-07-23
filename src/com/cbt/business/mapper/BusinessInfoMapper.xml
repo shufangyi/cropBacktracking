@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--数据库的字段为businessMoblie 和businessLog  但是pojo中是businessMobile 和BusinessLogo  -->
 	<insert id="addBusinessInfo" parameterType="com.cbt.business.po.BusinessInfo">
 	 	insert  into  businessinfo
-	 	(id,businessId,businessName,businessAddr,businessMoblie,businessEmail,businessUrl,businessLogo,businessDesc)
+	 	(id,businessId,businessName,businessAddr,businessMobile,businessEmail,businessUrl,businessLogo,businessDesc)
 	 	values
 	 	(#{id},#{businessId},#{businessName},#{businessAddr},#{businessMobile},#{businessEmail},#{businessUrl},#{businessLogo},#{businessDesc})
 	</insert>

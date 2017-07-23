@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <result column="managerPhone" property="managerPhone" jdbcType="VARCHAR" />
     <result column="managerName" property="managerName" jdbcType="VARCHAR" />
      <result column="businessName" property="businessName" jdbcType="VARCHAR" />
-    
+     <result column="managerEmail" property="managerEmail" jdbcType="VARCHAR" />
   </resultMap>
   
   	 <!--根据managerNum查询一条数据  -->
@@ -28,9 +28,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!--插入一条数据  -->
    <insert id="addManagerInfo"  parameterType="com.cbt.system.po.ManagerInfo">
    	insert into managerinfo
-   	(id,managerNum,managerPwd,businessId,managerName,businessName,managerPhone)
+   	(id,managerNum,managerPwd,businessId,managerName,businessName,managerPhone,managerEmail)
    	values
-   	(#{id},#{managerNum},#{managerPwd},#{businessId},#{managerName},#{businessName},#{managerPhone})
+   	(#{id},#{managerNum},#{managerPwd},#{businessId},#{managerName},#{businessName},#{managerPhone},#{managerEmail})
    </insert>
   
   <!--根据id删除一条数据 -->
@@ -53,6 +53,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<update id="updateManager" parameterType="com.cbt.system.po.ManagerInfo" >
     	update managerinfo set managerPwd = #{managerPwd}, managerPhone = #{managerPhone},managerName = #{managerName} where id = #{id}
  	</update>
+ 	
+ 	 <select id="checkManagerNum" parameterType="com.cbt.system.po.ManagerInfo" resultMap="managerinfomap">
+  		select * from  managerinfo where managerNum=#{managerNum}
+ 	 </select>
  
 	
 </mapper>

@@ -50,7 +50,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="checkInSeg_btCode">质检溯源码:</label>
-                <input id="checkInSeg_btCode" name="checkInSeg_btCode" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="checkInSeg_btCode" name="checkInSeg_btCode" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -59,7 +59,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="copackTime">包装时间:</label>
-                <input id="copackTime" name="copackTime" type="date" placeholder="" class="datepicker input-xlarge" required="">
+                <input id="copackTime" name="copackTime" type="date" placeholder="" class="datepicker input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -68,7 +68,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="OrderNum">订单号:</label>
-                <input id="OrderNum" name="OrderNum" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="OrderNum" name="OrderNum" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -77,7 +77,7 @@
         <div class="control-group" >
             <div class="controls" >
                 <label class="control-label" for="copackLocation">包装地点:</label>
-                <input id="copackLocation" name="copackLocation" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="copackLocation" name="copackLocation" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -86,7 +86,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="product_btCode">产品溯源码:</label>
-                <input id="product_btCode" name="product_btCode" type="text" placeholder="" class="input-xlarge" required="" readonly="readonly" disabled="disabled">
+                <input id="product_btCode" name="product_btCode" type="text" placeholder="" class="input-xlarge" required="required" readonly="readonly" disabled="disabled">
             	<span class="help-block">1</span>
             </div>
         </div>
@@ -95,7 +95,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="copacker">包装员:</label>
-                <input id="copacker" name="copacker" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="copacker" name="copacker" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -104,7 +104,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="produceDate">生产日期:</label>
-                <input id="produceDate" name="produceDate" type="date" placeholder="" class="datepicker input-xlarge" required="">
+                <input id="produceDate" name="produceDate" type="date" placeholder="" class="datepicker input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -113,7 +113,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="ProduceLocation">生产地:</label>
-                <input id="ProduceLocation" name="ProduceLocation" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="ProduceLocation" name="ProduceLocation" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -122,7 +122,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="Specifications">规格:</label>
-                <input id="Specifications" name="Specifications" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="Specifications" name="Specifications" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -131,7 +131,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="NetContent">净含量:</label>
-                <input id="NetContent" name="NetContent" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="NetContent" name="NetContent" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>
@@ -140,7 +140,7 @@
         <div class="control-group">
             <div class="controls">
                 <label class="control-label" for="StorageCondition">贮藏条件:</label>
-                <input id="StorageCondition" name="StorageCondition" type="text" placeholder="" class="input-xlarge" required="">
+                <input id="StorageCondition" name="StorageCondition" type="text" placeholder="" class="input-xlarge" required="required">
                 <span class="help-block">1</span>
             </div>
         </div>

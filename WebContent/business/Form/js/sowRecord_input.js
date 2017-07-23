@@ -13,11 +13,14 @@ $(document).ready(function(){
 			{
 				if(data=="true")
 				{
-					$('#projectBtcode').parent().find('.help-block').text("correct");
+					$('#projectBtcode').parent().find('.help-block').text("allow");
+					$('#projectBtcode').parent().find('.help-block').css("color","green");
 				}
 				else
 				{
-					$('#projectBtcode').parent().find('.help-block').text("无权限");
+					$('#projectBtcode').parent().find('.help-block').text("forbidden");
+					$('#projectBtcode').parent().find('.help-block').css("color","red");
+					
 				}
 			},
 			error:function(data,status)
@@ -41,42 +44,52 @@ $(document).ready(function(){
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
 		var project_btCode=$('#projectBtcode').val();
-		alert(project_btCode);
+		//alert(project_btCode);
 		var sowTime=$('#sowtime').val();
 		var sowSeg_btCode=$('#sowSeg_btCode').val();
 		var sowLocation=$('#SowLocation').val();
-		alert(sowLocation);
+		//alert(sowLocation);
 		var productName=$('#productName').val();
 		var seedSource=$('#seedSource').val();
 		var sowNum=$('#sowNum').val();
 		var grower=$('#grower').val();
 		var comment= $('#comment').summernote('code');
-		alert(grower);
-		$.ajax(
+		if(project_btCode==""||sowTime==""||sowSeg_btCode==""||productName==""||seedSource==""||sowNum==""||
+				grower==""||comment=="")
 		{
-			url: "business/addSowRecordInfo.do",
-			type: "post",	
-			data:{
-				"projectBtcode":project_btCode,
-				"sowtime":sowTime,
-				"sowsegBtcode":sowSeg_btCode,
-				"sowlocation":sowLocation,
-				"productname":productName,
-				"seedsource":seedSource,
-				"sownum":sowNum,
-				"grower":grower,
-				"comment":comment	
-			},
-			success:function(data,status)
+			alert("表单信息不完整");
+		}
+		else
+		{
+			if($('#projectBtcode').parent().find('.help-block').text()!="allow")
 			{
-				alert("添加成功");
-			},
-			error:function(data,status)
-			{
-				alert("server error!")
+				alert("无权提交");
+				return;
 			}
-		});
-		
+			$.ajax({
+						url: "business/addSowRecordInfo.do",
+						type: "post",	
+						data:{
+							"projectBtcode":project_btCode,
+							"sowtime":sowTime,
+							"sowsegBtcode":sowSeg_btCode,
+							"sowlocation":sowLocation,
+							"productname":productName,
+							"seedsource":seedSource,
+							"sownum":sowNum,
+							"grower":grower,
+							"comment":comment	
+						},
+						success:function(data,status)
+						{
+							alert("添加成功");
+						},
+						error:function(data,status)
+						{
+							alert("server error!");
+						}
+					});
+		}
 	});
 	
 	

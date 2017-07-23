@@ -8,6 +8,37 @@ package com.cbt.utils;
 public class PathConfig {	
 	private String  localPath;
 	private String businessLogoPath;
+	private String emailNum;
+	private String emailPwd;
+	private String emailSubject;
+	private String emailLink;
+	
+	
+	
+	public String getEmailNum() {
+		return emailNum;
+	}
+	public void setEmailNum(String emailNum) {
+		this.emailNum = emailNum;
+	}
+	public String getEmailPwd() {
+		return emailPwd;
+	}
+	public void setEmailPwd(String emailPwd) {
+		this.emailPwd = emailPwd;
+	}
+	public String getEmailSubject() {
+		return emailSubject;
+	}
+	public void setEmailSubject(String emailSubject) {
+		this.emailSubject = emailSubject;
+	}
+	public String getEmailLink() {
+		return emailLink;
+	}
+	public void setEmailLink(String emailLink) {
+		this.emailLink = emailLink;
+	}
 	public String getLocalPath() 
 	{
 		return localPath;
