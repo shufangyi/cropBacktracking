@@ -87,6 +87,7 @@ $(document).ready(function(){
 	//验证表单数据，获取表单内ring没处理数据，提交后台
 	$('#submit').click(function()
 	{
+		
 		var roleName = $('#rolename').val();
 		var roleDesc = $('#Comment').summernote('code');
 		var roleAuthority="";
@@ -101,26 +102,31 @@ $(document).ready(function(){
 			对数据进行验证
 		*/
 		
-		
-		
-		//提交哦数据
-		$.ajax({
-			type: 'post',
-			url: '../addRole.do',
-			data: {
-				"roleName":roleName,
-				"roleDesc":roleDesc,
-				"roleAuthority":roleAuthority
-			},
-			success: function(data,status)
-			{
-				alert("提交成功");
-			},
-			error: function(status)
-			{
-				alert(status);
-			}
-		});	
+		if(roleName==""||roleDesc==""||roleAuthority=="")
+		{
+			alert("表单信息不完整");
+		}
+		else
+		{
+			//提交哦数据
+			$.ajax({
+				type: 'post',
+				url: '../addRole.do',
+				data: {
+					"roleName":roleName,
+					"roleDesc":roleDesc,
+					"roleAuthority":roleAuthority
+				},
+				success: function(data,status)
+				{
+					alert("提交成功");
+				},
+				error: function(status)
+				{
+					alert(status);
+				}
+			});	
+		}	
 	});	
 });
 </script>

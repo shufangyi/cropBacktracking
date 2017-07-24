@@ -94,4 +94,10 @@ public class WorkerInfoServiceImpl implements WorkerInfoService{
 			return true;
 		return false;
 	}
+
+	@Override
+	public WorkerInfo getWorkerInfoByWorkerId(int workerId) {
+		// TODO Auto-generated method stub
+		return workerInfoMapper.getWorkerInfoByWorkerId(workerId);
+	}
 }

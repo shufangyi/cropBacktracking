@@ -14,6 +14,14 @@
 <link rel="stylesheet" href="./css/register.css">
 <link rel='stylesheet' href="./css/animate.min.css">
 <link rel="stylesheet" href="./css/notification.css">
+<style>
+input[type=file]:focus, input[type=checkbox]:focus, input[type=radio]:focus,
+	input[type=button]:focus {
+	outline: none;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+    outline: none;
+</style>
 </head>
 
 <body>
@@ -58,8 +66,8 @@
 							<label class="control-label" for="userEnterprise"><span
 								class="need">*</span> 企业名: </label>
 							<div class="controls inline">
-								<input id="managerName" name="managerName"
-									placeholder="真实姓名" class="input-xlarge">
+								<input id="managerName" name="managerName" placeholder="真实姓名"
+									class="input-xlarge">
 								<p class="help-block"></p>
 							</div>
 						</div>
@@ -152,6 +160,8 @@
 			$("#regist").css('min-height', $(window).height());
 
 			var verifyCode = new GVerify("v_container");
+			var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+			var mobile = /^((13[0-9]{1})|159|153)+\d{8}$/;
 			$('#registBtn')
 					.bind(
 							'click',
@@ -178,6 +188,18 @@
 													"两次填写的密码不同，请重新确认！;( ！",
 													"./assets/cat.jpg",
 													"flipInX", 2);
+										} else if (!myreg.test($("#userEmail")
+												.val())) {
+											Notification.create("Notification",
+													"请输入正确的邮箱！;( ！",
+													"./assets/cat.jpg",
+													"flipInX", 2);
+										} else if (!mobile.test($("#userPhone")
+												.val())) {
+											Notification.create("Notification",
+													"请输入正确的手机号！;( ！",
+													"./assets/cat.jpg",
+													"flipInX", 2);
 										} else {
 											$
 													.ajax({
@@ -190,7 +212,7 @@
 															"managerName" : $(
 																	"#managerName")
 																	.val(),
-															
+
 															"managerNum" : $(
 																	"#userName")
 																	.val(),
@@ -205,18 +227,17 @@
 																	.val()
 														},
 														success : function(data) {
-															
-															if(data == "exist")
-															{
+
+															if (data == "exist") {
 																Notification
-																.create(
-																		"Notification",
-																		"用户名已存在,请重新输入注册用户名 ！",
-																		"./assets/cat.jpg",
-																		"flipInX",
-																		2);
+																		.create(
+																				"Notification",
+																				"用户名已存在,请重新输入注册用户名 ！",
+																				"./assets/cat.jpg",
+																				"flipInX",
+																				2);
 															}
-															
+
 															if (data == "true") {
 																Notification
 																		.create(
@@ -225,6 +246,28 @@
 																				"./assets/cat.jpg",
 																				"flipInX",
 																				2);
+																$(
+																		"#userEnterprise")
+																		.val("");
+																$(
+																		"#managerName")
+																		.val("");
+																$("#userName")
+																		.val("");
+																$("#userEmail")
+																		.val("");
+																$("#userPhone")
+																		.val("");
+																$('#code_input')
+																		.val("");
+																$(
+																		"#passwordinput-1")
+																		.val("");
+																$(
+																		"#passwordinput-2")
+																		.val("");
+																$("#code_input")
+																		.val("");
 															} else {
 																Notification
 																		.create(

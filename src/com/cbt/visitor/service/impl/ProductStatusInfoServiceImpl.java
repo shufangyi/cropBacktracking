@@ -1,5 +1,8 @@
 package com.cbt.visitor.service.impl;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,5 +58,26 @@ public class ProductStatusInfoServiceImpl implements ProductStatusInfoService {
 		if(c>=0)
 			mark=true;
 		return mark;
+	}
+	@Override
+	public HashMap<String,Integer> getData(String businessId) {
+		// TODO Auto-generated method stub
+		List<ProductStatusInfo> list = productStatusInfoMapper.getData(businessId);
+		HashMap<String,Integer> map = new HashMap<String,Integer>(); 
+		for(int i = 0 ; i < list.size();i++)
+		{
+			String key = list.get(i).getProduct_btCode();
+			key = key.substring(0, 9);
+			int value = list.get(i).getQueryTimes();
+			if(map.get(key)==null)
+			{
+				map.put(key,value);
+			}
+			else
+			{
+				map.put(key, map.get(key)+value);
+			}
+		}
+		return map;
 	}
 }

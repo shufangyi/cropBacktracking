@@ -210,4 +210,13 @@ public class VisitorQueryController
 		return productStatusInfoService.checkProductBtcode(productBtcode).toString();
 	}
 	
+	@RequestMapping("getData.do")
+	public @ResponseBody ModelMap getData(String businessId)
+	{
+		ModelMap model = new ModelMap();
+		HashMap<String,Integer> map = productStatusInfoService.getData(businessId);
+		model.addAttribute("map", map);
+		return model;
+	}
+	
 }

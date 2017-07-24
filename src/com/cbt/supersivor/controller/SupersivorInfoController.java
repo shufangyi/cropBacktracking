@@ -36,18 +36,18 @@ public class SupersivorInfoController
 	
 	
 	@RequestMapping("login.do")
-	public String login(SupersivorInfo info,HttpSession session,Model model)
+	public @ResponseBody String login(SupersivorInfo info,HttpSession session,Model model)
 	{
 		System.out.println(info.getSupersivorNum());
 		session.setAttribute("user", info);
 		info = supersivorInfoService.getSupersivorInfo(info);
 		if(info==null)
 		{
-			return "supersivor/login.html";
+			return "2";
 		}
 		//System.out.println(info.getSupersivorNum());
 		//session.setAttribute("user", info);
-		return "supersivor/supersivor.jsp";
+		return "0";
 	}
 	
 	

@@ -112,7 +112,8 @@
 			var v_code = this.options.code.toLowerCase();
 			// console.log(v_code);
 			if(code == v_code){
-				return true;
+				this.refresh();
+				return true;	
 			}else{
 				this.refresh();
 				return false;

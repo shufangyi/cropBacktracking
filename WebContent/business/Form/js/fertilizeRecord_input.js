@@ -39,7 +39,7 @@ $(document).ready(function(){
 		var fertilizetime=$('#FertilizeTime').val();
 		var fertilizernum=$('#FertilizerNum').val();
 		var fertilizerfrequency=$('#FertilizerFrequency').val();
-		var grower=$('#grower').text();
+		var grower=$('#grower').val();
 		var comment= $('#Comment').summernote('code');
 		if(sowsegBtcode==""||fertilizername==""||fertilizetime==""||fertilizernum==""||
 				fertilizerfrequency==""||grower==""||comment==""){
@@ -54,7 +54,7 @@ $(document).ready(function(){
 				data:{
 					"sowsegBtcode":sowsegBtcode,
 					"fertilizername":fertilizername,
-					"fertilizetime":fertilizetime,
+					"fertilizertime":fertilizetime,
 					"fertilizernum":fertilizernum,
 					"fertilizerfrequency":fertilizerfrequency,
 					"grower":grower,

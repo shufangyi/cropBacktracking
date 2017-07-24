@@ -82,7 +82,7 @@
     							data:{id:"1"},
     							success:function(data)
     							{
-    								alert(data);
+    								//alert(data);
     								window.top.location="system/login.html";
     								
     							},

@@ -247,5 +247,9 @@
   order by id
   </select>
   
+  <select id="queryByOrderNum" parameterType="String" resultMap="copackrecordinfomap">
+  select * from cropBacktracking.copackRecord
+  where orderNum=#{ordernum}
+  </select>
   
 </mapper>

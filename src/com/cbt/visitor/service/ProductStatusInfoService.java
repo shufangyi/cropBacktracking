@@ -1,5 +1,8 @@
 package com.cbt.visitor.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.cbt.visitor.po.ProductStatusInfo;
@@ -26,5 +29,7 @@ public interface ProductStatusInfoService {
 	
 	
 	public Boolean checkProductBtcode(String productBtcode);
+	
+	public HashMap<String,Integer> getData(String businessId);
 
 }

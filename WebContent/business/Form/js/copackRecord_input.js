@@ -30,7 +30,7 @@ $(document).ready(function(){
 			{
 				var time = $(this).val();
 				var code = time[5]+time[6]+time[8]+time[9];
-				$('#product_btCode').val($('#sowSeg_btCode').val()+code);
+				$('#product_btCode').val($('#checkInSeg_btCode').val()+code);
 			}		
 	);
 	/*

@@ -1,210 +1,215 @@
-
-body{
-    background-color: #f9f9f9;
+body {
+	background-color: #f9f9f9;
 }
 /*topFrame*/
 /*宝宝人*/
 .btn-group {
-    position: absolute;
+	position: absolute;
 }
-.btn-group button{
-    font-size: 16px;
-    margin: auto;
-    top: 6px;
+
+.btn-group button {
+	font-size: 16px;
+	margin: auto;
+	top: 6px;
 }
 
 /*logo*/
-.navbar-header a{
-    position: relative;
-    margin-top: -18px;
+.navbar-header a {
+	position: relative;
+	margin-top: -18px;
 }
-.navbar-header a img{
-    width: 45px;
+
+.navbar-header a img {
+	width: 45px;
 }
+
 .navbar-header {
-    display: inline-block;
-    white-space: nowrap;
+	display: inline-block;
+	white-space: nowrap;
 }
+
 .navbar-brand-name {
-    display: inline-block;
-    font-size: 20px;
-    position:relative;
-    margin-left: 50px;
-    top: -45px;
+	display: inline-block;
+	font-size: 20px;
+	position: relative;
+	margin-left: 50px;
+	top: -45px;
 }
 
-
-.title{
-    height: 300px;
-    width: 100%;
-    margin-top: 52px;
-    padding-top: 80px;
-    
-
+.title {
+	height: 300px;
+	width: 100%;
+	margin-top: 52px;
+	padding-top: 80px;
 }
-
-
 
 /*container*/
-.container{
-    /*margin-top: 60px;*/
-}
-.container a{
-    text-decoration: none;
-    color: #333333;
-}
-.comlist{
-    background-color: white;
-    border: lightgrey 1px solid;
-    border-radius: 7px;
-
-    margin-top: 2%;
-
-    width: 100%;
+.container {
+	/*margin-top: 60px;*/
+	
 }
 
-.comlist h2{
-    font-weight: 200;
-    margin-left: 2%;
+.container a {
+	text-decoration: none;
+	color: #333333;
 }
+
+.comlist {
+	background-color: white;
+	border: lightgrey 1px solid;
+	border-radius: 7px;
+	margin-top: 2%;
+	width: 100%;
+}
+
+.comlist h2 {
+	font-weight: 200;
+	margin-left: 2%;
+}
+
 .com-card {
-    margin-left: 2%;
-    height: 100%;
-}
-.com-content{
-    height: 100%;
-}
-.com-card .com-pic{
-    display: block;
-    float: left;
-    width: 30%;
-    height: 70%;
-    border-radius: 7px;
-    overflow: hidden;
-}
-.com-card .com-pic img{
-    width: 100%;
-    height: 100%;
-}
-.com-card .com-pic img:hover{
-    -webkit-transition: 0.6s;
-    -moz-transition: 0.6s;
-    -ms-transition: 0.6s;
-    -o-transition: 0.6s;
-    transition: 0.6s;
-    -webkit-transform: scale(1.2,1.2);
-    -moz-transform: scale(1.2,1.2);
-    -ms-transform: scale(1.2,1.2);
-    -o-transform: scale(1.2,1.2);
-    transform: scale(1.2,1.2);
-}
-.com-card .com-p{
-    display: block;
-    float: right;
-    width: 65%;
-    margin-right: 2%;
-
-    font-weight: 300;
-    font-size: 16px;
-}
-.com-icon{
-    font-size: 14px;
-    text-decoration: none;
-    margin-right: 2%;
-    margin-top: -5%;
-    float: right;
-}
-.com-icon .com-url{
-    border: #ff8b7a 1px solid;
-    border-radius: 3px;
-    color:  #ff8b7a;
-}
-.com-icon .com-phone{
-    border: #00d990 1px solid;
-    border-radius: 3px;
-    color: #00d990;
-}
-.com-icon .com-email{
-    border: #ffba3e 1px solid;
-    border-radius: 3px;
-    color: #ffba3e;
+	margin-left: 2%;
+	height: 100%;
 }
 
-.comlist:hover{
-    box-shadow:1px 1px 1px 1px rgba(106, 106, 106, 0.35);
+.com-content {
+	height: 220px;
 }
 
-.clear:after{
-    content: ".";
-    display: block;
-    clear: both;
-    visibility: hidden;
+.com-card .com-pic {
+	display: block;
+	float: left;
+	width: 35%;
+	height: auto;
+	max-height: 80%;
+	border-radius: 7px;
+	overflow: hidden;
 }
 
+.com-card .com-pic img {
+	width: 100%;
+	height: 100%;
+}
+
+.com-card .com-pic img:hover {
+	-webkit-transition: 0.6s;
+	-moz-transition: 0.6s;
+	-ms-transition: 0.6s;
+	-o-transition: 0.6s;
+	transition: 0.6s;
+	-webkit-transform: scale(1.2, 1.2);
+	-moz-transform: scale(1.2, 1.2);
+	-ms-transform: scale(1.2, 1.2);
+	-o-transform: scale(1.2, 1.2);
+	transform: scale(1.2, 1.2);
+}
+
+.com-card .com-p {
+	display: block;
+	float: right;
+	width: 60%;
+	margin-right: 2%;
+	font-weight: 300;
+	font-size: 16px;
+}
+
+.com-icon {
+	font-size: 14px;
+	text-decoration: none;
+	margin-right: 2%;
+	margin-top: -6%;
+	float: right;
+}
+
+.com-icon .com-url {
+	border: #ff8b7a 1px solid;
+	border-radius: 3px;
+	color: #ff8b7a;
+}
+
+.com-icon .com-phone {
+	border: #00d990 1px solid;
+	border-radius: 3px;
+	color: #00d990;
+}
+
+.com-icon .com-email {
+	border: #ffba3e 1px solid;
+	border-radius: 3px;
+	color: #ffba3e;
+}
+
+.comlist:hover {
+	box-shadow: 1px 1px 1px 1px rgba(106, 106, 106, 0.35);
+}
+
+.clear:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+}
 
 /*侧边栏小按钮*/
-.sorted{
-    position: fixed;
-    right: 20px;
-    bottom: 30px;
-    background: rgba(255, 255, 255, 0.7);
+.sorted {
+	position: fixed;
+	right: 20px;
+	bottom: 30px;
+	background: rgba(255, 255, 255, 0.7);
 }
-
-
 
 /**
 修改密码
 */
-
 #changeInfo {
-    position: fixed;
-    top: 120px;
-    left: -100%;
-    border: 1px solid #444;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    width: 400px;
-    height: 400px;
-    background: white;
-    padding: 15px 20px;
-    z-index: 999;
+	position: fixed;
+	top: 120px;
+	left: -100%;
+	border: 1px solid #444;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width: 400px;
+	height: 400px;
+	background: white;
+	padding: 15px 20px;
+	z-index: 999;
 }
 
-#changeInfo>form{
-    padding: 10px;
+#changeInfo>form {
+	padding: 10px;
 }
 
-#changeInfo .need{
-    color: red;
-}
-#changeInfo .control-group{
-    margin: 15px;
-    padding: 5px 10px;
-    letter-spacing: 2px;
-}
-#changeInfo .control-group>label,
-#changeInfo .control-group>div{
-    display: inline-block;
+#changeInfo .need {
+	color: red;
 }
 
-#changeInfo .control-group div.btns{
-    width:100%;
-    text-align: center;
+#changeInfo .control-group {
+	margin: 15px;
+	padding: 5px 10px;
+	letter-spacing: 2px;
 }
 
-#changeInfo .control-group div.btns button:first-child{
-    margin-right: 30px;
+#changeInfo .control-group>label, #changeInfo .control-group>div {
+	display: inline-block;
+}
+
+#changeInfo .control-group div.btns {
+	width: 100%;
+	text-align: center;
+}
+
+#changeInfo .control-group div.btns button:first-child {
+	margin-right: 30px;
 }
 
 #mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.6);
-    width: 100%;
-    height: 100%;
-    display: none;
-    z-index: 100;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.6);
+	width: 100%;
+	height: 100%;
+	display: none;
+	z-index: 100;
 }
-

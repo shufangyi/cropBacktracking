@@ -33,7 +33,7 @@
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
                         <li><a onclick="return false" onclick="return false" class="useful" href="./manager/plans.html">计划列表</a></li>
                         <li><a onclick="return false" class="useful" href="./manager/newplan.html">新建计划</a></li>
-                        <li><a onclick="return false" class="useful" href="./manager/pic.html">溯源</a></li>
+                        <li><a onclick="return false" class="useful" href="./manager/pic.html">发布管理</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -88,6 +88,14 @@
                     <ul class="dropdown-menu" role="menu">
                         <!--<li class="dropdown-header">Dropdown heading</li>-->
                         <li><a onclick="return false" class="useful" href="./manager/businessInfo.html"> 企业信息维护</a></li>
+                    </ul>
+                </li>
+                
+                 <li class="dropdown">
+                    <a onclick="return false" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i>数据统计  <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <!--<li class="dropdown-header">Dropdown heading</li>-->
+                        <li><a onclick="return false" class="useful" href="./manager/dataAnalyse.html"> 溯源统计</a></li>
                     </ul>
                 </li>
 

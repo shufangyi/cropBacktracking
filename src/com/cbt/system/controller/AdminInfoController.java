@@ -82,7 +82,7 @@ public class AdminInfoController {
 	 * 用户登录
 	 */
 	@RequestMapping("login.do")
-	public String login(AdminInfo admin,HttpSession session,Model model)
+	public @ResponseBody String login(AdminInfo admin,HttpSession session,Model model)
 	{
 		System.out.println(admin.toString());
 		//获取到登录信息
@@ -96,12 +96,12 @@ public class AdminInfoController {
 			AdminInfo adminInfo = adminInfoService.getAdminInfo(admin);
 			if(adminInfo==null)
 			{
-				return "system/login.html";
+				return "2";
 			}
 			else
 			{
 				session.setAttribute("admin", admin);
-				return "system/admin.jsp";
+				return "0";
 			}
 		}
 

@@ -90,7 +90,7 @@ $(function ()
     function insertData(data)
     {
     	var output = "";
-    	alert(data.Info.length);
+    	//alert(data.Info.length);
     	var len = data.Info.length;
     	for(var i=0;i<len;i++)
     	{
@@ -122,7 +122,7 @@ $(function ()
     		output+="</ul></div></div></div>";
     		//alert(output);
     	}
-    	alert(output);
+    	//alert(output);
     	$('#box').append(output);
     }
     //js正则解析获取url参数

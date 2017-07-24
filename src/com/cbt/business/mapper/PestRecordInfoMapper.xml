@@ -28,9 +28,9 @@
    <!--插入一条数据  -->
    <insert id="addPestRecordInfo"  parameterType="com.cbt.business.po.PestRecordInfo">
    	insert into pestrecord
-   	(sowSeg_btCode,pestType,medicationName,medicationRatio,medicationDosage,result,comment,grower)
+   	(sowSeg_btCode,pestType,medicationName,medicationRatio,medicationDosage,result,comment,grower,sprayTime)
    	values
-   	(#{sowsegBtcode},#{pesttype},#{medicationname},#{medicationratio},#{medicationdosage},#{result},#{comment},#{grower})
+   	(#{sowsegBtcode},#{pesttype},#{medicationname},#{medicationratio},#{medicationdosage},#{result},#{comment},#{grower},#{sprayTime})
    </insert>
   
   <!--根据id删除一条数据 -->

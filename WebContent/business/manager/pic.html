@@ -19,6 +19,22 @@
 	<script type="text/javascript" src="../../plugs/editable/bootstrap-table-editable.js"></script>
 	<script src="../js/uploadPreview.js" type="text/javascript"></script>
 	<script src="https://cdn.bootcss.com/jquery.form/4.2.1/jquery.form.js"></script>
+	<style>
+		input[type=file]:focus, input[type=checkbox]:focus, input[type=radio]:focus {
+    		outline: none;
+    	}
+		#imgShow1,#imgShow2,#imgShow3,#imgShow4,#imgShow5{
+			min-height:120px;
+			max-height:240px;
+			width:auto;
+		}
+		#picTit{
+			    font-size: 21px;
+			    border-bottom: 1px solid #ccc;
+    			padding: 2px;
+   				padding-top: 9px;
+		}
+	</style>
 </head>
 <body>
 <!--查询列表-->
@@ -26,7 +42,7 @@
 			<div class="row">
 				<!-- 表格 
 				 <div id="toolbar">
-        			<button value="删除" id="delete">删除</button>
+        			<button  value="删除" id="delete">删除</button>
 				</div>
 				-->
 				<div class="col-xs-12">
@@ -37,7 +53,7 @@
 <!-- 图片上传和预览 -->
 <div id="pic">
 		<div class="closepic">
-		<button id="close">关闭</button>
+		<button class="btn btn-danger" id="close">关闭</button>
 		</div>
         <form class="form-horizontal" id="pic_form" method="post" enctype="multipart/form-data" >
             <fieldset>
@@ -53,7 +69,7 @@
                 
                 <!-- upload pic one-->
                 <div class="control-group">
-                    <label class="control-label" for="passwordinput-0"><span class="need">*</span> 上传第一张图片</label>
+                    <label class="control-label" for="up_img1"><span class="need">*</span> 上传第一张图片</label>
                     <div class="controls inline">
                         <input id="up_img1"  type="file" name="img1">
                         <p class="help-block"></p>
@@ -62,7 +78,7 @@
 
                 <!-- upload pic two-->
                 <div class="control-group">
-                    <label class="control-label" for="passwordinput-2"><span class="need">*</span> 上传第二张图片</label>
+                    <label class="control-label" for="up_img2"><span class="need">*</span> 上传第二张图片</label>
                     <div class="controls">
                         <input id="up_img2" name="img2" type="file">
                         <p class="help-block"></p>
@@ -71,7 +87,7 @@
                 
                  <!-- upload pic free-->
                 <div class="control-group">
-                    <label class="control-label" for="passwordinput-2"><span class="need">*</span> 上传第三张图片</label>
+                    <label class="control-label" for="up_img3"><span class="need">*</span> 上传第三张图片</label>
                     <div class="controls">
                         <input id="up_img3" name="img3" type="file">
                         <p class="help-block"></p>
@@ -80,7 +96,7 @@
                 
                  <!-- upload pic four-->
                 <div class="control-group">
-                    <label class="control-label" for="passwordinput-2"><span class="need">*</span> 上传第四张图片</label>
+                    <label class="control-label" for="up_img4"><span class="need">*</span> 上传第四张图片</label>
                     <div class="controls">
                         <input id="up_img4" name="img4" type="file">
                         <p class="help-block"></p>
@@ -89,7 +105,7 @@
                 
                  <!-- upload pic five-->
                 <div class="control-group">
-                    <label class="control-label" for="passwordinput-2"><span class="need">*</span> 上传第五张图片</label>
+                    <label class="control-label" for=up_img5><span class="need">*</span> 上传第五张图片</label>
                     <div class="controls">
                         <input id="up_img5" name="img5" type="file">
                         <p class="help-block"></p>
@@ -99,9 +115,9 @@
                 <!-- Button (Double) -->
                 <div class="control-group">
                     <!--<label class="control-label" for="doublebutton-0">Double Button</label>-->
-                    <div class="controls btns">
-                        <button type="reset" id="doublebutton-0" name="doublebutton-0" class="btn  btn-success"> 重 置 </button>
-                        <button type="button" id="pic_submit" name="doublebutton2-0" class="btn btn-danger"> 提 交 </button>
+                    <div class="controls btns" style="text-align:left">
+                        <!-- <button type="reset" id="doublebutton-0" name="doublebutton-0" class="btn  btn-success"> 重 置 </button>  -->
+                        <button type="button" class="btn btn-success"  id="pic_submit" name="doublebutton2-0" class="btn btn-danger"> 提 交 </button>
                     </div>
                 </div>
               
@@ -120,12 +136,12 @@
 		</script>
         <div class="picbox">
         <!-- 图片预览区 -->
-        <p>溯源页面上传图片预览</p>
-            <div id="imgdiv1" style="minheight:120px"><img id="imgShow1" width="380" /></div>
-    		<div id="imgdiv2" style="minheight:120px"><img id="imgShow2" width="380" /></div>
-   			 <div id="imgdiv3" style="minheight:120px"><img id="imgShow3" width="380" /></div>
-   			 <div id="imgdiv4" style="minheight:120px"><img id="imgShow4" width="380"  /></div>
-        	 <div id="imgdiv5" style="minheight:120px"><img id="imgShow5" width="380" /></div>
+        <p id="picTit">溯源页面上传图片预览</p>
+            <div id="imgdiv1" ><img id="imgShow1" width="380" /></div>
+    		<div id="imgdiv2" ><img id="imgShow2" width="380" /></div>
+   			 <div id="imgdiv3" ><img id="imgShow3" width="380" /></div>
+   			 <div id="imgdiv4" ><img id="imgShow4" width="380"  /></div>
+        	 <div id="imgdiv5" ><img id="imgShow5" width="380" /></div>
         </div>     
 </div>
 
@@ -133,7 +149,7 @@
 <script>
 
 $('#pic_submit').click(function(){
-	 alert($('#projectCode').val());
+	 //alert($('#projectCode').val());
 	 var name = $("#up_img1").val()+$("#up_img2").val()+$("#up_img3").val()+$("#up_img4").val()+$("#up_img5").val();
 	 if ($.trim(name) == "") { 
 	  	 alert("请选择图片！"); 
@@ -146,11 +162,23 @@ $('#pic_submit').click(function(){
 	//  dataType : 'json',
 	  headers : {"ClientCallMode" : "ajax"}, //添加请求头部
 	  success : function(XMLHttpRequest, textStatus, errorThrown){
-	   alert("前端输出上传成功");
+	   alert("上传成功");
+	   
+	   //成功后清除图片信息
+	   $("#up_img1").val("");
+	   $("#up_img2").val("");
+	   $("#up_img3").val("");
+	   $("#up_img4").val("");
+	   $("#up_img5").val("");
+	   $("#imgdiv1>img").attr("src","");
+	   $("#imgdiv2>img").attr("src","");
+	   $("#imgdiv3>img").attr("src","");
+	   $("#imgdiv4>img").attr("src","");
+	   $("#imgdiv5>img").attr("src","");
 	 //  $("#imgClose").click();
 	  },
 	  error: function(XMLHttpRequest, textStatus, errorThrown) {
-	   	alert("前端输出上传失败"); 
+	   	alert("上传失败"); 
 	  }
 	 };
 	
@@ -168,7 +196,7 @@ $('#pic_submit').click(function(){
 <script>
 		function edit(projectCode)
 		{
-			alert(projectCode);
+			//alert(projectCode);
 			$('#projectCode').val(projectCode);
 			//alert($('#projectCode').val());
 			 var clientWidth = $(window).width();
@@ -230,7 +258,6 @@ $(document).ready(function()
 					queryParamsType:'', 
 		           	queryParams: function queryParams(params)
 			    	{
-		           		alert("hello");
 		             var param = {  
 		                 pageNumber: params.pageNumber,    
 		                 pageSize: params.pageSize,
@@ -255,7 +282,7 @@ $(document).ready(function()
 		           //【设置列属性】
 					columns:
 					 [
-					 {field: 'check',checkbox: true},
+					 //{field: 'check',checkbox: true},
 					 {field: 'project_btCode',title: '项目id'}, 	
 					 {field: 'planName',title: '项目名称'},	 
 					 {field: 'action',title: '操作',

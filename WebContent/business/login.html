@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="login.do" method="post" class="login-form">
+                            <form role="form" class="login-form">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-username">userNum</label>
                                     <input type="text" name="userNum" placeholder="Username..." class="form-username form-control" id="form-username">
@@ -62,11 +62,11 @@
                                     <input type="password" name="userPwd" placeholder="Password..." class="form-password form-control" id="form-password">
                                 </div>
                                  <div class="form-group">
-                                    <label class="sr-only" for="form-password">userType</label>
+                                    <label class="sr-only" for="form-type">userType</label>
                                     <input type="radio" name="userType" value="0">超级用户
                                     <input type="radio" name="userType" value="1">普通用户
                                 </div>
-                                <button type="submit" class="btn">Sign in!</button>
+                                <button type="submit" id="submit" class="btn">Sign in!</button>
                             </form>
                         </div>
                     </div>
@@ -83,5 +83,44 @@
     <script src="https://cdn.bootcss.com/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
     <script src="./js/login.js"></script>
 </body>
+<script>
+$(document).ready(function(){
+	$('#submit').click(function(){
+		var userNum = $('#form-username').val();
+		var userPwd = $('#form-password').val();
+		var userType = $('input:checked').val();
+		$.ajax({
+			type: "post",
+			url: "login.do",
+			data:{
+				"userNum":userNum,
+				"userPwd":userPwd,
+				"userType":userType
+			},
+			success:function(data,status)
+			{
+				switch (data)
+				{
+					case "0":
+						window.location="manager.jsp";
+						break;
+					case "1":
+						window.location="gerneral.jsp";
+						break;
+					case "2":
+						alert("账号或者密码错误");
+				}
+			},
+			error:function(status)
+			{
+				alert("server error！");
+			}
+		})
+		
+		
+	});
+	
+});
 
+</script>
 </html>

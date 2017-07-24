@@ -38,7 +38,6 @@ public class WorkerInfoController
 			model.addAttribute("list", list);
 			return model;
 		}
-		System.out.println("ddddddddddd");
 		return model;
 	}
 	
@@ -83,9 +82,7 @@ public class WorkerInfoController
 		return mark.toString();
 	}
 	
-	
-
-	
+		
 	@RequestMapping("updateWorkerPwd.do")
 	public @ResponseBody String updateWorkerPwd(String workerNum,String workerOldPwd,String workerNewPwd)
 	{

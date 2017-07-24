@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>二维码扫描次数</title>
+    <script type="text/javascript" src="../../plugs/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.6.2/echarts.min.js"></script>
+    <style>
+        #main{
+            margin: 40px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+    $(document).ready(function(){
+    		var businessId = $(window.parent.parent.frames["topFrame"].document).find('#businessId').text();
+          
+        	$.ajax({
+        		type:"post",
+        		url: "../../visitor/getData.do",
+        		data:{"businessId":businessId},
+        		success: function(data,status){
+        			fillEchart(data);
+        		},
+        		error: function(status){
+        			
+        		}
+        	});
+			function fillEchart(data)
+			{
+					var map = data.map;
+					var myChart = echarts.init(document.getElementById('main'));
+		            var xdata = new Array();
+		            var ydata = new Array();
+		            for(var key in map)
+		            {
+		            	xdata.push(key);
+		            	ydata.push(map[key]);
+		            }
+		            // 指定图表的配置项和数据
+		            option = {
+		                title:{
+		                    text:"各产品查询次数",
+		                    textAlign:"left",
+		                    right:"40%"
+		                },
+		                color: ['#3398DB'],
+		                tooltip: {
+		                    trigger: 'axis',
+		                    axisPointer: { // 坐标轴指示器，坐标轴触发有效
+		                        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+		                    }
+		                },
+		                grid: {
+		                    left: '3%',
+		                    right: '4%',
+		                    bottom: '3%',
+		                    containLabel: true
+		                },
+		                xAxis: [{
+		                    type: 'category',
+		                    data: xdata,
+		                    axisTick: {
+		                        alignWithLabel: true
+		                    }
+		                }],
+		                yAxis: [{
+		                    type: 'value'
+		                }],
+		                series: [{
+		                    name: '访问次数',
+		                    type: 'bar',
+		                    barWidth: '60%',
+		                    data: ydata
+		                }]
+		            };
+
+		            // 使用刚指定的配置项和数据显示图表。
+		            myChart.setOption(option);
+			}
+           
+    });
+      
+        
+        
+        
+        
+    
+    </script>
+</body>
+
+</html>

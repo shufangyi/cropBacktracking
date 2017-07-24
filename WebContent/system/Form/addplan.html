@@ -92,33 +92,37 @@ $(document).ready(function(){
 		event.preventDefault();
 		var planName = $('#templateName').val();
 		var planDesc = $('#Comment').summernote('code');
-		
-		//alert(planName);
-		alert(planDesc);
 		var planUnit="";
 		$("#permissions:checked").each(function(index,element)
 		{
 			planUnit+=$(element).val()+":";
 		});
-		//alert(planUnit)
-		//提交数据
-		$.ajax({
-			type: 'post',
-			url: '../addProductPlanInfo.do',
-			data: {
-				"planName":planName,
-				"planDesc":planDesc,
-				"planUnit":planUnit
-			},
-			success: function(data,status)
-			{
-				alert("提交成功");
-			},
-			error: function(status)
-			{
-				alert(status);
-			}
-		});
+
+		if(planName==""||planDesc==""||planUnit=="")
+		{
+			alert("表单信息不完整");
+		}
+		else
+		{
+			//提交数据
+			$.ajax({
+				type: 'post',
+				url: '../addProductPlanInfo.do',
+				data: {
+					"planName":planName,
+					"planDesc":planDesc,
+					"planUnit":planUnit
+				},
+				success: function(data,status)
+				{
+					alert("提交成功");
+				},
+				error: function(status)
+				{
+					alert(status);
+				}
+			});		
+		}
 	});
 });
 </script>

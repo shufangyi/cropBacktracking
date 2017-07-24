@@ -3,9 +3,9 @@
 <mapper namespace="com.cbt.visitor.mapper.ProductStatusInfoMapper" >
   <resultMap id="BaseResultMap" type="com.cbt.visitor.po.ProductStatusInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="product_btCode" property="productBtcode" jdbcType="VARCHAR" />
-    <result column="publicStatus" property="publicstatus" jdbcType="INTEGER" />
-    <result column="queryTimes" property="querytimes" jdbcType="INTEGER" />
+    <result column="product_btCode" property="product_btCode" jdbcType="VARCHAR" />
+    <result column="publicStatus" property="publicStatus" jdbcType="INTEGER" />
+    <result column="queryTimes" property="queryTimes" jdbcType="INTEGER" />
   </resultMap>
   
   <!-- 插入新的数据 -->
@@ -51,5 +51,10 @@
   where product_btCode=#{product_btCode}
   </select>
   
+  
+  <select id="getData" parameterType="String" resultMap="BaseResultMap">
+  select * from cropBacktracking.productStatusInfo
+  where product_btCode like '${value}%'
+  </select>
   
 </mapper>

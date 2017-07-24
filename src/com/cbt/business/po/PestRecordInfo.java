@@ -1,6 +1,6 @@
 package com.cbt.business.po;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class PestRecordInfo {
     private Integer id;

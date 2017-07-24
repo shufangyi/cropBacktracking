@@ -57,6 +57,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	
  	
+ 	<select id="getWorkerInfoByWorkerId" parameterType="java.lang.Integer" resultMap="workerinfomap" >
+ 		 select * from workerinfo where workerId = #{value}
+ 	</select>
+ 	
  	<!-- 根据workerId 查询数据 -->
 	<select id="queryByWorkerId" parameterType="com.cbt.business.po.WorkerInfo" resultType="com.cbt.business.po.WorkerInfo">
 	select * from cropBacktracking.workerInfo
@@ -72,5 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	<update id="updateWorkerPwd" parameterType="com.cbt.business.po.WorkerInfo" >
     	update cropBacktracking.workerInfo set workerPwd = #{workerPwd} where workerNum = #{workerNum}
  	</update>
+ 	
+ 	
 
 </mapper>

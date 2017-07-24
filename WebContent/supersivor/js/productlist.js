@@ -54,8 +54,7 @@ $(document).ready(function () {
                    // "<img src='img/1.png' alt='#'>"+
                     "<div class='product-info'>"+
                     "<h2 class='productname'>"+obj.productName+"</h2>"+
-                  //  "<p>"+obj.projectDesc+"</p>"+
-                    "<p>hhhhhhhhhhhhhhhhhhhhhhhhhhhh</p>"+
+                    "<p>"+obj.projectDesc+"</p>"+
                     "<span class='p-hot'>&nbsp;<span class='glyphicon glyphicon-eye-open'></span>&nbsp;222&nbsp;</span>&nbsp;"+
                     "<span class='p-time'>&nbsp;<span class='glyphicon glyphicon glyphicon-time'></span>&nbsp;2017-07-12&nbsp;</span>"+
                     "</div></div></a></div>";

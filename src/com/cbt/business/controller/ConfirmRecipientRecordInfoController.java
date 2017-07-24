@@ -16,7 +16,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cbt.business.po.BusinessCropProjectInfo;
 import com.cbt.business.po.ConfirmRecipientRecordInfo;
+import com.cbt.business.po.CopackRecordInfo;
 import com.cbt.business.po.DeliverRecordInfo;
 import com.cbt.business.po.WorkerInfo;
 import com.cbt.business.service.BusinessCropProjectInfoService;
@@ -121,15 +123,20 @@ public class ConfirmRecipientRecordInfoController {
 	@ResponseBody
 	public String checkOrderNum(String ordernum,HttpSession session,HttpServletRequest req)throws Exception{
 		String mark="false";
-		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
-		//根据workerNum查找deliverRecord中记录
-		String workerNum=req.getParameter("workerNum");
-		List<ConfirmRecipientRecordInfo> list=confirmRecipientRecordInfoService.queryByDistributorService(workerNum);
+		int workerId= Integer.parseInt(req.getParameter("workerId"));
+		BusinessCropProjectInfo businessCropProjectInfo=new BusinessCropProjectInfo();
+		businessCropProjectInfo.setWorkerId(workerId);
+		List<BusinessCropProjectInfo> list=businessCropProjectInfoService.getBusinessCropProjectInfo(businessCropProjectInfo);
+		//orderNum查询出product_btCode
+		CopackRecordInfo copackRecordInfo_orderNum=new CopackRecordInfo();
+		copackRecordInfo_orderNum.setOrdernum(ordernum);
+		CopackRecordInfo copackRecordInfo=copackRecordInfoService.queryByOrderNumService(copackRecordInfo_orderNum);
+		if(copackRecordInfo==null) return mark;
 		for(int i=0;i<list.size();i++){
-			if(ordernum.equals(list.get(i).getOrdernum())){
+			if(copackRecordInfo.getProductBtcode().substring(0, 9).equals(list.get(i).getProject_btCode())){
 				mark="true";
 				return mark;
-			}		
+			}
 		}
 		return mark;	
 	}

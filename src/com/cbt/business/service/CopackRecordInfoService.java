@@ -33,4 +33,6 @@ public interface CopackRecordInfoService {
 	public int getCopackInfoCount(String projectCode,String searchKey)throws Exception;
 	
 	public List<CopackRecordInfo> getPageCopackInfo(String projectCode,int nowrow,int rows,String searchKey)throws Exception;
+
+	public CopackRecordInfo queryByOrderNumService(CopackRecordInfo copackRecordInfo)throws Exception;
 }

@@ -50,8 +50,8 @@ $(document).ready(function(){
 				url: "business/addConfirmRecipientRecordInfo.do",
 				data:{
 					"ordernum":OrderNum,
-					"receipienttime":receipientTime,
-					"logisticsNum":LogisticsNum,
+					"recipienttime":receipientTime,
+					"logisticsnum":LogisticsNum,
 					"distributor":distributor,
 					"comment":Comment	
 				},

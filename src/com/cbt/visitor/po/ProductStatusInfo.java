@@ -2,6 +2,7 @@ package com.cbt.visitor.po;
 
 public class ProductStatusInfo 
 {
+	private int id;
 	private String product_btCode;
 	private int publicStatus;
 	private int queryTimes;
@@ -24,6 +25,12 @@ public class ProductStatusInfo
 	}
 	public void setQueryTimes(int queryTimes) {
 		this.queryTimes = queryTimes;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 

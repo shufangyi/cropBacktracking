@@ -11,7 +11,7 @@ jQuery(document).ready(function () {
         $(this).removeClass('input-error');
     });
     var i=0;
-    $('.login-form').on('submit', function (e) {
+    $('#submit').on('click', function (e) {
     	$(this).find('input[type="radio"]:checked').each(function () {
     			i=i+1;
         });

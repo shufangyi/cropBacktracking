@@ -54,7 +54,7 @@
                             </div>
                         </div>
                         <div class="form-bottom">
-                            <form role="form" action="login.do" method="post" class="login-form">
+                            <form role="form" class="login-form">
                                 <div class="form-group">
                                     <label class="sr-only" for="form-username">adminNum</label>
                                     <input type="text" name="adminNum" placeholder="Username..." class="form-username form-control" id="form-username">
@@ -63,7 +63,7 @@
                                     <label class="sr-only" for="form-password">adminPwd</label>
                                     <input type="password" name="adminPwd" placeholder="Password..." class="form-password form-control" id="form-password">
                                 </div>
-                                <button type="submit" class="btn">Sign in!</button>
+                                <button type="button" id="submit" class="btn">Sign in!</button>
                             </form>
                         </div>
                     </div>
@@ -79,5 +79,38 @@
     <script src="./js/login.js"></script>
 
 </body>
-
+<script>
+$(document).ready(function(){
+	$('#submit').click(function(){
+		var adminNum = $('#form-username').val();
+		var adminPwd = $('#form-password').val();
+		$.ajax({
+			type: "post",
+			url: "login.do",
+			data:{
+				"adminNum":adminNum,
+				"adminPwd":adminPwd
+			},
+			success:function(data,status)
+			{
+				switch (data)
+				{
+					case "0":
+						window.location="admin.jsp";
+						break;
+					case "2":
+						alert("账号或者密码错误");
+				}
+			},
+			error:function(status)
+			{
+				alert("server error！");
+			}
+		})
+		
+		
+	});
+	
+});
+</script>
 </html>

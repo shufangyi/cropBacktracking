@@ -19,9 +19,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cbt.business.po.BusinessCropProjectInfo;
 import com.cbt.business.po.BusinessProjectPlanInfo;
+import com.cbt.business.po.WorkerInfo;
 import com.cbt.business.service.BusinessCropProjectInfoService;
 import com.cbt.business.service.BusinessProjectPlanInfoService;
+import com.cbt.business.service.WorkerInfoService;
 import com.cbt.system.po.ManagerInfo;
+import com.cbt.system.po.RoleInfo;
+import com.cbt.system.service.RoleInfoService;
 
 @Controller
 
@@ -33,6 +37,12 @@ public class BusinessProjectPlanInfoController
 	
 	@Resource(name="businessCropProjectInfoServiceImpl")
 	private BusinessCropProjectInfoService businessCropProjectInfoService;
+	
+	@Resource(name="workerInfoServiceImpl")
+	private WorkerInfoService workerInfoService;
+	
+	@Resource(name="roleInfoServiceImpl")
+	private RoleInfoService roleInfoService;
 
 	//分页获取计划信息
 	@RequestMapping("getPageBusinessProjectPlan.do")
@@ -76,6 +86,27 @@ public class BusinessProjectPlanInfoController
 		//将人员信息存入BusinessCropProjectInfo
 		//对workerIdsk进行解析
 		String[] workerId=workerIds.split(":");
+		String authorities="";
+		for(int i=0;i<workerId.length;i++)
+		{
+			if(!workerId[i].equals(""))
+			{
+				WorkerInfo winfo = new WorkerInfo();
+				winfo = workerInfoService.getWorkerInfoByWorkerId(Integer.parseInt(workerId[i]));
+				int roleId = winfo.getRoleId();
+				RoleInfo rinfo = new RoleInfo();
+				rinfo = roleInfoService.getRoleAuthority(roleId);
+				authorities+=rinfo.getRoleAuthority();
+			}
+
+		}
+		System.out.println("au::"+authorities);
+		System.out.println("au::"+authorities);
+		if(!(authorities.contains("1")&&authorities.contains("4")&&authorities.contains("5")&&authorities.contains("6")))
+		{
+			return "loss";
+		}
+		
 		for(int i=0;i<workerId.length;i++)
 		{
 			System.out.println(workerId[i]);

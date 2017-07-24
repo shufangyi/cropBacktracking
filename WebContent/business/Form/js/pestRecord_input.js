@@ -4,6 +4,10 @@ $(document).ready(function(){
 		var sowSeg_btCode = $(this).val();
 		var workerId = $(window.parent.parent.frames["topFrame"].document).find('#workerId').text();
 		/*先验证是不是9位数字*/
+		
+		
+		
+		
 		//code
 		$.ajax({
 			type: "post",
@@ -54,8 +58,8 @@ $(document).ready(function(){
 				url: "business/addPestRecordInfo.do",
 				data:{
 					"sowsegBtcode":sowSeg_btCode,
-					"peststype":PestsType,
-					"spraytime":SprayTime,
+					"pesttype":PestsType,
+					"sprayTime":SprayTime,
 					"medicationname":MedicationName,
 					"medicationratio":MedicationRatio,
 					"medicationdosage":MedicationDosage,

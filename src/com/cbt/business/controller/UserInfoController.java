@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.cbt.business.po.BusinessCropProjectInfo;
 import com.cbt.business.po.BusinessInfo;
@@ -55,8 +56,9 @@ public class UserInfoController
 	@Resource(name="businessCropProjectInfoServiceImpl")
 	private BusinessCropProjectInfoService businessCropProjectInfoService;
 	
+
 	@RequestMapping("login.do")
-	public String login(UserInfo user,HttpSession session,Model model)
+	public @ResponseBody String login(UserInfo user,HttpSession session,Model model)
 	{
 		String num = user.getUserNum();
 		String pwd = user.getUserPwd();
@@ -72,11 +74,11 @@ public class UserInfoController
 			{
 				session.setAttribute("managerInfo", manager);
 				//session.setAttribute(num, manager);
-				return "business/manager.jsp";
+				return "0";
 			}
 			else
 			{
-				return "business/login.html";
+				return "2";
 			}	
 		}
 		//普通用户分权限
@@ -117,9 +119,8 @@ public class UserInfoController
 				{
 					authorityIds.add(Integer.parseInt(roles[i]));
 				}
-				/*
-				 * 得到菜单数量
-				 */
+				
+				 
 				List<MenuInfo> list = menuInfoService.getMenuByAuthorityId(authorityIds);
 				System.out.println("menu num "+list.size());
 				for(int i=0;i<list.size();i++)
@@ -127,12 +128,11 @@ public class UserInfoController
 					System.out.println(list.get(i).toString());
 				}
 				session.setAttribute("menus", list);		
-				return "business/gerneral.jsp";
+				return "1";
 			}
 		}
-		return "business/login.html";
+		return "2";
 	}
-	
 	
 	@RequestMapping("logout.do")
 	public @ResponseBody String logout(HttpSession session,String id)

@@ -61,7 +61,7 @@
 				</div>
 			</div>
 </div>
-<script src="../js/buttonStyleCover.js"></script>
+<script src="business/js/buttonStyleCover.js"></script>
 <script src="business/Form/js/fertilizeRecords.js"></script>
 </body>
 </html>

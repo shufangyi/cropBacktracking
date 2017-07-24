@@ -1,5 +1,7 @@
 package com.cbt.visitor.mapper;
 
+import java.util.List;
+
 import com.cbt.visitor.po.ProductStatusInfo;
 
 public interface ProductStatusInfoMapper {
@@ -17,4 +19,6 @@ public interface ProductStatusInfoMapper {
 	
 	public int getProductStatusInfo(String product_btCode);
 
+	
+	public List<ProductStatusInfo> getData(String businessId);
 }

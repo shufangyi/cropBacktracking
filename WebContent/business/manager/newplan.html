@@ -63,39 +63,9 @@
             </div>
             <!-- 动态 -->
         	<div id="box">
+        		<p style="color:red">(提示:指定计划参与人员：必须包含有播种，收获，入库，包装四个环节)</p>
         	</div>
- <!--            <div class="control-group plan" >
-            	<div class='controls' >
-             	<label class='control-label' for='sow'>种植员</label>
-               		 <div class="controls jscheckbox" id="sow">
-                		js动态添加
-          			 </div>
-          		</div>
-          	</div>
-          	<div class="control-group plan" >
-          	 	<div class='controls' >
-             	<label class='control-label' for='check'>质检入库员</label>
-                	 <div class="controls jscheckbox" id="check">
-                		js动态添加
-          			 </div>
-          		</div>
-          	</div>
-          	<div class="control-group plan" >
-          	 	<div class='controls' >
-             	<label class='control-label' for='copack'>加工员</label>
-                	<div class="controls jscheckbox" id="copack">
-                		js动态添加
-          			 </div>
-          		</div>
-          	</div>
-          	<div class="control-group plan" >
-          	 	<div class='controls' >
-             	<label class='control-label' for='sow'>物流员</label>
-                	<div class="controls jscheckbox" id="deliver">
-                		js动态添加
-          			 </div>
-          		</div>
-          	</div> -->
+
 
       		<!-- Textarea -->
             <div class="control-group">
@@ -177,7 +147,7 @@ $(document).ready(function(){
 			var rileName = data.list[i].roleName;
 			if(roleId in roleIds)
 			{
-				alert("hello");	
+				//alert("hello");	
 			}
 			else
 			{
@@ -186,6 +156,8 @@ $(document).ready(function(){
 			}
 			
 		}
+
+		
 		for(var i=0;i<roleIds.length;i++)
 		{
 			var output="<div class='control-group plan' >"+
@@ -232,40 +204,56 @@ $(document).ready(function(){
 		var workerIds = "";
 		$('#box').find('input:radio:checked').each(function()
 		{
-
 			workerIds+=":"+$(this).val();
 		});
 		var comment =  $('#Comment').summernote('code');
 		/*
 			对数据进行验证
 		*/
-		//提交哦数据
-		$.ajax({
-			type: 'post',
-			url: '../addBusinessProjectPlan.do',
-			data: {
-				"planName":planName,
-				"cropCode":cropCode,
-				"productName":productName,
-				"planId":planId,
-				"year":year,				
-/* 				"growerNum":sow,
-				"checkedNum":check,
-				"packingClerkNum":copack,
-				"logiticsNum":deliver, */
-				"projectDesc": comment,
-				"business":businessId,
-				"workerIds":workerIds
-			},
-			success: function(data,status)
-			{
-				alert("提交成功");
-			},
-			error: function(status)
-			{
-				alert(status);
-			}
-		});	
+		
+		if(businessId==""||planName==""||cropCode==""||productName==""||year==""||planId==""||
+				workerIds==""||comment=="")
+		{
+			alert("表单信息不完整！");
+		}
+		else
+		{
+			//提交哦数据
+			$.ajax({
+				type: 'post',
+				url: '../addBusinessProjectPlan.do',
+				data: {
+					"planName":planName,
+					"cropCode":cropCode,
+					"productName":productName,
+					"planId":planId,
+					"year":year,				
+	/* 				"growerNum":sow,
+					"checkedNum":check,
+					"packingClerkNum":copack,
+					"logiticsNum":deliver, */
+					"projectDesc": comment,
+					"business":businessId,
+					"workerIds":workerIds
+				},
+				success: function(data,status)
+				{
+					if(data=="true")
+						alert("提交成功");
+					if(data=="false")
+						alert("提交失败");
+					if(data=="loss")
+						alert("人员权限不能覆盖溯源所需要的环节，请重新选择！");
+				},
+				error: function(status)
+				{
+					alert(status);
+				}
+			});	
+			
+		}
+		
+	
 	});	
 });
 </script>

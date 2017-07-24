@@ -34,4 +34,7 @@ public interface WorkerInfoMapper
 	
 	public int updateWorkerPwd(WorkerInfo info);
 	
+	
+	public WorkerInfo getWorkerInfoByWorkerId(int workerId);
+	
 }

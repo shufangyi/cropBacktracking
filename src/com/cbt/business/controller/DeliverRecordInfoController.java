@@ -121,15 +121,20 @@ public class DeliverRecordInfoController {
 	@ResponseBody
 	public String checkOrderNum(String ordernum,HttpSession session,HttpServletRequest req)throws Exception{
 		String mark="false";
-		//WorkerInfo worker = (WorkerInfo) session.getAttribute("workerInfo");
-		//根据workerNum查找deliverRecord中记录
-		String workerNum=req.getParameter("workerNum");
-		List<DeliverRecordInfo> list=deliverRecordInfoService.queryByLogisticsService(workerNum);
+		int workerId= Integer.parseInt(req.getParameter("workerId"));
+		BusinessCropProjectInfo businessCropProjectInfo=new BusinessCropProjectInfo();
+		businessCropProjectInfo.setWorkerId(workerId);
+		List<BusinessCropProjectInfo> list=businessCropProjectInfoService.getBusinessCropProjectInfo(businessCropProjectInfo);
+		//orderNum查询出product_btCode
+		CopackRecordInfo copackRecordInfo_orderNum=new CopackRecordInfo();
+		copackRecordInfo_orderNum.setOrdernum(ordernum);
+		CopackRecordInfo copackRecordInfo=copackRecordInfoService.queryByOrderNumService(copackRecordInfo_orderNum);
+		if(copackRecordInfo==null) return mark;
 		for(int i=0;i<list.size();i++){
-			if(ordernum.equals(list.get(i).getOrdernum())){
+			if(copackRecordInfo.getProductBtcode().substring(0, 9).equals(list.get(i).getProject_btCode())){
 				mark="true";
 				return mark;
-			}		
+			}
 		}
 		return mark;
 		

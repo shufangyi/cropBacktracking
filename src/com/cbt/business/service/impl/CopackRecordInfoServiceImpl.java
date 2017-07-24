@@ -122,5 +122,11 @@ public class CopackRecordInfoServiceImpl implements CopackRecordInfoService {
 	}
 
 	
+	@Override
+	public CopackRecordInfo queryByOrderNumService(CopackRecordInfo copackRecordInfo) throws Exception {
+		return copackRecordInfoMapper.queryByOrderNum(copackRecordInfo);
+	}
+
+	
 
 }

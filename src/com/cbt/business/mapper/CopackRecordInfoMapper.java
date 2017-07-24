@@ -32,4 +32,6 @@ public interface CopackRecordInfoMapper {
 	public int getCopackInfoCount(Map<String, Object> map)throws Exception;
 	
 	public List<CopackRecordInfo> getPageCopackInfo(Map<String, Object> map)throws Exception;
+	
+	public CopackRecordInfo queryByOrderNum(CopackRecordInfo copackRecordInfo)throws Exception;
 }
