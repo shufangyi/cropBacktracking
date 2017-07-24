@@ -12,7 +12,7 @@
 <head>
 	<base href="<%=basePath%>">
     <meta charset="UTF-8">
-    <title>二维码</title>
+    <title>后台管理</title>
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="system/css/frame.css">

@@ -3,7 +3,7 @@ $(document).ready(function(){
 	$('#OrderNum').blur(function(){
 		var OrderNum = $(this).val();
 		var workerId = $(window.parent.parent.frames["topFrame"].document).find('#workerId').text();
-		/*先验证是不是9位数字*/
+		var businessId = $(window.parent.parent.frames["topFrame"].document).find('#businessId').text();
 		//code
 		$.ajax({
 			type: "post",
@@ -13,11 +13,13 @@ $(document).ready(function(){
 			{
 				if(data=="true")
 				{
-					$('#OrderNum').parent().find('.help-block').text("correct");
+					$('#OrderNum').parent().find('.help-block').text("allow");
+					$('#OrderNum').parent().find('.help-block').css("color","green");
 				}
 				else
 				{
-					$('#OrderNum').parent().find('.help-block').text("无权限");
+					$('#OrderNum').parent().find('.help-block').text("forbidden");
+					$('#OrderNum').parent().find('.help-block').css("color","red");
 				}
 			},
 			error:function(data,status)
@@ -49,6 +51,13 @@ $(document).ready(function(){
 		}
 		else
 		{
+			
+			if($('#OrderNum').parent().find('.help-block').text()!="allow")
+			{
+				alert("无权提交")
+				return;
+			}
+			
 			$.ajax({
 				type: "post",
 				url: "business/addDeliverRecordInfo.do",

@@ -17,11 +17,11 @@
 				cache: false,
 				height: 600,
 				striped: true,
-				search: true,
-				showExport: true,
-				showColumns: true,
-				exportTypes: ['csv','txt','xml'],
-				search: true,
+				//search: true,
+				//showExport: true,
+				//showColumns: true,
+				//exportTypes: ['csv','txt','xml'],
+				//search: true,
 				clickToSelect: true,
 				//【查询设置】
 				/* queryParamsType的默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort

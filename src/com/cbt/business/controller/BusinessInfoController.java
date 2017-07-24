@@ -126,12 +126,19 @@ public class BusinessInfoController
 		//将图片地址存到数据库中CropBackPicInfo
 		//http://localhost:8081/CropBacktracking/Uploads/business/111201799/1.jpg
 		DirCopyTool dirCopyTool=new DirCopyTool();
+		if(logo==null)
+		{
+			BusinessInfo binfo = businessInfoService.getBusinessInfo(info);
+			String logopath = binfo.getBusinessLogo();
+			info.setBusinessLogo(logopath);
+		}
 		if(logo!=null)
 		{
 			String logoname = dirCopyTool.saveLogoFile(parentPath+"/"+info.getBusinessId()+"/", logo,"logo");
 			info.setBusinessLogo(pathConfig.getBusinessLogoPath()+"/"+info.getBusinessId()+"/"+logoname);
 			//String imgPath = pathConfig.getLocalPath()+"/"+projectCode+"/"+"1";
 		}
+		
 		mark=businessInfoService.updateBusiness(info);
 		return mark.toString();
 	}	

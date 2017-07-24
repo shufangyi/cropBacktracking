@@ -37,6 +37,7 @@
                 <!--</button>-->
                 <span class="navbar-brand"><img src="business/img/logo.png"/></span>&nbsp;
                 <span class="navbar-brand-name">${businessInfo.businessName }</span>
+                 <span class="navbar-brand-name" id="businessId" style="display:none">${businessInfo.businessId }</span>
             </div>
 
             <ul class="nav navbar-nav navbar-right">

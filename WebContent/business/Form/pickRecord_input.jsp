@@ -50,7 +50,7 @@
             <div class="controls" >
                 <label class="control-label" for="sowSeg_btCode">播种溯源码:</label>
                 <input id="sowSeg_btCode" name="sowSeg_btCode" type="text" placeholder="" class="input-xlarge" required="">
-                <span class="help-block">1</span>
+                <span class="help-block">输入13溯源码</span>
             </div>
         </div>
 
@@ -59,7 +59,7 @@
             <div class="controls" >
                 <label class="control-label" for="PickTime">采摘时间:</label>
                 <input id="PickTime" name="PickTime" type="date" placeholder="" class="datepicker input-xlarge" required="">
-                <span class="help-block">1</span>
+                <span class="help-block"></span>
             </div>
         </div>
 
@@ -68,7 +68,7 @@
             <div class="controls" >
                 <label class="control-label" for="pickSeg_btCode">采摘溯源码:</label>
                 <input id="pickSeg_btCode" name="pickSeg_btCode" type="text" placeholder="" class="input-xlarge" required="" disabled="disabled">
-                <span class="help-block">1</span>
+                <span class="help-block"></span>
             </div>
         </div>
         <!-- Text input-->
@@ -76,7 +76,7 @@
             <div class="controls" >
                 <label class="control-label" for="PickType">采摘方式:</label>
                 <input id="PickType" name="PickType" type="text" placeholder="" class="input-xlarge" required="">
-                <span class="help-block">1</span>
+                <span class="help-block">数字</span>
             </div>
         </div>
 
@@ -85,7 +85,7 @@
             <div class="controls">
                 <label class="control-label" for="PickNum">采摘数量:</label>
                 <input id="PickNum" name="PickNum" type="number" placeholder="" class="input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block">数字</span>
             </div>
         </div>
 
@@ -95,7 +95,7 @@
             <div class="controls">
                 <label class="control-label" for="grower">采摘员:</label>
                 <input id="grower" name="grower" type="text" placeholder="" class="input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block"></span>
             </div>
         </div>
 

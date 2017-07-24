@@ -4,7 +4,7 @@ $(function ()
     var Request = new Object();
 	Request = GetRequest(); 
 	var id = Request['id'];
-	alert(id);
+	//alert(id);
 	
 	//第二步 将第一步获取的id值，通过ajax传回后台，获取溯源数据；
 	//contoller在supersivor目录
@@ -58,7 +58,7 @@ $(function ()
     function fillImgs(data)
     {
     	
-    	alert(data.imglist.length);
+    	//alert(data.imglist.length);
     	for(var i=0;i<data.imglist.length;i++)
     	{
     		switch (data.imglist[i].loc)

@@ -26,6 +26,8 @@ import com.cbt.business.service.CopackRecordInfoService;
 import com.cbt.business.service.PickRecordInfoService;
 import com.cbt.business.service.SowRecordInfoService;
 import com.cbt.business.service.WorkerInfoService;
+import com.cbt.visitor.po.ProductStatusInfo;
+import com.cbt.visitor.service.ProductStatusInfoService;
 
 @Controller
 @RequestMapping("/business/")
@@ -40,8 +42,13 @@ public class CopackRecordInfoController {
 	private WorkerInfoService workerInfoservice;
 	@Resource(name="checkInRecordInfoServiceImpl")
 	private CheckInRecordInfoService checkInRecordInfoService;
+	
 	@Resource(name="copackRecordInfoServiceImpl")
 	private CopackRecordInfoService copackRecordInfoService;
+	
+	
+	@Resource(name="productStatusInfoServiceImpl")
+	private ProductStatusInfoService productStatusInfoService;
 	
 	@RequestMapping("getCopackRecords.do")
 	@ResponseBody
@@ -109,6 +116,13 @@ public class CopackRecordInfoController {
 	@ResponseBody
 	public String addCopackRecordInfo(CopackRecordInfo copackRecordInfo)throws Exception{
 		String markString="true";
+		String product_btCode = copackRecordInfo.getProductBtcode();
+		ProductStatusInfo pinfo = new ProductStatusInfo();
+		pinfo.setProduct_btCode(product_btCode);
+		pinfo.setPublicStatus(1);
+		pinfo.setQueryTimes(0);
+		productStatusInfoService.insertNewProductService(pinfo);
+		
 		if(copackRecordInfoService.addCopackRecordInfo(copackRecordInfo)<=0){
 			markString="false";
 			return markString;
@@ -117,14 +131,20 @@ public class CopackRecordInfoController {
 		
 	}
 	
-	@RequestMapping("delCopackRecordinfo.do")
+	@RequestMapping("delCopackRecordInfo.do")
 	@ResponseBody
 	public String delCopackRecordinfo(String data)throws Exception{
 		ObjectMapper mapper=new ObjectMapper();
 		JavaType javatype=mapper.getTypeFactory().constructParametricType(ArrayList.class,CopackRecordInfo.class);	
 	    List<CopackRecordInfo> list=mapper.readValue(data, javatype);
 	    //循环删除list数据
-		System.out.println(list.get(0).getCopacktime());
+		//System.out.println(list.get(0).getCopacktime());
+		for(int i=0;i<list.size();i++)
+		{
+			String product_btcode = list.get(i).getProductBtcode();
+			productStatusInfoService.deleteProductStatusInfoService(product_btcode);
+		}
+		
 		return copackRecordInfoService.delCopackRecordsService(list);
 	}
 	
@@ -157,7 +177,7 @@ public class CopackRecordInfoController {
 	{
 		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
 		int rows = Integer.parseInt(req.getParameter("pageSize"));	
-		String businessId =req.getParameter("businessId");
+		String businessId =req.getParameter("business");
 		String searchKey=req.getParameter("searchKey");
 		ModelMap model=new ModelMap();
 		List<CopackRecordInfo> lists=new ArrayList<CopackRecordInfo>();

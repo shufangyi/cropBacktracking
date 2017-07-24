@@ -3,28 +3,42 @@ $(document).ready(function(){
 	$('#sowSeg_btCode').blur(function(){
 		var sowSeg_btCode = $(this).val();
 		var workerId = $(window.parent.parent.frames["topFrame"].document).find('#workerId').text();
-		/*先验证是不是9位数字*/
-		//code
-		$.ajax({
-			type: "post",
-			url: "business/checkSowSegBtCode.do",
-			data: {"sowsegBtcode":sowSeg_btCode,"workerId":workerId},
-			success:function(data,status)
-			{
-				if(data=="true")
+		/*先验证是不是13位数字*/
+		
+		if(sowSeg_btCode.length!=13)
+		{
+			$('#sowSeg_btCode').parent().find('.help-block').text("请输入13位溯源码");
+			$('#sowSeg_btCode').parent().find('.help-block').css("color","red");
+		}
+		else
+		{
+			
+			
+			//code
+			$.ajax({
+				type: "post",
+				url: "business/checkSowSegBtCode.do",
+				data: {"sowsegBtcode":sowSeg_btCode,"workerId":workerId},
+				success:function(data,status)
 				{
-					$('#sowSeg_btCode').parent().find('.help-block').text("correct");
-				}
-				else
+					if(data=="true")
+					{
+						$('#sowSeg_btCode').parent().find('.help-block').text("allow");
+						$('#sowSeg_btCode').parent().find('.help-block').css("color","green");
+					}
+					else
+					{
+						$('#sowSeg_btCode').parent().find('.help-block').text("forbidden");
+						$('#sowSeg_btCode').parent().find('.help-block').css("color","red");
+					}
+				},
+				error:function(data,status)
 				{
-					$('#sowSeg_btCode').parent().find('.help-block').text("无权限");
+					alert("server error!")
 				}
-			},
-			error:function(data,status)
-			{
-				alert("server error!")
-			}
-		});
+			});
+		}
+		
 	});
 	
 	/*
@@ -33,7 +47,6 @@ $(document).ready(function(){
 
 	$('#submit').click(function(){
 		//action="business/addSowRecordInfo.do" type="post"
-		alert("表单");
 		var sowsegBtcode=$('#sowSeg_btCode').val();
 		var fertilizername=$('#fertilizerName').val();
 		var fertilizetime=$('#FertilizeTime').val();
@@ -47,28 +60,37 @@ $(document).ready(function(){
 		}
 		else
 		{
+			if($('#sowSeg_btCode').parent().find('.help-block').text()!="allow")
+			{
+				alert("无权提交");
+				return;
+			}
+			else
+			{
+				$.ajax({
+					type: "post",
+					url: "business/addFertilizerRecordInfo.do",
+					data:{
+						"sowsegBtcode":sowsegBtcode,
+						"fertilizername":fertilizername,
+						"fertilizertime":fertilizetime,
+						"fertilizernum":fertilizernum,
+						"fertilizerfrequency":fertilizerfrequency,
+						"grower":grower,
+						"comment":comment	
+					},
+					success:function(data,status)
+					{
+						alert("添加成功");
+					},
+					error:function(data,status)
+					{
+						alert("server error!");
+					}
+				});
+			}
 			
-			$.ajax({
-				type: "post",
-				url: "business/addFertilizerRecordInfo.do",
-				data:{
-					"sowsegBtcode":sowsegBtcode,
-					"fertilizername":fertilizername,
-					"fertilizertime":fertilizetime,
-					"fertilizernum":fertilizernum,
-					"fertilizerfrequency":fertilizerfrequency,
-					"grower":grower,
-					"comment":comment	
-				},
-				success:function(data,status)
-				{
-					alert("添加成功");
-				},
-				error:function(data,status)
-				{
-					alert("server error!");
-				}
-			});
+			
 		}
 	});
 	

@@ -43,7 +43,7 @@
   </update>
   <select id="queryTimesByBtCode" parameterType="String" resultType="Integer">
   select queryTimes from cropBacktracking.productStatusInfo
-  where product_btCode=#{product_btCode}
+  where product_btCode=#{value}
   </select>
   
    <select id="getProductStatusInfo" parameterType="String" resultType="Integer">

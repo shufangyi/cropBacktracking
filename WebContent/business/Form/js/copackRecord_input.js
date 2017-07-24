@@ -3,34 +3,71 @@ $(document).ready(function(){
 	$('#checkInSeg_btCode').blur(function(){
 		var checkInSeg_btCode = $(this).val();
 		var workerId = $(window.parent.parent.frames["topFrame"].document).find('#workerId').text();
-		/*先验证是不是9位数字*/
-		//code
-		$.ajax({
-			type: "post",
-			url: "business/checkCheckInSegBtCode.do",
-			data: {"checkinsegBtcode":checkInSeg_btCode,"workerId":workerId},
-			success:function(data,status)
-			{
-				if(data=="true")
+		/*先验证是不是21位数字*/
+		if(checkInSeg_btCode.length!=21)
+		{
+			$('#checkInSeg_btCode').parent().find('.help-block').text("请输入21位溯源码");
+			$('#checkInSeg_btCode').parent().find('.help-block').css("color","red");
+		}
+		else
+		{
+			//code
+			$.ajax({
+				type: "post",
+				url: "business/checkCheckInSegBtCode.do",
+				data: {"checkinsegBtcode":checkInSeg_btCode,"workerId":workerId},
+				success:function(data,status)
 				{
-					$('#checkInSeg_btCode').parent().find('.help-block').text("correct");
+					if(data=="true")
+					{
+						$('#checkInSeg_btCode').parent().find('.help-block').text("allow");
+						$('#checkInSeg_btCode').parent().find('.help-block').css("color","green");
+					}
+					else
+					{
+						$('#checkInSeg_btCode').parent().find('.help-block').text("forbidden");
+						$('#checkInSeg_btCode').parent().find('.help-block').css("color","red");
+					}
+				},
+				error:function(data,status)
+				{
+					alert("server error!")
+				}
+			});
+		}
+	});
+	
+	
+	$('#copackTime').focus(function()
+			{
+				if($('#checkInSeg_btCode').parent().find('.help-block').text()!="allow")
+				{
+					$('#copackTime').parent().find('.help-block').text("请确定溯源码输入正确");
+					$('#copackTime').parent().find('.help-block').css("color","red");
 				}
 				else
 				{
-					$('#checkInSeg_btCode').parent().find('.help-block').text("无权限");
+					$('#copackTime').parent().find('.help-block').text("输入日期格式如2017-08-09");
+					$('#copackTime').parent().find('.help-block').css("color","green");
 				}
-			},
-			error:function(data,status)
-			{
-				alert("server error!")
-			}
-		});
-	});
+			});
+	
 	$('#copackTime').change(function()
 			{
 				var time = $(this).val();
 				var code = time[5]+time[6]+time[8]+time[9];
+				var product_btCode = $('#checkInSeg_btCode').val()+code; 
 				$('#product_btCode').val($('#checkInSeg_btCode').val()+code);
+				if(product_btCode.length!=25)
+				{
+					$('#product_btCode').parent().find('.help-block').text("先正确输入溯源码，再选择时间");
+					$('#product_btCode').parent().find('.help-block').css("color","red");
+				}
+				else
+				{
+					$('#product_btCode').parent().find('.help-block').text("correct");
+					$('#product_btCode').parent().find('.help-block').css("color","green");
+				}
 			}		
 	);
 	/*
@@ -61,6 +98,13 @@ $(document).ready(function(){
 		}
 		else
 		{
+			if($('#checkInSeg_btCode').parent().find('.help-block').text()!="allow"||
+					$('#product_btCode').parent().find('.help-block').text()!="correct")
+			{
+				alert("无权提交")
+				return;
+			}
+			
 			$.ajax({
 				type: "post",
 				url: "business/addCopackRecordInfo.do",
@@ -81,6 +125,13 @@ $(document).ready(function(){
 				success:function(data,status)
 				{
 					alert("添加成功");
+					
+					var qrcode = $('#codeShow').qrcode(product_btCode).hide();
+					var canvas = qrcode.find('canvas').get(0);
+					$('#codeShow-imgOne').attr('src',canvas.toDataURL('image/jpg'));
+					imgsrc = canvas.toDataURL('image/jpg');
+					$("#codeShow-box").css("display", "block");
+					//生成结束	
 				},
 				error:function(data,status)
 				{

@@ -161,7 +161,8 @@ public class CheckInRecordInfoController {
 	{
 		int nowpage = Integer.parseInt(req.getParameter("pageNumber"));
 		int rows = Integer.parseInt(req.getParameter("pageSize"));	
-		String businessId =req.getParameter("businessId");
+		String businessId =req.getParameter("business");
+		System.out.println(businessId);
 		String searchKey=req.getParameter("searchKey");
 		ModelMap model=new ModelMap();
 		List<CheckInRecordInfo> lists=new ArrayList<CheckInRecordInfo>();

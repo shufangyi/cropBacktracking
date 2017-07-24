@@ -14,6 +14,13 @@
     <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="../css/platformManager.css">
+    <style>
+    	.changeFormStyle{
+			border-top: 1px solid #ccc;
+			padding: 5px 0;
+			margin-top: 10px;
+		}	
+    </style>
 </head>
 <body>
 <div class="container">
@@ -24,7 +31,7 @@
                 <div class="controls" >
                     <label class="control-label" for="planName">计划名称</label>
                     <input id="planName" name="planName" type="text" placeholder="" class="input-xlarge" required="required">
-                    <span class="help-block">1</span>
+                    <span class="help-block"></span>
                 </div>
             </div>
 
@@ -41,7 +48,7 @@
                 <div class="controls" >
                     <label class="control-label" for="productName">商品名称</label>
                     <input id="productName" name="productName" type="text" placeholder="" class="input-xlarge" required="required">
-                    <span class="help-block">1</span>
+                    <span class="help-block"></span>
                 </div>
             </div>
 
@@ -49,11 +56,11 @@
                 <div class="controls" >
                     <label class="control-label" for="businessID">年度信息</label>
                     <input id="year" name="year" type="number" placeholder="" class="input-xlarge" required="required">
-                    <span class="help-block">1</span>
+                    <span class="help-block"></span>
                 </div>
             </div>
 
-            <div class="control-group plan" >
+            <div class="control-group plan changeFormStyle" >
                 <div class="controls" >
                     <label class="control-label" for="planTemplate">选择计划模板</label>
                      <div class="controls jscheckbox" id="planId">
@@ -68,7 +75,7 @@
 
 
       		<!-- Textarea -->
-            <div class="control-group">
+            <div class="control-group changeFormStyle">
                 <div class="controls">
                     <label class="control-label" for="Comment">备注</label>
                     <div id="Comment"><p>Hello Summernote</p></div>
@@ -160,7 +167,7 @@ $(document).ready(function(){
 		
 		for(var i=0;i<roleIds.length;i++)
 		{
-			var output="<div class='control-group plan' >"+
+			var output="<div class='control-group plan changeFormStyle' >"+
       	 	"<div class='controls' >"+
          	"<label class='control-label' for='"+roleIds[i]+"'>"+roleNames[i]+"</label>"+
             "<div class='controls jscheckbox' id='p"+roleIds[i]+"'>"+

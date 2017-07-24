@@ -84,6 +84,7 @@ public class CheckInRecordInfoServiceImpl implements  CheckInRecordInfoService{
 		map.put("rows", rows);
 		map.put("businessId", businessId);
 		map.put("searchKey", searchKey);
+		System.out.println("map:"+businessId);
 		return checkInRecordInfoMapper.getMCheckInRecordByPagination(map);
 	}
 

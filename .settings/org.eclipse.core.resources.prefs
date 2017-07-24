@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//WebContent/business/Form/checkInRecord_input.jsp=UTF-8
 encoding//WebContent/business/css/leftframe1.css=UTF-8
 encoding//WebContent/css/index.css=UTF-8
+encoding//WebContent/supersivor/css/supersivor.css=UTF-8
 encoding//src/com/cbt/converter/DateConverter.java=UTF-8
 encoding//src/com/cbt/system/controller/AdminInfoController.java=GBK
 encoding//src/com/cbt/system/mapper/AdminInfoMapper.java=GBK

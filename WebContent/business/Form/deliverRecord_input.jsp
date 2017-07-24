@@ -52,7 +52,7 @@
             <div class="controls" >
                 <label class="control-label" for="OrderNum">订单号:</label>
                 <input id="OrderNum" name="OrderNum" type="text" placeholder="" class="input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block"></span>
             </div>
         </div>
         
@@ -61,7 +61,7 @@
             <div class="controls" >
                 <label class="control-label" for="deliverTime">运输时间:</label>
                 <input id="deliverTime" name="deliverTime" type="date" placeholder="" class="datepicker input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block">时间格式：0000-00-00</span>
             </div>
         </div>
 
@@ -70,7 +70,7 @@
             <div class="controls" >
                 <label class="control-label" for="deliverAddress">运输起点:</label>
                 <input id="deliverAddress" name="deliverAddress" type="text" placeholder="" class="input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block"></span>
             </div>
         </div>
 
@@ -79,7 +79,7 @@
             <div class="controls" >
                 <label class="control-label" for="LogisticsCompany">运输部门:</label>
                 <input id="LogisticsCompany" name="LogisticsCompany" type="text" placeholder="" class="input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block"></span>
             </div>
         </div>
 
@@ -91,16 +91,16 @@
             <div class="controls" >
                 <label class="control-label" for="LogisticsNum">物流单号:</label>
                 <input id="LogisticsNum" name="LogisticsNum" type="text" placeholder="" class="input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block"></span>
             </div>
         </div>
 
         <!-- Text input-->
         <div class="control-group" >
             <div class="controls" >
-                <label class="control-label" for="Distributor">分销商:</label>
+                <label class="control-label" for="Distributor">物流负责人账号:</label>
                 <input id="Distributor" name="Distributor" type="text" placeholder="" class="input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block">登录账号</span>
             </div>
         </div>
 
@@ -110,7 +110,7 @@
             <div class="controls">
                 <label class="control-label" for="Logistics">运输人员:</label>
                 <input id="Logistics" name="Logistics" type="text" placeholder="" class="input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block"></span>
             </div>
         </div>
 

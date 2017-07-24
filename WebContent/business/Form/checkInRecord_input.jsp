@@ -51,7 +51,7 @@
             <div class="controls" >
                 <label class="control-label" for="pickSeg_btCode">采摘溯源码:</label>
                 <input id="pickSeg_btCode" name="pickSeg_btCode" type="text" placeholder="" class="input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block">输入17位溯源码</span>
             </div>
         </div>
 
@@ -60,7 +60,7 @@
             <div class="controls" >
                 <label class="control-label" for="checkInTime">质检时间:</label>
                 <input id="checkInTime" name="checkInTime" type="date" placeholder="" class="datepicker input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block">时间格式：0000-00-00</span>
 
             </div>
         </div>
@@ -70,7 +70,7 @@
             <div class="controls">
                 <label class="control-label" for="checkInSeg_btCode">质量检查溯源码:</label>
                 <input id="checkInSeg_btCode" name="checkInSeg_btCode" type="text" placeholder="" class="input-xlarge" required="required" disabled="disabled">
-            	<span class="help-block">1</span>
+            	<span class="help-block"></span>
             </div>
         </div>
 
@@ -79,7 +79,7 @@
             <div class="controls" >
                 <label class="control-label" for="StockLocation">存储地点:</label>
                 <input id="StockLocation" name="StockLocation" type="text" placeholder="" class="input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block"></span>
             </div>
         </div>
 
@@ -89,7 +89,7 @@
             <div class="controls">
                 <label class="control-label" for="Checker">质检员:</label>
                 <input id="Checker" name="Checker" type="text" placeholder="" class="input-xlarge" required="required">
-                <span class="help-block">1</span>
+                <span class="help-block"></span>
             </div>
         </div>
 

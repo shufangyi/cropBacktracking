@@ -97,27 +97,26 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<div id="divShow" class="controls" style="padding-left:80px;">
+					<div id="divShow" class="controls" style="padding-left:120px;">
 						<img id="logoShow" src="../../assets/logo.png" alt="logoShow"  style="max-width:120px;"/>
 					</div>
 				</div>
-
+				
 				<!-- Textarea -->
+				
 				<div class="control-group">
 					<div class="controls">
-						<label class="control-label" for="Comment">备注</label>
-						<div id="Comment">
-							<p>Hello Summernote</p>
-						</div>
-						<script>
-							$(document).ready(function() {
-								$('#Comment').summernote();
-							});	
-						</script>
+						<label class="control-label" for="businessDesc">企业简介</label> <textarea
+							id="businessDesc" name="businessDesc" placeholder="企业简介"
+							class="input-xlarge" required="required"
+							rows="5" cols="30"></textarea>
 					</div>
 				</div>
+				
+				
+
 				<div class="control-group">
-                	<button type="button" id="submit" name="submit" class="btn btn-info">提交</button>
+                	<button type="button" id="submit" name="submit" class="btn btn-info" style="margin-top:90px;">提交</button>
           	  	</div>
 
 			</fieldset>
@@ -156,25 +155,22 @@ $(function()
     		var businessUrl = data.businessInfo.businessUrl;
     		var businessEmail = data.businessInfo.businessEmail;
     		var businessMobile = data.businessInfo.businessMobile;
-    		var comment = data.businessInfo.businessDesc;
+    		var businessDesc =  data.businessInfo.businessDesc;
+    		//var comment = data.businessInfo.businessDesc;
     		$("#businessId").val(businessId);
     		$("#businessName").val(businessName);
     		$("#businessAddr").val(businessAddr);
     		$("#businessUrl").val(businessUrl);
     		$("#businessEmail").val(businessEmail);
     		$("#businessMobile").val(businessMobile);
-    		$("#comment").text(comment);
+    		$("#businessDesc").val(businessDesc);
+    		//$("#comment").text(comment);
     		$("#logoShow").attr("src","../../"+logosrc);
     	};   
     	
     	
     	$('#submit').click(function(){	
     		 var name = $("#logo").val();
-    		 if ($.trim(name) == "") { 
-    		  	 alert("请选择图片！"); 
-    		   	return; 
-    		  } 
-    		 alert(name);
     		// console.log($("#imgFile")[0].files[0].size);//小于100*1024，下面的请求就可以成功
     		 var option = {
     		  url : '../updateBusinessInfo.do',

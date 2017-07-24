@@ -3,34 +3,71 @@ $(document).ready(function(){
 	$('#pickSeg_btCode').blur(function(){
 		var pickSeg_btCode = $(this).val();
 		var workerId = $(window.parent.parent.frames["topFrame"].document).find('#workerId').text();
-		/*先验证是不是9位数字*/
-		//code
-		$.ajax({
-			type: "post",
-			url: "business/checkPickSegBtCode.do",
-			data: {"picksegBtcode":pickSeg_btCode,"workerId":workerId},
-			success:function(data,status)
-			{
-				if(data=="true")
+		/*先验证是不是17位数字*/
+		if(pickSeg_btCode.length!=17)
+		{
+			$('#pickSeg_btCode').parent().find('.help-block').text("请输入17位溯源码");
+			$('#pickSeg_btCode').parent().find('.help-block').css("color","red");
+		}
+		else
+		{
+			//code
+			$.ajax({
+				type: "post",
+				url: "business/checkPickSegBtCode.do",
+				data: {"picksegBtcode":pickSeg_btCode,"workerId":workerId},
+				success:function(data,status)
 				{
-					$('#pickSeg_btCode').parent().find('.help-block').text("allow");
+					if(data=="true")
+					{
+						$('#pickSeg_btCode').parent().find('.help-block').text("allow");
+						$('#pickSeg_btCode').parent().find('.help-block').css("color","green");
+					}
+					else
+					{
+						$('#pickSeg_btCode').parent().find('.help-block').text("forbidden");
+						$('#pickSeg_btCode').parent().find('.help-block').css("color","red");
+					}
+				},
+				error:function(data,status)
+				{
+					alert("server error!")
+				}
+			});
+		}
+		
+	});
+	
+	$('#sowtime').focus(function()
+			{
+				if($('#pickSeg_btCode').parent().find('.help-block').text()!="allow")
+				{
+					$('#pickSeg_btCode').parent().find('.help-block').text("请确定溯源码输入正确");
+					$('#pickSeg_btCode').parent().find('.help-block').css("color","red");
 				}
 				else
 				{
-					$('#pickSeg_btCode').parent().find('.help-block').text("forbidden");
+					$('#pickSeg_btCode').parent().find('.help-block').text("输入日期格式如2017-08-09");
+					$('#pickSeg_btCode').parent().find('.help-block').css("color","green");
 				}
-			},
-			error:function(data,status)
-			{
-				alert("server error!")
-			}
-		});
-	});
+			});
+	
 	$('#checkInTime').change(function()
 			{
 				var time = $(this).val();
 				var code = time[5]+time[6]+time[8]+time[9];
+				var checkInSeg_btCode = $('#pickSeg_btCode').val()+code;
 				$('#checkInSeg_btCode').val($('#pickSeg_btCode').val()+code);
+				if(checkInSeg_btCode.length!=21)
+				{
+					$('#checkInSeg_btCode').parent().find('.help-block').text("先正确输入溯源码，再选择时间");
+					$('#checkInSeg_btCode').parent().find('.help-block').css("color","red");
+				}
+				else
+				{
+					$('#checkInSeg_btCode').parent().find('.help-block').text("correct");
+					$('#checkInSeg_btCode').parent().find('.help-block').css("color","green");
+				}
 			}		
 	);
 	/*
@@ -51,7 +88,8 @@ $(document).ready(function(){
 		}
 		else
 		{
-			if($('#pickSeg_btCode').parent().find('.help-block').text()!="allow")
+			if($('#pickSeg_btCode').parent().find('.help-block').text()!="allow"||
+					$('#checkInSeg_btCode').parent().find('.help-block').text()!="correct")
 			{
 				alert("无权提交")
 				return;

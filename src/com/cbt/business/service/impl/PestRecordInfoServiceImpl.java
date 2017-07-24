@@ -98,7 +98,8 @@ public class PestRecordInfoServiceImpl implements PestRecordInfoService {
 		map.put("rows", rows);
 		map.put("businessId", businessId);
 		map.put("searchKey", searchKey);
-		return pestRecordInfoMapper.getPestRecords(map);
+		System.out.println("map:"+businessId);
+		return pestRecordInfoMapper.getMPestRecords(map);
 	}
 
 	@Override
@@ -107,7 +108,7 @@ public class PestRecordInfoServiceImpl implements PestRecordInfoService {
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("businessId", businessId);
 		map.put("searchKey", searchKey);
-		return pestRecordInfoMapper.getCount(map);
+		return pestRecordInfoMapper.getMCount(map);
 	}
 
 }

@@ -115,7 +115,7 @@
   <!-- 超级用户分页查询 -->
   <select id="getMPestRecords" parameterType="Map" resultMap="pestrecordinfomap">
   select * from cropBacktracking.pestRecord
-  where sowSeg_btCode like '${businessId}%'
+  where sowSeg_btCode like '%${businessId}%'
   <if test="searchKey!=null and searchKey!=''">
    and (
    sowSeg_btCode like '%${searchKey}%' or
@@ -134,7 +134,7 @@
    <!-- 超级用户total count -->
   <select id="getMCount" parameterType="Map" resultType="Integer">
  select count(*) from cropBacktracking.pestRecord
-  where sowSeg_btCode like '%${businessId}%'
+  where sowSeg_btCode like '${businessId}%'
   <if test="searchKey!=null and searchKey!=''">
    and (
    sowSeg_btCode like '%${searchKey}%' or

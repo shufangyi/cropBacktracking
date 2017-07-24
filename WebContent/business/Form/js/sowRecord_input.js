@@ -2,40 +2,71 @@ $(document).ready(function(){
 	//projectBtcode需要到后台进行验证
 	$('#projectBtcode').blur(function(){
 		var projectBtcode = $(this).val();
-		var workerId = $(window.parent.parent.frames["topFrame"].document).find('#workerId').text();
-		/*先验证是不是9位数字*/
-		//code
-		$.ajax({
-			type: "post",
-			url: "business/checkProjectBtcode.do",
-			data: {"projectBtcode":projectBtcode,"workerId":workerId},
-			success:function(data,status)
-			{
-				if(data=="true")
+		if(projectBtcode.length!=9)
+		{
+			$('#projectBtcode').parent().find('.help-block').text("请输入9位溯源码");
+			$('#projectBtcode').parent().find('.help-block').css("color","red");
+		}
+		else
+		{
+			var workerId = $(window.parent.parent.frames["topFrame"].document).find('#workerId').text();
+			//code
+			$.ajax({
+				type: "post",
+				url: "business/checkProjectBtcode.do",
+				data: {"projectBtcode":projectBtcode,"workerId":workerId},
+				success:function(data,status)
 				{
-					$('#projectBtcode').parent().find('.help-block').text("allow");
-					$('#projectBtcode').parent().find('.help-block').css("color","green");
-				}
-				else
+					if(data=="true")
+					{
+						$('#projectBtcode').parent().find('.help-block').text("allow");
+						$('#projectBtcode').parent().find('.help-block').css("color","green");
+					}
+					else
+					{
+						$('#projectBtcode').parent().find('.help-block').text("forbidden");
+						$('#projectBtcode').parent().find('.help-block').css("color","red");
+						
+					}
+				},
+				error:function(data,status)
 				{
-					$('#projectBtcode').parent().find('.help-block').text("forbidden");
-					$('#projectBtcode').parent().find('.help-block').css("color","red");
-					
+					alert("server error!")
 				}
-			},
-			error:function(data,status)
-			{
-				alert("server error!")
-			}
-		});
+			});
+		}
 	});
+	$('#sowtime').focus(function()
+	{
+		if($('#projectBtcode').parent().find('.help-block').text()!="allow")
+		{
+			$('#sowtime').parent().find('.help-block').text("请确定溯源码输入正确");
+			$('#sowtime').parent().find('.help-block').css("color","red");
+		}
+		else
+		{
+			$('#sowtime').parent().find('.help-block').text("输入日期格式如2017-08-09");
+			$('#sowtime').parent().find('.help-block').css("color","green");
+		}
+	});
+	
 	$('#sowtime').change(function()
 	{
 		var time = $(this).val();
 		var code = time[5]+time[6]+time[8]+time[9];
+		var sowSeg_btCode=$('#projectBtcode').val()+code
 		$('#sowSeg_btCode').val($('#projectBtcode').val()+code);
-	}		
-	);
+		if(sowSeg_btCode.length!=13)
+		{
+			$('#sowSeg_btCode').parent().find('.help-block').text("先正确输入溯源码，再选择时间");
+			$('#sowSeg_btCode').parent().find('.help-block').css("color","red");
+		}
+		else
+		{
+			$('#sowSeg_btCode').parent().find('.help-block').text("correct");
+			$('#sowSeg_btCode').parent().find('.help-block').css("color","green");
+		}
+	});
 	/*
 	 * 与后台交互数据
 	 */
@@ -61,7 +92,8 @@ $(document).ready(function(){
 		}
 		else
 		{
-			if($('#projectBtcode').parent().find('.help-block').text()!="allow")
+			if($('#projectBtcode').parent().find('.help-block').text()!="allow"||
+					$('#sowSeg_btCode').parent().find('.help-block').text()!="correct")
 			{
 				alert("无权提交");
 				return;
