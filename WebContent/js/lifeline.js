@@ -40,17 +40,18 @@ $(function ()
 	});
 	
 	
+	
+	
+	
     
 	//展示详情信息面板
     $(document).on('click','.content', function () {
         if ($(this).children('.detail').css('display') == 'none') {
             $(this).children('div.detail').fadeIn();
-            // $(this).children('div.detail').slideDown(600);
-            $('.txt>i').attr('class', 'fa fa-chevron-circle-up');
+            $(this).children('div.txt').children("i").attr('class', 'fa fa-chevron-circle-up');
         } else if ($(this).children('.detail').css('display') == 'block') {
-            // $(this).children('div.item-show').fadeOut();
             $(this).children('div.detail').slideUp(600);
-            $('.txt>i').attr('class', 'fa fa-chevron-circle-down');
+            $(this).children('div.txt').children("i").attr('class', 'fa fa-chevron-circle-down');
         }
     });
     
