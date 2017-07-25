@@ -15,19 +15,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 查询验证密码，用于登录 -->
 	<select id="queryPwdByNum" parameterType="com.cbt.supersivor.po.SupersivorInfo" resultMap="supersivorInfomap">
-	select supersivorPwd from cropBacktracking.supersivorInfo
+	select supersivorPwd from supersivorInfo
 	where supersivorNum=#{supersivorNum}
 	</select>
 	
 	<!-- add supersivorNum  -->
 	<insert id="insertSupersivor" parameterType="com.cbt.supersivor.po.SupersivorInfo">
-	insert into cropBacktracking.supersivorInfo(supersivorNum,supersivorPwd)
+	insert into supersivorInfo(supersivorNum,supersivorPwd)
 	values(#{supersivorNum},#{supersivorPwd})
 	</insert>
 	
 	<!-- 修改密码 -->
 	<update id="updateSupersivorPwd" parameterType="com.cbt.supersivor.po.SupersivorInfo">
-	update cropBacktracking.supersivorInfo
+	update supersivorInfo
 	<set>
 		<if test="supersivorPwd!=null">
 		supersivorPwd=#{supersivorPwd}

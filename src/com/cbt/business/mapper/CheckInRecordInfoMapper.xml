@@ -37,13 +37,13 @@
   
   <!-- 溯源信息查询之，质检入库记录 -->
   <select id="queryCheckInByBtCode" parameterType="String" resultMap="checkinrecordinfomap">
-  select * from cropBacktracking.CheckInRecord
+  select * from CheckInRecord
   where checkInSeg_btCode=#{checkInSeg_btCode}
   </select>
   
   <!-- 分页查询 -->
   <select id="getCheckInRecordByPagination" parameterType="Map" resultMap="checkinrecordinfomap">
-  select * from cropBacktracking.checkinRecord
+  select * from checkinRecord
   where pickSeg_btCode like '%${projectBtcode}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -61,7 +61,7 @@
   
   <!-- 更新数据 -->
   <update id="updateCheckInRecord" parameterType="com.cbt.business.po.CheckInRecordInfo">
-  update cropBacktracking.checkinRecord
+  update checkinRecord
   <set>
   <if test="picksegBtcode!=null">
   pickSeg_btCode=#{picksegBtcode}
@@ -87,7 +87,7 @@
   
   <!-- get total count -->
   <select id="getPaginationCount" parameterType="Map" resultType="Integer">
-   select count(*) from cropBacktracking.checkinRecord
+   select count(*) from checkinRecord
   where pickSeg_btCode like '%${projectBtcode}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -104,7 +104,7 @@
   
    <!--超级用户 分页查询 -->
   <select id="getMCheckInRecordByPagination" parameterType="Map" resultMap="checkinrecordinfomap">
-  select * from cropBacktracking.checkinRecord
+  select * from checkinRecord
   where pickSeg_btCode like '${businessId}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -122,7 +122,7 @@
   
    <!-- get total count -->
   <select id="getMPaginationCount" parameterType="Map" resultType="Integer">
-   select count(*) from cropBacktracking.checkinRecord
+   select count(*) from checkinRecord
   where pickSeg_btCode like '${businessId}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(

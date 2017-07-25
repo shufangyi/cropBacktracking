@@ -32,17 +32,17 @@
   
   <!--根据id删除一条数据 -->
   <delete id="delFertilizerRecordInfo" parameterType="com.cbt.business.po.FertilizerRecordInfo">
-  	delete from   cropBacktracking.fertilizerRecord where  id=#{id}
+  	delete from   fertilizerRecord where  id=#{id}
   </delete>
   
   <!-- 溯源信息查询，施肥记录 -->
   <select id="queryFertilizerByBtCode" parameterType="String" resultMap="fertilizerrecordinfomap">
-  select * from cropBacktracking.fertilizerRecord
+  select * from fertilizerRecord
   where sowSeg_btCode=#{sowSeg_btCode}
   </select>
   <!-- 分页查询 -->
   <select id="getFertilizerRecord" parameterType="Map" resultMap="fertilizerrecordinfomap">
-  select * from cropBacktracking.fertilizerRecord
+  select * from fertilizerRecord
   where sowSeg_btCode like '%${projectBtcode}%'
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -59,7 +59,7 @@
   
   <!-- update a fertilizer -->
   <update id="updateFertilizerBySowBtCode" parameterType="com.cbt.business.po.FertilizerRecordInfo">
-  update cropBacktracking.fertilizerRecord
+  update fertilizerRecord
 	  <set>
 		  <if test="fertilizername!=null">
 		  fertilizerName=#{fertilizername}
@@ -85,7 +85,7 @@
   
   <!-- get total count -->
   <select id="getFertilizerRecordCount" parameterType="Map" resultType="int">
-   select count(*) from cropBacktracking.fertilizerRecord
+   select count(*) from fertilizerRecord
   where sowSeg_btCode like '%${projectBtcode}%'
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -102,7 +102,7 @@
   
    <!-- 超级用户分页查询 -->
   <select id="getMFertilizerRecord" parameterType="Map" resultMap="fertilizerrecordinfomap">
-  select * from cropBacktracking.fertilizerRecord
+  select * from fertilizerRecord
   where sowSeg_btCode like '%${businessId}%'
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -119,7 +119,7 @@
   
   <!-- get total count -->
   <select id="getMFertilizerRecordCount" parameterType="Map" resultType="int">
-   select count(*) from cropBacktracking.fertilizerRecord
+   select count(*) from fertilizerRecord
   where sowSeg_btCode like '${businessId}%'
   <if test="searchKey!='' and searchKey!=null">
   and(

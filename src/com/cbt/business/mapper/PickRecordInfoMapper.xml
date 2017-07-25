@@ -37,13 +37,13 @@
   
   <!-- 溯源信息查询之，采摘记录 -->
   <select id="queryPickByBtCode" parameterType="String" resultMap="pickrecordinfomap">
-  select * from cropBacktracking.pickRecord
+  select * from pickRecord
   where pickSeg_btCode=#{pickSeg_btCode}
   </select>
   
   <!-- 修改数据 -->
   <update id="updatePickRecord" parameterType="com.cbt.business.po.PickRecordInfo">
-  UPDATE cropBacktracking.pickRecordInfo
+  UPDATE pickRecordInfo
   <set>
   <if test="pickTime!=null">
   pickTime=#{picktime}
@@ -72,7 +72,7 @@
   
   <!-- 分页查询 -->
   <select id="queryPickRecords" parameterType="Map" resultMap="pickrecordinfomap">
-  select * from cropBacktracking.pickRecord
+  select * from pickRecord
   where pickSeg_btCode like '%${projectBtcode}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -90,7 +90,7 @@
   
   <!-- get total count -->
   <select id="getPickRecordCount" parameterType="Map" resultType="Integer">
-  select count(*) from cropBacktracking.pickRecord
+  select count(*) from pickRecord
   where pickSeg_btCode like '%${projectBtcode}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -108,7 +108,7 @@
   
    <!-- 超级用户分页查询 -->
   <select id="queryMPickRecords" parameterType="Map" resultMap="pickrecordinfomap">
-  select * from cropBacktracking.pickRecord
+  select * from pickRecord
   where pickSeg_btCode like '${businessId}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -126,7 +126,7 @@
   
   <!-- get total count -->
   <select id="getMPickRecordCount" parameterType="Map" resultType="Integer">
-  select count(*) from cropBacktracking.pickRecord
+  select count(*) from pickRecord
   where pickSeg_btCode like '%${businessId}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(

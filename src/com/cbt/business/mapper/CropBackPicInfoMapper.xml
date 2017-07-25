@@ -25,13 +25,13 @@
   </insert>
   
   <delete id="deleteByProjectCode" parameterType="com.cbt.business.po.CropBackPicInfo">
-  delete from cropBacktracking.CropBackPic
+  delete from CropBackPic
   where projectCode=#{projectCode} and loc=#{loc}
   </delete>
   
    	
   <select id="getCropBackPicInfoByProjectCode" parameterType="java.lang.String" resultMap="cropbackPicinfomap">
- 	select * from cropBacktracking.CropBackPic where projectCode = #{value}
+ 	select * from CropBackPic where projectCode = #{value}
   </select>
   
 </mapper>

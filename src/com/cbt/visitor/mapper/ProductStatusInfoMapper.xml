@@ -10,28 +10,28 @@
   
   <!-- 插入新的数据 -->
   <insert id="insertNewProduct"  parameterType="com.cbt.visitor.po.ProductStatusInfo">
-  insert into cropBacktracking.productStatusInfo(product_btCode,publicStatus,queryTimes) 
+  insert into productStatusInfo(product_btCode,publicStatus,queryTimes) 
   values(#{product_btCode},#{publicStatus},#{queryTimes})
   </insert>
   
   <!-- 更新产品状态 -->
   
   <update id="updateProductStatus" parameterType="com.cbt.visitor.po.ProductStatusInfo">
-  update cropBacktracking.productStatusInfo 
+  update productStatusInfo 
   set publicStatus=#{publicStatus}
   where product_btCode=#{product_btCode}
   </update>
 
   <!-- 修改查询次数 -->
   <update id="updateQueryTimes"  parameterType="com.cbt.visitor.po.ProductStatusInfo">
-  update cropBacktracking.productStatusInfo 
+  update productStatusInfo 
   set queryTimes=#{queryTimes} 
   where product_btCode=#{product_btCode}
   </update>
   
   <!-- 删除一条产品信息 -->
   <delete id="deleteProductStatusInfo" parameterType="String">
-  delete from cropBacktracking.productStatusInfo
+  delete from productStatusInfo
   where product_btCode=#{product_btCode}
   </delete>
   
@@ -42,18 +42,18 @@
   WHERE product_btCode=#{product_btCode}
   </update>
   <select id="queryTimesByBtCode" parameterType="String" resultType="Integer">
-  select queryTimes from cropBacktracking.productStatusInfo
+  select queryTimes from productStatusInfo
   where product_btCode=#{value}
   </select>
   
    <select id="getProductStatusInfo" parameterType="String" resultType="Integer">
-  select count(*) from cropBacktracking.productStatusInfo
+  select count(*) from productStatusInfo
   where product_btCode=#{product_btCode}
   </select>
   
   
   <select id="getData" parameterType="String" resultMap="BaseResultMap">
-  select * from cropBacktracking.productStatusInfo
+  select * from productStatusInfo
   where product_btCode like '${value}%'
   </select>
   

@@ -102,7 +102,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</update>
  	<!-- 通过项目码查找出种植码 -->
  	<select id="queryByProjectBtCode" parameterType="String" resultMap="sowrecordinfomap">
- 	select * from cropBacktracking.sowRecord
+ 	select * from sowRecord
  	where project_btCode=#{projectBtcode}
  	limit 1
  	</select>

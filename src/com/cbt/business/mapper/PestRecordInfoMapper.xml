@@ -40,12 +40,12 @@
   
   <!-- 溯源信息查询之，病虫害记录 -->
   <select id="queryPestByBtCode" parameterType="String" resultMap="pestrecordinfomap"> 
-  select * from cropBacktracking.pestRecord 
+  select * from pestRecord 
   where sowSeg_btCode=#{sowSeg_btCode}
   </select>
   <!-- 分页查询 -->
   <select id="getPestRecords" parameterType="Map" resultMap="pestrecordinfomap">
-  select * from cropBacktracking.pestRecord
+  select * from pestRecord
   where sowSeg_btCode like '%${projectBtcode}%'
   <if test="searchKey!=null and searchKey!=''">
    and (
@@ -63,7 +63,7 @@
   
   <!-- update a pestRecord -->
   <update id="updatePestRecordInfo" parameterType="com.cbt.business.po.PestRecordInfo">
-  update cropBacktracking.pestRecord
+  update pestRecord
   <set>
 	  <if test="sowsegBtcode!=null">
 	  sowSeg_btCode=#{sowsegBtcode}
@@ -95,7 +95,7 @@
   
   <!-- total count -->
   <select id="getCount" parameterType="Map" resultType="Integer">
- select count(*) from cropBacktracking.pestRecord
+ select count(*) from pestRecord
   where sowSeg_btCode like '%${projectBtcode}%'
   <if test="searchKey!=null and searchKey!=''">
    and (
@@ -114,7 +114,7 @@
   
   <!-- 超级用户分页查询 -->
   <select id="getMPestRecords" parameterType="Map" resultMap="pestrecordinfomap">
-  select * from cropBacktracking.pestRecord
+  select * from pestRecord
   where sowSeg_btCode like '%${businessId}%'
   <if test="searchKey!=null and searchKey!=''">
    and (
@@ -133,7 +133,7 @@
   
    <!-- 超级用户total count -->
   <select id="getMCount" parameterType="Map" resultType="Integer">
- select count(*) from cropBacktracking.pestRecord
+ select count(*) from pestRecord
   where sowSeg_btCode like '${businessId}%'
   <if test="searchKey!=null and searchKey!=''">
    and (

@@ -38,13 +38,13 @@
   
   <!-- 溯源信息之，通过订单号查询出物流信息 -->
   <select id="queryDeliverByOrderNum" parameterType="String" resultMap="deliverrecordinfomap">
-  select * from cropBacktracking.deliverRecord
+  select * from deliverRecord
   where orderNum=#{orderNum}
   </select>
   
   <!-- 分页查询记录 -->
   <select id="getDeliverRecords" parameterType="Map" resultMap="deliverrecordinfomap">
-  select * from cropBacktracking.deliverRecord
+  select * from deliverRecord
   where logistics=#{logistics} 
   <if test="searchKey!=null and searchKey!=''">
   and (
@@ -63,7 +63,7 @@
   </select>
   
   <select id="getDeliverRecordsCount" parameterType="Map"  resultType="Integer">
-  select count(*) from cropBacktracking.deliverRecord
+  select count(*) from deliverRecord
   where logistics=#{logistics} 
   <if test="searchKey!=null and searchKey!=''">
   and (
@@ -82,7 +82,7 @@
   
   <!-- 修改数据 -->
   <update id="updateDeliverRecord" parameterType="com.cbt.business.po.DeliverRecordInfo">
-  update cropBacktracking.deliverRecord
+  update deliverRecord
   <set>
   <if test="oedernum!=null">
   orderNum=#{ordernum}
@@ -114,7 +114,7 @@
   
   <!-- 通过物流负责人账号查找 -->
   <select id="queryByLogistics" parameterType="String" resultMap="deliverrecordinfomap">
-  select * from cropBacktracking.deliverRecord
+  select * from deliverRecord
   where logistics=#{logistics}
   </select>
   

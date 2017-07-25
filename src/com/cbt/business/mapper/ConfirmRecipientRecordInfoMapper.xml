@@ -34,13 +34,13 @@
   	
   	<!-- 溯源信息查询之，确认收货信息 -->
   	<select id="queryConfirmByOrderNum" parameterType="String" resultMap="confirmrecipientrecordinfomap">
-  	select * from cropBacktracking.confirmRecipientRecord
+  	select * from confirmRecipientRecord
   	where orderNum=#{orderNum}
   	</select>
   	
   	<!-- 分页查询 -->
   	<select id="getConfirmRecipientRecords" parameterType="Map" resultMap="confirmrecipientrecordinfomap">
-  	select * from cropBacktracking.confirmRecipientRecord
+  	select * from confirmRecipientRecord
   	where distributor=#{distributor}
   	<if test="searchKey!=null and searchKey!=''">
   	and(
@@ -56,7 +56,7 @@
   	</select>
   	<!-- 分页查询的条数 -->
   	<select id="getConfirmRecipientRecordsCount" parameterType="Map" resultType="Integer">
-    	select count(*) from cropBacktracking.confirmRecipientRecord
+    	select count(*) from confirmRecipientRecord
   	where distributor=#{distributor}
   	<if test="searchKey!=null and searchKey!=''">
    	and(
@@ -72,7 +72,7 @@
   	
   	<!-- 更新数据 -->
   	<update id="updateConfirmRecipientRecord" parameterType="com.cbt.business.po.ConfirmRecipientRecordInfo">
-  	update cropBacktracking.confirmRecipientRecord
+  	update confirmRecipientRecord
   	<set>
   	<if test="ordernum!=null">
   	ordernum=#{ordernum}
@@ -95,7 +95,7 @@
   	
   	<!-- 通过distributor查找出orderNum -->
   	<select id="queryByDistributor" parameterType="String" resultMap="confirmrecipientrecordinfomap">
-  	select * from cropBacktracking.confirmRecipientRecord
+  	select * from confirmRecipientRecord
   	where distributor=#{distributor}
   	</select>
   	

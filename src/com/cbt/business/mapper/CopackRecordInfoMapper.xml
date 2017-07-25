@@ -49,19 +49,19 @@
   
   <!-- 溯源信息查询之，包装信息记录 -->
   <select id="queryCopackByBtCode" parameterType="String" resultMap="copackrecordinfomap">
-  select * from cropBacktracking.copackRecord
+  select * from copackRecord
   where product_btCode=#{product_btCode}
   </select>
   
   <!-- 查询出订单号 -->
   <select id="queryOrderNumByBtCode" parameterType="String" resultType="java.lang.String">
-  select orderNum from cropBacktracking.copackRecord
+  select orderNum from copackRecord
   where product_btCode=#{product_btCode}
   </select>
   
   <!-- 分页查询 -->
   <select id="getCopackRecords" parameterType="Map" resultMap="copackrecordinfomap">
-  select * from cropBacktracking.copackRecord
+  select * from copackRecord
   where checkInSeg_btCode like '%${projectBtcode}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -85,7 +85,7 @@
   
    <!-- 分页查询数据数量 -->
      <select id="getCopackRecordsCount" parameterType="Map" resultType="Integer">
-  select count(*) from cropBacktracking.copackRecord
+  select count(*) from copackRecord
    where checkInSeg_btCode like '%${projectBtcode}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -108,7 +108,7 @@
   
   <!-- 更新数据 -->
   <update id="updateCopackRecord" parameterType="com.cbt.business.po.CopackRecordInfo">
-  update cropBacktracking.copackRecord
+  update copackRecord
   <set>
   <if test="checkinsegBtcode!=null">
   checkInSeg_btCode=#{checkinsegBtcode}
@@ -153,7 +153,7 @@
   
   <!-- 超级用户分页查询 -->
   <select id="getMCopackRecords" parameterType="Map" resultMap="copackrecordinfomap">
-  select * from cropBacktracking.copackRecord
+  select * from copackRecord
   where checkInSeg_btCode like '${businessId}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -177,7 +177,7 @@
   
    <!-- 分页查询数据数量 -->
      <select id="getMCopackRecordsCount" parameterType="Map" resultType="Integer">
-  select count(*) from cropBacktracking.copackRecord
+  select count(*) from copackRecord
    where checkInSeg_btCode like '${businessId}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -202,7 +202,7 @@
   
     <!-- 超级用户分页查询 -->
   <select id="getPageCopackInfo" parameterType="Map" resultMap="copackrecordinfomap">
-  select * from cropBacktracking.copackRecord
+  select * from copackRecord
   where product_btCode like '${projectCode}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -226,7 +226,7 @@
   
    <!-- 分页查询数据数量 -->
      <select id="getCopackInfoCount" parameterType="Map" resultType="Integer">
-  select count(*) from cropBacktracking.copackRecord
+  select count(*) from copackRecord
    where product_btCode like '${projectCode}%' 
   <if test="searchKey!='' and searchKey!=null">
   and(
@@ -248,7 +248,7 @@
   </select>
   
   <select id="queryByOrderNum" parameterType="String" resultMap="copackrecordinfomap">
-  select * from cropBacktracking.copackRecord
+  select * from copackRecord
   where orderNum=#{ordernum}
   </select>
   

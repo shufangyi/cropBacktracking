@@ -39,29 +39,29 @@
 
 	<!-- 添加新的生产计划模版 -->
 	<insert id="insertNewProductPlan" parameterType="com.cbt.system.po.ProductPlanInfo">
-	insert into cropBacktracking.product_planInfo(planName,planDesc,planUnit)
+	insert into product_planInfo(planName,planDesc,planUnit)
 	values(#{planName},#{planDesc},#{planUnit})
 	</insert>
 	
 	<!-- 删除生产计划 -->
 	<delete id="deleteProductPlan" parameterType="com.cbt.system.po.ProductPlanInfo">
-	delete from cropBacktracking.product_planInfo
+	delete from product_planInfo
 	where planId=#{planId}
 	</delete>
 	
 	<!-- 通过panUnit查询出生产计划id -->
 	<select id="selectIdByPlanUnit" parameterType="String">
-	select planId from cropBacktracking.productPlanInfo
+	select planId from productPlanInfo
 	where planUnit=#{planUnit}
 	</select>
 	
 	<!-- 查询出所有的生产计划 -->
 	<select id="queryAllProductPlan">
-	select * from cropBacktracking.productPlanInfo
+	select * from productPlanInfo
 	</select>
 	
 	<!-- 通过planId对某个生产计划进行修改 -->
 	<update id="updatePlanById" parameterType="com.cbt.system.po.ProductPlanInfo">
-		update cropbacktracking.product_planinfo  set planUnit=#{planUnit},planName=#{planName},planDesc=#{planDesc} where  planId=#{planId};
+		update product_planinfo  set planUnit=#{planUnit},planName=#{planName},planDesc=#{planDesc} where  planId=#{planId};
 	</update>
 </mapper>
