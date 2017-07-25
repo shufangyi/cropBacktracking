@@ -2,6 +2,10 @@ package com.cbt.business.po;
 
 import java.util.Date;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.cbt.business.controller.JsonDateSerializer;
+
 public class SowRecordInfo
 {
     private Integer id;
@@ -40,6 +44,7 @@ public class SowRecordInfo
         this.projectBtcode = projectBtcode == null ? null : projectBtcode.trim();
     }
 
+    @JsonSerialize(using=JsonDateSerializer.class)
     public Date getSowtime() {
         return sowtime;
     }

@@ -2,6 +2,10 @@ package com.cbt.business.po;
 
 import java.util.Date;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.cbt.business.controller.JsonDateSerializer;
+
 public class CheckInRecordInfo {
 	 private Integer id;
 
@@ -34,6 +38,8 @@ public class CheckInRecordInfo {
 	        this.picksegBtcode = picksegBtcode == null ? null : picksegBtcode.trim();
 	    }
 
+	    
+	    @JsonSerialize(using=JsonDateSerializer.class)
 	    public Date getCheckintime() {
 	        return checkintime;
 	    }

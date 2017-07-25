@@ -2,6 +2,10 @@ package com.cbt.business.po;
 
 import java.util.Date;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.cbt.business.controller.JsonDateSerializer;
+
 public class FertilizerRecordInfo {
 	private Integer id;
 
@@ -42,7 +46,8 @@ public class FertilizerRecordInfo {
     public void setFertilizername(String fertilizername) {
         this.fertilizername = fertilizername == null ? null : fertilizername.trim();
     }
-
+    
+    @JsonSerialize(using=JsonDateSerializer.class)
     public Date getFertilizertime() {
         return fertilizertime;
     }

@@ -2,6 +2,10 @@ package com.cbt.business.po;
 
 import java.util.Date;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.cbt.business.controller.JsonDateSerializer;
+
 public class PestRecordInfo {
     private Integer id;
 
@@ -24,7 +28,7 @@ public class PestRecordInfo {
     private Date sprayTime;
     
     
-
+    @JsonSerialize(using=JsonDateSerializer.class)
     public Date getSprayTime() {
 		return sprayTime;
 	}

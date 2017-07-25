@@ -2,6 +2,10 @@ package com.cbt.business.po;
 
 import java.util.Date;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.cbt.business.controller.JsonDateSerializer;
+
 public class CopackRecordInfo {
 	private Integer id;
 
@@ -47,6 +51,7 @@ public class CopackRecordInfo {
         this.checkinsegBtcode = checkinsegBtcode == null ? null : checkinsegBtcode.trim();
     }
 
+    @JsonSerialize(using=JsonDateSerializer.class)
     public Date getCopacktime() {
         return copacktime;
     }
