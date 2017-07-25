@@ -9,6 +9,16 @@ public class WorkerInfo {
 	private String workerName;
 	private String workerPhone;
 	private String roleName;
+	//start
+	private String workerEmail;
+	
+	public String getWorkerEmail() {
+		return workerEmail;
+	}
+	public void setWorkerEmail(String workerEmail) {
+		this.workerEmail = workerEmail;
+	}
+	//end
 	public int getWorkerId() {
 		return workerId;
 	}

@@ -169,9 +169,9 @@
 
 			<!-- 生成二维码 -->
 			<div id="codeShow-box"
-				style="display: none; position: absolute; top: 100px; right: 20%; width: 300px; height: 300px;background:rgba(255,255,255,0.6)">
+				style="display: none; position: absolute; top: 100px; right: 15%;background:rgba(255,255,255,0.6)">
 				<div id="codeShow"></div>
-				<img id='codeShow-imgOne' />
+				<img id='codeShow-imgOne' style="width:128px;"/>
 			</div>
 
 			<!-- Textarea -->

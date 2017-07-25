@@ -18,6 +18,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from business_crop_projectinfo 
 	</select>
 	
+	
+	
+	<select id="getInfoByProjectBtCode" parameterType="java.lang.String" resultMap="businessCropProjectInfomap">
+		select * from business_crop_projectinfo where project_btCode=#{value}
+	</select>
+	
 	 <!-- 插入一条数据,当resultMap将数据库的字段重命名之后，在#{}取值是要使用新名字 -->
 	<insert id="addBusinessCropProjectInfo" parameterType="BusinessCropProjectInfo">
 		insert into business_crop_projectinfo

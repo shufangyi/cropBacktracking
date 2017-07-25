@@ -14,4 +14,6 @@ public interface BusinessCropProjectInfoService
 	public int addBusinessCropProjectInfo(BusinessCropProjectInfo info);
 	/*删除一条数据*/
 	public int delBusinessCropProjectInfo(BusinessCropProjectInfo info);
+	
+	public List<BusinessCropProjectInfo> getInfoByProjectBtCode(String project_btCode);
 }

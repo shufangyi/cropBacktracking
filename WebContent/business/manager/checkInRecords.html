@@ -98,10 +98,20 @@ $(document).ready(function()
 				 {field: 'id',title: 'id'}, 	
 				 {field: 'picksegBtcode',title: '采摘溯源码'},	 
 				 {field: 'checkintime',title: '质检时间'}, 
-				 {field: 'checkInsegBtcode',title: '质检溯源码'},
+				 {field: 'checkinsegBtcode',title: '质检溯源码'},
 				 {field: 'stocklocation',title: '存储地点',editable: true},
 				 {field: 'checker',title: '质检员',editable: true},
-				 {field: 'comment',title: '备注',editable: true},			 	
+				 {field: 'comment',title: '备注',editable: true},	
+				 //start
+				 //页面元素添加
+				 {field: 'action',title: "发布包装任务",
+					 formatter: function(value,row,index){
+							var element= 
+								"<a class='edit' data-id='"+row.id +"' onclick='publishTask("+row.checkinsegBtcode+")'>发布任务</a> ";
+							return element;
+					 }
+				 }
+				 //end
 			 
 			 /* ,	 
 			 {field: 'action',title: '操作',
@@ -191,8 +201,41 @@ $(document).ready(function()
                }
            });      
 		  //end
-	  }
+	  };
 	});	
+	
+
+//start
+//2017-07-24
+function publishTask(checkinsegBtcode)
+{
+	  alert(checkinsegBtcode);
+	  
+	  
+	  //将数据返回服务器，发送邮件给指定的人员
+	  $.ajax({
+		  type:"post",
+		  url:"../sendCopackTaskEmail.do",
+		  data:{
+			  "checkinsegBtcode":checkinsegBtcode
+		  },
+		  success: function(data,status){
+			  if(data=="true")
+			  {
+				alert("任务发布成功");  
+			  }
+			  else
+			  {
+				alert("任务发送失败");	  
+		      }
+		  },
+		  error: function(status)
+		  {
+			  alert("系统错误");
+		  }
+	  });		  
+}
+//end
 					
 </script>
 </body>

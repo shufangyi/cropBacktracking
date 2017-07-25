@@ -82,6 +82,15 @@
                 <span class="help-block"></span>
             </div>
         </div>
+        
+        
+        <div class="control-group">
+            <div class="controls">
+                <label class="control-label" for="workerEmail">邮箱账号</label>
+                <input id="workerEmail" name="workerEmail" type="text" placeholder="" class="input-xlarge">
+                <span class="help-block"></span>
+            </div>
+        </div>
 
         <!-- Multiple Checkboxes (inline) -->
         <div class="control-group">
@@ -159,6 +168,8 @@ $(document).ready(function(){
 		var workerName = $('#workerName').val();
 		var workerNum = $('#workerNum').val();
 		var workerPwd = $('#workerPwd').val();
+		//验证邮箱是否存在
+		var workerEmail = $('#workerEmail').val();
 		//alert(workerPwd);
 		var workerPhone = $('#workerPhone').val();
 		//var roleDesc = $('#Comment').text();
@@ -184,7 +195,8 @@ $(document).ready(function(){
 					"workerPhone":workerPhone,				
 					"roleId":roleId,
 					"businessId":businessId,
-					"roleName":roleName
+					"roleName":roleName,
+					"workerEmail":workerEmail
 				},
 				success: function(data,status)
 				{

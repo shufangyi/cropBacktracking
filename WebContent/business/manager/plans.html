@@ -101,7 +101,17 @@ $(document).ready(function()
 			 //{field: 'productPicture',title: '产品图片路径'},
 			 {field: 'cropCode',title: '编码'},
 			 {field: 'productName',title: '产品名称'},
-			 {field: 'projectDesc',title: '备注'}						 	
+			 {field: 'projectDesc',title: '备注'},
+			 //start
+			 //页面元素添加
+			 {field: 'action',title: "发布任务",
+				 formatter: function(value,row,index){
+						var element="<a class='3edit' data-id='"+row.id +"' onclick='publishTask("+row.project_btCode+")'>发布任务</a> ";
+						return element;
+				 }
+			 }
+			 //end
+			 
 			 
 			 /* ,	 
 			 {field: 'action',title: '操作',
@@ -173,7 +183,7 @@ $(document).ready(function()
 		  }
 	  });
 	  
-		
+
 	 //修改数据  
 	 function update(row)
 	  {
@@ -196,6 +206,38 @@ $(document).ready(function()
 	  }
 	
 	});
+	
+	
+//start
+//2017-07-24
+function publishTask(project_btCode)
+{
+	  alert(project_btCode);
+	  //将数据返回服务器，发送邮件给指定的人员
+	  $.ajax({
+		  type:"post",
+		  url:"../sendPlanEmail.do",
+		  data:{
+			  "project_btCode":project_btCode
+		  },
+		  success: function(data,status){
+			  if(data=="true")
+			  {
+				alert("任务发布成功");  
+			  }
+			  else
+			  {
+				alert("任务发送失败");	  
+		      }
+		  },
+		  error: function(status)
+		  {
+			  alert("系统错误");
+		  }
+	  });		  
+}
+//end
+	
 					
 </script>
 </body>

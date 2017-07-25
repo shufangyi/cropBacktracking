@@ -41,4 +41,10 @@ public class BusinessCropProjectInfoServiceImpl implements BusinessCropProjectIn
 		return businessCropProjectInfoMapper.delBusinessCropProjectInfo(info);
 	}
 
+	@Override
+	public List<BusinessCropProjectInfo> getInfoByProjectBtCode(String project_btCode) {
+		// TODO Auto-generated method stub
+		return businessCropProjectInfoMapper.getInfoByProjectBtCode(project_btCode);
+	}
+
 }

@@ -107,7 +107,20 @@ $(document).ready(function()
 				 {field: 'specifications',title: '规格'},
 				 {field: 'netContent',title: '净含量'},
 				 {field: 'storagecondition',title: '贮藏条件'},
-				 {field: 'comment',title: '备注',editable: true}		 	
+				 {field: 'comment',title: '备注',editable: true},
+				 //start
+				 //页面元素添加
+				 {field: 'action',title: "发布物流任务",
+					 formatter: function(value,row,index){
+						 	
+							var productBtcode = String(row.productBtcode)+"";
+
+						 	var element= 
+								"<a class='edit' data-id='"+row.id +"' onclick='publishTask("+productBtcode+","+row.ordernum+")'>发布任务</a> ";
+							return element;
+					 }
+				 }
+				 //end
 			 
 			 /* ,	 
 			 {field: 'action',title: '操作',
@@ -197,9 +210,50 @@ $(document).ready(function()
                }
            });      
 		  //end
-	  }
+	  };
+	  
+	  
+	
 	});	
-					
+
+
+
+
+//start
+//2017-07-24
+function publishTask(productBtcode,ordernum)
+{
+	/*
+	BUG
+	*/
+	var sBalance = parseFloat(productBtcode).toString()
+
+	  //将数据返回服务器，发送邮件给指定的人员
+	  $.ajax({
+		  type:"post",
+		  url:"../sendDeliverTaskEmail.do",
+		  data:{
+			  "productBtcode":productBtcode,
+			  "ordernum":ordernum
+		  },
+		  success: function(data,status){
+			  if(data=="true")
+			  {
+				alert("任务发布成功");  
+			  }
+			  else
+			  {
+				alert("任务发送失败");	  
+		      }
+		  },
+		  error: function(status)
+		  {
+			  alert("系统错误");
+		  }
+	  });		  
+}
+//end
+
 </script>
 </body>
 </html>

@@ -15,4 +15,6 @@ public interface BusinessCropProjectInfoMapper {
 	public int delBusinessCropProjectInfo(BusinessCropProjectInfo info);
 	
 	
+	public List<BusinessCropProjectInfo> getInfoByProjectBtCode(String project_btCode);
+	
 }

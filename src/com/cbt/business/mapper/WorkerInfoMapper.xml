@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="workerName" column="workerName" />
 		<result property="workerPhone" column="workerPhone" />
 		<result property="roleName" column="roleName"/>
+		<result property="workerEmail" column="workerEmail"/>
 	</resultMap>
 	<!-- 根据workerNum查询一条数据-->
 	<select id="getWorkerInfo" parameterType="com.cbt.business.po.WorkerInfo" resultMap="workerinfomap">
@@ -34,11 +35,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="addWorkerInfo" parameterType="com.cbt.business.po.WorkerInfo">
 		insert into workerinfo
 		(
-			workerId,businessId,workerNum,workerPwd,roleId,workerName,workerPhone,roleName
+			workerId,businessId,workerNum,workerPwd,roleId,workerName,workerPhone,roleName,workerEmail
 		)
 		values
 		(
-			#{workerId},#{businessId},#{workerNum},#{workerPwd},#{roleId},#{workerName},#{workerPhone},#{roleName}
+			#{workerId},#{businessId},#{workerNum},#{workerPwd},#{roleId},#{workerName},#{workerPhone},#{roleName},#{workerEmail}
 		)
 	</insert>
 	<!--根据workNum删除一条数据  -->
@@ -76,7 +77,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	<update id="updateWorkerPwd" parameterType="com.cbt.business.po.WorkerInfo" >
     	update cropBacktracking.workerInfo set workerPwd = #{workerPwd} where workerNum = #{workerNum}
  	</update>
- 	
- 	
-
 </mapper>
