@@ -116,7 +116,7 @@ $(document).ready(function()
 							var productBtcode = String(row.productBtcode)+"";
 
 						 	var element= 
-								"<a class='edit' data-id='"+row.id +"' onclick='publishTask("+row.productBtcode+","+row.ordernum+")'>发布任务</a> ";
+								"<a class='edit' data-id='"+row.id +"' onclick=\"publishTask('"+row.productBtcode+"','"+row.ordernum+"')\">发布任务</a> ";
 							return element;
 					 }
 				 }
@@ -226,7 +226,8 @@ function publishTask(productBtcode,ordernum)
 	/*
 	BUG
 	*/
-	
+	//alert(productBtcode);
+	//alert(ordernum);
 
 	  //将数据返回服务器，发送邮件给指定的人员
 	  $.ajax({

@@ -163,6 +163,7 @@ $(document).ready(function(){
 	//验证表单数据，获取表单内ring没处理数据，提交后台
 	$('#submit').click(function()
 	{
+		var emailReg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 		var businessId = $(window.parent.parent.frames["topFrame"].document).find('#businessId').text();
 		//var businessId = $('#businessId').val();
 		var workerName = $('#workerName').val();
@@ -181,8 +182,9 @@ $(document).ready(function(){
 				roleId==""||roleName=="")
 		{
 			alert("表单信息不完整");
-		}
-		else
+		}else if (!emailReg.test(workerEmail)) {
+			alert("请输入正确的邮箱！");
+		}else
 		{
 			$.ajax({
 				type: 'post',
